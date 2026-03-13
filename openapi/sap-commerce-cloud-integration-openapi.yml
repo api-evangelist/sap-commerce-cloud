@@ -1,0 +1,543 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Integration API
+  description: >-
+    OData-based Integration API for SAP Commerce Cloud, providing
+    data integration and synchronization capabilities with external
+    systems. Supports CRUD operations on Commerce data models through
+    OData v2 protocol, enabling inbound and outbound integration for
+    products, orders, customers, stock levels, and more.
+  version: '2.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+externalDocs:
+  description: Integration API Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+servers:
+  - url: https://{tenant}.{region}.commercecloud.sap/odata2webservices
+    description: SAP Commerce Cloud Production
+    variables:
+      tenant:
+        description: Tenant identifier
+        default: my-tenant
+      region:
+        description: Deployment region
+        default: us
+tags:
+  - name: Products
+    description: Product data integration
+  - name: Customers
+    description: Customer data integration
+  - name: Orders
+    description: Order data integration
+  - name: Stock
+    description: Stock and inventory integration
+  - name: Catalogs
+    description: Catalog and classification data integration
+  - name: Metadata
+    description: OData service metadata
+security:
+  - oauth2: []
+paths:
+  /InboundProduct/Products:
+    get:
+      operationId: listProducts
+      summary: List products
+      description: >-
+        Retrieve products through the inbound product integration object.
+        Supports OData query options for filtering, sorting, and pagination.
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Product list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ODataProductCollection'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createProduct
+      summary: Create or update a product
+      description: >-
+        Create or update product data through the inbound integration layer.
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationProduct'
+      responses:
+        '201':
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationProduct'
+        '400':
+          description: Invalid product data
+  /InboundProduct/Products('{integrationKey}'):
+    get:
+      operationId: getProduct
+      summary: Get product by integration key
+      description: >-
+        Retrieve a specific product by its integration key.
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/components/parameters/integrationKey'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Product data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationProduct'
+        '404':
+          description: Product not found
+    patch:
+      operationId: updateProduct
+      summary: Update a product
+      description: >-
+        Partially update product data through the integration layer.
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/components/parameters/integrationKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationProduct'
+      responses:
+        '200':
+          description: Product updated
+        '404':
+          description: Product not found
+    delete:
+      operationId: deleteProduct
+      summary: Delete a product
+      description: >-
+        Delete a product through the integration layer.
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/components/parameters/integrationKey'
+      responses:
+        '204':
+          description: Product deleted
+        '404':
+          description: Product not found
+  /InboundCustomer/Customers:
+    get:
+      operationId: listCustomers
+      summary: List customers
+      description: >-
+        Retrieve customer data through the inbound customer integration object.
+      tags:
+        - Customers
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: Customer list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ODataCustomerCollection'
+    post:
+      operationId: createCustomer
+      summary: Create or update a customer
+      description: >-
+        Create or update customer data through the inbound integration layer.
+      tags:
+        - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationCustomer'
+      responses:
+        '201':
+          description: Customer created
+        '400':
+          description: Invalid customer data
+  /InboundOrder/Orders:
+    get:
+      operationId: listOrders
+      summary: List orders
+      description: >-
+        Retrieve order data through the inbound order integration object.
+      tags:
+        - Orders
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/expand'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Order list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ODataOrderCollection'
+    post:
+      operationId: createOrder
+      summary: Create or update an order
+      description: >-
+        Create or update order data through the inbound integration layer.
+      tags:
+        - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationOrder'
+      responses:
+        '201':
+          description: Order created
+        '400':
+          description: Invalid order data
+  /InboundStockLevel/StockLevels:
+    get:
+      operationId: listStockLevels
+      summary: List stock levels
+      description: >-
+        Retrieve stock level data through the inbound stock integration object.
+      tags:
+        - Stock
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: Stock level list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ODataStockCollection'
+    post:
+      operationId: createStockLevel
+      summary: Create or update stock level
+      description: >-
+        Create or update stock level data through the inbound integration layer.
+      tags:
+        - Stock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationStockLevel'
+      responses:
+        '201':
+          description: Stock level created
+        '400':
+          description: Invalid stock data
+  /InboundClassification/ClassificationSystems:
+    get:
+      operationId: listClassificationSystems
+      summary: List classification systems
+      description: >-
+        Retrieve classification system data for product categorization.
+      tags:
+        - Catalogs
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/top'
+        - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: Classification systems
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  d:
+                    type: object
+                    properties:
+                      results:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            name:
+                              type: string
+  /$metadata:
+    get:
+      operationId: getMetadata
+      summary: Get service metadata
+      description: >-
+        Retrieve the OData service metadata document describing
+        all available entity types and associations.
+      tags:
+        - Metadata
+      responses:
+        '200':
+          description: OData metadata document
+          content:
+            application/xml:
+              schema:
+                type: string
+      security: []
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Integration API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            basic: Basic access
+  parameters:
+    integrationKey:
+      name: integrationKey
+      in: path
+      required: true
+      description: Integration key (composite key identifying the entity)
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to return
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of results to return
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of results to skip
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      description: Property name and direction for sorting
+      schema:
+        type: string
+  schemas:
+    ODataProductCollection:
+      type: object
+      properties:
+        d:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationProduct'
+    IntegrationProduct:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Product code
+        name:
+          type: string
+          description: Product name
+        description:
+          type: string
+          description: Product description
+        catalogVersion:
+          type: string
+          description: Catalog version reference
+        approvalStatus:
+          type: string
+          enum:
+            - approved
+            - unapproved
+            - check
+          description: Product approval status
+        ean:
+          type: string
+          description: European Article Number
+        unit:
+          type: string
+          description: Unit of measure
+        supercategories:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+          description: Parent category references
+        integrationKey:
+          type: string
+          description: Unique integration key
+    ODataCustomerCollection:
+      type: object
+      properties:
+        d:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationCustomer'
+    IntegrationCustomer:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: Customer unique identifier
+        name:
+          type: string
+          description: Customer full name
+        customerID:
+          type: string
+          description: Customer ID
+        addresses:
+          type: array
+          items:
+            type: object
+            properties:
+              streetname:
+                type: string
+              streetnumber:
+                type: string
+              postalcode:
+                type: string
+              town:
+                type: string
+              country:
+                type: string
+          description: Customer addresses
+        integrationKey:
+          type: string
+          description: Unique integration key
+    ODataOrderCollection:
+      type: object
+      properties:
+        d:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationOrder'
+    IntegrationOrder:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Order code
+        date:
+          type: string
+          format: date-time
+          description: Order date
+        status:
+          type: string
+          description: Order status
+        currency:
+          type: string
+          description: Order currency ISO code
+        totalPrice:
+          type: number
+          format: double
+          description: Total price
+        user:
+          type: object
+          properties:
+            uid:
+              type: string
+          description: Customer reference
+        entries:
+          type: array
+          items:
+            type: object
+            properties:
+              entryNumber:
+                type: integer
+              productCode:
+                type: string
+              quantity:
+                type: integer
+              totalPrice:
+                type: number
+                format: double
+          description: Order entries
+        integrationKey:
+          type: string
+          description: Unique integration key
+    ODataStockCollection:
+      type: object
+      properties:
+        d:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationStockLevel'
+    IntegrationStockLevel:
+      type: object
+      properties:
+        productCode:
+          type: string
+          description: Product code
+        available:
+          type: integer
+          description: Available stock quantity
+        warehouse:
+          type: string
+          description: Warehouse identifier
+        reserved:
+          type: integer
+          description: Reserved stock quantity
+        preOrder:
+          type: integer
+          description: Pre-order stock quantity
+        releaseDate:
+          type: string
+          format: date-time
+          description: Stock release date
+        integrationKey:
+          type: string
+          description: Unique integration key

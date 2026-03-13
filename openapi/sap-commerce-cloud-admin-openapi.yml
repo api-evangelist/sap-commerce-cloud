@@ -1,0 +1,424 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin API
+  description: >-
+    Administrative API for SAP Commerce Cloud providing system
+    configuration, maintenance, monitoring, and health check
+    capabilities. Enables programmatic access to system administration
+    functions including cache management, CronJob execution, and
+    system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
+servers:
+  - url: https://{tenant}.{region}.commercecloud.sap
+    description: SAP Commerce Cloud Production
+    variables:
+      tenant:
+        description: Tenant identifier
+        default: my-tenant
+      region:
+        description: Deployment region
+        default: us
+tags:
+  - name: Health
+    description: System health and readiness checks
+  - name: Cache
+    description: Cache management operations
+  - name: CronJobs
+    description: CronJob management and execution
+  - name: Configuration
+    description: System configuration management
+  - name: Monitoring
+    description: System monitoring and metrics
+security:
+  - oauth2: []
+paths:
+  /monitoring/health:
+    get:
+      operationId: getHealthStatus
+      summary: Get system health status
+      description: >-
+        Retrieve the overall health status of the SAP Commerce Cloud
+        instance, including readiness and liveness indicators.
+      tags:
+        - Health
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+        '503':
+          description: System is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+      security: []
+  /monitoring/liveness:
+    get:
+      operationId: getLivenessStatus
+      summary: Liveness probe
+      description: >-
+        Kubernetes-compatible liveness probe to determine if the
+        application is running.
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Application is alive
+        '503':
+          description: Application is not responding
+      security: []
+  /monitoring/readiness:
+    get:
+      operationId: getReadinessStatus
+      summary: Readiness probe
+      description: >-
+        Kubernetes-compatible readiness probe to determine if the
+        application is ready to accept traffic.
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Application is ready
+        '503':
+          description: Application is not ready
+      security: []
+  /monitoring/cache/regions:
+    get:
+      operationId: getCacheRegions
+      summary: List cache regions
+      description: >-
+        Retrieve all configured cache regions with statistics including
+        hit rates, sizes, and eviction counts.
+      tags:
+        - Cache
+      responses:
+        '200':
+          description: Cache region list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CacheRegionList'
+        '401':
+          description: Unauthorized
+  /monitoring/cache/regions/{regionName}/clear:
+    post:
+      operationId: clearCacheRegion
+      summary: Clear a cache region
+      description: >-
+        Clear all entries from a specific cache region.
+      tags:
+        - Cache
+      parameters:
+        - name: regionName
+          in: path
+          required: true
+          description: Cache region name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cache region cleared
+        '404':
+          description: Cache region not found
+  /monitoring/cronjobs:
+    get:
+      operationId: listCronJobs
+      summary: List CronJobs
+      description: >-
+        Retrieve all configured CronJobs with their current status
+        and schedule information.
+      tags:
+        - CronJobs
+      parameters:
+        - name: status
+          in: query
+          description: Filter by CronJob status
+          schema:
+            type: string
+            enum:
+              - RUNNING
+              - FINISHED
+              - ABORTED
+              - PAUSED
+              - UNKNOWN
+      responses:
+        '200':
+          description: CronJob list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJobList'
+  /monitoring/cronjobs/{cronJobCode}:
+    get:
+      operationId: getCronJob
+      summary: Get CronJob details
+      description: >-
+        Retrieve details and execution history of a specific CronJob.
+      tags:
+        - CronJobs
+      parameters:
+        - name: cronJobCode
+          in: path
+          required: true
+          description: CronJob code
+          schema:
+            type: string
+      responses:
+        '200':
+          description: CronJob details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJob'
+        '404':
+          description: CronJob not found
+  /monitoring/cronjobs/{cronJobCode}/execute:
+    post:
+      operationId: executeCronJob
+      summary: Execute a CronJob
+      description: >-
+        Trigger the immediate execution of a CronJob.
+      tags:
+        - CronJobs
+      parameters:
+        - name: cronJobCode
+          in: path
+          required: true
+          description: CronJob code
+          schema:
+            type: string
+      responses:
+        '202':
+          description: CronJob execution initiated
+        '404':
+          description: CronJob not found
+        '409':
+          description: CronJob is already running
+  /monitoring/configuration:
+    get:
+      operationId: listConfigurationProperties
+      summary: List configuration properties
+      description: >-
+        Retrieve system configuration properties.
+      tags:
+        - Configuration
+      parameters:
+        - name: prefix
+          in: query
+          description: Filter properties by key prefix
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Configuration properties
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigurationPropertyList'
+  /monitoring/metrics:
+    get:
+      operationId: getSystemMetrics
+      summary: Get system metrics
+      description: >-
+        Retrieve system performance metrics including JVM stats,
+        database connection pool, and request statistics.
+      tags:
+        - Monitoring
+      responses:
+        '200':
+          description: System metrics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SystemMetrics'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - UP
+            - DOWN
+            - DEGRADED
+          description: Overall health status
+        checks:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Check name
+              status:
+                type: string
+                enum:
+                  - UP
+                  - DOWN
+                description: Check status
+              details:
+                type: object
+                additionalProperties:
+                  type: string
+                description: Additional check details
+    CacheRegionList:
+      type: object
+      properties:
+        regions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CacheRegion'
+    CacheRegion:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Cache region name
+        size:
+          type: integer
+          description: Number of entries in the cache
+        maxSize:
+          type: integer
+          description: Maximum cache size
+        hitCount:
+          type: integer
+          description: Total cache hits
+        missCount:
+          type: integer
+          description: Total cache misses
+        hitRatio:
+          type: number
+          format: double
+          description: Cache hit ratio
+        evictionCount:
+          type: integer
+          description: Number of evictions
+    CronJobList:
+      type: object
+      properties:
+        cronJobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/CronJob'
+    CronJob:
+      type: object
+      properties:
+        code:
+          type: string
+          description: CronJob code
+        jobCode:
+          type: string
+          description: Associated job code
+        status:
+          type: string
+          enum:
+            - RUNNING
+            - FINISHED
+            - ABORTED
+            - PAUSED
+            - UNKNOWN
+          description: Current status
+        result:
+          type: string
+          enum:
+            - SUCCESS
+            - ERROR
+            - FAILURE
+          description: Last execution result
+        startTime:
+          type: string
+          format: date-time
+          description: Last execution start time
+        endTime:
+          type: string
+          format: date-time
+          description: Last execution end time
+        active:
+          type: boolean
+          description: Whether the CronJob is active
+        triggerExpression:
+          type: string
+          description: Cron trigger expression
+    ConfigurationPropertyList:
+      type: object
+      properties:
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationProperty'
+    ConfigurationProperty:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Property key
+        value:
+          type: string
+          description: Property value
+        description:
+          type: string
+          description: Property description
+    SystemMetrics:
+      type: object
+      properties:
+        jvm:
+          type: object
+          properties:
+            heapUsed:
+              type: integer
+              description: Heap memory used in bytes
+            heapMax:
+              type: integer
+              description: Maximum heap memory in bytes
+            threads:
+              type: integer
+              description: Active thread count
+            uptime:
+              type: integer
+              description: JVM uptime in milliseconds
+        database:
+          type: object
+          properties:
+            activeConnections:
+              type: integer
+              description: Active database connections
+            maxConnections:
+              type: integer
+              description: Maximum pool connections
+            idleConnections:
+              type: integer
+              description: Idle connections
+        requests:
+          type: object
+          properties:
+            totalCount:
+              type: integer
+              description: Total request count
+            averageResponseTime:
+              type: number
+              format: double
+              description: Average response time in milliseconds
+            errorRate:
+              type: number
+              format: double
+              description: Error rate percentage

@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-commerce-cloud/cart.json",
+  "title": "SAP Commerce Cloud Cart",
+  "description": "A shopping cart in SAP Commerce Cloud containing products selected for purchase, with delivery and payment configuration for checkout.",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Unique cart code for authenticated users"
+    },
+    "guid": {
+      "type": "string",
+      "description": "Cart GUID used for anonymous or guest carts"
+    },
+    "totalItems": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Number of distinct line items in the cart"
+    },
+    "totalUnitCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total quantity of units across all entries"
+    },
+    "subTotal": {
+      "$ref": "#/$defs/Price"
+    },
+    "deliveryCost": {
+      "$ref": "#/$defs/Price"
+    },
+    "totalTax": {
+      "$ref": "#/$defs/Price"
+    },
+    "totalPrice": {
+      "$ref": "#/$defs/Price"
+    },
+    "totalPriceWithTax": {
+      "$ref": "#/$defs/Price"
+    },
+    "totalDiscounts": {
+      "$ref": "#/$defs/Price"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CartEntry"
+      },
+      "description": "Cart line items"
+    },
+    "deliveryAddress": {
+      "$ref": "#/$defs/Address"
+    },
+    "deliveryMode": {
+      "$ref": "#/$defs/DeliveryMode"
+    },
+    "paymentInfo": {
+      "$ref": "#/$defs/PaymentDetails"
+    },
+    "appliedVouchers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Voucher"
+      },
+      "description": "Vouchers applied to the cart"
+    },
+    "appliedOrderPromotions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PromotionResult"
+      },
+      "description": "Order-level promotions applied"
+    },
+    "appliedProductPromotions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PromotionResult"
+      },
+      "description": "Product-level promotions applied"
+    },
+    "user": {
+      "$ref": "#/$defs/Principal"
+    },
+    "orderDiscounts": {
+      "$ref": "#/$defs/Price"
+    },
+    "productDiscounts": {
+      "$ref": "#/$defs/Price"
+    },
+    "deliveryOrderGroups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entries": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/CartEntry"
+            }
+          },
+          "totalPriceWithTax": {
+            "$ref": "#/$defs/Price"
+          }
+        }
+      },
+      "description": "Delivery order groups for split shipments"
+    }
+  },
+  "$defs": {
+    "Price": {
+      "type": "object",
+      "description": "Price or monetary amount",
+      "properties": {
+        "currencyIso": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code"
+        },
+        "value": {
+          "type": "number",
+          "description": "Numeric value"
+        },
+        "formattedValue": {
+          "type": "string",
+          "description": "Locale-formatted value string"
+        }
+      }
+    },
+    "CartEntry": {
+      "type": "object",
+      "description": "Individual item in the shopping cart",
+      "properties": {
+        "entryNumber": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Zero-based entry index"
+        },
+        "product": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Product code"
+            },
+            "name": {
+              "type": "string",
+              "description": "Product name"
+            },
+            "url": {
+              "type": "string",
+              "description": "Product page URL"
+            },
+            "images": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "format": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Quantity in cart"
+        },
+        "basePrice": {
+          "$ref": "#/$defs/Price"
+        },
+        "totalPrice": {
+          "$ref": "#/$defs/Price"
+        },
+        "updateable": {
+          "type": "boolean",
+          "description": "Whether the quantity can be updated"
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "description": "Delivery address",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "line1": {
+          "type": "string"
+        },
+        "line2": {
+          "type": "string"
+        },
+        "town": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "country": {
+          "type": "object",
+          "properties": {
+            "isocode": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "region": {
+          "type": "object",
+          "properties": {
+            "isocode": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "phone": {
+          "type": "string"
+        }
+      }
+    },
+    "DeliveryMode": {
+      "type": "object",
+      "description": "Delivery or shipping method",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Delivery mode code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Delivery mode display name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Delivery mode description"
+        },
+        "deliveryCost": {
+          "$ref": "#/$defs/Price"
+        }
+      }
+    },
+    "PaymentDetails": {
+      "type": "object",
+      "description": "Payment information for the cart",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "accountHolderName": {
+          "type": "string"
+        },
+        "cardNumber": {
+          "type": "string",
+          "description": "Masked card number"
+        },
+        "cardType": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "expiryMonth": {
+          "type": "string"
+        },
+        "expiryYear": {
+          "type": "string"
+        },
+        "billingAddress": {
+          "$ref": "#/$defs/Address"
+        }
+      }
+    },
+    "Voucher": {
+      "type": "object",
+      "description": "Applied voucher or coupon",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "number"
+        },
+        "freeShipping": {
+          "type": "boolean"
+        }
+      }
+    },
+    "PromotionResult": {
+      "type": "object",
+      "description": "Applied promotion details",
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "promotion": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Principal": {
+      "type": "object",
+      "description": "Cart owner",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "User identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-commerce-cloud/product.json",
+  "title": "SAP Commerce Cloud Product",
+  "description": "A product in SAP Commerce Cloud representing a purchasable item with catalog information, pricing, stock levels, images, classifications, and customer reviews.",
+  "type": "object",
+  "required": ["code", "name"],
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Unique product code within the catalog",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the product"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Short product summary for listing pages"
+    },
+    "description": {
+      "type": "string",
+      "description": "Full product description, may contain HTML"
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Product manufacturer name"
+    },
+    "ean": {
+      "type": "string",
+      "description": "European Article Number (barcode)"
+    },
+    "url": {
+      "type": "string",
+      "description": "Relative URL to the product page"
+    },
+    "purchasable": {
+      "type": "boolean",
+      "description": "Whether the product can be added to cart and purchased"
+    },
+    "averageRating": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5,
+      "description": "Average customer review rating"
+    },
+    "numberOfReviews": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of customer reviews"
+    },
+    "price": {
+      "$ref": "#/$defs/Price"
+    },
+    "stock": {
+      "$ref": "#/$defs/Stock"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Image"
+      },
+      "description": "Product images in various formats"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/CategoryRef"
+      },
+      "description": "Categories the product belongs to"
+    },
+    "classifications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Classification"
+      },
+      "description": "Classification attributes and feature values"
+    },
+    "variantOptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/VariantOption"
+      },
+      "description": "Available product variants (e.g., size, color)"
+    }
+  },
+  "$defs": {
+    "Price": {
+      "type": "object",
+      "description": "Price information for a product",
+      "properties": {
+        "currencyIso": {
+          "type": "string",
+          "description": "ISO 4217 currency code",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Numeric price value"
+        },
+        "formattedValue": {
+          "type": "string",
+          "description": "Locale-formatted price string"
+        },
+        "priceType": {
+          "type": "string",
+          "enum": ["BUY", "FROM"],
+          "description": "Type of price"
+        }
+      }
+    },
+    "Stock": {
+      "type": "object",
+      "description": "Stock availability information",
+      "properties": {
+        "stockLevelStatus": {
+          "type": "string",
+          "enum": ["inStock", "lowStock", "outOfStock"],
+          "description": "Stock level status indicator"
+        },
+        "stockLevel": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Actual available stock quantity"
+        }
+      }
+    },
+    "Image": {
+      "type": "object",
+      "description": "Product image in a specific format",
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Image URL"
+        },
+        "altText": {
+          "type": "string",
+          "description": "Image alt text for accessibility"
+        },
+        "format": {
+          "type": "string",
+          "enum": ["thumbnail", "product", "zoom", "cartIcon"],
+          "description": "Image format/size"
+        },
+        "imageType": {
+          "type": "string",
+          "enum": ["PRIMARY", "GALLERY"],
+          "description": "Image classification"
+        },
+        "galleryIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Position within the image gallery"
+        }
+      }
+    },
+    "CategoryRef": {
+      "type": "object",
+      "description": "Reference to a product category",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Category code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Category display name"
+        },
+        "url": {
+          "type": "string",
+          "description": "Category page URL"
+        }
+      }
+    },
+    "Classification": {
+      "type": "object",
+      "description": "Product classification with feature attributes",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Classification category code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Classification category name"
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "comparable": {
+                "type": "boolean"
+              },
+              "featureValues": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "VariantOption": {
+      "type": "object",
+      "description": "Product variant option",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Variant product code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Variant display name"
+        },
+        "stock": {
+          "$ref": "#/$defs/Stock"
+        },
+        "priceData": {
+          "$ref": "#/$defs/Price"
+        },
+        "variantOptionQualifiers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "qualifier": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

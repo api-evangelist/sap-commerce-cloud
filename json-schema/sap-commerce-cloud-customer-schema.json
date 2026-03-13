@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-commerce-cloud/customer.json",
+  "title": "SAP Commerce Cloud Customer",
+  "description": "A customer account in SAP Commerce Cloud representing a registered user with profile information, addresses, payment methods, and consent preferences.",
+  "type": "object",
+  "required": ["uid"],
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "Unique user identifier, typically the email address",
+      "minLength": 1
+    },
+    "customerId": {
+      "type": "string",
+      "description": "Internal customer identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full display name"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name"
+    },
+    "titleCode": {
+      "type": "string",
+      "description": "Title code (e.g., mr, mrs, ms, dr)"
+    },
+    "displayUid": {
+      "type": "string",
+      "description": "Display UID (email or formatted identifier)"
+    },
+    "currency": {
+      "$ref": "#/$defs/Currency"
+    },
+    "language": {
+      "$ref": "#/$defs/Language"
+    },
+    "defaultAddress": {
+      "$ref": "#/$defs/Address"
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Address"
+      },
+      "description": "Customer address book"
+    },
+    "paymentDetails": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PaymentDetails"
+      },
+      "description": "Saved payment methods"
+    },
+    "consentTemplates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ConsentTemplate"
+      },
+      "description": "Consent preferences"
+    }
+  },
+  "$defs": {
+    "Currency": {
+      "type": "object",
+      "description": "Preferred currency",
+      "properties": {
+        "isocode": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Currency display name"
+        },
+        "symbol": {
+          "type": "string",
+          "description": "Currency symbol"
+        }
+      }
+    },
+    "Language": {
+      "type": "object",
+      "description": "Preferred language",
+      "properties": {
+        "isocode": {
+          "type": "string",
+          "description": "ISO 639-1 language code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Language display name"
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "description": "Customer address",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Address identifier"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last name"
+        },
+        "titleCode": {
+          "type": "string",
+          "description": "Title code"
+        },
+        "companyName": {
+          "type": "string",
+          "description": "Company name (B2B)"
+        },
+        "line1": {
+          "type": "string",
+          "description": "Address line 1"
+        },
+        "line2": {
+          "type": "string",
+          "description": "Address line 2"
+        },
+        "town": {
+          "type": "string",
+          "description": "City or town"
+        },
+        "district": {
+          "type": "string",
+          "description": "District"
+        },
+        "region": {
+          "type": "object",
+          "properties": {
+            "isocode": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Postal or ZIP code"
+        },
+        "country": {
+          "type": "object",
+          "properties": {
+            "isocode": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address"
+        },
+        "defaultAddress": {
+          "type": "boolean",
+          "description": "Whether this is the default address"
+        },
+        "shippingAddress": {
+          "type": "boolean",
+          "description": "Whether this is a shipping address"
+        },
+        "billingAddress": {
+          "type": "boolean",
+          "description": "Whether this is a billing address"
+        }
+      }
+    },
+    "PaymentDetails": {
+      "type": "object",
+      "description": "Saved payment method",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Payment details identifier"
+        },
+        "accountHolderName": {
+          "type": "string",
+          "description": "Card holder name"
+        },
+        "cardNumber": {
+          "type": "string",
+          "description": "Masked card number"
+        },
+        "cardType": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "expiryMonth": {
+          "type": "string",
+          "description": "Expiry month (01-12)"
+        },
+        "expiryYear": {
+          "type": "string",
+          "description": "Expiry year (4-digit)"
+        },
+        "billingAddress": {
+          "$ref": "#/$defs/Address"
+        },
+        "defaultPayment": {
+          "type": "boolean",
+          "description": "Whether this is the default payment method"
+        },
+        "saved": {
+          "type": "boolean",
+          "description": "Whether the payment method is saved for future use"
+        }
+      }
+    },
+    "ConsentTemplate": {
+      "type": "object",
+      "description": "Consent template and status",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Consent template identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Consent template name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Consent description"
+        },
+        "version": {
+          "type": "integer",
+          "description": "Template version number"
+        },
+        "currentConsent": {
+          "type": "object",
+          "properties": {
+            "consentGivenDate": {
+              "type": "string",
+              "format": "date-time",
+              "description": "When consent was given"
+            },
+            "consentWithdrawnDate": {
+              "type": ["string", "null"],
+              "format": "date-time",
+              "description": "When consent was withdrawn, if applicable"
+            }
+          }
+        }
+      }
+    }
+  }
+}

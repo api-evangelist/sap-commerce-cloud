@@ -1,0 +1,392 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.sap.com/schemas/sap-commerce-cloud/order.json",
+  "title": "SAP Commerce Cloud Order",
+  "description": "An order in SAP Commerce Cloud representing a completed purchase transaction with line items, delivery information, payment details, and fulfillment status.",
+  "type": "object",
+  "required": ["code"],
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Unique order code",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "description": "Order processing status"
+    },
+    "statusDisplay": {
+      "type": "string",
+      "description": "Human-readable order status"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Order creation timestamp"
+    },
+    "totalItems": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total number of distinct items in the order"
+    },
+    "totalUnitCount": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total quantity of units across all entries"
+    },
+    "subTotal": {
+      "$ref": "#/$defs/Price"
+    },
+    "deliveryCost": {
+      "$ref": "#/$defs/Price"
+    },
+    "totalTax": {
+      "$ref": "#/$defs/Price"
+    },
+    "totalPrice": {
+      "$ref": "#/$defs/Price"
+    },
+    "totalPriceWithTax": {
+      "$ref": "#/$defs/Price"
+    },
+    "totalDiscounts": {
+      "$ref": "#/$defs/Price"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/OrderEntry"
+      },
+      "description": "Order line items"
+    },
+    "deliveryAddress": {
+      "$ref": "#/$defs/Address"
+    },
+    "deliveryMode": {
+      "$ref": "#/$defs/DeliveryMode"
+    },
+    "paymentInfo": {
+      "$ref": "#/$defs/PaymentDetails"
+    },
+    "consignments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Consignment"
+      },
+      "description": "Shipment consignments for fulfillment tracking"
+    },
+    "user": {
+      "$ref": "#/$defs/Principal"
+    },
+    "appliedOrderPromotions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PromotionResult"
+      },
+      "description": "Promotions applied at the order level"
+    },
+    "appliedProductPromotions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/PromotionResult"
+      },
+      "description": "Promotions applied at the product level"
+    },
+    "appliedVouchers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Voucher"
+      },
+      "description": "Vouchers applied to the order"
+    }
+  },
+  "$defs": {
+    "Price": {
+      "type": "object",
+      "description": "Price or monetary amount",
+      "properties": {
+        "currencyIso": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "ISO 4217 currency code"
+        },
+        "value": {
+          "type": "number",
+          "description": "Numeric value"
+        },
+        "formattedValue": {
+          "type": "string",
+          "description": "Locale-formatted value string"
+        }
+      }
+    },
+    "OrderEntry": {
+      "type": "object",
+      "description": "Individual line item in an order",
+      "properties": {
+        "entryNumber": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Zero-based entry number"
+        },
+        "product": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "Product code"
+            },
+            "name": {
+              "type": "string",
+              "description": "Product name"
+            },
+            "url": {
+              "type": "string",
+              "description": "Product URL"
+            }
+          }
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Ordered quantity"
+        },
+        "basePrice": {
+          "$ref": "#/$defs/Price"
+        },
+        "totalPrice": {
+          "$ref": "#/$defs/Price"
+        },
+        "updateable": {
+          "type": "boolean",
+          "description": "Whether the entry can still be modified"
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "description": "Physical address",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Address identifier"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "First name"
+        },
+        "lastName": {
+          "type": "string",
+          "description": "Last name"
+        },
+        "line1": {
+          "type": "string",
+          "description": "Address line 1"
+        },
+        "line2": {
+          "type": "string",
+          "description": "Address line 2"
+        },
+        "town": {
+          "type": "string",
+          "description": "City or town"
+        },
+        "region": {
+          "type": "object",
+          "properties": {
+            "isocode": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "postalCode": {
+          "type": "string",
+          "description": "Postal or ZIP code"
+        },
+        "country": {
+          "type": "object",
+          "properties": {
+            "isocode": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address"
+        }
+      }
+    },
+    "DeliveryMode": {
+      "type": "object",
+      "description": "Delivery or shipping method",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Delivery mode code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Delivery mode name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Delivery mode description"
+        },
+        "deliveryCost": {
+          "$ref": "#/$defs/Price"
+        }
+      }
+    },
+    "PaymentDetails": {
+      "type": "object",
+      "description": "Payment method details",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Payment details identifier"
+        },
+        "accountHolderName": {
+          "type": "string",
+          "description": "Card holder name"
+        },
+        "cardNumber": {
+          "type": "string",
+          "description": "Masked card number"
+        },
+        "cardType": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            }
+          }
+        },
+        "expiryMonth": {
+          "type": "string",
+          "description": "Card expiry month"
+        },
+        "expiryYear": {
+          "type": "string",
+          "description": "Card expiry year"
+        },
+        "billingAddress": {
+          "$ref": "#/$defs/Address"
+        }
+      }
+    },
+    "Consignment": {
+      "type": "object",
+      "description": "Shipment consignment for order fulfillment",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Consignment code"
+        },
+        "status": {
+          "type": "string",
+          "description": "Consignment status"
+        },
+        "statusDisplay": {
+          "type": "string",
+          "description": "Human-readable status"
+        },
+        "trackingID": {
+          "type": "string",
+          "description": "Carrier tracking ID"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "quantity": {
+                "type": "integer"
+              },
+              "shippedQuantity": {
+                "type": "integer"
+              },
+              "orderEntry": {
+                "$ref": "#/$defs/OrderEntry"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Principal": {
+      "type": "object",
+      "description": "User or principal reference",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "User unique identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Display name"
+        }
+      }
+    },
+    "PromotionResult": {
+      "type": "object",
+      "description": "Applied promotion result",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "Promotion description"
+        },
+        "promotion": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "Voucher": {
+      "type": "object",
+      "description": "Applied voucher",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Voucher code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Voucher name"
+        },
+        "value": {
+          "type": "number",
+          "description": "Voucher value"
+        },
+        "freeShipping": {
+          "type": "boolean",
+          "description": "Whether the voucher provides free shipping"
+        }
+      }
+    }
+  }
+}

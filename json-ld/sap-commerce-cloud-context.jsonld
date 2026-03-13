@@ -1,0 +1,206 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "sap": "https://api.sap.com/schemas/sap-commerce-cloud/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "gr": "http://purl.org/goodrelations/v1#",
+
+    "Product": {
+      "@id": "schema:Product",
+      "@context": {
+        "code": "schema:sku",
+        "name": "schema:name",
+        "description": "schema:description",
+        "summary": "sap:summary",
+        "manufacturer": "schema:manufacturer",
+        "ean": "schema:gtin13",
+        "url": "schema:url",
+        "purchasable": {
+          "@id": "schema:offers",
+          "@type": "xsd:boolean"
+        },
+        "averageRating": {
+          "@id": "schema:aggregateRating",
+          "@type": "xsd:double"
+        },
+        "price": "schema:offers",
+        "images": "schema:image",
+        "categories": "schema:category"
+      }
+    },
+
+    "Order": {
+      "@id": "schema:Order",
+      "@context": {
+        "code": "schema:orderNumber",
+        "status": "schema:orderStatus",
+        "created": {
+          "@id": "schema:orderDate",
+          "@type": "xsd:dateTime"
+        },
+        "totalPrice": "schema:totalPrice",
+        "entries": "sap:orderEntries",
+        "deliveryAddress": "schema:deliveryAddress",
+        "deliveryMode": "sap:deliveryMode",
+        "paymentInfo": "schema:paymentMethod",
+        "user": "schema:customer"
+      }
+    },
+
+    "Cart": {
+      "@id": "sap:Cart",
+      "@context": {
+        "code": "schema:identifier",
+        "totalItems": {
+          "@id": "sap:totalItems",
+          "@type": "xsd:integer"
+        },
+        "totalPrice": "schema:totalPrice",
+        "entries": "sap:cartEntries",
+        "deliveryAddress": "schema:deliveryAddress",
+        "deliveryMode": "sap:deliveryMode",
+        "paymentInfo": "schema:paymentMethod",
+        "user": "schema:customer",
+        "appliedVouchers": "sap:appliedVouchers"
+      }
+    },
+
+    "Customer": {
+      "@id": "schema:Person",
+      "@context": {
+        "uid": "schema:email",
+        "name": "schema:name",
+        "firstName": "schema:givenName",
+        "lastName": "schema:familyName",
+        "titleCode": "schema:honorificPrefix",
+        "currency": "sap:preferredCurrency",
+        "language": "sap:preferredLanguage",
+        "defaultAddress": "schema:address",
+        "addresses": "schema:address",
+        "paymentDetails": "schema:paymentMethod"
+      }
+    },
+
+    "Address": {
+      "@id": "schema:PostalAddress",
+      "@context": {
+        "firstName": "schema:givenName",
+        "lastName": "schema:familyName",
+        "line1": "schema:streetAddress",
+        "town": "schema:addressLocality",
+        "postalCode": "schema:postalCode",
+        "country": "schema:addressCountry",
+        "region": "schema:addressRegion",
+        "phone": "schema:telephone",
+        "email": "schema:email"
+      }
+    },
+
+    "Price": {
+      "@id": "schema:PriceSpecification",
+      "@context": {
+        "currencyIso": "schema:priceCurrency",
+        "value": {
+          "@id": "schema:price",
+          "@type": "xsd:double"
+        },
+        "formattedValue": "sap:formattedPrice"
+      }
+    },
+
+    "DeliveryMode": {
+      "@id": "schema:DeliveryMethod",
+      "@context": {
+        "code": "schema:identifier",
+        "name": "schema:name",
+        "description": "schema:description",
+        "deliveryCost": "schema:price"
+      }
+    },
+
+    "PaymentDetails": {
+      "@id": "schema:PaymentMethod",
+      "@context": {
+        "accountHolderName": "schema:name",
+        "cardNumber": "sap:maskedCardNumber",
+        "expiryMonth": "sap:expiryMonth",
+        "expiryYear": "sap:expiryYear",
+        "billingAddress": "schema:billingAddress"
+      }
+    },
+
+    "PointOfService": {
+      "@id": "schema:Store",
+      "@context": {
+        "name": "schema:name",
+        "displayName": "schema:alternateName",
+        "description": "schema:description",
+        "address": "schema:address",
+        "geoPoint": "schema:geo",
+        "openingHours": "schema:openingHoursSpecification"
+      }
+    },
+
+    "Review": {
+      "@id": "schema:Review",
+      "@context": {
+        "headline": "schema:headline",
+        "comment": "schema:reviewBody",
+        "rating": {
+          "@id": "schema:reviewRating",
+          "@type": "xsd:double"
+        },
+        "date": {
+          "@id": "schema:datePublished",
+          "@type": "xsd:dateTime"
+        },
+        "alias": "schema:author"
+      }
+    },
+
+    "Category": {
+      "@id": "schema:Category",
+      "@context": {
+        "code": "schema:identifier",
+        "name": "schema:name",
+        "url": "schema:url"
+      }
+    },
+
+    "Consignment": {
+      "@id": "schema:ParcelDelivery",
+      "@context": {
+        "code": "schema:identifier",
+        "status": "schema:deliveryStatus",
+        "trackingID": "schema:trackingNumber"
+      }
+    },
+
+    "Voucher": {
+      "@id": "sap:Voucher",
+      "@context": {
+        "code": "schema:identifier",
+        "name": "schema:name",
+        "description": "schema:description",
+        "value": {
+          "@id": "schema:discount",
+          "@type": "xsd:double"
+        },
+        "freeShipping": {
+          "@id": "sap:freeShipping",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "Catalog": {
+      "@id": "schema:DataCatalog",
+      "@context": {
+        "id": "schema:identifier",
+        "name": "schema:name"
+      }
+    }
+  }
+}
