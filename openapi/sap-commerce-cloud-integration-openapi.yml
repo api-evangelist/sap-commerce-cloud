@@ -44,7 +44,7 @@ paths:
   /InboundProduct/Products:
     get:
       operationId: listProducts
-      summary: List products
+      summary: SAP Commerce Cloud List products
       description: >-
         Retrieve products through the inbound product integration object.
         Supports OData query options for filtering, sorting, and pagination.
@@ -68,7 +68,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createProduct
-      summary: Create or update a product
+      summary: SAP Commerce Cloud Create or update a product
       description: >-
         Create or update product data through the inbound integration layer.
       tags:
@@ -91,7 +91,7 @@ paths:
   /InboundProduct/Products('{integrationKey}'):
     get:
       operationId: getProduct
-      summary: Get product by integration key
+      summary: SAP Commerce Cloud Get product by integration key
       description: >-
         Retrieve a specific product by its integration key.
       tags:
@@ -111,7 +111,7 @@ paths:
           description: Product not found
     patch:
       operationId: updateProduct
-      summary: Update a product
+      summary: SAP Commerce Cloud Update a product
       description: >-
         Partially update product data through the integration layer.
       tags:
@@ -131,7 +131,7 @@ paths:
           description: Product not found
     delete:
       operationId: deleteProduct
-      summary: Delete a product
+      summary: SAP Commerce Cloud Delete a product
       description: >-
         Delete a product through the integration layer.
       tags:
@@ -146,7 +146,7 @@ paths:
   /InboundCustomer/Customers:
     get:
       operationId: listCustomers
-      summary: List customers
+      summary: SAP Commerce Cloud List customers
       description: >-
         Retrieve customer data through the inbound customer integration object.
       tags:
@@ -165,7 +165,7 @@ paths:
                 $ref: '#/components/schemas/ODataCustomerCollection'
     post:
       operationId: createCustomer
-      summary: Create or update a customer
+      summary: SAP Commerce Cloud Create or update a customer
       description: >-
         Create or update customer data through the inbound integration layer.
       tags:
@@ -184,7 +184,7 @@ paths:
   /InboundOrder/Orders:
     get:
       operationId: listOrders
-      summary: List orders
+      summary: SAP Commerce Cloud List orders
       description: >-
         Retrieve order data through the inbound order integration object.
       tags:
@@ -205,7 +205,7 @@ paths:
                 $ref: '#/components/schemas/ODataOrderCollection'
     post:
       operationId: createOrder
-      summary: Create or update an order
+      summary: SAP Commerce Cloud Create or update an order
       description: >-
         Create or update order data through the inbound integration layer.
       tags:
@@ -224,7 +224,7 @@ paths:
   /InboundStockLevel/StockLevels:
     get:
       operationId: listStockLevels
-      summary: List stock levels
+      summary: SAP Commerce Cloud List stock levels
       description: >-
         Retrieve stock level data through the inbound stock integration object.
       tags:
@@ -242,7 +242,7 @@ paths:
                 $ref: '#/components/schemas/ODataStockCollection'
     post:
       operationId: createStockLevel
-      summary: Create or update stock level
+      summary: SAP Commerce Cloud Create or update stock level
       description: >-
         Create or update stock level data through the inbound integration layer.
       tags:
@@ -261,7 +261,7 @@ paths:
   /InboundClassification/ClassificationSystems:
     get:
       operationId: listClassificationSystems
-      summary: List classification systems
+      summary: SAP Commerce Cloud List classification systems
       description: >-
         Retrieve classification system data for product categorization.
       tags:
@@ -293,7 +293,7 @@ paths:
   /$metadata:
     get:
       operationId: getMetadata
-      summary: Get service metadata
+      summary: SAP Commerce Cloud Get service metadata
       description: >-
         Retrieve the OData service metadata document describing
         all available entity types and associations.

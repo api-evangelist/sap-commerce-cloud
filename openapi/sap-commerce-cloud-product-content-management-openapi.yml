@@ -44,7 +44,7 @@ paths:
   /products/{productCode}:
     get:
       operationId: getProductContent
-      summary: Get product content
+      summary: SAP Commerce Cloud Get product content
       description: >-
         Retrieve full product content including descriptions, images,
         classifications, and attributes.
@@ -65,7 +65,7 @@ paths:
   /products/{productCode}/images:
     get:
       operationId: getProductImages
-      summary: Get product images
+      summary: SAP Commerce Cloud Get product images
       description: >-
         Retrieve all images associated with a product, including
         primary, gallery, and zoom images.
@@ -84,7 +84,7 @@ paths:
   /products/{productCode}/references:
     get:
       operationId: getProductReferences
-      summary: Get product references
+      summary: SAP Commerce Cloud Get product references
       description: >-
         Retrieve product references such as similar products,
         accessories, cross-sells, and up-sells.
@@ -114,7 +114,7 @@ paths:
   /catalogs/{catalogId}/{catalogVersionId}:
     get:
       operationId: getCatalogVersion
-      summary: Get catalog version details
+      summary: SAP Commerce Cloud Get catalog version details
       description: >-
         Retrieve details of a specific catalog version including
         categories and their content.
@@ -146,7 +146,7 @@ paths:
   /catalogs/{catalogId}/{catalogVersionId}/categories/{categoryId}:
     get:
       operationId: getCategoryContent
-      summary: Get category content
+      summary: SAP Commerce Cloud Get category content
       description: >-
         Retrieve content for a specific category including images,
         descriptions, and subcategories.
@@ -184,7 +184,7 @@ paths:
   /products/{productCode}/classifications:
     get:
       operationId: getProductClassifications
-      summary: Get product classifications
+      summary: SAP Commerce Cloud Get product classifications
       description: >-
         Retrieve classification attributes and feature values for
         a product across classification categories.
@@ -203,7 +203,7 @@ paths:
   /products/suggestions:
     get:
       operationId: getProductSuggestions
-      summary: Get product search suggestions
+      summary: SAP Commerce Cloud Get product search suggestions
       description: >-
         Retrieve autocomplete suggestions based on a partial search term.
       tags:
@@ -232,7 +232,7 @@ paths:
   /products/expressupdate:
     get:
       operationId: getProductExpressUpdate
-      summary: Get recently updated products
+      summary: SAP Commerce Cloud Get recently updated products
       description: >-
         Retrieve a list of products that have been modified since a
         given timestamp, useful for content synchronization.

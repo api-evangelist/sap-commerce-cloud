@@ -39,7 +39,7 @@ paths:
   /customers/search:
     get:
       operationId: searchCustomers
-      summary: Search customers
+      summary: SAP Commerce Cloud Search customers
       description: >-
         Search for customers by name, email, or customer ID. Used by
         customer service agents to find customer accounts.
@@ -74,7 +74,7 @@ paths:
   /customers/{customerId}:
     get:
       operationId: getCustomer360
-      summary: Get customer 360 view
+      summary: SAP Commerce Cloud Get customer 360 view
       description: >-
         Retrieve a comprehensive 360-degree view of a customer including
         profile information, recent orders, active carts, and support tickets.
@@ -100,7 +100,7 @@ paths:
   /customers/{customerId}/carts:
     get:
       operationId: getCustomerCarts
-      summary: List customer carts
+      summary: SAP Commerce Cloud List customer carts
       description: >-
         Retrieve all carts belonging to a customer, used by agents
         to view and assist with shopping.
@@ -126,7 +126,7 @@ paths:
   /sessions:
     post:
       operationId: createAssistedSession
-      summary: Start assisted service session
+      summary: SAP Commerce Cloud Start assisted service session
       description: >-
         Start a new assisted service session, binding the agent to a
         customer for cart emulation and support activities.
@@ -152,7 +152,7 @@ paths:
   /sessions/{sessionId}:
     get:
       operationId: getAssistedSession
-      summary: Get session details
+      summary: SAP Commerce Cloud Get session details
       description: >-
         Retrieve details of an active assisted service session.
       tags:
@@ -175,7 +175,7 @@ paths:
           description: Session not found
     delete:
       operationId: endAssistedSession
-      summary: End assisted service session
+      summary: SAP Commerce Cloud End assisted service session
       description: >-
         End an active assisted service session.
       tags:
@@ -195,7 +195,7 @@ paths:
   /agents/{agentId}:
     get:
       operationId: getAgent
-      summary: Get agent details
+      summary: SAP Commerce Cloud Get agent details
       description: >-
         Retrieve details of a customer service agent.
       tags:

@@ -55,7 +55,7 @@ paths:
   /products:
     get:
       operationId: searchProducts
-      summary: Search products
+      summary: SAP Commerce Cloud Search products
       description: >-
         Search for products using free-text search, category filtering, and
         faceted navigation. Supports pagination, sorting, and spell checking.
@@ -79,7 +79,7 @@ paths:
   /products/{productCode}:
     get:
       operationId: getProduct
-      summary: Get product details
+      summary: SAP Commerce Cloud Get product details
       description: >-
         Retrieve detailed information about a specific product including
         descriptions, images, prices, reviews, and classifications.
@@ -100,7 +100,7 @@ paths:
   /products/{productCode}/reviews:
     get:
       operationId: getProductReviews
-      summary: Get product reviews
+      summary: SAP Commerce Cloud Get product reviews
       description: >-
         Retrieve customer reviews for a specific product.
       tags:
@@ -117,7 +117,7 @@ paths:
                 $ref: '#/components/schemas/ReviewList'
     post:
       operationId: createProductReview
-      summary: Create a product review
+      summary: SAP Commerce Cloud Create a product review
       description: >-
         Submit a new customer review for a product.
       tags:
@@ -144,7 +144,7 @@ paths:
   /products/{productCode}/stock:
     get:
       operationId: getProductStock
-      summary: Get product stock levels
+      summary: SAP Commerce Cloud Get product stock levels
       description: >-
         Retrieve stock level information for a product across stores.
       tags:
@@ -168,7 +168,7 @@ paths:
   /catalogs:
     get:
       operationId: getCatalogs
-      summary: List catalogs
+      summary: SAP Commerce Cloud List catalogs
       description: >-
         Retrieve all product catalogs available for the base site.
       tags:
@@ -185,7 +185,7 @@ paths:
   /catalogs/{catalogId}:
     get:
       operationId: getCatalog
-      summary: Get catalog details
+      summary: SAP Commerce Cloud Get catalog details
       description: >-
         Retrieve details of a specific catalog.
       tags:
@@ -210,7 +210,7 @@ paths:
   /catalogs/{catalogId}/{catalogVersionId}/categories/{categoryId}:
     get:
       operationId: getCatalogCategory
-      summary: Get category details
+      summary: SAP Commerce Cloud Get category details
       description: >-
         Retrieve details of a specific category within a catalog version.
       tags:
@@ -247,7 +247,7 @@ paths:
   /users/{userId}/carts:
     get:
       operationId: getUserCarts
-      summary: List user carts
+      summary: SAP Commerce Cloud List user carts
       description: >-
         Retrieve all shopping carts for a specific user.
       tags:
@@ -266,7 +266,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createCart
-      summary: Create a new cart
+      summary: SAP Commerce Cloud Create a new cart
       description: >-
         Create a new shopping cart for the user. Can optionally merge
         an anonymous cart.
@@ -291,7 +291,7 @@ paths:
   /users/{userId}/carts/{cartId}:
     get:
       operationId: getCart
-      summary: Get cart details
+      summary: SAP Commerce Cloud Get cart details
       description: >-
         Retrieve details of a specific shopping cart.
       tags:
@@ -311,7 +311,7 @@ paths:
           description: Cart not found
     delete:
       operationId: deleteCart
-      summary: Delete a cart
+      summary: SAP Commerce Cloud Delete a cart
       description: >-
         Delete a specific shopping cart.
       tags:
@@ -327,7 +327,7 @@ paths:
   /users/{userId}/carts/{cartId}/entries:
     get:
       operationId: getCartEntries
-      summary: List cart entries
+      summary: SAP Commerce Cloud List cart entries
       description: >-
         Retrieve all entries (line items) in a shopping cart.
       tags:
@@ -345,7 +345,7 @@ paths:
                 $ref: '#/components/schemas/OrderEntryList'
     post:
       operationId: addCartEntry
-      summary: Add entry to cart
+      summary: SAP Commerce Cloud Add entry to cart
       description: >-
         Add a product to the shopping cart.
       tags:
@@ -371,7 +371,7 @@ paths:
   /users/{userId}/carts/{cartId}/entries/{entryNumber}:
     patch:
       operationId: updateCartEntry
-      summary: Update cart entry
+      summary: SAP Commerce Cloud Update cart entry
       description: >-
         Update the quantity of an existing cart entry.
       tags:
@@ -397,7 +397,7 @@ paths:
           description: Invalid entry data
     delete:
       operationId: removeCartEntry
-      summary: Remove cart entry
+      summary: SAP Commerce Cloud Remove cart entry
       description: >-
         Remove a specific entry from the shopping cart.
       tags:
@@ -414,7 +414,7 @@ paths:
   /users/{userId}/carts/{cartId}/deliveryaddress:
     put:
       operationId: setCartDeliveryAddress
-      summary: Set delivery address
+      summary: SAP Commerce Cloud Set delivery address
       description: >-
         Set the delivery address for the cart.
       tags:
@@ -435,7 +435,7 @@ paths:
           description: Invalid address
     delete:
       operationId: removeCartDeliveryAddress
-      summary: Remove delivery address
+      summary: SAP Commerce Cloud Remove delivery address
       description: >-
         Remove the delivery address from the cart.
       tags:
@@ -449,7 +449,7 @@ paths:
   /users/{userId}/carts/{cartId}/deliverymode:
     get:
       operationId: getCartDeliveryMode
-      summary: Get delivery mode
+      summary: SAP Commerce Cloud Get delivery mode
       description: >-
         Get the current delivery mode for the cart.
       tags:
@@ -467,7 +467,7 @@ paths:
                 $ref: '#/components/schemas/DeliveryMode'
     put:
       operationId: setCartDeliveryMode
-      summary: Set delivery mode
+      summary: SAP Commerce Cloud Set delivery mode
       description: >-
         Set the delivery mode for the cart.
       tags:
@@ -488,7 +488,7 @@ paths:
           description: Invalid delivery mode
     delete:
       operationId: removeCartDeliveryMode
-      summary: Remove delivery mode
+      summary: SAP Commerce Cloud Remove delivery mode
       description: >-
         Remove the delivery mode from the cart.
       tags:
@@ -502,7 +502,7 @@ paths:
   /users/{userId}/carts/{cartId}/deliverymodes:
     get:
       operationId: getCartDeliveryModes
-      summary: List delivery modes
+      summary: SAP Commerce Cloud List delivery modes
       description: >-
         Retrieve all available delivery modes for the cart.
       tags:
@@ -521,7 +521,7 @@ paths:
   /users/{userId}/carts/{cartId}/paymentdetails:
     post:
       operationId: createCartPaymentDetails
-      summary: Create payment details
+      summary: SAP Commerce Cloud Create payment details
       description: >-
         Add payment details to the cart for checkout.
       tags:
@@ -547,7 +547,7 @@ paths:
   /users/{userId}/carts/{cartId}/vouchers:
     get:
       operationId: getCartVouchers
-      summary: List applied vouchers
+      summary: SAP Commerce Cloud List applied vouchers
       description: >-
         Retrieve all vouchers applied to the cart.
       tags:
@@ -565,7 +565,7 @@ paths:
                 $ref: '#/components/schemas/VoucherList'
     post:
       operationId: applyCartVoucher
-      summary: Apply voucher to cart
+      summary: SAP Commerce Cloud Apply voucher to cart
       description: >-
         Apply a voucher code to the cart.
       tags:
@@ -587,7 +587,7 @@ paths:
   /users/{userId}/carts/{cartId}/vouchers/{voucherId}:
     delete:
       operationId: removeCartVoucher
-      summary: Remove voucher from cart
+      summary: SAP Commerce Cloud Remove voucher from cart
       description: >-
         Remove a previously applied voucher from the cart.
       tags:
@@ -609,7 +609,7 @@ paths:
   /users/{userId}/orders:
     get:
       operationId: getUserOrders
-      summary: List user orders
+      summary: SAP Commerce Cloud List user orders
       description: >-
         Retrieve order history for a specific user with pagination.
       tags:
@@ -631,7 +631,7 @@ paths:
           description: Unauthorized
     post:
       operationId: placeOrder
-      summary: Place an order
+      summary: SAP Commerce Cloud Place an order
       description: >-
         Authorize the cart and place the order. The cart must have a
         delivery address, delivery mode, and payment details set.
@@ -665,7 +665,7 @@ paths:
   /users/{userId}/orders/{orderCode}:
     get:
       operationId: getOrder
-      summary: Get order details
+      summary: SAP Commerce Cloud Get order details
       description: >-
         Retrieve details of a specific order.
       tags:
@@ -691,7 +691,7 @@ paths:
   /users/{userId}:
     get:
       operationId: getUser
-      summary: Get user profile
+      summary: SAP Commerce Cloud Get user profile
       description: >-
         Retrieve the profile of a specific user. Use 'current' as userId
         for the currently authenticated user, or 'anonymous' for guest users.
@@ -711,7 +711,7 @@ paths:
           description: User not found
     put:
       operationId: updateUser
-      summary: Update user profile
+      summary: SAP Commerce Cloud Update user profile
       description: >-
         Update the profile of a specific user.
       tags:
@@ -731,7 +731,7 @@ paths:
           description: Invalid user data
     delete:
       operationId: deleteUser
-      summary: Delete user account
+      summary: SAP Commerce Cloud Delete user account
       description: >-
         Delete or deactivate a user account.
       tags:
@@ -746,7 +746,7 @@ paths:
   /users:
     post:
       operationId: registerUser
-      summary: Register a new user
+      summary: SAP Commerce Cloud Register a new user
       description: >-
         Register a new customer account.
       tags:
@@ -769,7 +769,7 @@ paths:
   /users/{userId}/addresses:
     get:
       operationId: getUserAddresses
-      summary: List user addresses
+      summary: SAP Commerce Cloud List user addresses
       description: >-
         Retrieve all addresses for a specific user.
       tags:
@@ -786,7 +786,7 @@ paths:
                 $ref: '#/components/schemas/AddressList'
     post:
       operationId: createUserAddress
-      summary: Create a user address
+      summary: SAP Commerce Cloud Create a user address
       description: >-
         Add a new address to the user's address book.
       tags:
@@ -811,7 +811,7 @@ paths:
   /users/{userId}/addresses/{addressId}:
     get:
       operationId: getUserAddress
-      summary: Get user address
+      summary: SAP Commerce Cloud Get user address
       description: >-
         Retrieve a specific address from the user's address book.
       tags:
@@ -831,7 +831,7 @@ paths:
           description: Address not found
     patch:
       operationId: updateUserAddress
-      summary: Update user address
+      summary: SAP Commerce Cloud Update user address
       description: >-
         Update a specific address in the user's address book.
       tags:
@@ -852,7 +852,7 @@ paths:
           description: Invalid address data
     delete:
       operationId: deleteUserAddress
-      summary: Delete user address
+      summary: SAP Commerce Cloud Delete user address
       description: >-
         Remove an address from the user's address book.
       tags:
@@ -868,7 +868,7 @@ paths:
   /users/{userId}/paymentdetails:
     get:
       operationId: getUserPaymentDetails
-      summary: List user payment details
+      summary: SAP Commerce Cloud List user payment details
       description: >-
         Retrieve all saved payment details for a user.
       tags:
@@ -886,7 +886,7 @@ paths:
   /users/{userId}/consenttemplates:
     get:
       operationId: getConsentTemplates
-      summary: List consent templates
+      summary: SAP Commerce Cloud List consent templates
       description: >-
         Retrieve all consent templates available for the user.
       tags:
@@ -904,7 +904,7 @@ paths:
   /users/{userId}/consents:
     post:
       operationId: giveConsent
-      summary: Give consent
+      summary: SAP Commerce Cloud Give consent
       description: >-
         Give consent for a specific consent template.
       tags:
@@ -935,7 +935,7 @@ paths:
   /stores:
     get:
       operationId: searchStores
-      summary: Search stores
+      summary: SAP Commerce Cloud Search stores
       description: >-
         Search for physical stores by location, coordinates, or query string.
       tags:
@@ -978,7 +978,7 @@ paths:
   /stores/{storeId}:
     get:
       operationId: getStore
-      summary: Get store details
+      summary: SAP Commerce Cloud Get store details
       description: >-
         Retrieve details of a specific physical store.
       tags:
