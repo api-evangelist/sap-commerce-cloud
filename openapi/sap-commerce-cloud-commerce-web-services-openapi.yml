@@ -29,26 +29,26 @@ servers:
         description: Base site identifier
         default: electronics
 tags:
-  - name: Products
-    description: Product catalog browsing and search
-  - name: Cart
-    description: Shopping cart management
-  - name: Checkout
-    description: Checkout and payment operations
-  - name: Orders
-    description: Order management and history
-  - name: Users
-    description: User account management
   - name: Addresses
     description: User address management
+  - name: Cart
+    description: Shopping cart management
   - name: Catalogs
     description: Catalog and category browsing
-  - name: Stores
-    description: Physical store locator
-  - name: Promotions
-    description: Promotions and vouchers
+  - name: Checkout
+    description: Checkout and payment operations
   - name: Consents
     description: User consent management
+  - name: Orders
+    description: Order management and history
+  - name: Products
+    description: Product catalog browsing and search
+  - name: Promotions
+    description: Promotions and vouchers
+  - name: Stores
+    description: Physical store locator
+  - name: Users
+    description: User account management
 security:
   - oauth2: []
 paths:

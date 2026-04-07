@@ -28,16 +28,16 @@ servers:
         description: Base site identifier
         default: electronics
 tags:
-  - name: Products
-    description: Product content operations
-  - name: Media
-    description: Media and image management
-  - name: Categories
-    description: Category content management
   - name: Catalogs
     description: Catalog version and synchronization
+  - name: Categories
+    description: Category content management
   - name: Classifications
     description: Product classification and attributes
+  - name: Media
+    description: Media and image management
+  - name: Products
+    description: Product content operations
 security:
   - oauth2: []
 paths:

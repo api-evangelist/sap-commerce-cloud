@@ -26,14 +26,14 @@ servers:
         description: Deployment region
         default: us
 tags:
-  - name: Health
-    description: System health and readiness checks
   - name: Cache
     description: Cache management operations
-  - name: CronJobs
-    description: CronJob management and execution
   - name: Configuration
     description: System configuration management
+  - name: CronJobs
+    description: CronJob management and execution
+  - name: Health
+    description: System health and readiness checks
   - name: Monitoring
     description: System monitoring and metrics
 security:

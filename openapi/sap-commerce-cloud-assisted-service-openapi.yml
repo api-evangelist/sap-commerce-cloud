@@ -25,14 +25,14 @@ servers:
         description: Deployment region
         default: us
 tags:
+  - name: Agents
+    description: Customer service agent operations
+  - name: Carts
+    description: Cart emulation and management on behalf of customers
   - name: Customers
     description: Customer lookup and 360 view
   - name: Sessions
     description: Assisted service session management
-  - name: Carts
-    description: Cart emulation and management on behalf of customers
-  - name: Agents
-    description: Customer service agent operations
 security:
   - oauth2: []
 paths:

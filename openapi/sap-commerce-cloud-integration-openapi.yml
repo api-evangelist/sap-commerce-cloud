@@ -26,18 +26,18 @@ servers:
         description: Deployment region
         default: us
 tags:
-  - name: Products
-    description: Product data integration
-  - name: Customers
-    description: Customer data integration
-  - name: Orders
-    description: Order data integration
-  - name: Stock
-    description: Stock and inventory integration
   - name: Catalogs
     description: Catalog and classification data integration
+  - name: Customers
+    description: Customer data integration
   - name: Metadata
     description: OData service metadata
+  - name: Orders
+    description: Order data integration
+  - name: Products
+    description: Product data integration
+  - name: Stock
+    description: Stock and inventory integration
 security:
   - oauth2: []
 paths:
