@@ -1,0 +1,67 @@
+{
+  "name": "Order",
+  "description": "SAP Commerce Cloud Order - customer purchase order with line items and fulfillment details",
+  "fields": [
+    { "name": "code", "type": "string", "required": true, "description": "Unique order code" },
+    { "name": "guid", "type": "string", "required": false, "description": "Order GUID for guest checkout tracking" },
+    { "name": "status", "type": "string", "required": true, "description": "Order fulfillment status" },
+    { "name": "statusDisplay", "type": "string", "required": false, "description": "Human-readable order status" },
+    { "name": "placed", "type": "datetime", "required": true, "description": "Order placement timestamp" },
+    {
+      "name": "totalPrice",
+      "type": "object",
+      "required": true,
+      "description": "Total order price",
+      "fields": [
+        { "name": "value", "type": "number", "required": true, "description": "Total amount" },
+        { "name": "currencyIso", "type": "string", "required": true, "description": "Currency code" }
+      ]
+    },
+    {
+      "name": "entries",
+      "type": "array",
+      "required": true,
+      "description": "Order line items",
+      "items": {
+        "fields": [
+          { "name": "entryNumber", "type": "integer", "required": true, "description": "Line item sequence number" },
+          { "name": "quantity", "type": "integer", "required": true, "description": "Quantity ordered" },
+          {
+            "name": "product",
+            "type": "object",
+            "required": true,
+            "description": "Ordered product reference",
+            "fields": [
+              { "name": "code", "type": "string", "required": true, "description": "Product code" },
+              { "name": "name", "type": "string", "required": true, "description": "Product name" }
+            ]
+          },
+          {
+            "name": "basePrice",
+            "type": "object",
+            "required": false,
+            "description": "Unit price",
+            "fields": [
+              { "name": "value", "type": "number", "required": true, "description": "Unit price amount" },
+              { "name": "currencyIso", "type": "string", "required": true, "description": "Currency code" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "deliveryAddress",
+      "type": "object",
+      "required": false,
+      "description": "Delivery address",
+      "fields": [
+        { "name": "firstName", "type": "string", "required": true, "description": "Recipient first name" },
+        { "name": "lastName", "type": "string", "required": true, "description": "Recipient last name" },
+        { "name": "line1", "type": "string", "required": true, "description": "Street address line 1" },
+        { "name": "town", "type": "string", "required": true, "description": "City/Town" },
+        { "name": "postalCode", "type": "string", "required": false, "description": "Postal code" },
+        { "name": "country", "type": "object", "required": true, "description": "Country object with isocode" }
+      ]
+    }
+  ]
+}

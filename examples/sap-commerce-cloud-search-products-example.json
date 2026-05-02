@@ -1,0 +1,48 @@
+{
+  "products": [
+    {
+      "code": "816802",
+      "name": "Pixel II 32GB",
+      "description": "<p>The Google Pixel II features a 5 inch 1080p screen with Google Assistant and advanced camera.</p>",
+      "summary": "Advanced smartphone with Google AI features",
+      "price": {
+        "value": 599.00,
+        "currencyIso": "USD",
+        "formattedValue": "$599.00"
+      },
+      "stock": {
+        "stockLevel": 50,
+        "stockLevelStatus": "inStock"
+      },
+      "categories": [
+        { "code": "smartphones", "name": "Smartphones" },
+        { "code": "googlebrands", "name": "Google" }
+      ]
+    },
+    {
+      "code": "816807",
+      "name": "Pixel II 64GB",
+      "description": "<p>The Google Pixel II 64GB with expanded storage.</p>",
+      "summary": "Advanced smartphone with Google AI features and 64GB storage",
+      "price": {
+        "value": 699.00,
+        "currencyIso": "USD",
+        "formattedValue": "$699.00"
+      },
+      "stock": {
+        "stockLevel": 0,
+        "stockLevelStatus": "outOfStock"
+      }
+    }
+  ],
+  "pagination": {
+    "currentPage": 0,
+    "pageSize": 20,
+    "totalPages": 1,
+    "totalResults": 2
+  },
+  "sorts": [
+    { "code": "relevance", "name": "Relevance", "selected": true },
+    { "code": "price-asc", "name": "Price (Low to High)", "selected": false }
+  ]
+}

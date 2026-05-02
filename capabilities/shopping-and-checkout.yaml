@@ -1,0 +1,177 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SAP Commerce Cloud Shopping and Checkout"
+  description: "Workflow capability for the customer shopping journey in SAP Commerce Cloud. Covers product discovery, cart management, checkout, and order tracking for both B2B and B2C scenarios. Used by storefront developers, mobile app developers, and commerce integration engineers."
+  tags:
+    - B2B
+    - B2C
+    - Commerce
+    - Customer Experience
+    - SAP
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SAP_COMMERCE_OAUTH_TOKEN: SAP_COMMERCE_OAUTH_TOKEN
+
+capability:
+  consumes:
+    - import: sap-commerce-occ
+      location: ./shared/commerce-web-services.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: sap-commerce-shopping-api
+      description: "Unified REST API for SAP Commerce Cloud shopping and order management."
+      resources:
+        - path: /v1/products
+          name: products
+          description: "Product catalog search."
+          operations:
+            - method: GET
+              name: search-products
+              description: "Search the product catalog."
+              call: "sap-commerce-occ.search-products"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/products/{productCode}
+          name: product
+          description: "Single product."
+          operations:
+            - method: GET
+              name: get-product
+              description: "Get product details."
+              call: "sap-commerce-occ.get-product"
+              with:
+                productCode: "rest.productCode"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/users/{userId}/orders
+          name: orders
+          description: "Order management."
+          operations:
+            - method: GET
+              name: list-orders
+              description: "List user order history."
+              call: "sap-commerce-occ.list-orders"
+              with:
+                userId: "rest.userId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/users/{userId}/orders/{code}
+          name: order
+          description: "Single order."
+          operations:
+            - method: GET
+              name: get-order
+              description: "Get order details."
+              call: "sap-commerce-occ.get-order"
+              with:
+                userId: "rest.userId"
+                code: "rest.code"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/stores
+          name: stores
+          description: "Store locator."
+          operations:
+            - method: GET
+              name: find-stores
+              description: "Find nearby stores."
+              call: "sap-commerce-occ.list-stores"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9080
+      namespace: sap-commerce-shopping-mcp
+      transport: http
+      description: "MCP server for AI-assisted SAP Commerce Cloud shopping and checkout."
+      tools:
+        - name: search-products
+          description: "Search the SAP Commerce Cloud product catalog using keywords or facets."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sap-commerce-occ.search-products"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-product
+          description: "Get detailed product information including price, stock, images, and reviews."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sap-commerce-occ.get-product"
+          with:
+            productCode: "tools.productCode"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: add-to-cart
+          description: "Add a product to the customer's shopping cart."
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "sap-commerce-occ.add-to-cart"
+          with:
+            userId: "tools.userId"
+            cartId: "tools.cartId"
+            productCode: "tools.productCode"
+            quantity: "tools.quantity"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-cart
+          description: "Get the customer's current shopping cart contents and totals."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sap-commerce-occ.get-cart"
+          with:
+            userId: "tools.userId"
+            cartId: "tools.cartId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-orders
+          description: "List order history for a customer."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sap-commerce-occ.list-orders"
+          with:
+            userId: "tools.userId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-order
+          description: "Get details and status of a specific order."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sap-commerce-occ.get-order"
+          with:
+            userId: "tools.userId"
+            code: "tools.orderCode"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: find-stores
+          description: "Find physical store locations for click-and-collect or in-store assistance."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sap-commerce-occ.list-stores"
+          outputParameters:
+            - type: object
+              mapping: "$."

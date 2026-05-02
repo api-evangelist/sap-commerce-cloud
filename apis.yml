@@ -3,7 +3,7 @@ description: SAP Commerce Cloud (formerly Hybris) provides enterprise e-commerce
 image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
 url: https://www.sap.com/products/crm/commerce-cloud.html
 created: '2024'
-modified: '2026-03-04'
+modified: '2026-05-02'
 tags:
   - B2B
   - B2C
@@ -127,6 +127,18 @@ common:
     url: json-schema/sap-commerce-cloud-cart-schema.json
   - type: JSONSchema
     url: json-schema/sap-commerce-cloud-customer-schema.json
+  - type: JSONStructure
+    url: json-structure/sap-commerce-cloud-product-structure.json
+  - type: JSONStructure
+    url: json-structure/sap-commerce-cloud-order-structure.json
+  - type: SpectralRules
+    url: rules/sap-commerce-cloud-rules.yml
+  - type: NaftikoCapability
+    url: capabilities/shopping-and-checkout.yaml
+  - type: NaftikoCapability
+    url: capabilities/catalog-and-content-management.yaml
+  - type: Vocabulary
+    url: vocabulary/sap-commerce-cloud-vocabulary.yml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

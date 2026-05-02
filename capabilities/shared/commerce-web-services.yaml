@@ -1,0 +1,311 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SAP Commerce Cloud Commerce Web Services API"
+  description: "RESTful OCC v2 API for SAP Commerce Cloud providing product catalog browsing, cart management, checkout, order management, and user account operations for B2B and B2C commerce."
+  tags:
+    - Commerce
+    - Customer Experience
+    - Ecommerce
+    - SAP
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SAP_COMMERCE_OAUTH_TOKEN: SAP_COMMERCE_OAUTH_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: sap-commerce-occ
+      baseUri: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
+      description: "SAP Commerce Cloud OCC v2 REST API."
+      authentication:
+        type: bearer
+        token: "{{SAP_COMMERCE_OAUTH_TOKEN}}"
+      resources:
+        - name: products
+          path: /products
+          description: "Product catalog browsing and search."
+          operations:
+            - name: search-products
+              method: GET
+              description: "Search for products using free-text or faceted navigation."
+              inputParameters:
+                - name: query
+                  in: query
+                  type: string
+                  required: false
+                  description: "Search query or facet filter"
+                - name: currentPage
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Current page number (0-based)"
+                - name: pageSize
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of results per page"
+                - name: sort
+                  in: query
+                  type: string
+                  required: false
+                  description: "Sort criteria"
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Response field set (BASIC, DEFAULT, FULL)"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-product
+              method: GET
+              description: "Get detailed information about a specific product."
+              inputParameters:
+                - name: productCode
+                  in: path
+                  type: string
+                  required: true
+                  description: "Product code identifier"
+                - name: fields
+                  in: query
+                  type: string
+                  required: false
+                  description: "Response field set"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: carts
+          path: /users/{userId}/carts
+          description: "Shopping cart management."
+          operations:
+            - name: get-cart
+              method: GET
+              description: "Get the current cart for a user."
+              inputParameters:
+                - name: userId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User identifier or 'current' for authenticated user"
+                - name: cartId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Cart identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: add-to-cart
+              method: POST
+              description: "Add a product to the cart."
+              inputParameters:
+                - name: userId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User identifier"
+                - name: cartId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Cart identifier"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  product:
+                    code: "{{tools.productCode}}"
+                  quantity: "{{tools.quantity}}"
+
+        - name: orders
+          path: /users/{userId}/orders
+          description: "Order management and history."
+          operations:
+            - name: list-orders
+              method: GET
+              description: "List orders for a user."
+              inputParameters:
+                - name: userId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User identifier"
+                - name: pageSize
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of results per page"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-order
+              method: GET
+              description: "Get details of a specific order."
+              inputParameters:
+                - name: userId
+                  in: path
+                  type: string
+                  required: true
+                  description: "User identifier"
+                - name: code
+                  in: path
+                  type: string
+                  required: true
+                  description: "Order code"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: stores
+          path: /stores
+          description: "Physical store locator."
+          operations:
+            - name: list-stores
+              method: GET
+              description: "List physical stores with optional location search."
+              inputParameters:
+                - name: query
+                  in: query
+                  type: string
+                  required: false
+                  description: "Location search query"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: sap-commerce-occ-api
+      resources:
+        - path: /v1/products
+          name: products
+          description: "Product catalog."
+          operations:
+            - method: GET
+              name: search-products
+              description: "Search products."
+              call: "sap-commerce-occ.search-products"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/products/{productCode}
+          name: product
+          description: "Single product."
+          operations:
+            - method: GET
+              name: get-product
+              description: "Get product by code."
+              call: "sap-commerce-occ.get-product"
+              with:
+                productCode: "rest.productCode"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/users/{userId}/orders
+          name: orders
+          description: "User orders."
+          operations:
+            - method: GET
+              name: list-orders
+              description: "List user orders."
+              call: "sap-commerce-occ.list-orders"
+              with:
+                userId: "rest.userId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: sap-commerce-occ-mcp
+      transport: http
+      tools:
+        - name: search-products
+          description: "Search the SAP Commerce Cloud product catalog."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sap-commerce-occ.search-products"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-product
+          description: "Get detailed product information including price, stock, and attributes."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sap-commerce-occ.get-product"
+          with:
+            productCode: "tools.productCode"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: add-to-cart
+          description: "Add a product to the customer's shopping cart."
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "sap-commerce-occ.add-to-cart"
+          with:
+            userId: "tools.userId"
+            cartId: "tools.cartId"
+            productCode: "tools.productCode"
+            quantity: "tools.quantity"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-orders
+          description: "List order history for a customer."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sap-commerce-occ.list-orders"
+          with:
+            userId: "tools.userId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-order
+          description: "Get details of a specific customer order."
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "sap-commerce-occ.get-order"
+          with:
+            userId: "tools.userId"
+            code: "tools.orderCode"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: find-stores
+          description: "Find physical store locations near a given area."
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "sap-commerce-occ.list-stores"
+          outputParameters:
+            - type: object
+              mapping: "$."

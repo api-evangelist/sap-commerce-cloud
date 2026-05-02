@@ -1,0 +1,49 @@
+{
+  "code": "00000001",
+  "guid": "4a3e2b1c-5678-90ab-cdef-fedcba098765",
+  "status": "SHIPPED",
+  "statusDisplay": "Shipped",
+  "placed": "2026-04-28T09:15:00Z",
+  "totalPrice": {
+    "value": 1298.00,
+    "currencyIso": "USD",
+    "formattedValue": "$1,298.00"
+  },
+  "entries": [
+    {
+      "entryNumber": 0,
+      "quantity": 1,
+      "product": {
+        "code": "816802",
+        "name": "Pixel II 32GB"
+      },
+      "basePrice": {
+        "value": 599.00,
+        "currencyIso": "USD"
+      }
+    },
+    {
+      "entryNumber": 1,
+      "quantity": 1,
+      "product": {
+        "code": "816807",
+        "name": "Pixel II 64GB"
+      },
+      "basePrice": {
+        "value": 699.00,
+        "currencyIso": "USD"
+      }
+    }
+  ],
+  "deliveryAddress": {
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "line1": "123 Commerce Way",
+    "town": "Walldorf",
+    "postalCode": "69190",
+    "country": {
+      "isocode": "DE",
+      "name": "Germany"
+    }
+  }
+}

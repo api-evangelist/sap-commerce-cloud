@@ -1,0 +1,135 @@
+name: SAP Commerce Cloud Vocabulary
+description: Domain vocabulary for SAP Commerce Cloud (formerly SAP Hybris) e-commerce platform including product management, order management, and omnichannel operations.
+version: '1.0'
+created: '2026-05-02'
+modified: '2026-05-02'
+
+terms:
+  - term: OCC
+    definition: >-
+      Omni Commerce Connect (OCC) is the RESTful API framework for SAP Commerce Cloud.
+      OCC v2 provides the commerce-oriented endpoints for product catalog browsing,
+      cart management, checkout, and order management used by storefronts and
+      mobile applications.
+    category: API
+    synonyms:
+      - Omni Commerce Connect
+      - Commerce Web Services API
+
+  - term: Base Site
+    definition: >-
+      A base site in SAP Commerce Cloud represents a distinct commerce website
+      or channel configuration. Each base site has its own catalog, language,
+      currency, and checkout flow settings. API requests are scoped to a base
+      site via the baseSiteId URL parameter.
+    category: Configuration
+
+  - term: Catalog
+    definition: >-
+      A product catalog in SAP Commerce Cloud organizes all product data including
+      categories, products, prices, and stock levels. Catalogs have versions
+      (Staged and Online) enabling content staging before publication to the
+      storefront.
+    category: Product Management
+
+  - term: Category
+    definition: >-
+      A classification node in the product catalog hierarchy. Categories can
+      contain products and sub-categories forming a tree structure. Each category
+      has a unique code, name, and may have associated merchandising content.
+    category: Product Management
+
+  - term: Product Code
+    definition: >-
+      The unique identifier for a product (equivalent to SKU) in SAP Commerce Cloud.
+      Product codes are used in API paths and cart/order operations to reference
+      specific products.
+    category: Product Management
+    synonyms:
+      - SKU
+      - Article Number
+
+  - term: Cart
+    definition: >-
+      The shopping basket in SAP Commerce Cloud holding a customer's selected
+      products before checkout. Carts are user-specific and persist across
+      sessions. They contain entries (line items), totals, delivery options,
+      and applied promotions.
+    category: Commerce
+
+  - term: Checkout
+    definition: >-
+      The process in SAP Commerce Cloud where a customer converts their cart
+      into an order by confirming delivery address, payment details, and
+      delivery mode. Supports both guest and authenticated checkout flows.
+    category: Commerce
+
+  - term: Order Entry
+    definition: >-
+      An individual line item within a cart or order representing a specific
+      product at a quantity and price. Order entries have sequential entry
+      numbers and can be individually modified or cancelled.
+    category: Commerce
+    synonyms:
+      - Order Line Item
+      - Cart Entry
+
+  - term: B2B
+    definition: >-
+      Business-to-Business commerce in SAP Commerce Cloud. B2B scenarios support
+      organizational account management, approval workflows, cost center allocation,
+      negotiated pricing, and purchase order-based checkout.
+    category: Commerce
+
+  - term: B2C
+    definition: >-
+      Business-to-Consumer commerce in SAP Commerce Cloud. B2C scenarios support
+      individual consumer accounts, standard checkout flows, loyalty programs,
+      and personalized promotions.
+    category: Commerce
+
+  - term: Faceted Search
+    definition: >-
+      A product search approach in SAP Commerce Cloud that allows filtering by
+      multiple attributes (facets) simultaneously. Facets include price ranges,
+      brands, colors, and other product attributes. Implemented via the Solr
+      search engine.
+    category: Search
+
+  - term: ASM
+    definition: >-
+      Assisted Service Module — a SAP Commerce Cloud feature enabling customer
+      service agents to browse the storefront on behalf of customers, assisting
+      with orders, returns, and account management.
+    category: Customer Service
+    synonyms:
+      - Assisted Service
+
+  - term: Promotions
+    definition: >-
+      Marketing rules in SAP Commerce Cloud that apply discounts or gifts
+      based on conditions such as cart value, product combinations, or
+      customer segment. Promotions can be global or voucher-triggered.
+    category: Marketing
+
+  - term: Omnichannel
+    definition: >-
+      SAP Commerce Cloud's ability to provide consistent shopping experiences
+      across multiple channels including web, mobile, in-store POS, and
+      third-party marketplaces, all sharing the same product catalog and
+      order management.
+    category: Platform
+
+  - term: Stock Level
+    definition: >-
+      The quantity of a product available for purchase at a specific warehouse
+      or point-of-service location. Stock levels affect product availability
+      display and can be BASIC, DEFAULT, or FULL depending on the API field set.
+    category: Inventory
+
+  - term: Price Row
+    definition: >-
+      A pricing record in SAP Commerce Cloud associating a product with a
+      price for a specific user group, currency, and date range. Price rows
+      support complex B2B pricing scenarios including customer-specific pricing.
+    category: Pricing

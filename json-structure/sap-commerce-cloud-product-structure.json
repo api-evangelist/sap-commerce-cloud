@@ -1,0 +1,56 @@
+{
+  "name": "Product",
+  "description": "SAP Commerce Cloud Product - commerce catalog product with pricing and inventory",
+  "fields": [
+    { "name": "code", "type": "string", "required": true, "description": "Unique product code (SKU)" },
+    { "name": "name", "type": "string", "required": true, "description": "Product display name" },
+    { "name": "description", "type": "string", "required": false, "description": "Product description (HTML)" },
+    { "name": "summary", "type": "string", "required": false, "description": "Short product summary" },
+    {
+      "name": "price",
+      "type": "object",
+      "required": false,
+      "description": "Product price information",
+      "fields": [
+        { "name": "value", "type": "number", "required": true, "description": "Price amount" },
+        { "name": "currencyIso", "type": "string", "required": true, "description": "ISO 4217 currency code" },
+        { "name": "formattedValue", "type": "string", "required": false, "description": "Formatted price string" }
+      ]
+    },
+    {
+      "name": "stock",
+      "type": "object",
+      "required": false,
+      "description": "Stock availability information",
+      "fields": [
+        { "name": "stockLevel", "type": "integer", "required": false, "description": "Number of units in stock" },
+        { "name": "stockLevelStatus", "type": "string", "required": true, "description": "Stock status", "enum": ["inStock", "outOfStock", "lowStock"] }
+      ]
+    },
+    {
+      "name": "images",
+      "type": "array",
+      "required": false,
+      "description": "Product images",
+      "items": {
+        "fields": [
+          { "name": "url", "type": "string", "required": true, "description": "Image URL" },
+          { "name": "altText", "type": "string", "required": false, "description": "Image alternative text" },
+          { "name": "imageType", "type": "string", "required": false, "description": "Image type (PRIMARY, GALLERY)" }
+        ]
+      }
+    },
+    {
+      "name": "categories",
+      "type": "array",
+      "required": false,
+      "description": "Product category assignments",
+      "items": {
+        "fields": [
+          { "name": "code", "type": "string", "required": true, "description": "Category code" },
+          { "name": "name", "type": "string", "required": true, "description": "Category display name" }
+        ]
+      }
+    }
+  ]
+}

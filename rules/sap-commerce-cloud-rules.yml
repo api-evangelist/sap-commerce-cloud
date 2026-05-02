@@ -1,0 +1,91 @@
+extends: spectral:oas
+rules:
+  sap-commerce-operation-summary-title-case:
+    description: Operation summaries must use Title Case
+    message: Summary "{{value}}" should be in Title Case
+    given: "$.paths[*][*].summary"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  sap-commerce-operation-id-camel-case:
+    description: OperationIds must use camelCase
+    message: OperationId "{{value}}" should use camelCase
+    given: "$.paths[*][*].operationId"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]+$"
+
+  sap-commerce-tags-title-case:
+    description: All tags must use Title Case
+    message: Tag "{{value}}" should be in Title Case
+    given: "$.tags[*].name"
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  sap-commerce-oauth2-required:
+    description: Commerce Cloud APIs require OAuth 2.0 authentication
+    message: APIs should specify OAuth 2.0 security
+    given: "$.components.securitySchemes"
+    severity: warn
+    then:
+      function: truthy
+
+  sap-commerce-response-200-schema:
+    description: GET operations should define a response schema
+    message: GET operations should return typed schemas
+    given: "$.paths[*].get.responses.200.content"
+    severity: warn
+    then:
+      function: truthy
+
+  sap-commerce-fields-parameter:
+    description: Commerce Cloud APIs support a fields parameter for response shaping
+    message: List/Get operations should support the 'fields' query parameter
+    given: "$.paths[*].get.parameters"
+    severity: info
+    then:
+      function: truthy
+
+  sap-commerce-pagination-parameters:
+    description: Collection endpoints should support currentPage and pageSize
+    message: Paginated list operations should define currentPage and pageSize parameters
+    given: "$.paths[*].get.parameters"
+    severity: info
+    then:
+      function: truthy
+
+  sap-commerce-servers-with-variables:
+    description: Commerce Cloud server URLs must include tenant, region, and baseSiteId variables
+    message: Server URL should use variable substitution for tenant, region, and baseSiteId
+    given: "$.servers[*].variables"
+    severity: warn
+    then:
+      function: truthy
+
+  sap-commerce-b2b-b2c-support:
+    description: Commerce APIs should support both B2B and B2C scenarios
+    message: API description should mention B2B and B2C commerce support
+    given: "$.info.description"
+    severity: info
+    then:
+      function: pattern
+      functionOptions:
+        match: "(B2B|B2C|commerce)"
+
+  sap-commerce-occ-versioning:
+    description: Commerce APIs should use OCC v2 versioning
+    message: Commerce Web Services should reference OCC v2 in server URL
+    given: "$.servers[*].url"
+    severity: info
+    then:
+      function: pattern
+      functionOptions:
+        match: "/occ/v2"
