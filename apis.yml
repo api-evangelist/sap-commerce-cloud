@@ -1,9 +1,14 @@
 name: SAP Commerce Cloud
-description: SAP Commerce Cloud (formerly Hybris) provides enterprise e-commerce and omnichannel customer experience management capabilities including product content management, order management, and personalization.
+description: >-
+  SAP Commerce Cloud (formerly Hybris) provides enterprise e-commerce and
+  omnichannel customer experience management capabilities including product
+  content management, order management, personalization, and assisted service
+  for B2B and B2C commerce scenarios.
 image: https://www.sap.com/dam/application/shared/logos/sap-logo.svg
 url: https://www.sap.com/products/crm/commerce-cloud.html
-created: '2024'
+created: '2024-01-01'
 modified: '2026-05-02'
+specificationVersion: '0.18'
 tags:
   - B2B
   - B2C
@@ -117,6 +122,16 @@ common:
     url: https://www.sap.com/about/legal/privacy.html
   - type: Status
     url: https://www.sap.com/about/trust-center/cloud-service-status.html
+  - type: OpenAPI
+    url: openapi/sap-commerce-cloud-commerce-web-services-openapi.yml
+  - type: OpenAPI
+    url: openapi/sap-commerce-cloud-assisted-service-openapi.yml
+  - type: OpenAPI
+    url: openapi/sap-commerce-cloud-integration-openapi.yml
+  - type: OpenAPI
+    url: openapi/sap-commerce-cloud-admin-openapi.yml
+  - type: OpenAPI
+    url: openapi/sap-commerce-cloud-product-content-management-openapi.yml
   - type: JSON-LD
     url: json-ld/sap-commerce-cloud-context.jsonld
   - type: JSONSchema
