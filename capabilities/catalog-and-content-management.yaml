@@ -1,149 +1,427 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "SAP Commerce Cloud Catalog and Content Management"
-  description: "Workflow capability for managing product catalogs, categories, and content in SAP Commerce Cloud. Combines catalog browsing, product content management, and customer service workflows. Used by catalog managers, merchandisers, and content administrators."
+  label: SAP Commerce Cloud Catalog and Content Management
+  description: Workflow capability for managing product catalogs, categories, and content in SAP Commerce Cloud. Combines
+    catalog browsing, product content management, and customer service workflows. Used by catalog managers, merchandisers,
+    and content administrators.
   tags:
-    - Catalog
-    - Commerce
-    - Content Management
-    - SAP
-  created: "2026-05-02"
-  modified: "2026-05-02"
-
+  - Catalog
+  - Commerce
+  - Content Management
+  - SAP
+  created: '2026-05-02'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      SAP_COMMERCE_OAUTH_TOKEN: SAP_COMMERCE_OAUTH_TOKEN
-
+- namespace: env
+  keys:
+    SAP_COMMERCE_OAUTH_TOKEN: SAP_COMMERCE_OAUTH_TOKEN
 capability:
   consumes:
-    - import: sap-commerce-occ
-      location: ./shared/commerce-web-services.yaml
-    - import: sap-commerce-pcm
-      location: ./shared/product-content-management.yaml
-    - import: sap-commerce-asm
-      location: ./shared/assisted-service.yaml
-
+  - type: http
+    namespace: sap-commerce-occ
+    baseUri: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
+    description: SAP Commerce Cloud OCC v2 REST API.
+    authentication:
+      type: bearer
+      token: '{{SAP_COMMERCE_OAUTH_TOKEN}}'
+    resources:
+    - name: products
+      path: /products
+      description: Product catalog browsing and search.
+      operations:
+      - name: search-products
+        method: GET
+        description: Search for products using free-text or faceted navigation.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: false
+          description: Search query or facet filter
+        - name: currentPage
+          in: query
+          type: integer
+          required: false
+          description: Current page number (0-based)
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of results per page
+        - name: sort
+          in: query
+          type: string
+          required: false
+          description: Sort criteria
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Response field set (BASIC, DEFAULT, FULL)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-product
+        method: GET
+        description: Get detailed information about a specific product.
+        inputParameters:
+        - name: productCode
+          in: path
+          type: string
+          required: true
+          description: Product code identifier
+        - name: fields
+          in: query
+          type: string
+          required: false
+          description: Response field set
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: carts
+      path: /users/{userId}/carts
+      description: Shopping cart management.
+      operations:
+      - name: get-cart
+        method: GET
+        description: Get the current cart for a user.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: User identifier or 'current' for authenticated user
+        - name: cartId
+          in: path
+          type: string
+          required: true
+          description: Cart identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: add-to-cart
+        method: POST
+        description: Add a product to the cart.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: User identifier
+        - name: cartId
+          in: path
+          type: string
+          required: true
+          description: Cart identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            product:
+              code: '{{tools.productCode}}'
+            quantity: '{{tools.quantity}}'
+    - name: orders
+      path: /users/{userId}/orders
+      description: Order management and history.
+      operations:
+      - name: list-orders
+        method: GET
+        description: List orders for a user.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: User identifier
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Number of results per page
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-order
+        method: GET
+        description: Get details of a specific order.
+        inputParameters:
+        - name: userId
+          in: path
+          type: string
+          required: true
+          description: User identifier
+        - name: code
+          in: path
+          type: string
+          required: true
+          description: Order code
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: stores
+      path: /stores
+      description: Physical store locator.
+      operations:
+      - name: list-stores
+        method: GET
+        description: List physical stores with optional location search.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: false
+          description: Location search query
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  - type: http
+    namespace: sap-commerce-pcm
+    baseUri: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
+    description: SAP Commerce Cloud Product Content Management via OCC API.
+    authentication:
+      type: bearer
+      token: '{{SAP_COMMERCE_OAUTH_TOKEN}}'
+    resources:
+    - name: catalogs
+      path: /catalogs
+      description: Product catalog management.
+      operations:
+      - name: list-catalogs
+        method: GET
+        description: List available product catalogs.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-catalog
+        method: GET
+        description: Get details of a specific catalog.
+        inputParameters:
+        - name: catalogId
+          in: path
+          type: string
+          required: true
+          description: Catalog identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: categories
+      path: /catalogs/{catalogId}/versions/{catalogVersionId}/categories
+      description: Category management within a catalog.
+      operations:
+      - name: list-categories
+        method: GET
+        description: List categories in a catalog version.
+        inputParameters:
+        - name: catalogId
+          in: path
+          type: string
+          required: true
+          description: Catalog identifier
+        - name: catalogVersionId
+          in: path
+          type: string
+          required: true
+          description: Catalog version identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  - type: http
+    namespace: sap-commerce-asm
+    baseUri: https://{tenant}.{region}.commercecloud.sap/assistedservicewebservices
+    description: SAP Commerce Cloud Assisted Service Module REST API.
+    authentication:
+      type: bearer
+      token: '{{SAP_COMMERCE_OAUTH_TOKEN}}'
+    resources:
+    - name: customers
+      path: /customers
+      description: Customer search and management for assisted service.
+      operations:
+      - name: search-customers
+        method: GET
+        description: Search for customers by name or email to assist.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: false
+          description: Search query (name, email, or account number)
+        - name: pageSize
+          in: query
+          type: integer
+          required: false
+          description: Maximum number of results
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: customer-support-tickets
+      path: /tickets
+      description: Customer support ticket management.
+      operations:
+      - name: create-ticket
+        method: POST
+        description: Create a customer support ticket.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            customerId: '{{tools.customerId}}'
+            subject: '{{tools.subject}}'
+            message: '{{tools.message}}'
+      - name: list-tickets
+        method: GET
+        description: List support tickets for a customer.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8081
-      namespace: sap-commerce-catalog-api
-      description: "Unified REST API for SAP Commerce Cloud catalog and content management."
-      resources:
-        - path: /v1/catalogs
-          name: catalogs
-          description: "Product catalog management."
-          operations:
-            - method: GET
-              name: list-catalogs
-              description: "List product catalogs."
-              call: "sap-commerce-pcm.list-catalogs"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/catalogs/{catalogId}
-          name: catalog
-          description: "Single product catalog."
-          operations:
-            - method: GET
-              name: get-catalog
-              description: "Get catalog details."
-              call: "sap-commerce-pcm.get-catalog"
-              with:
-                catalogId: "rest.catalogId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/products
-          name: products
-          description: "Product search."
-          operations:
-            - method: GET
-              name: search-products
-              description: "Search products in the catalog."
-              call: "sap-commerce-occ.search-products"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/customers
-          name: customers
-          description: "Customer search for assisted service."
-          operations:
-            - method: GET
-              name: search-customers
-              description: "Search customers for assisted service."
-              call: "sap-commerce-asm.search-customers"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9081
-      namespace: sap-commerce-catalog-mcp
-      transport: http
-      description: "MCP server for AI-assisted SAP Commerce Cloud catalog and content management."
-      tools:
-        - name: list-catalogs
-          description: "List available product catalogs in SAP Commerce Cloud."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "sap-commerce-pcm.list-catalogs"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-catalog
-          description: "Get structure, versions, and configuration of a product catalog."
-          hints:
-            readOnly: true
-            openWorld: false
-          call: "sap-commerce-pcm.get-catalog"
-          with:
-            catalogId: "tools.catalogId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-categories
-          description: "List product categories within a catalog version."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "sap-commerce-pcm.list-categories"
-          with:
-            catalogId: "tools.catalogId"
-            catalogVersionId: "tools.catalogVersionId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: search-products
-          description: "Search the product catalog for content management review."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "sap-commerce-occ.search-products"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: search-customers
-          description: "Search for customer accounts to assist through the ASM interface."
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "sap-commerce-asm.search-customers"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-support-ticket
-          description: "Create a customer support ticket for order or product issues."
-          hints:
-            readOnly: false
-            idempotent: false
-          call: "sap-commerce-asm.create-ticket"
-          with:
-            customerId: "tools.customerId"
-            subject: "tools.subject"
-            message: "tools.message"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8081
+    namespace: sap-commerce-catalog-api
+    description: Unified REST API for SAP Commerce Cloud catalog and content management.
+    resources:
+    - path: /v1/catalogs
+      name: catalogs
+      description: Product catalog management.
+      operations:
+      - method: GET
+        name: list-catalogs
+        description: List product catalogs.
+        call: sap-commerce-pcm.list-catalogs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/catalogs/{catalogId}
+      name: catalog
+      description: Single product catalog.
+      operations:
+      - method: GET
+        name: get-catalog
+        description: Get catalog details.
+        call: sap-commerce-pcm.get-catalog
+        with:
+          catalogId: rest.catalogId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/products
+      name: products
+      description: Product search.
+      operations:
+      - method: GET
+        name: search-products
+        description: Search products in the catalog.
+        call: sap-commerce-occ.search-products
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/customers
+      name: customers
+      description: Customer search for assisted service.
+      operations:
+      - method: GET
+        name: search-customers
+        description: Search customers for assisted service.
+        call: sap-commerce-asm.search-customers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9081
+    namespace: sap-commerce-catalog-mcp
+    transport: http
+    description: MCP server for AI-assisted SAP Commerce Cloud catalog and content management.
+    tools:
+    - name: list-catalogs
+      description: List available product catalogs in SAP Commerce Cloud.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: sap-commerce-pcm.list-catalogs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-catalog
+      description: Get structure, versions, and configuration of a product catalog.
+      hints:
+        readOnly: true
+        openWorld: false
+      call: sap-commerce-pcm.get-catalog
+      with:
+        catalogId: tools.catalogId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-categories
+      description: List product categories within a catalog version.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: sap-commerce-pcm.list-categories
+      with:
+        catalogId: tools.catalogId
+        catalogVersionId: tools.catalogVersionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-products
+      description: Search the product catalog for content management review.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: sap-commerce-occ.search-products
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-customers
+      description: Search for customer accounts to assist through the ASM interface.
+      hints:
+        readOnly: true
+        openWorld: true
+      call: sap-commerce-asm.search-customers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-support-ticket
+      description: Create a customer support ticket for order or product issues.
+      hints:
+        readOnly: false
+        idempotent: false
+      call: sap-commerce-asm.create-ticket
+      with:
+        customerId: tools.customerId
+        subject: tools.subject
+        message: tools.message
+      outputParameters:
+      - type: object
+        mapping: $.
