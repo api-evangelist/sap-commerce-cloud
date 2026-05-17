@@ -70,7 +70,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
-      - type: API Reference
+      - type: APIReference
         url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
       - type: OpenAPI
         url: openapi/sap-commerce-cloud-integration-openapi.yml
@@ -108,7 +108,7 @@ apis:
 common:
   - type: Portal
     url: https://api.sap.com/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/0996ba68e5794b8ab51db8d25d4c9f8c/
   - type: Authentication
     url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
@@ -116,11 +116,11 @@ common:
     url: https://support.sap.com/
   - type: Community
     url: https://community.sap.com/topics/commerce-cloud
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.sap.com/about/legal/terms-of-use.html
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.sap.com/about/legal/privacy.html
-  - type: Status
+  - type: StatusPage
     url: https://www.sap.com/about/trust-center/cloud-service-status.html
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-commerce-web-services-openapi.yml
@@ -132,7 +132,7 @@ common:
     url: openapi/sap-commerce-cloud-admin-openapi.yml
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-product-content-management-openapi.yml
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/sap-commerce-cloud-context.jsonld
   - type: JSONSchema
     url: json-schema/sap-commerce-cloud-product-schema.json
