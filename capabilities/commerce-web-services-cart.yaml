@@ -1,0 +1,295 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Commerce Cloud Commerce Web Services API — Cart
+  description: 'SAP Commerce Cloud Commerce Web Services API — Cart. 8 operations. Lead operation: SAP Commerce Cloud List
+    user carts. Self-contained Naftiko capability covering one Sap Commerce Cloud business surface.'
+  tags:
+  - Sap Commerce Cloud
+  - Cart
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_COMMERCE_CLOUD_API_KEY: SAP_COMMERCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: commerce-web-services-cart
+    baseUri: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
+    description: SAP Commerce Cloud Commerce Web Services API — Cart business capability. Self-contained, no shared references.
+    resources:
+    - name: users-userId-carts
+      path: /users/{userId}/carts
+      operations:
+      - name: getusercarts
+        method: GET
+        description: SAP Commerce Cloud List user carts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcart
+        method: POST
+        description: SAP Commerce Cloud Create a new cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: oldCartId
+          in: query
+          type: string
+          description: Anonymous cart ID to merge
+    - name: users-userId-carts-cartId
+      path: /users/{userId}/carts/{cartId}
+      operations:
+      - name: getcart
+        method: GET
+        description: SAP Commerce Cloud Get cart details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletecart
+        method: DELETE
+        description: SAP Commerce Cloud Delete a cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: users-userId-carts-cartId-entries
+      path: /users/{userId}/carts/{cartId}/entries
+      operations:
+      - name: getcartentries
+        method: GET
+        description: SAP Commerce Cloud List cart entries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addcartentry
+        method: POST
+        description: SAP Commerce Cloud Add entry to cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: users-userId-carts-cartId-entries-entryNumber
+      path: /users/{userId}/carts/{cartId}/entries/{entryNumber}
+      operations:
+      - name: updatecartentry
+        method: PATCH
+        description: SAP Commerce Cloud Update cart entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: removecartentry
+        method: DELETE
+        description: SAP Commerce Cloud Remove cart entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SAP_COMMERCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: commerce-web-services-cart-rest
+    port: 8080
+    description: REST adapter for SAP Commerce Cloud Commerce Web Services API — Cart. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/users/{userid}/carts
+      name: users-userid-carts
+      description: REST surface for users-userId-carts.
+      operations:
+      - method: GET
+        name: getusercarts
+        description: SAP Commerce Cloud List user carts
+        call: commerce-web-services-cart.getusercarts
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcart
+        description: SAP Commerce Cloud Create a new cart
+        call: commerce-web-services-cart.createcart
+        with:
+          oldCartId: rest.oldCartId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{userid}/carts/{cartid}
+      name: users-userid-carts-cartid
+      description: REST surface for users-userId-carts-cartId.
+      operations:
+      - method: GET
+        name: getcart
+        description: SAP Commerce Cloud Get cart details
+        call: commerce-web-services-cart.getcart
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecart
+        description: SAP Commerce Cloud Delete a cart
+        call: commerce-web-services-cart.deletecart
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{userid}/carts/{cartid}/entries
+      name: users-userid-carts-cartid-entries
+      description: REST surface for users-userId-carts-cartId-entries.
+      operations:
+      - method: GET
+        name: getcartentries
+        description: SAP Commerce Cloud List cart entries
+        call: commerce-web-services-cart.getcartentries
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addcartentry
+        description: SAP Commerce Cloud Add entry to cart
+        call: commerce-web-services-cart.addcartentry
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{userid}/carts/{cartid}/entries/{entrynumber}
+      name: users-userid-carts-cartid-entries-entrynumber
+      description: REST surface for users-userId-carts-cartId-entries-entryNumber.
+      operations:
+      - method: PATCH
+        name: updatecartentry
+        description: SAP Commerce Cloud Update cart entry
+        call: commerce-web-services-cart.updatecartentry
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: removecartentry
+        description: SAP Commerce Cloud Remove cart entry
+        call: commerce-web-services-cart.removecartentry
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: commerce-web-services-cart-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Commerce Cloud Commerce Web Services API — Cart. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: sap-commerce-cloud-list-user
+      description: SAP Commerce Cloud List user carts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-cart.getusercarts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-create-new
+      description: SAP Commerce Cloud Create a new cart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: commerce-web-services-cart.createcart
+      with:
+        oldCartId: tools.oldCartId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-get-cart
+      description: SAP Commerce Cloud Get cart details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-cart.getcart
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-delete-cart
+      description: SAP Commerce Cloud Delete a cart
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: commerce-web-services-cart.deletecart
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-list-cart
+      description: SAP Commerce Cloud List cart entries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-cart.getcartentries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-add-entry
+      description: SAP Commerce Cloud Add entry to cart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: commerce-web-services-cart.addcartentry
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-update-cart
+      description: SAP Commerce Cloud Update cart entry
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-cart.updatecartentry
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-remove-cart
+      description: SAP Commerce Cloud Remove cart entry
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: commerce-web-services-cart.removecartentry
+      outputParameters:
+      - type: object
+        mapping: $.

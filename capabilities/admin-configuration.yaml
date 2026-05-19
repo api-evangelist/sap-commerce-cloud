@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Commerce Cloud Admin API — Configuration
+  description: 'SAP Commerce Cloud Admin API — Configuration. 1 operations. Lead operation: SAP Commerce Cloud List configuration
+    properties. Self-contained Naftiko capability covering one Sap Commerce Cloud business surface.'
+  tags:
+  - Sap Commerce Cloud
+  - Configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_COMMERCE_CLOUD_API_KEY: SAP_COMMERCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-configuration
+    baseUri: https://{tenant}.{region}.commercecloud.sap
+    description: SAP Commerce Cloud Admin API — Configuration business capability. Self-contained, no shared references.
+    resources:
+    - name: monitoring-configuration
+      path: /monitoring/configuration
+      operations:
+      - name: listconfigurationproperties
+        method: GET
+        description: SAP Commerce Cloud List configuration properties
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: prefix
+          in: query
+          type: string
+          description: Filter properties by key prefix
+    authentication:
+      type: bearer
+      token: '{{env.SAP_COMMERCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-configuration-rest
+    port: 8080
+    description: REST adapter for SAP Commerce Cloud Admin API — Configuration. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/monitoring/configuration
+      name: monitoring-configuration
+      description: REST surface for monitoring-configuration.
+      operations:
+      - method: GET
+        name: listconfigurationproperties
+        description: SAP Commerce Cloud List configuration properties
+        call: admin-configuration.listconfigurationproperties
+        with:
+          prefix: rest.prefix
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Commerce Cloud Admin API — Configuration. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: sap-commerce-cloud-list-configuration
+      description: SAP Commerce Cloud List configuration properties
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-configuration.listconfigurationproperties
+      with:
+        prefix: tools.prefix
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,139 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Commerce Cloud Commerce Web Services API — Stores
+  description: 'SAP Commerce Cloud Commerce Web Services API — Stores. 2 operations. Lead operation: SAP Commerce Cloud Search
+    stores. Self-contained Naftiko capability covering one Sap Commerce Cloud business surface.'
+  tags:
+  - Sap Commerce Cloud
+  - Stores
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_COMMERCE_CLOUD_API_KEY: SAP_COMMERCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: commerce-web-services-stores
+    baseUri: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
+    description: SAP Commerce Cloud Commerce Web Services API — Stores business capability. Self-contained, no shared references.
+    resources:
+    - name: stores
+      path: /stores
+      operations:
+      - name: searchstores
+        method: GET
+        description: SAP Commerce Cloud Search stores
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          description: Free-text search query
+        - name: latitude
+          in: query
+          type: number
+          description: Latitude for location-based search
+        - name: longitude
+          in: query
+          type: number
+          description: Longitude for location-based search
+        - name: radius
+          in: query
+          type: number
+          description: Search radius in meters
+    - name: stores-storeId
+      path: /stores/{storeId}
+      operations:
+      - name: getstore
+        method: GET
+        description: SAP Commerce Cloud Get store details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: storeId
+          in: path
+          type: string
+          description: Store identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_COMMERCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: commerce-web-services-stores-rest
+    port: 8080
+    description: REST adapter for SAP Commerce Cloud Commerce Web Services API — Stores. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/stores
+      name: stores
+      description: REST surface for stores.
+      operations:
+      - method: GET
+        name: searchstores
+        description: SAP Commerce Cloud Search stores
+        call: commerce-web-services-stores.searchstores
+        with:
+          query: rest.query
+          latitude: rest.latitude
+          longitude: rest.longitude
+          radius: rest.radius
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/stores/{storeid}
+      name: stores-storeid
+      description: REST surface for stores-storeId.
+      operations:
+      - method: GET
+        name: getstore
+        description: SAP Commerce Cloud Get store details
+        call: commerce-web-services-stores.getstore
+        with:
+          storeId: rest.storeId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: commerce-web-services-stores-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Commerce Cloud Commerce Web Services API — Stores. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: sap-commerce-cloud-search-stores
+      description: SAP Commerce Cloud Search stores
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-stores.searchstores
+      with:
+        query: tools.query
+        latitude: tools.latitude
+        longitude: tools.longitude
+        radius: tools.radius
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-get-store
+      description: SAP Commerce Cloud Get store details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-stores.getstore
+      with:
+        storeId: tools.storeId
+      outputParameters:
+      - type: object
+        mapping: $.

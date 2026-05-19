@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Commerce Cloud Integration API — Catalogs
+  description: 'SAP Commerce Cloud Integration API — Catalogs. 1 operations. Lead operation: SAP Commerce Cloud List classification
+    systems. Self-contained Naftiko capability covering one Sap Commerce Cloud business surface.'
+  tags:
+  - Sap Commerce Cloud
+  - Catalogs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_COMMERCE_CLOUD_API_KEY: SAP_COMMERCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: integration-catalogs
+    baseUri: https://{tenant}.{region}.commercecloud.sap/odata2webservices
+    description: SAP Commerce Cloud Integration API — Catalogs business capability. Self-contained, no shared references.
+    resources:
+    - name: InboundClassification-ClassificationSystems
+      path: /InboundClassification/ClassificationSystems
+      operations:
+      - name: listclassificationsystems
+        method: GET
+        description: SAP Commerce Cloud List classification systems
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SAP_COMMERCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: integration-catalogs-rest
+    port: 8080
+    description: REST adapter for SAP Commerce Cloud Integration API — Catalogs. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/inboundclassification/classificationsystems
+      name: inboundclassification-classificationsystems
+      description: REST surface for InboundClassification-ClassificationSystems.
+      operations:
+      - method: GET
+        name: listclassificationsystems
+        description: SAP Commerce Cloud List classification systems
+        call: integration-catalogs.listclassificationsystems
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: integration-catalogs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Commerce Cloud Integration API — Catalogs. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: sap-commerce-cloud-list-classification
+      description: SAP Commerce Cloud List classification systems
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: integration-catalogs.listclassificationsystems
+      outputParameters:
+      - type: object
+        mapping: $.

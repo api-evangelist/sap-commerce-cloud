@@ -1,0 +1,148 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Commerce Cloud Commerce Web Services API — Promotions
+  description: 'SAP Commerce Cloud Commerce Web Services API — Promotions. 3 operations. Lead operation: SAP Commerce Cloud
+    List applied vouchers. Self-contained Naftiko capability covering one Sap Commerce Cloud business surface.'
+  tags:
+  - Sap Commerce Cloud
+  - Promotions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_COMMERCE_CLOUD_API_KEY: SAP_COMMERCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: commerce-web-services-promotions
+    baseUri: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
+    description: SAP Commerce Cloud Commerce Web Services API — Promotions business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: users-userId-carts-cartId-vouchers
+      path: /users/{userId}/carts/{cartId}/vouchers
+      operations:
+      - name: getcartvouchers
+        method: GET
+        description: SAP Commerce Cloud List applied vouchers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: applycartvoucher
+        method: POST
+        description: SAP Commerce Cloud Apply voucher to cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: voucherId
+          in: query
+          type: string
+          description: Voucher code
+          required: true
+    - name: users-userId-carts-cartId-vouchers-voucherId
+      path: /users/{userId}/carts/{cartId}/vouchers/{voucherId}
+      operations:
+      - name: removecartvoucher
+        method: DELETE
+        description: SAP Commerce Cloud Remove voucher from cart
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: voucherId
+          in: path
+          type: string
+          description: Voucher code
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_COMMERCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: commerce-web-services-promotions-rest
+    port: 8080
+    description: REST adapter for SAP Commerce Cloud Commerce Web Services API — Promotions. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/users/{userid}/carts/{cartid}/vouchers
+      name: users-userid-carts-cartid-vouchers
+      description: REST surface for users-userId-carts-cartId-vouchers.
+      operations:
+      - method: GET
+        name: getcartvouchers
+        description: SAP Commerce Cloud List applied vouchers
+        call: commerce-web-services-promotions.getcartvouchers
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: applycartvoucher
+        description: SAP Commerce Cloud Apply voucher to cart
+        call: commerce-web-services-promotions.applycartvoucher
+        with:
+          voucherId: rest.voucherId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/users/{userid}/carts/{cartid}/vouchers/{voucherid}
+      name: users-userid-carts-cartid-vouchers-voucherid
+      description: REST surface for users-userId-carts-cartId-vouchers-voucherId.
+      operations:
+      - method: DELETE
+        name: removecartvoucher
+        description: SAP Commerce Cloud Remove voucher from cart
+        call: commerce-web-services-promotions.removecartvoucher
+        with:
+          voucherId: rest.voucherId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: commerce-web-services-promotions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Commerce Cloud Commerce Web Services API — Promotions. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: sap-commerce-cloud-list-applied
+      description: SAP Commerce Cloud List applied vouchers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-promotions.getcartvouchers
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-apply-voucher
+      description: SAP Commerce Cloud Apply voucher to cart
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: commerce-web-services-promotions.applycartvoucher
+      with:
+        voucherId: tools.voucherId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-remove-voucher
+      description: SAP Commerce Cloud Remove voucher from cart
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: commerce-web-services-promotions.removecartvoucher
+      with:
+        voucherId: tools.voucherId
+      outputParameters:
+      - type: object
+        mapping: $.

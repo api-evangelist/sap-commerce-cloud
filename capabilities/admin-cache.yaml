@@ -1,0 +1,112 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Commerce Cloud Admin API — Cache
+  description: 'SAP Commerce Cloud Admin API — Cache. 2 operations. Lead operation: SAP Commerce Cloud List cache regions.
+    Self-contained Naftiko capability covering one Sap Commerce Cloud business surface.'
+  tags:
+  - Sap Commerce Cloud
+  - Cache
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_COMMERCE_CLOUD_API_KEY: SAP_COMMERCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: admin-cache
+    baseUri: https://{tenant}.{region}.commercecloud.sap
+    description: SAP Commerce Cloud Admin API — Cache business capability. Self-contained, no shared references.
+    resources:
+    - name: monitoring-cache-regions
+      path: /monitoring/cache/regions
+      operations:
+      - name: getcacheregions
+        method: GET
+        description: SAP Commerce Cloud List cache regions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: monitoring-cache-regions-regionName-clear
+      path: /monitoring/cache/regions/{regionName}/clear
+      operations:
+      - name: clearcacheregion
+        method: POST
+        description: SAP Commerce Cloud Clear a cache region
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: regionName
+          in: path
+          type: string
+          description: Cache region name
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_COMMERCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: admin-cache-rest
+    port: 8080
+    description: REST adapter for SAP Commerce Cloud Admin API — Cache. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/monitoring/cache/regions
+      name: monitoring-cache-regions
+      description: REST surface for monitoring-cache-regions.
+      operations:
+      - method: GET
+        name: getcacheregions
+        description: SAP Commerce Cloud List cache regions
+        call: admin-cache.getcacheregions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/monitoring/cache/regions/{regionname}/clear
+      name: monitoring-cache-regions-regionname-clear
+      description: REST surface for monitoring-cache-regions-regionName-clear.
+      operations:
+      - method: POST
+        name: clearcacheregion
+        description: SAP Commerce Cloud Clear a cache region
+        call: admin-cache.clearcacheregion
+        with:
+          regionName: rest.regionName
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: admin-cache-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Commerce Cloud Admin API — Cache. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: sap-commerce-cloud-list-cache
+      description: SAP Commerce Cloud List cache regions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: admin-cache.getcacheregions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-clear-cache
+      description: SAP Commerce Cloud Clear a cache region
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: admin-cache.clearcacheregion
+      with:
+        regionName: tools.regionName
+      outputParameters:
+      - type: object
+        mapping: $.

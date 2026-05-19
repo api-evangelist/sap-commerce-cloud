@@ -1,0 +1,80 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Commerce Cloud Assisted Service Module API — Agents
+  description: 'SAP Commerce Cloud Assisted Service Module API — Agents. 1 operations. Lead operation: SAP Commerce Cloud
+    Get agent details. Self-contained Naftiko capability covering one Sap Commerce Cloud business surface.'
+  tags:
+  - Sap Commerce Cloud
+  - Agents
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_COMMERCE_CLOUD_API_KEY: SAP_COMMERCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: assisted-service-agents
+    baseUri: https://{tenant}.{region}.commercecloud.sap/assistedservicewebservices
+    description: SAP Commerce Cloud Assisted Service Module API — Agents business capability. Self-contained, no shared references.
+    resources:
+    - name: agents-agentId
+      path: /agents/{agentId}
+      operations:
+      - name: getagent
+        method: GET
+        description: SAP Commerce Cloud Get agent details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: agentId
+          in: path
+          type: string
+          description: Agent identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_COMMERCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: assisted-service-agents-rest
+    port: 8080
+    description: REST adapter for SAP Commerce Cloud Assisted Service Module API — Agents. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/agents/{agentid}
+      name: agents-agentid
+      description: REST surface for agents-agentId.
+      operations:
+      - method: GET
+        name: getagent
+        description: SAP Commerce Cloud Get agent details
+        call: assisted-service-agents.getagent
+        with:
+          agentId: rest.agentId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: assisted-service-agents-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Commerce Cloud Assisted Service Module API — Agents. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: sap-commerce-cloud-get-agent
+      description: SAP Commerce Cloud Get agent details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: assisted-service-agents.getagent
+      with:
+        agentId: tools.agentId
+      outputParameters:
+      - type: object
+        mapping: $.

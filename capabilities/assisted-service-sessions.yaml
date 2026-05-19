@@ -1,0 +1,158 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Commerce Cloud Assisted Service Module API — Sessions
+  description: 'SAP Commerce Cloud Assisted Service Module API — Sessions. 3 operations. Lead operation: SAP Commerce Cloud
+    Start assisted service session. Self-contained Naftiko capability covering one Sap Commerce Cloud business surface.'
+  tags:
+  - Sap Commerce Cloud
+  - Sessions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_COMMERCE_CLOUD_API_KEY: SAP_COMMERCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: assisted-service-sessions
+    baseUri: https://{tenant}.{region}.commercecloud.sap/assistedservicewebservices
+    description: SAP Commerce Cloud Assisted Service Module API — Sessions business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: sessions
+      path: /sessions
+      operations:
+      - name: createassistedsession
+        method: POST
+        description: SAP Commerce Cloud Start assisted service session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: sessions-sessionId
+      path: /sessions/{sessionId}
+      operations:
+      - name: getassistedsession
+        method: GET
+        description: SAP Commerce Cloud Get session details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sessionId
+          in: path
+          type: string
+          description: Assisted service session identifier
+          required: true
+      - name: endassistedsession
+        method: DELETE
+        description: SAP Commerce Cloud End assisted service session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: sessionId
+          in: path
+          type: string
+          description: Assisted service session identifier
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.SAP_COMMERCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: assisted-service-sessions-rest
+    port: 8080
+    description: REST adapter for SAP Commerce Cloud Assisted Service Module API — Sessions. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/sessions
+      name: sessions
+      description: REST surface for sessions.
+      operations:
+      - method: POST
+        name: createassistedsession
+        description: SAP Commerce Cloud Start assisted service session
+        call: assisted-service-sessions.createassistedsession
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sessions/{sessionid}
+      name: sessions-sessionid
+      description: REST surface for sessions-sessionId.
+      operations:
+      - method: GET
+        name: getassistedsession
+        description: SAP Commerce Cloud Get session details
+        call: assisted-service-sessions.getassistedsession
+        with:
+          sessionId: rest.sessionId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: endassistedsession
+        description: SAP Commerce Cloud End assisted service session
+        call: assisted-service-sessions.endassistedsession
+        with:
+          sessionId: rest.sessionId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: assisted-service-sessions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Commerce Cloud Assisted Service Module API — Sessions. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: sap-commerce-cloud-start-assisted
+      description: SAP Commerce Cloud Start assisted service session
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: assisted-service-sessions.createassistedsession
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-get-session
+      description: SAP Commerce Cloud Get session details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: assisted-service-sessions.getassistedsession
+      with:
+        sessionId: tools.sessionId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-end-assisted
+      description: SAP Commerce Cloud End assisted service session
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: assisted-service-sessions.endassistedsession
+      with:
+        sessionId: tools.sessionId
+      outputParameters:
+      - type: object
+        mapping: $.

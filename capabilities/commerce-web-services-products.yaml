@@ -1,0 +1,210 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SAP Commerce Cloud Commerce Web Services API — Products
+  description: 'SAP Commerce Cloud Commerce Web Services API — Products. 5 operations. Lead operation: SAP Commerce Cloud
+    Search products. Self-contained Naftiko capability covering one Sap Commerce Cloud business surface.'
+  tags:
+  - Sap Commerce Cloud
+  - Products
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SAP_COMMERCE_CLOUD_API_KEY: SAP_COMMERCE_CLOUD_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: commerce-web-services-products
+    baseUri: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
+    description: SAP Commerce Cloud Commerce Web Services API — Products business capability. Self-contained, no shared references.
+    resources:
+    - name: products
+      path: /products
+      operations:
+      - name: searchproducts
+        method: GET
+        description: SAP Commerce Cloud Search products
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: products-productCode
+      path: /products/{productCode}
+      operations:
+      - name: getproduct
+        method: GET
+        description: SAP Commerce Cloud Get product details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: products-productCode-reviews
+      path: /products/{productCode}/reviews
+      operations:
+      - name: getproductreviews
+        method: GET
+        description: SAP Commerce Cloud Get product reviews
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createproductreview
+        method: POST
+        description: SAP Commerce Cloud Create a product review
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: products-productCode-stock
+      path: /products/{productCode}/stock
+      operations:
+      - name: getproductstock
+        method: GET
+        description: SAP Commerce Cloud Get product stock levels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: location
+          in: query
+          type: string
+          description: Location for store stock lookup
+    authentication:
+      type: bearer
+      token: '{{env.SAP_COMMERCE_CLOUD_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: commerce-web-services-products-rest
+    port: 8080
+    description: REST adapter for SAP Commerce Cloud Commerce Web Services API — Products. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/products
+      name: products
+      description: REST surface for products.
+      operations:
+      - method: GET
+        name: searchproducts
+        description: SAP Commerce Cloud Search products
+        call: commerce-web-services-products.searchproducts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/products/{productcode}
+      name: products-productcode
+      description: REST surface for products-productCode.
+      operations:
+      - method: GET
+        name: getproduct
+        description: SAP Commerce Cloud Get product details
+        call: commerce-web-services-products.getproduct
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/products/{productcode}/reviews
+      name: products-productcode-reviews
+      description: REST surface for products-productCode-reviews.
+      operations:
+      - method: GET
+        name: getproductreviews
+        description: SAP Commerce Cloud Get product reviews
+        call: commerce-web-services-products.getproductreviews
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createproductreview
+        description: SAP Commerce Cloud Create a product review
+        call: commerce-web-services-products.createproductreview
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/products/{productcode}/stock
+      name: products-productcode-stock
+      description: REST surface for products-productCode-stock.
+      operations:
+      - method: GET
+        name: getproductstock
+        description: SAP Commerce Cloud Get product stock levels
+        call: commerce-web-services-products.getproductstock
+        with:
+          location: rest.location
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: commerce-web-services-products-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SAP Commerce Cloud Commerce Web Services API — Products. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: sap-commerce-cloud-search-products
+      description: SAP Commerce Cloud Search products
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-products.searchproducts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-get-product
+      description: SAP Commerce Cloud Get product details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-products.getproduct
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-get-product-2
+      description: SAP Commerce Cloud Get product reviews
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-products.getproductreviews
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-create-product
+      description: SAP Commerce Cloud Create a product review
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: commerce-web-services-products.createproductreview
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: sap-commerce-cloud-get-product-3
+      description: SAP Commerce Cloud Get product stock levels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: commerce-web-services-products.getproductstock
+      with:
+        location: tools.location
+      outputParameters:
+      - type: object
+        mapping: $.
