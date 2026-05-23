@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Address",
+  "title": "Address",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Address identifier"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name"
+    },
+    "titleCode": {
+      "type": "string",
+      "description": "Title code"
+    },
+    "line1": {
+      "type": "string",
+      "description": "Address line 1"
+    },
+    "line2": {
+      "type": "string",
+      "description": "Address line 2"
+    },
+    "town": {
+      "type": "string",
+      "description": "City or town"
+    },
+    "region": {
+      "$ref": "#/components/schemas/Region"
+    },
+    "district": {
+      "type": "string",
+      "description": "District"
+    },
+    "postalCode": {
+      "type": "string",
+      "description": "Postal or ZIP code"
+    },
+    "country": {
+      "$ref": "#/components/schemas/Country"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Phone number"
+    },
+    "email": {
+      "type": "string",
+      "description": "Email address"
+    },
+    "defaultAddress": {
+      "type": "boolean",
+      "description": "Whether this is the default address"
+    }
+  }
+}

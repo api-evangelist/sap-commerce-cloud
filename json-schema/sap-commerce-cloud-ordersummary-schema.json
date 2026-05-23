@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrderSummary",
+  "title": "OrderSummary",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Order code"
+    },
+    "status": {
+      "type": "string",
+      "description": "Order status"
+    },
+    "total": {
+      "type": "string",
+      "description": "Formatted order total"
+    },
+    "placed": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Order placement date"
+    }
+  }
+}

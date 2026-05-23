@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PointOfService",
+  "title": "PointOfService",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Store name"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Store description"
+    },
+    "address": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "geoPoint": {
+      "$ref": "#/components/schemas/GeoPoint"
+    },
+    "openingHours": {
+      "$ref": "#/components/schemas/OpeningSchedule"
+    },
+    "storeImages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Image"
+      }
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Store features"
+    }
+  }
+}

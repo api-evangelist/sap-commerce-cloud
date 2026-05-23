@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Consignment",
+  "title": "Consignment",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Consignment code"
+    },
+    "status": {
+      "type": "string",
+      "description": "Consignment status"
+    },
+    "statusDisplay": {
+      "type": "string",
+      "description": "Display-friendly status"
+    },
+    "trackingID": {
+      "type": "string",
+      "description": "Shipment tracking ID"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ConsignmentEntry"
+      }
+    },
+    "deliveryPointOfService": {
+      "$ref": "#/components/schemas/PointOfService"
+    }
+  }
+}

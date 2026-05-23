@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Review",
+  "title": "Review",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Review identifier"
+    },
+    "headline": {
+      "type": "string",
+      "description": "Review headline"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Review text"
+    },
+    "rating": {
+      "type": "number",
+      "format": "double",
+      "description": "Rating value"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Review date"
+    },
+    "alias": {
+      "type": "string",
+      "description": "Reviewer alias"
+    },
+    "principal": {
+      "$ref": "#/components/schemas/Principal"
+    }
+  }
+}

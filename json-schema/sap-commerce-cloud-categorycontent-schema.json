@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CategoryContent",
+  "title": "CategoryContent",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Category code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Category name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Category description"
+    },
+    "image": {
+      "$ref": "#/components/schemas/Image"
+    },
+    "subcategories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CategoryRef"
+      }
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

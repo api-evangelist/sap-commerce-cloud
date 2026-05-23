@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CronJob",
+  "title": "CronJob",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "CronJob code"
+    },
+    "jobCode": {
+      "type": "string",
+      "description": "Associated job code"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "RUNNING",
+        "FINISHED",
+        "ABORTED",
+        "PAUSED",
+        "UNKNOWN"
+      ],
+      "description": "Current status"
+    },
+    "result": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "ERROR",
+        "FAILURE"
+      ],
+      "description": "Last execution result"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last execution start time"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last execution end time"
+    },
+    "active": {
+      "type": "boolean",
+      "description": "Whether the CronJob is active"
+    },
+    "triggerExpression": {
+      "type": "string",
+      "description": "Cron trigger expression"
+    }
+  }
+}

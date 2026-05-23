@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CronJobList",
+  "title": "CronJobList",
+  "type": "object",
+  "properties": {
+    "cronJobs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CronJob"
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AssistedSession",
+  "title": "AssistedSession",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "description": "Unique session identifier"
+    },
+    "agentId": {
+      "type": "string",
+      "description": "Agent identifier"
+    },
+    "customerId": {
+      "type": "string",
+      "description": "Customer being assisted"
+    },
+    "baseSite": {
+      "type": "string",
+      "description": "Base site context"
+    },
+    "cartId": {
+      "type": "string",
+      "description": "Active cart in the session"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Session start time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "ENDED"
+      ],
+      "description": "Session status"
+    }
+  }
+}

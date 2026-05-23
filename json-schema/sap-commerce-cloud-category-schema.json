@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Category",
+  "title": "Category",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Category code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Category name"
+    },
+    "url": {
+      "type": "string",
+      "description": "Category URL"
+    },
+    "image": {
+      "$ref": "#/components/schemas/Image"
+    },
+    "subcategories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Category"
+      }
+    }
+  }
+}

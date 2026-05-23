@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Breadcrumb",
+  "title": "Breadcrumb",
+  "type": "object",
+  "properties": {
+    "facetCode": {
+      "type": "string"
+    },
+    "facetName": {
+      "type": "string"
+    },
+    "facetValueCode": {
+      "type": "string"
+    },
+    "facetValueName": {
+      "type": "string"
+    },
+    "removeQuery": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

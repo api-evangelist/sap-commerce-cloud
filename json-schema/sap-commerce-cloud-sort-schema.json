@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Sort",
+  "title": "Sort",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Sort code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Sort display name"
+    },
+    "selected": {
+      "type": "boolean",
+      "description": "Whether this sort is selected"
+    }
+  }
+}

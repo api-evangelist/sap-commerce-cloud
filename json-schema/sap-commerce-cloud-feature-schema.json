@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Feature",
+  "title": "Feature",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Feature code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Feature name"
+    },
+    "comparable": {
+      "type": "boolean",
+      "description": "Whether this feature supports comparison"
+    },
+    "featureUnit": {
+      "type": "object",
+      "properties": {
+        "symbol": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "featureValues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

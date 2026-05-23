@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CartList",
+  "title": "CartList",
+  "type": "object",
+  "properties": {
+    "carts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CartSummary"
+      }
+    }
+  }
+}

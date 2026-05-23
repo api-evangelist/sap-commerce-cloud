@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Stock",
+  "title": "Stock",
+  "type": "object",
+  "properties": {
+    "stockLevelStatus": {
+      "type": "string",
+      "enum": [
+        "inStock",
+        "lowStock",
+        "outOfStock"
+      ],
+      "description": "Stock level status"
+    },
+    "stockLevel": {
+      "type": "integer",
+      "description": "Actual stock level quantity"
+    }
+  }
+}

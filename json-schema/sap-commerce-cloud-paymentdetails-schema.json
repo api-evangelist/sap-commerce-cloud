@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentDetails",
+  "title": "PaymentDetails",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Payment details identifier"
+    },
+    "accountHolderName": {
+      "type": "string",
+      "description": "Card holder name"
+    },
+    "cardNumber": {
+      "type": "string",
+      "description": "Masked card number"
+    },
+    "cardType": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Card type code"
+        },
+        "name": {
+          "type": "string",
+          "description": "Card type name"
+        }
+      }
+    },
+    "expiryMonth": {
+      "type": "string",
+      "description": "Card expiry month"
+    },
+    "expiryYear": {
+      "type": "string",
+      "description": "Card expiry year"
+    },
+    "billingAddress": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "defaultPayment": {
+      "type": "boolean",
+      "description": "Whether this is the default payment method"
+    },
+    "saved": {
+      "type": "boolean",
+      "description": "Whether the payment details are saved"
+    }
+  }
+}

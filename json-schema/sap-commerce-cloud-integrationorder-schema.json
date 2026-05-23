@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IntegrationOrder",
+  "title": "IntegrationOrder",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Order code"
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Order date"
+    },
+    "status": {
+      "type": "string",
+      "description": "Order status"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Order currency ISO code"
+    },
+    "totalPrice": {
+      "type": "number",
+      "format": "double",
+      "description": "Total price"
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      },
+      "description": "Customer reference"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entryNumber": {
+            "type": "integer"
+          },
+          "productCode": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "integer"
+          },
+          "totalPrice": {
+            "type": "number",
+            "format": "double"
+          }
+        }
+      },
+      "description": "Order entries"
+    },
+    "integrationKey": {
+      "type": "string",
+      "description": "Unique integration key"
+    }
+  }
+}

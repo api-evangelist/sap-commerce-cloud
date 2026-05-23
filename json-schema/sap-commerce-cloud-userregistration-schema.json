@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserRegistration",
+  "title": "UserRegistration",
+  "type": "object",
+  "required": [
+    "uid",
+    "firstName",
+    "lastName",
+    "password"
+  ],
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "Email address as user ID"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name"
+    },
+    "password": {
+      "type": "string",
+      "format": "password",
+      "description": "Account password"
+    },
+    "titleCode": {
+      "type": "string",
+      "description": "Title code"
+    }
+  }
+}

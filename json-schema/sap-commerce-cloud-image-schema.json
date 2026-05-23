@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Image",
+  "title": "Image",
+  "type": "object",
+  "properties": {
+    "url": {
+      "type": "string",
+      "description": "Image URL"
+    },
+    "altText": {
+      "type": "string",
+      "description": "Alternative text"
+    },
+    "format": {
+      "type": "string",
+      "description": "Image format (e.g., thumbnail, product, zoom)"
+    },
+    "imageType": {
+      "type": "string",
+      "enum": [
+        "PRIMARY",
+        "GALLERY"
+      ],
+      "description": "Image type"
+    }
+  }
+}

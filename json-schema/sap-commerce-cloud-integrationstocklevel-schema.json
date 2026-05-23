@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IntegrationStockLevel",
+  "title": "IntegrationStockLevel",
+  "type": "object",
+  "properties": {
+    "productCode": {
+      "type": "string",
+      "description": "Product code"
+    },
+    "available": {
+      "type": "integer",
+      "description": "Available stock quantity"
+    },
+    "warehouse": {
+      "type": "string",
+      "description": "Warehouse identifier"
+    },
+    "reserved": {
+      "type": "integer",
+      "description": "Reserved stock quantity"
+    },
+    "preOrder": {
+      "type": "integer",
+      "description": "Pre-order stock quantity"
+    },
+    "releaseDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Stock release date"
+    },
+    "integrationKey": {
+      "type": "string",
+      "description": "Unique integration key"
+    }
+  }
+}

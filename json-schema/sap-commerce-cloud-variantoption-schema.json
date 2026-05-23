@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VariantOption",
+  "title": "VariantOption",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Variant product code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Variant name"
+    },
+    "url": {
+      "type": "string",
+      "description": "Variant URL"
+    },
+    "stock": {
+      "type": "object",
+      "properties": {
+        "stockLevelStatus": {
+          "type": "string",
+          "enum": [
+            "inStock",
+            "lowStock",
+            "outOfStock"
+          ]
+        }
+      }
+    },
+    "priceData": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "format": "double"
+        },
+        "currencyIso": {
+          "type": "string"
+        },
+        "formattedValue": {
+          "type": "string"
+        }
+      }
+    },
+    "variantOptionQualifiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "qualifier": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "image": {
+            "$ref": "#/components/schemas/Image"
+          }
+        }
+      }
+    }
+  }
+}

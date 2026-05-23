@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/User",
+  "title": "User",
+  "type": "object",
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "User unique identifier (email)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Full name"
+    },
+    "firstName": {
+      "type": "string",
+      "description": "First name"
+    },
+    "lastName": {
+      "type": "string",
+      "description": "Last name"
+    },
+    "titleCode": {
+      "type": "string",
+      "description": "Title code (mr, mrs, ms, etc.)"
+    },
+    "currency": {
+      "$ref": "#/components/schemas/Currency"
+    },
+    "language": {
+      "$ref": "#/components/schemas/Language"
+    },
+    "defaultAddress": {
+      "$ref": "#/components/schemas/Address"
+    },
+    "displayUid": {
+      "type": "string",
+      "description": "Display UID"
+    }
+  }
+}

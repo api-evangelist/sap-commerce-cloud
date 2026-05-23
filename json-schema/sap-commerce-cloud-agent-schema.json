@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Agent",
+  "title": "Agent",
+  "type": "object",
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "Agent unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Agent full name"
+    },
+    "email": {
+      "type": "string",
+      "description": "Agent email"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Agent permission groups"
+    }
+  }
+}

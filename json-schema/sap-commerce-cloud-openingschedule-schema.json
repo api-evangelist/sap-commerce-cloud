@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OpeningSchedule",
+  "title": "OpeningSchedule",
+  "type": "object",
+  "properties": {
+    "weekDayOpeningList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "weekDay": {
+            "type": "string"
+          },
+          "openingTime": {
+            "type": "object",
+            "properties": {
+              "formattedHour": {
+                "type": "string"
+              }
+            }
+          },
+          "closingTime": {
+            "type": "object",
+            "properties": {
+              "formattedHour": {
+                "type": "string"
+              }
+            }
+          },
+          "closed": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

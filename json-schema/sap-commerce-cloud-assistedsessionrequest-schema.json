@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AssistedSessionRequest",
+  "title": "AssistedSessionRequest",
+  "type": "object",
+  "required": [
+    "customerId",
+    "baseSite"
+  ],
+  "properties": {
+    "customerId": {
+      "type": "string",
+      "description": "Customer ID to assist"
+    },
+    "baseSite": {
+      "type": "string",
+      "description": "Base site identifier"
+    },
+    "cartId": {
+      "type": "string",
+      "description": "Optional specific cart to work with"
+    }
+  }
+}

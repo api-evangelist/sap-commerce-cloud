@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SystemMetrics",
+  "title": "SystemMetrics",
+  "type": "object",
+  "properties": {
+    "jvm": {
+      "type": "object",
+      "properties": {
+        "heapUsed": {
+          "type": "integer",
+          "description": "Heap memory used in bytes"
+        },
+        "heapMax": {
+          "type": "integer",
+          "description": "Maximum heap memory in bytes"
+        },
+        "threads": {
+          "type": "integer",
+          "description": "Active thread count"
+        },
+        "uptime": {
+          "type": "integer",
+          "description": "JVM uptime in milliseconds"
+        }
+      }
+    },
+    "database": {
+      "type": "object",
+      "properties": {
+        "activeConnections": {
+          "type": "integer",
+          "description": "Active database connections"
+        },
+        "maxConnections": {
+          "type": "integer",
+          "description": "Maximum pool connections"
+        },
+        "idleConnections": {
+          "type": "integer",
+          "description": "Idle connections"
+        }
+      }
+    },
+    "requests": {
+      "type": "object",
+      "properties": {
+        "totalCount": {
+          "type": "integer",
+          "description": "Total request count"
+        },
+        "averageResponseTime": {
+          "type": "number",
+          "format": "double",
+          "description": "Average response time in milliseconds"
+        },
+        "errorRate": {
+          "type": "number",
+          "format": "double",
+          "description": "Error rate percentage"
+        }
+      }
+    }
+  }
+}

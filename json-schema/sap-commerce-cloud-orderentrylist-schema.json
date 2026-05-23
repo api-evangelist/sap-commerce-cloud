@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrderEntryList",
+  "title": "OrderEntryList",
+  "type": "object",
+  "properties": {
+    "orderEntries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OrderEntry"
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FacetValue",
+  "title": "FacetValue",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Facet value name"
+    },
+    "count": {
+      "type": "integer",
+      "description": "Number of results"
+    },
+    "selected": {
+      "type": "boolean",
+      "description": "Whether this value is selected"
+    },
+    "query": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

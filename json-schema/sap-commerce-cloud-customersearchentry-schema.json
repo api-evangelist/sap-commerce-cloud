@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerSearchEntry",
+  "title": "CustomerSearchEntry",
+  "type": "object",
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "Customer email or UID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Customer full name"
+    },
+    "customerId": {
+      "type": "string",
+      "description": "Customer ID"
+    },
+    "lastCartId": {
+      "type": "string",
+      "description": "ID of the customer's most recent cart"
+    },
+    "hasOrder": {
+      "type": "boolean",
+      "description": "Whether the customer has placed orders"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StoreFinderStockSearchPage",
+  "title": "StoreFinderStockSearchPage",
+  "type": "object",
+  "properties": {
+    "stores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pointOfService": {
+            "$ref": "#/components/schemas/PointOfService"
+          },
+          "stockInfo": {
+            "$ref": "#/components/schemas/Stock"
+          }
+        }
+      }
+    },
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    }
+  }
+}

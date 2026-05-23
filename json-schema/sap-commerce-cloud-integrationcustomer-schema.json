@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IntegrationCustomer",
+  "title": "IntegrationCustomer",
+  "type": "object",
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "Customer unique identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Customer full name"
+    },
+    "customerID": {
+      "type": "string",
+      "description": "Customer ID"
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "streetname": {
+            "type": "string"
+          },
+          "streetnumber": {
+            "type": "string"
+          },
+          "postalcode": {
+            "type": "string"
+          },
+          "town": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Customer addresses"
+    },
+    "integrationKey": {
+      "type": "string",
+      "description": "Unique integration key"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrderEntry",
+  "title": "OrderEntry",
+  "type": "object",
+  "properties": {
+    "entryNumber": {
+      "type": "integer",
+      "description": "Entry number (zero-based)"
+    },
+    "product": {
+      "$ref": "#/components/schemas/Product"
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "Quantity"
+    },
+    "basePrice": {
+      "$ref": "#/components/schemas/Price"
+    },
+    "totalPrice": {
+      "$ref": "#/components/schemas/Price"
+    },
+    "updateable": {
+      "type": "boolean",
+      "description": "Whether the entry can be updated"
+    }
+  }
+}

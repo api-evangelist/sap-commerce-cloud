@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TicketSummary",
+  "title": "TicketSummary",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Ticket identifier"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Ticket subject"
+    },
+    "status": {
+      "type": "string",
+      "description": "Ticket status"
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Ticket creation date"
+    }
+  }
+}

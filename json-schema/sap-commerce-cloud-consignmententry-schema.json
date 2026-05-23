@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ConsignmentEntry",
+  "title": "ConsignmentEntry",
+  "type": "object",
+  "properties": {
+    "orderEntry": {
+      "$ref": "#/components/schemas/OrderEntry"
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "Shipped quantity"
+    },
+    "shippedQuantity": {
+      "type": "integer",
+      "description": "Actual shipped quantity"
+    }
+  }
+}

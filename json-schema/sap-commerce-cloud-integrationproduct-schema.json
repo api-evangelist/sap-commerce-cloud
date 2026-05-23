@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IntegrationProduct",
+  "title": "IntegrationProduct",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Product code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Product description"
+    },
+    "catalogVersion": {
+      "type": "string",
+      "description": "Catalog version reference"
+    },
+    "approvalStatus": {
+      "type": "string",
+      "enum": [
+        "approved",
+        "unapproved",
+        "check"
+      ],
+      "description": "Product approval status"
+    },
+    "ean": {
+      "type": "string",
+      "description": "European Article Number"
+    },
+    "unit": {
+      "type": "string",
+      "description": "Unit of measure"
+    },
+    "supercategories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Parent category references"
+    },
+    "integrationKey": {
+      "type": "string",
+      "description": "Unique integration key"
+    }
+  }
+}

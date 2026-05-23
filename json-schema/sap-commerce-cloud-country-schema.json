@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Country",
+  "title": "Country",
+  "type": "object",
+  "properties": {
+    "isocode": {
+      "type": "string",
+      "description": "ISO 3166-1 alpha-2 country code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Country name"
+    }
+  }
+}

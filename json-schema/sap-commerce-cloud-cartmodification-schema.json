@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CartModification",
+  "title": "CartModification",
+  "type": "object",
+  "properties": {
+    "statusCode": {
+      "type": "string",
+      "description": "Status of the modification"
+    },
+    "quantity": {
+      "type": "integer",
+      "description": "Quantity added"
+    },
+    "quantityAdded": {
+      "type": "integer",
+      "description": "Actual quantity added"
+    },
+    "entry": {
+      "$ref": "#/components/schemas/OrderEntry"
+    },
+    "statusMessage": {
+      "type": "string",
+      "description": "Status message"
+    }
+  }
+}

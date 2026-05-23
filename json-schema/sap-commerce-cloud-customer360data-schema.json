@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Customer360Data",
+  "title": "Customer360Data",
+  "type": "object",
+  "properties": {
+    "overview": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Customer name"
+        },
+        "email": {
+          "type": "string",
+          "description": "Customer email"
+        },
+        "signedUpDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Registration date"
+        },
+        "address": {
+          "type": "object",
+          "properties": {
+            "town": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "latestActivity": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Activity type"
+        },
+        "description": {
+          "type": "string",
+          "description": "Activity description"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "recentOrders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/OrderSummary"
+      }
+    },
+    "activeCarts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CartSummary"
+      }
+    },
+    "supportTickets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/TicketSummary"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CatalogVersion",
+  "title": "CatalogVersion",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Catalog version identifier"
+    },
+    "url": {
+      "type": "string",
+      "description": "Catalog version URL"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Category"
+      }
+    }
+  }
+}

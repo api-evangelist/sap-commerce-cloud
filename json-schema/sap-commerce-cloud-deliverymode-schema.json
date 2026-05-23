@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DeliveryMode",
+  "title": "DeliveryMode",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Delivery mode code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Delivery mode name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Delivery mode description"
+    },
+    "deliveryCost": {
+      "$ref": "#/components/schemas/Price"
+    }
+  }
+}

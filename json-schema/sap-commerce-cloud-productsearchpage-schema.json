@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProductSearchPage",
+  "title": "ProductSearchPage",
+  "type": "object",
+  "properties": {
+    "products": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Product"
+      }
+    },
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "sorts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Sort"
+      }
+    },
+    "freeTextSearch": {
+      "type": "string",
+      "description": "Search query that was executed"
+    },
+    "currentQuery": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "string"
+            }
+          }
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "facets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Facet"
+      },
+      "description": "Search facets for filtering"
+    },
+    "breadcrumbs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Breadcrumb"
+      }
+    }
+  }
+}

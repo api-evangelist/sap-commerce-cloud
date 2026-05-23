@@ -1,0 +1,698 @@
+{
+  "provider": "SAP Commerce Cloud",
+  "providerId": "sap-commerce-cloud",
+  "kind": "json-structure",
+  "description": "Structural overview of the SAP Commerce Cloud API surface; extracted from openapi/.",
+  "schemaCount": 49,
+  "operationCount": 43,
+  "schemas": [
+    {
+      "name": "Product",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "ProductSearchPage",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "Price",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Stock",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Image",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Category",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Catalog",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "CatalogVersion",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "CatalogList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Cart",
+      "type": "object",
+      "propertyCount": 17,
+      "required": []
+    },
+    {
+      "name": "CartList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CartModification",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "OrderEntry",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "OrderEntryList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Order",
+      "type": "object",
+      "propertyCount": 16,
+      "required": []
+    },
+    {
+      "name": "OrderHistoryList",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Consignment",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "ConsignmentEntry",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "User",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "UserRegistration",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "uid",
+        "firstName",
+        "lastName",
+        "password"
+      ]
+    },
+    {
+      "name": "Address",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "AddressList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Country",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Region",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Currency",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Language",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "DeliveryMode",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "DeliveryModeList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PaymentDetails",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "PaymentDetailsList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Voucher",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "VoucherList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Promotion",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ConsentTemplate",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "ConsentTemplateList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "PointOfService",
+      "type": "object",
+      "propertyCount": 8,
+      "required": []
+    },
+    {
+      "name": "GeoPoint",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "OpeningSchedule",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "StoreFinderSearchPage",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "StoreFinderStockSearchPage",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Classification",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Review",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ReviewList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Principal",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Facet",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "FacetValue",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Breadcrumb",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "Pagination",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "Sort",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/products",
+      "operationId": "searchProducts",
+      "summary": "SAP Commerce Cloud Search products",
+      "tags": [
+        "Products"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/products/{productCode}",
+      "operationId": "getProduct",
+      "summary": "SAP Commerce Cloud Get product details",
+      "tags": [
+        "Products"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/products/{productCode}/reviews",
+      "operationId": "getProductReviews",
+      "summary": "SAP Commerce Cloud Get product reviews",
+      "tags": [
+        "Products"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/products/{productCode}/reviews",
+      "operationId": "createProductReview",
+      "summary": "SAP Commerce Cloud Create a product review",
+      "tags": [
+        "Products"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/products/{productCode}/stock",
+      "operationId": "getProductStock",
+      "summary": "SAP Commerce Cloud Get product stock levels",
+      "tags": [
+        "Products"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/catalogs",
+      "operationId": "getCatalogs",
+      "summary": "SAP Commerce Cloud List catalogs",
+      "tags": [
+        "Catalogs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/catalogs/{catalogId}",
+      "operationId": "getCatalog",
+      "summary": "SAP Commerce Cloud Get catalog details",
+      "tags": [
+        "Catalogs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/catalogs/{catalogId}/{catalogVersionId}/categories/{categoryId}",
+      "operationId": "getCatalogCategory",
+      "summary": "SAP Commerce Cloud Get category details",
+      "tags": [
+        "Catalogs"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/carts",
+      "operationId": "getUserCarts",
+      "summary": "SAP Commerce Cloud List user carts",
+      "tags": [
+        "Cart"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{userId}/carts",
+      "operationId": "createCart",
+      "summary": "SAP Commerce Cloud Create a new cart",
+      "tags": [
+        "Cart"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/carts/{cartId}",
+      "operationId": "getCart",
+      "summary": "SAP Commerce Cloud Get cart details",
+      "tags": [
+        "Cart"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{userId}/carts/{cartId}",
+      "operationId": "deleteCart",
+      "summary": "SAP Commerce Cloud Delete a cart",
+      "tags": [
+        "Cart"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/carts/{cartId}/entries",
+      "operationId": "getCartEntries",
+      "summary": "SAP Commerce Cloud List cart entries",
+      "tags": [
+        "Cart"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{userId}/carts/{cartId}/entries",
+      "operationId": "addCartEntry",
+      "summary": "SAP Commerce Cloud Add entry to cart",
+      "tags": [
+        "Cart"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{userId}/carts/{cartId}/entries/{entryNumber}",
+      "operationId": "removeCartEntry",
+      "summary": "SAP Commerce Cloud Remove cart entry",
+      "tags": [
+        "Cart"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/{userId}/carts/{cartId}/entries/{entryNumber}",
+      "operationId": "updateCartEntry",
+      "summary": "SAP Commerce Cloud Update cart entry",
+      "tags": [
+        "Cart"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/users/{userId}/carts/{cartId}/deliveryaddress",
+      "operationId": "setCartDeliveryAddress",
+      "summary": "SAP Commerce Cloud Set delivery address",
+      "tags": [
+        "Checkout"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{userId}/carts/{cartId}/deliveryaddress",
+      "operationId": "removeCartDeliveryAddress",
+      "summary": "SAP Commerce Cloud Remove delivery address",
+      "tags": [
+        "Checkout"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/carts/{cartId}/deliverymode",
+      "operationId": "getCartDeliveryMode",
+      "summary": "SAP Commerce Cloud Get delivery mode",
+      "tags": [
+        "Checkout"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/users/{userId}/carts/{cartId}/deliverymode",
+      "operationId": "setCartDeliveryMode",
+      "summary": "SAP Commerce Cloud Set delivery mode",
+      "tags": [
+        "Checkout"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{userId}/carts/{cartId}/deliverymode",
+      "operationId": "removeCartDeliveryMode",
+      "summary": "SAP Commerce Cloud Remove delivery mode",
+      "tags": [
+        "Checkout"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/carts/{cartId}/deliverymodes",
+      "operationId": "getCartDeliveryModes",
+      "summary": "SAP Commerce Cloud List delivery modes",
+      "tags": [
+        "Checkout"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{userId}/carts/{cartId}/paymentdetails",
+      "operationId": "createCartPaymentDetails",
+      "summary": "SAP Commerce Cloud Create payment details",
+      "tags": [
+        "Checkout"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/carts/{cartId}/vouchers",
+      "operationId": "getCartVouchers",
+      "summary": "SAP Commerce Cloud List applied vouchers",
+      "tags": [
+        "Promotions"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{userId}/carts/{cartId}/vouchers",
+      "operationId": "applyCartVoucher",
+      "summary": "SAP Commerce Cloud Apply voucher to cart",
+      "tags": [
+        "Promotions"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{userId}/carts/{cartId}/vouchers/{voucherId}",
+      "operationId": "removeCartVoucher",
+      "summary": "SAP Commerce Cloud Remove voucher from cart",
+      "tags": [
+        "Promotions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/orders",
+      "operationId": "getUserOrders",
+      "summary": "SAP Commerce Cloud List user orders",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{userId}/orders",
+      "operationId": "placeOrder",
+      "summary": "SAP Commerce Cloud Place an order",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/orders/{orderCode}",
+      "operationId": "getOrder",
+      "summary": "SAP Commerce Cloud Get order details",
+      "tags": [
+        "Orders"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}",
+      "operationId": "getUser",
+      "summary": "SAP Commerce Cloud Get user profile",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/users/{userId}",
+      "operationId": "updateUser",
+      "summary": "SAP Commerce Cloud Update user profile",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{userId}",
+      "operationId": "deleteUser",
+      "summary": "SAP Commerce Cloud Delete user account",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users",
+      "operationId": "registerUser",
+      "summary": "SAP Commerce Cloud Register a new user",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/addresses",
+      "operationId": "getUserAddresses",
+      "summary": "SAP Commerce Cloud List user addresses",
+      "tags": [
+        "Addresses"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{userId}/addresses",
+      "operationId": "createUserAddress",
+      "summary": "SAP Commerce Cloud Create a user address",
+      "tags": [
+        "Addresses"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/addresses/{addressId}",
+      "operationId": "getUserAddress",
+      "summary": "SAP Commerce Cloud Get user address",
+      "tags": [
+        "Addresses"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{userId}/addresses/{addressId}",
+      "operationId": "deleteUserAddress",
+      "summary": "SAP Commerce Cloud Delete user address",
+      "tags": [
+        "Addresses"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/users/{userId}/addresses/{addressId}",
+      "operationId": "updateUserAddress",
+      "summary": "SAP Commerce Cloud Update user address",
+      "tags": [
+        "Addresses"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/paymentdetails",
+      "operationId": "getUserPaymentDetails",
+      "summary": "SAP Commerce Cloud List user payment details",
+      "tags": [
+        "Users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{userId}/consenttemplates",
+      "operationId": "getConsentTemplates",
+      "summary": "SAP Commerce Cloud List consent templates",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{userId}/consents",
+      "operationId": "giveConsent",
+      "summary": "SAP Commerce Cloud Give consent",
+      "tags": [
+        "Consents"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stores",
+      "operationId": "searchStores",
+      "summary": "SAP Commerce Cloud Search stores",
+      "tags": [
+        "Stores"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/stores/{storeId}",
+      "operationId": "getStore",
+      "summary": "SAP Commerce Cloud Get store details",
+      "tags": [
+        "Stores"
+      ]
+    }
+  ]
+}

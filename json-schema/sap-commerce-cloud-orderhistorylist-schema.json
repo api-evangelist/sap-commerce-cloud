@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrderHistoryList",
+  "title": "OrderHistoryList",
+  "type": "object",
+  "properties": {
+    "orders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Order"
+      }
+    },
+    "pagination": {
+      "$ref": "#/components/schemas/Pagination"
+    },
+    "sorts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Sort"
+      }
+    }
+  }
+}

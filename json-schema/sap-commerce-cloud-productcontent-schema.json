@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProductContent",
+  "title": "ProductContent",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Product code"
+    },
+    "name": {
+      "type": "string",
+      "description": "Product name"
+    },
+    "summary": {
+      "type": "string",
+      "description": "Short summary"
+    },
+    "description": {
+      "type": "string",
+      "description": "Full HTML description"
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Manufacturer name"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Image"
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CategoryRef"
+      }
+    },
+    "classifications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Classification"
+      }
+    },
+    "productReferences": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ProductReference"
+      }
+    },
+    "variantOptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/VariantOption"
+      }
+    },
+    "baseOptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/BaseOption"
+      }
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Product keywords for search"
+    }
+  }
+}
