@@ -1,0 +1,410 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Integration API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundProduct/Products",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to return"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Property name and direction for sorting"
+              }
+            ]
+          },
+          "docs": "Retrieve products through the inbound product integration object. Supports OData query options for filtering, sorting, and pagination."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create or update a product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundProduct/Products",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update product data through the inbound integration layer."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get product by integration key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundProduct/Products(':integrationKey')",
+            "params": [
+              {
+                "name": "integrationKey",
+                "value": "",
+                "type": "path",
+                "description": "Integration key (composite key identifying the entity)"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to return"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific product by its integration key."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Update a product",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundProduct/Products(':integrationKey')",
+            "params": [
+              {
+                "name": "integrationKey",
+                "value": "",
+                "type": "path",
+                "description": "Integration key (composite key identifying the entity)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially update product data through the integration layer."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Delete a product",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundProduct/Products(':integrationKey')",
+            "params": [
+              {
+                "name": "integrationKey",
+                "value": "",
+                "type": "path",
+                "description": "Integration key (composite key identifying the entity)"
+              }
+            ]
+          },
+          "docs": "Delete a product through the integration layer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundCustomer/Customers",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to return"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip"
+              }
+            ]
+          },
+          "docs": "Retrieve customer data through the inbound customer integration object."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create or update a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundCustomer/Customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update customer data through the inbound integration layer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundOrder/Orders",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to return"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Property name and direction for sorting"
+              }
+            ]
+          },
+          "docs": "Retrieve order data through the inbound order integration object."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create or update an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundOrder/Orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update order data through the inbound integration layer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stock",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List stock levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundStockLevel/StockLevels",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip"
+              }
+            ]
+          },
+          "docs": "Retrieve stock level data through the inbound stock integration object."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create or update stock level",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundStockLevel/StockLevels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update stock level data through the inbound integration layer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalogs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List classification systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/InboundClassification/ClassificationSystems",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip"
+              }
+            ]
+          },
+          "docs": "Retrieve classification system data for product categorization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get service metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/odata2webservices/$metadata"
+          },
+          "docs": "Retrieve the OData service metadata document describing all available entity types and associations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

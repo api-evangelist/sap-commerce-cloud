@@ -1,0 +1,1338 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Commerce Web Services API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Search products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/products",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search query"
+              },
+              {
+                "name": "currentPage",
+                "value": "",
+                "type": "query",
+                "description": "Current page number (zero-based)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort criteria (e.g., relevance, topRated, name-asc, price-asc)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Search for products using free-text search, category filtering, and faceted navigation. Supports pagination, sorting, and spell checking."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get product details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/products/:productCode",
+            "params": [
+              {
+                "name": "productCode",
+                "value": "",
+                "type": "path",
+                "description": "Product code"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve detailed information about a specific product including descriptions, images, prices, reviews, and classifications."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get product reviews",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/products/:productCode/reviews",
+            "params": [
+              {
+                "name": "productCode",
+                "value": "",
+                "type": "path",
+                "description": "Product code"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve customer reviews for a specific product."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create a product review",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/products/:productCode/reviews",
+            "params": [
+              {
+                "name": "productCode",
+                "value": "",
+                "type": "path",
+                "description": "Product code"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a new customer review for a product."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get product stock levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/products/:productCode/stock",
+            "params": [
+              {
+                "name": "productCode",
+                "value": "",
+                "type": "path",
+                "description": "Product code"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query",
+                "description": "Location for store stock lookup"
+              }
+            ]
+          },
+          "docs": "Retrieve stock level information for a product across stores."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalogs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List catalogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/catalogs",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all product catalogs available for the base site."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get catalog details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/catalogs/:catalogId",
+            "params": [
+              {
+                "name": "catalogId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific catalog."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get category details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/catalogs/:catalogId/:catalogVersionId/categories/:categoryId",
+            "params": [
+              {
+                "name": "catalogId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog identifier"
+              },
+              {
+                "name": "catalogVersionId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog version identifier"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "path",
+                "description": "Category identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific category within a catalog version."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List user carts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all shopping carts for a specific user."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create a new cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "oldCartId",
+                "value": "",
+                "type": "query",
+                "description": "Anonymous cart ID to merge"
+              }
+            ]
+          },
+          "docs": "Create a new shopping cart for the user. Can optionally merge an anonymous cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get cart details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific shopping cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Delete a cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ]
+          },
+          "docs": "Delete a specific shopping cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List cart entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/entries",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all entries (line items) in a shopping cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Add entry to cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/entries",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a product to the shopping cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Update cart entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/entries/:entryNumber",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "entryNumber",
+                "value": "",
+                "type": "path",
+                "description": "Cart entry number (zero-based index)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the quantity of an existing cart entry."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Remove cart entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/entries/:entryNumber",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "entryNumber",
+                "value": "",
+                "type": "path",
+                "description": "Cart entry number (zero-based index)"
+              }
+            ]
+          },
+          "docs": "Remove a specific entry from the shopping cart."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Checkout",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Set delivery address",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/deliveryaddress",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "addressId",
+                "value": "",
+                "type": "query",
+                "description": "Address identifier"
+              }
+            ]
+          },
+          "docs": "Set the delivery address for the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Remove delivery address",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/deliveryaddress",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ]
+          },
+          "docs": "Remove the delivery address from the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get delivery mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/deliverymode",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Get the current delivery mode for the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Set delivery mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/deliverymode",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "deliveryModeId",
+                "value": "",
+                "type": "query",
+                "description": "Delivery mode identifier"
+              }
+            ]
+          },
+          "docs": "Set the delivery mode for the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Remove delivery mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/deliverymode",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ]
+          },
+          "docs": "Remove the delivery mode from the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List delivery modes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/deliverymodes",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all available delivery modes for the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create payment details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/paymentdetails",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add payment details to the cart for checkout."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Promotions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List applied vouchers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/vouchers",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all vouchers applied to the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Apply voucher to cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/vouchers",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "voucherId",
+                "value": "",
+                "type": "query",
+                "description": "Voucher code"
+              }
+            ]
+          },
+          "docs": "Apply a voucher code to the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Remove voucher from cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/carts/:cartId/vouchers/:voucherId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "voucherId",
+                "value": "",
+                "type": "path",
+                "description": "Voucher code"
+              }
+            ]
+          },
+          "docs": "Remove a previously applied voucher from the cart."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List user orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/orders",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "currentPage",
+                "value": "",
+                "type": "query",
+                "description": "Current page number (zero-based)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort criteria (e.g., relevance, topRated, name-asc, price-asc)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve order history for a specific user with pagination."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Place an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/orders",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "query",
+                "description": "Cart identifier to convert to order"
+              },
+              {
+                "name": "termsChecked",
+                "value": "",
+                "type": "query",
+                "description": "Whether terms and conditions have been accepted"
+              }
+            ]
+          },
+          "docs": "Authorize the cart and place the order. The cart must have a delivery address, delivery mode, and payment details set."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get order details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/orders/:orderCode",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "orderCode",
+                "value": "",
+                "type": "path",
+                "description": "Order code"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific order."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve the profile of a specific user. Use 'current' as userId for the currently authenticated user, or 'anonymous' for guest users."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Update user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the profile of a specific user."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Delete user account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              }
+            ]
+          },
+          "docs": "Delete or deactivate a user account."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Register a new user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a new customer account."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List user payment details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/paymentdetails",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all saved payment details for a user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Addresses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List user addresses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/addresses",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all addresses for a specific user."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create a user address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/addresses",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new address to the user's address book."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get user address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/addresses/:addressId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "addressId",
+                "value": "",
+                "type": "path",
+                "description": "Address identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve a specific address from the user's address book."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Update user address",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/addresses/:addressId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "addressId",
+                "value": "",
+                "type": "path",
+                "description": "Address identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific address in the user's address book."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Delete user address",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/addresses/:addressId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "addressId",
+                "value": "",
+                "type": "path",
+                "description": "Address identifier"
+              }
+            ]
+          },
+          "docs": "Remove an address from the user's address book."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Consents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List consent templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/consenttemplates",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all consent templates available for the user."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Give consent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/users/:userId/consents",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "consentTemplateId",
+                "value": "",
+                "type": "query",
+                "description": "Consent template identifier"
+              },
+              {
+                "name": "consentTemplateVersion",
+                "value": "",
+                "type": "query",
+                "description": "Consent template version"
+              }
+            ]
+          },
+          "docs": "Give consent for a specific consent template."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Search stores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/stores",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search query"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude for location-based search"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude for location-based search"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in meters"
+              },
+              {
+                "name": "currentPage",
+                "value": "",
+                "type": "query",
+                "description": "Current page number (zero-based)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort criteria (e.g., relevance, topRated, name-asc, price-asc)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Search for physical stores by location, coordinates, or query string."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get store details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}/stores/:storeId",
+            "params": [
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "path",
+                "description": "Store identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific physical store."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

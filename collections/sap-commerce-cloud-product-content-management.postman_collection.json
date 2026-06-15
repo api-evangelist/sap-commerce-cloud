@@ -1,0 +1,1588 @@
+{
+  "item": [
+    {
+      "id": "fb6e7f1a-54e5-4b49-b494-903d0f365850",
+      "name": "Catalogs",
+      "description": {
+        "content": "Catalog version and synchronization",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84113042-5911-4bca-90fb-54de43879422",
+          "name": "SAP Commerce Cloud Get catalog version details",
+          "request": {
+            "name": "SAP Commerce Cloud Get catalog version details",
+            "description": {
+              "content": "Retrieve details of a specific catalog version including categories and their content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalogs",
+                ":catalogId",
+                ":catalogVersionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogId",
+                  "description": "(Required) Catalog identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogVersionId",
+                  "description": "(Required) Catalog version (e.g., Online, Staged)"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                },
+                {
+                  "description": "Base site identifier",
+                  "type": "any",
+                  "value": "{{baseSiteId}}",
+                  "key": "baseSiteId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f66068d2-5c75-463a-9dee-f32414103f97",
+              "name": "Catalog version details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version (e.g., Online, Staged)"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"lastModifiedTime\": \"2002-07-19T13:23:39.115Z\",\n  \"url\": \"string\",\n  \"categories\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7ec12f2-eeac-4426-a1c3-cef7b9486f42",
+              "name": "Catalog version not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version (e.g., Online, Staged)"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3ef4675e-cf2a-4111-b2f9-4dd83e2ef910",
+      "name": "Categories",
+      "description": {
+        "content": "Category content management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e8f07d45-8d74-412d-a4e1-d7a4a7a16d8c",
+          "name": "SAP Commerce Cloud Get category content",
+          "request": {
+            "name": "SAP Commerce Cloud Get category content",
+            "description": {
+              "content": "Retrieve content for a specific category including images, descriptions, and subcategories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalogs",
+                ":catalogId",
+                ":catalogVersionId",
+                "categories",
+                ":categoryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogId",
+                  "description": "(Required) Catalog identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogVersionId",
+                  "description": "(Required) Catalog version identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "categoryId",
+                  "description": "(Required) Category identifier"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                },
+                {
+                  "description": "Base site identifier",
+                  "type": "any",
+                  "value": "{{baseSiteId}}",
+                  "key": "baseSiteId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a83fdf28-0296-4f59-a9bd-50bb43758ed3",
+              "name": "Category content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId",
+                    "categories",
+                    ":categoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "categoryId",
+                      "description": "(Required) Category identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"image\": {\n    \"url\": \"string\",\n    \"altText\": \"string\",\n    \"format\": \"string\",\n    \"imageType\": \"PRIMARY\",\n    \"galleryIndex\": 7888\n  },\n  \"subcategories\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"products\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42b0f145-54f5-4383-b3f5-a3bdb5cd2c0a",
+              "name": "Category not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId",
+                    "categories",
+                    ":categoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "categoryId",
+                      "description": "(Required) Category identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "83010d27-f70c-4648-8c0e-4a405af21af9",
+      "name": "Classifications",
+      "description": {
+        "content": "Product classification and attributes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b0c33735-6eb5-4e20-bd9a-8b36a4810975",
+          "name": "SAP Commerce Cloud Get product classifications",
+          "request": {
+            "name": "SAP Commerce Cloud Get product classifications",
+            "description": {
+              "content": "Retrieve classification attributes and feature values for a product across classification categories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":productCode",
+                "classifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productCode",
+                  "description": "(Required) Product code"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                },
+                {
+                  "description": "Base site identifier",
+                  "type": "any",
+                  "value": "{{baseSiteId}}",
+                  "key": "baseSiteId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ca5ee8d-1f95-4e5e-b447-5e7c86621f70",
+              "name": "Product classifications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":productCode",
+                    "classifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productCode",
+                      "description": "(Required) Product code"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"classifications\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"features\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": false,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": true,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"features\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": true,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": true,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "430600d2-7b66-43d8-9728-069302b1d909",
+      "name": "Media",
+      "description": {
+        "content": "Media and image management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8e11e3f-fa21-460c-87ca-c04f725c0965",
+          "name": "SAP Commerce Cloud Get product images",
+          "request": {
+            "name": "SAP Commerce Cloud Get product images",
+            "description": {
+              "content": "Retrieve all images associated with a product, including primary, gallery, and zoom images.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":productCode",
+                "images"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productCode",
+                  "description": "(Required) Product code"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                },
+                {
+                  "description": "Base site identifier",
+                  "type": "any",
+                  "value": "{{baseSiteId}}",
+                  "key": "baseSiteId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "533e1c96-2515-4ffe-8bd7-3f58a3feebb6",
+              "name": "Product images",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":productCode",
+                    "images"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productCode",
+                      "description": "(Required) Product code"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"images\": [\n    {\n      \"url\": \"string\",\n      \"altText\": \"string\",\n      \"format\": \"string\",\n      \"imageType\": \"GALLERY\",\n      \"galleryIndex\": 4526\n    },\n    {\n      \"url\": \"string\",\n      \"altText\": \"string\",\n      \"format\": \"string\",\n      \"imageType\": \"PRIMARY\",\n      \"galleryIndex\": 5413\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "aa359af9-d66a-44f1-aed6-d4bb3be816ec",
+      "name": "Products",
+      "description": {
+        "content": "Product content operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2af3774-7c9e-4c5b-8082-fc46ad45f746",
+          "name": "SAP Commerce Cloud Get product content",
+          "request": {
+            "name": "SAP Commerce Cloud Get product content",
+            "description": {
+              "content": "Retrieve full product content including descriptions, images, classifications, and attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":productCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productCode",
+                  "description": "(Required) Product code"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                },
+                {
+                  "description": "Base site identifier",
+                  "type": "any",
+                  "value": "{{baseSiteId}}",
+                  "key": "baseSiteId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac0c7155-49f4-460b-9c39-1e6a1158c224",
+              "name": "Product content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":productCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productCode",
+                      "description": "(Required) Product code"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"summary\": \"string\",\n  \"description\": \"string\",\n  \"manufacturer\": \"string\",\n  \"images\": [\n    {\n      \"url\": \"string\",\n      \"altText\": \"string\",\n      \"format\": \"string\",\n      \"imageType\": \"PRIMARY\",\n      \"galleryIndex\": 4660\n    },\n    {\n      \"url\": \"string\",\n      \"altText\": \"string\",\n      \"format\": \"string\",\n      \"imageType\": \"PRIMARY\",\n      \"galleryIndex\": 2349\n    }\n  ],\n  \"categories\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"classifications\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"features\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": false,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": false,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"features\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": false,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": false,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"productReferences\": [\n    {\n      \"referenceType\": \"UPSELLING\",\n      \"target\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      \"description\": \"string\"\n    },\n    {\n      \"referenceType\": \"OTHERS\",\n      \"target\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      \"description\": \"string\"\n    }\n  ],\n  \"variantOptions\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"stock\": {\n        \"stockLevelStatus\": \"lowStock\"\n      },\n      \"priceData\": {\n        \"value\": 8499.779959744854,\n        \"currencyIso\": \"string\",\n        \"formattedValue\": \"string\"\n      },\n      \"variantOptionQualifiers\": [\n        {\n          \"qualifier\": \"string\",\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"image\": {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\",\n            \"galleryIndex\": 8134\n          }\n        },\n        {\n          \"qualifier\": \"string\",\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"image\": {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"GALLERY\",\n            \"galleryIndex\": 516\n          }\n        }\n      ]\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"stock\": {\n        \"stockLevelStatus\": \"lowStock\"\n      },\n      \"priceData\": {\n        \"value\": 1860.7171668697874,\n        \"currencyIso\": \"string\",\n        \"formattedValue\": \"string\"\n      },\n      \"variantOptionQualifiers\": [\n        {\n          \"qualifier\": \"string\",\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"image\": {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\",\n            \"galleryIndex\": 7287\n          }\n        },\n        {\n          \"qualifier\": \"string\",\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"image\": {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"GALLERY\",\n            \"galleryIndex\": 5870\n          }\n        }\n      ]\n    }\n  ],\n  \"baseOptions\": [\n    {\n      \"variantType\": \"string\",\n      \"options\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"stock\": {\n            \"stockLevelStatus\": \"inStock\"\n          },\n          \"priceData\": {\n            \"value\": 733.404133537503,\n            \"currencyIso\": \"string\",\n            \"formattedValue\": \"string\"\n          },\n          \"variantOptionQualifiers\": [\n            {\n              \"qualifier\": \"string\",\n              \"name\": \"string\",\n              \"value\": \"string\",\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"qualifier\": \"string\",\n              \"name\": \"string\",\n              \"value\": \"string\",\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"stock\": {\n            \"stockLevelStatus\": \"outOfStock\"\n          },\n          \"priceData\": {\n            \"value\": 7561.8587932073215,\n            \"currencyIso\": \"string\",\n            \"formattedValue\": \"string\"\n          },\n          \"variantOptionQualifiers\": [\n            {\n              \"qualifier\": \"string\",\n              \"name\": \"string\",\n              \"value\": \"string\",\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"qualifier\": \"string\",\n              \"name\": \"string\",\n              \"value\": \"string\",\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"selected\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"stock\": {\n          \"stockLevelStatus\": \"outOfStock\"\n        },\n        \"priceData\": {\n          \"value\": 3361.595927299219,\n          \"currencyIso\": \"string\",\n          \"formattedValue\": \"string\"\n        },\n        \"variantOptionQualifiers\": [\n          {\n            \"qualifier\": \"string\",\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"image\": {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"altText\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"imageType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"galleryIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"qualifier\": \"string\",\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"image\": {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"altText\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"imageType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"galleryIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"variantType\": \"string\",\n      \"options\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"stock\": {\n            \"stockLevelStatus\": \"outOfStock\"\n          },\n          \"priceData\": {\n            \"value\": 1803.8637537334735,\n            \"currencyIso\": \"string\",\n            \"formattedValue\": \"string\"\n          },\n          \"variantOptionQualifiers\": [\n            {\n              \"qualifier\": \"string\",\n              \"name\": \"string\",\n              \"value\": \"string\",\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"qualifier\": \"string\",\n              \"name\": \"string\",\n              \"value\": \"string\",\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"stock\": {\n            \"stockLevelStatus\": \"lowStock\"\n          },\n          \"priceData\": {\n            \"value\": 3725.9012743742946,\n            \"currencyIso\": \"string\",\n            \"formattedValue\": \"string\"\n          },\n          \"variantOptionQualifiers\": [\n            {\n              \"qualifier\": \"string\",\n              \"name\": \"string\",\n              \"value\": \"string\",\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"qualifier\": \"string\",\n              \"name\": \"string\",\n              \"value\": \"string\",\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"selected\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"url\": \"string\",\n        \"stock\": {\n          \"stockLevelStatus\": \"inStock\"\n        },\n        \"priceData\": {\n          \"value\": 6617.338530197765,\n          \"currencyIso\": \"string\",\n          \"formattedValue\": \"string\"\n        },\n        \"variantOptionQualifiers\": [\n          {\n            \"qualifier\": \"string\",\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"image\": {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"altText\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"imageType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"galleryIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          {\n            \"qualifier\": \"string\",\n            \"name\": \"string\",\n            \"value\": \"string\",\n            \"image\": {\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"altText\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"format\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"imageType\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"galleryIndex\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        ]\n      }\n    }\n  ],\n  \"keywords\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69f1ecc0-c615-41f0-854b-90c05a7a3060",
+              "name": "Product not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":productCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productCode",
+                      "description": "(Required) Product code"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c43ac6e9-12d4-4011-9db9-2024fd9f4fe8",
+          "name": "SAP Commerce Cloud Get product references",
+          "request": {
+            "name": "SAP Commerce Cloud Get product references",
+            "description": {
+              "content": "Retrieve product references such as similar products, accessories, cross-sells, and up-sells.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":productCode",
+                "references"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "referenceType",
+                  "value": "<string>",
+                  "description": "Type of reference to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productCode",
+                  "description": "(Required) Product code"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                },
+                {
+                  "description": "Base site identifier",
+                  "type": "any",
+                  "value": "{{baseSiteId}}",
+                  "key": "baseSiteId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c0e46df-fee9-4992-bbd2-4448a357f7b9",
+              "name": "Product references",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":productCode",
+                    "references"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "referenceType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productCode",
+                      "description": "(Required) Product code"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"references\": [\n    {\n      \"referenceType\": \"OTHERS\",\n      \"target\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      \"description\": \"string\"\n    },\n    {\n      \"referenceType\": \"UPSELLING\",\n      \"target\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d979913-f3f2-489d-bf01-adac9e094b7c",
+          "name": "SAP Commerce Cloud Get product search suggestions",
+          "request": {
+            "name": "SAP Commerce Cloud Get product search suggestions",
+            "description": {
+              "content": "Retrieve autocomplete suggestions based on a partial search term.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                "suggestions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "term",
+                  "value": "<string>",
+                  "description": "(Required) Partial search term"
+                },
+                {
+                  "disabled": false,
+                  "key": "max",
+                  "value": "10",
+                  "description": "Maximum number of suggestions"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                },
+                {
+                  "description": "Base site identifier",
+                  "type": "any",
+                  "value": "{{baseSiteId}}",
+                  "key": "baseSiteId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45facb61-2b61-4d04-9745-6c8ca5e4fe55",
+              "name": "Search suggestions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "term",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "max",
+                      "value": "10"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"suggestions\": [\n    {\n      \"value\": \"string\"\n    },\n    {\n      \"value\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e990f758-da05-4d96-b301-b4d2d481e8a1",
+          "name": "SAP Commerce Cloud Get recently updated products",
+          "request": {
+            "name": "SAP Commerce Cloud Get recently updated products",
+            "description": {
+              "content": "Retrieve a list of products that have been modified since a given timestamp, useful for content synchronization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                "expressupdate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timestamp",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for change detection"
+                },
+                {
+                  "disabled": false,
+                  "key": "catalog",
+                  "value": "<string>",
+                  "description": "Catalog identifier to filter by"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                },
+                {
+                  "description": "Base site identifier",
+                  "type": "any",
+                  "value": "{{baseSiteId}}",
+                  "key": "baseSiteId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f26c8119-d810-42fa-92a9-a76cbda522f8",
+              "name": "Updated product codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    "expressupdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timestamp",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "catalog",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    },
+                    {
+                      "description": "Base site identifier",
+                      "type": "any",
+                      "value": "{{baseSiteId}}",
+                      "key": "baseSiteId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"productExpressUpdateElements\": [\n    {\n      \"code\": \"string\",\n      \"catalogId\": \"string\",\n      \"catalogVersion\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"catalogId\": \"string\",\n      \"catalogVersion\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "description": {
+        "content": "Base site identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "electronics",
+      "key": "baseSiteId"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap/occ/v2/{{baseSiteId}}",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "basic"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fcb44a0f-acf5-466d-8ecb-628d2cd29dae",
+    "name": "SAP Commerce Cloud Product Content Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing product content in SAP Commerce Cloud including product images, descriptions, attributes, media, and catalog content. Provides operations for product data enrichment, media management, and content publication workflows.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}
