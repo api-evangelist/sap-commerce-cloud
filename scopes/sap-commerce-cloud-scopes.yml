@@ -1,0 +1,61 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sap-commerce-cloud-admin-openapi.yml, openapi/sap-commerce-cloud-assisted-service-openapi.yml,
+  openapi/sap-commerce-cloud-commerce-web-services-openapi.yml, openapi/sap-commerce-cloud-integration-openapi.yml,
+  openapi/sap-commerce-cloud-product-content-management-openapi.yml
+schemes:
+- name: oauth2
+  source: openapi/sap-commerce-cloud-admin-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+  description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+- name: oauth2
+  source: openapi/sap-commerce-cloud-assisted-service-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+  description: OAuth 2.0 authentication for SAP Commerce Cloud
+- name: oauth2
+  source: openapi/sap-commerce-cloud-commerce-web-services-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+  - flow: password
+    tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+  description: OAuth 2.0 authentication for SAP Commerce Cloud
+- name: oauth2
+  source: openapi/sap-commerce-cloud-integration-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+  description: OAuth 2.0 authentication for SAP Commerce Cloud Integration API
+- name: oauth2
+  source: openapi/sap-commerce-cloud-product-content-management-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+  description: OAuth 2.0 authentication for SAP Commerce Cloud
+scopes:
+- scope: admin
+  description: Administrative access
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sap-commerce-cloud-admin-openapi.yml
+- scope: assistedservicegroup
+  description: Assisted service agent access
+  flows:
+  - clientCredentials
+  sources:
+  - openapi/sap-commerce-cloud-assisted-service-openapi.yml
+- scope: basic
+  description: Basic access
+  flows:
+  - clientCredentials
+  - password
+  sources:
+  - openapi/sap-commerce-cloud-assisted-service-openapi.yml
+  - openapi/sap-commerce-cloud-commerce-web-services-openapi.yml
+  - openapi/sap-commerce-cloud-integration-openapi.yml
+  - openapi/sap-commerce-cloud-product-content-management-openapi.yml
