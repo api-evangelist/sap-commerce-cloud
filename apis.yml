@@ -100,6 +100,10 @@ apis:
       - type: OpenAPI
         url: openapi/sap-commerce-cloud-product-content-management-openapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/sap-commerce-cloud-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/sap-commerce-cloud-domain-security.yml
   - type: Authentication
     url: authentication/sap-commerce-cloud-authentication.yml
   - type: OAuthScopes

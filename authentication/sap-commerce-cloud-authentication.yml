@@ -1,0 +1,36 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/sap-commerce-cloud-admin-openapi.yml, openapi/sap-commerce-cloud-assisted-service-openapi.yml,
+  openapi/sap-commerce-cloud-commerce-web-services-openapi.yml, openapi/sap-commerce-cloud-integration-openapi.yml,
+  openapi/sap-commerce-cloud-product-content-management-openapi.yml
+summary:
+  types:
+  - oauth2
+  oauth2_flows:
+  - clientCredentials
+  - password
+schemes:
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+    scopes: 1
+  description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+  sources:
+  - openapi/sap-commerce-cloud-admin-openapi.yml
+  - openapi/sap-commerce-cloud-assisted-service-openapi.yml
+  - openapi/sap-commerce-cloud-integration-openapi.yml
+  - openapi/sap-commerce-cloud-product-content-management-openapi.yml
+- name: oauth2
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+    scopes: 1
+  - flow: password
+    tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+    scopes: 1
+  description: OAuth 2.0 authentication for SAP Commerce Cloud
+  sources:
+  - openapi/sap-commerce-cloud-commerce-web-services-openapi.yml
