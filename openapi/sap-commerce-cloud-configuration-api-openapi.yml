@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Configuration API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Configuration
+  description: System configuration management
+paths:
+  /monitoring/configuration:
+    get:
+      operationId: listConfigurationProperties
+      summary: SAP Commerce Cloud List configuration properties
+      description: Retrieve system configuration properties.
+      tags:
+      - Configuration
+      parameters:
+      - name: prefix
+        in: query
+        description: Filter properties by key prefix
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Configuration properties
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConfigurationPropertyList'
+components:
+  schemas:
+    ConfigurationProperty:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Property key
+        value:
+          type: string
+          description: Property value
+        description:
+          type: string
+          description: Property description
+    ConfigurationPropertyList:
+      type: object
+      properties:
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationProperty'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

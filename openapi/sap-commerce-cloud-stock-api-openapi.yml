@@ -1,0 +1,128 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Stock API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Stock
+  description: Stock and inventory integration
+paths:
+  /InboundStockLevel/StockLevels:
+    get:
+      operationId: listStockLevels
+      summary: SAP Commerce Cloud List stock levels
+      description: Retrieve stock level data through the inbound stock integration object.
+      tags:
+      - Stock
+      parameters:
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      responses:
+        '200':
+          description: Stock level list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ODataStockCollection'
+    post:
+      operationId: createStockLevel
+      summary: SAP Commerce Cloud Create or update stock level
+      description: Create or update stock level data through the inbound integration layer.
+      tags:
+      - Stock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationStockLevel'
+      responses:
+        '201':
+          description: Stock level created
+        '400':
+          description: Invalid stock data
+components:
+  schemas:
+    IntegrationStockLevel:
+      type: object
+      properties:
+        productCode:
+          type: string
+          description: Product code
+        available:
+          type: integer
+          description: Available stock quantity
+        warehouse:
+          type: string
+          description: Warehouse identifier
+        reserved:
+          type: integer
+          description: Reserved stock quantity
+        preOrder:
+          type: integer
+          description: Pre-order stock quantity
+        releaseDate:
+          type: string
+          format: date-time
+          description: Stock release date
+        integrationKey:
+          type: string
+          description: Unique integration key
+    ODataStockCollection:
+      type: object
+      properties:
+        d:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationStockLevel'
+  parameters:
+    skip:
+      name: $skip
+      in: query
+      description: Number of results to skip
+      schema:
+        type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of results to return
+      schema:
+        type: integer
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

@@ -1,0 +1,155 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses CronJobs API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: CronJobs
+  description: CronJob management and execution
+paths:
+  /monitoring/cronjobs:
+    get:
+      operationId: listCronJobs
+      summary: SAP Commerce Cloud List CronJobs
+      description: Retrieve all configured CronJobs with their current status and schedule information.
+      tags:
+      - CronJobs
+      parameters:
+      - name: status
+        in: query
+        description: Filter by CronJob status
+        schema:
+          type: string
+          enum:
+          - RUNNING
+          - FINISHED
+          - ABORTED
+          - PAUSED
+          - UNKNOWN
+      responses:
+        '200':
+          description: CronJob list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJobList'
+  /monitoring/cronjobs/{cronJobCode}:
+    get:
+      operationId: getCronJob
+      summary: SAP Commerce Cloud Get CronJob details
+      description: Retrieve details and execution history of a specific CronJob.
+      tags:
+      - CronJobs
+      parameters:
+      - name: cronJobCode
+        in: path
+        required: true
+        description: CronJob code
+        schema:
+          type: string
+      responses:
+        '200':
+          description: CronJob details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CronJob'
+        '404':
+          description: CronJob not found
+  /monitoring/cronjobs/{cronJobCode}/execute:
+    post:
+      operationId: executeCronJob
+      summary: SAP Commerce Cloud Execute a CronJob
+      description: Trigger the immediate execution of a CronJob.
+      tags:
+      - CronJobs
+      parameters:
+      - name: cronJobCode
+        in: path
+        required: true
+        description: CronJob code
+        schema:
+          type: string
+      responses:
+        '202':
+          description: CronJob execution initiated
+        '404':
+          description: CronJob not found
+        '409':
+          description: CronJob is already running
+components:
+  schemas:
+    CronJobList:
+      type: object
+      properties:
+        cronJobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/CronJob'
+    CronJob:
+      type: object
+      properties:
+        code:
+          type: string
+          description: CronJob code
+        jobCode:
+          type: string
+          description: Associated job code
+        status:
+          type: string
+          enum:
+          - RUNNING
+          - FINISHED
+          - ABORTED
+          - PAUSED
+          - UNKNOWN
+          description: Current status
+        result:
+          type: string
+          enum:
+          - SUCCESS
+          - ERROR
+          - FAILURE
+          description: Last execution result
+        startTime:
+          type: string
+          format: date-time
+          description: Last execution start time
+        endTime:
+          type: string
+          format: date-time
+          description: Last execution end time
+        active:
+          type: boolean
+          description: Whether the CronJob is active
+        triggerExpression:
+          type: string
+          description: Cron trigger expression
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

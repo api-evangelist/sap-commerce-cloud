@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Agents API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Agents
+  description: Customer service agent operations
+paths:
+  /agents/{agentId}:
+    get:
+      operationId: getAgent
+      summary: SAP Commerce Cloud Get agent details
+      description: Retrieve details of a customer service agent.
+      tags:
+      - Agents
+      parameters:
+      - name: agentId
+        in: path
+        required: true
+        description: Agent identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Agent details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+        '404':
+          description: Agent not found
+components:
+  schemas:
+    Agent:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: Agent unique identifier
+        name:
+          type: string
+          description: Agent full name
+        email:
+          type: string
+          description: Agent email
+        groups:
+          type: array
+          items:
+            type: string
+          description: Agent permission groups
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

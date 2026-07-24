@@ -1,0 +1,94 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Carts API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Carts
+  description: Cart emulation and management on behalf of customers
+paths:
+  /customers/{customerId}/carts:
+    get:
+      operationId: getCustomerCarts
+      summary: SAP Commerce Cloud List customer carts
+      description: Retrieve all carts belonging to a customer, used by agents to view and assist with shopping.
+      tags:
+      - Carts
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: baseSite
+        in: query
+        required: true
+        description: Base site identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Customer carts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartList'
+        '404':
+          description: Customer not found
+components:
+  schemas:
+    CartSummary:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Cart code
+        totalItems:
+          type: integer
+          description: Number of items
+        total:
+          type: string
+          description: Formatted cart total
+        modified:
+          type: string
+          format: date-time
+          description: Last modification time
+    CartList:
+      type: object
+      properties:
+        carts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartSummary'
+  parameters:
+    customerId:
+      name: customerId
+      in: path
+      required: true
+      description: Customer unique identifier
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

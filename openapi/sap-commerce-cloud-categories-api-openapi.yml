@@ -1,0 +1,147 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Categories API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Categories
+  description: Category content management
+paths:
+  /catalogs/{catalogId}/{catalogVersionId}/categories/{categoryId}:
+    get:
+      operationId: getCategoryContent
+      summary: SAP Commerce Cloud Get category content
+      description: Retrieve content for a specific category including images, descriptions, and subcategories.
+      tags:
+      - Categories
+      parameters:
+      - name: catalogId
+        in: path
+        required: true
+        description: Catalog identifier
+        schema:
+          type: string
+      - name: catalogVersionId
+        in: path
+        required: true
+        description: Catalog version identifier
+        schema:
+          type: string
+      - name: categoryId
+        in: path
+        required: true
+        description: Category identifier
+        schema:
+          type: string
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Category content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryContent'
+        '404':
+          description: Category not found
+components:
+  schemas:
+    CategoryRef:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
+    CategoryContent:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        description:
+          type: string
+          description: Category description
+        image:
+          $ref: '#/components/schemas/Image'
+        subcategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (thumbnail, product, zoom, cartIcon)
+        imageType:
+          type: string
+          enum:
+          - PRIMARY
+          - GALLERY
+          description: Image type
+        galleryIndex:
+          type: integer
+          description: Position in gallery
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

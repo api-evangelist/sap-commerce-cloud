@@ -1,0 +1,147 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Sessions API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Sessions
+  description: Assisted service session management
+paths:
+  /sessions:
+    post:
+      operationId: createAssistedSession
+      summary: SAP Commerce Cloud Start assisted service session
+      description: Start a new assisted service session, binding the agent to a customer for cart emulation and support activities.
+      tags:
+      - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssistedSessionRequest'
+      responses:
+        '201':
+          description: Session created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistedSession'
+        '400':
+          description: Invalid session request
+        '401':
+          description: Unauthorized
+  /sessions/{sessionId}:
+    get:
+      operationId: getAssistedSession
+      summary: SAP Commerce Cloud Get session details
+      description: Retrieve details of an active assisted service session.
+      tags:
+      - Sessions
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        description: Assisted service session identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Session details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistedSession'
+        '404':
+          description: Session not found
+    delete:
+      operationId: endAssistedSession
+      summary: SAP Commerce Cloud End assisted service session
+      description: End an active assisted service session.
+      tags:
+      - Sessions
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        description: Assisted service session identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Session ended
+        '404':
+          description: Session not found
+components:
+  schemas:
+    AssistedSessionRequest:
+      type: object
+      required:
+      - customerId
+      - baseSite
+      properties:
+        customerId:
+          type: string
+          description: Customer ID to assist
+        baseSite:
+          type: string
+          description: Base site identifier
+        cartId:
+          type: string
+          description: Optional specific cart to work with
+    AssistedSession:
+      type: object
+      properties:
+        sessionId:
+          type: string
+          description: Unique session identifier
+        agentId:
+          type: string
+          description: Agent identifier
+        customerId:
+          type: string
+          description: Customer being assisted
+        baseSite:
+          type: string
+          description: Base site context
+        cartId:
+          type: string
+          description: Active cart in the session
+        createdAt:
+          type: string
+          format: date-time
+          description: Session start time
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ENDED
+          description: Session status
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

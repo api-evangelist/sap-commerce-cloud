@@ -1,0 +1,136 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Consents API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Consents
+  description: User consent management
+paths:
+  /users/{userId}/consenttemplates:
+    get:
+      operationId: getConsentTemplates
+      summary: SAP Commerce Cloud List consent templates
+      description: Retrieve all consent templates available for the user.
+      tags:
+      - Consents
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Consent templates
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsentTemplateList'
+  /users/{userId}/consents:
+    post:
+      operationId: giveConsent
+      summary: SAP Commerce Cloud Give consent
+      description: Give consent for a specific consent template.
+      tags:
+      - Consents
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - name: consentTemplateId
+        in: query
+        required: true
+        description: Consent template identifier
+        schema:
+          type: string
+      - name: consentTemplateVersion
+        in: query
+        required: true
+        description: Consent template version
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: Consent given
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConsentTemplate'
+        '400':
+          description: Invalid consent request
+components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
+  schemas:
+    ConsentTemplate:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Consent template identifier
+        name:
+          type: string
+          description: Template name
+        description:
+          type: string
+          description: Template description
+        version:
+          type: integer
+          description: Template version
+        currentConsent:
+          type: object
+          properties:
+            consentGivenDate:
+              type: string
+              format: date-time
+            consentWithdrawnDate:
+              type: string
+              format: date-time
+    ConsentTemplateList:
+      type: object
+      properties:
+        consentTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsentTemplate'
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

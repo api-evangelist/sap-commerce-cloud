@@ -1,0 +1,966 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Products API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Products
+  description: Product catalog browsing and search
+paths:
+  /products:
+    get:
+      operationId: searchProducts
+      summary: SAP Commerce Cloud Search products
+      description: Search for products using free-text search, category filtering, and faceted navigation. Supports pagination, sorting, and spell checking.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/query'
+      - $ref: '#/components/parameters/currentPage'
+      - $ref: '#/components/parameters/pageSize'
+      - $ref: '#/components/parameters/sort'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Product search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductSearchPage'
+        '400':
+          description: Bad request
+  /products/{productCode}:
+    get:
+      operationId: getProduct
+      summary: SAP Commerce Cloud Get product details
+      description: Retrieve detailed information about a specific product including descriptions, images, prices, reviews, and classifications.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/productCode'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '404':
+          description: Product not found
+  /products/{productCode}/reviews:
+    get:
+      operationId: getProductReviews
+      summary: SAP Commerce Cloud Get product reviews
+      description: Retrieve customer reviews for a specific product.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/productCode'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Product reviews
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewList'
+    post:
+      operationId: createProductReview
+      summary: SAP Commerce Cloud Create a product review
+      description: Submit a new customer review for a product.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/productCode'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+      responses:
+        '201':
+          description: Review created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '400':
+          description: Invalid review data
+        '401':
+          description: Unauthorized
+  /products/{productCode}/stock:
+    get:
+      operationId: getProductStock
+      summary: SAP Commerce Cloud Get product stock levels
+      description: Retrieve stock level information for a product across stores.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/productCode'
+      - name: location
+        in: query
+        description: Location for store stock lookup
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Stock information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreFinderStockSearchPage'
+        '404':
+          description: Product not found
+  /InboundProduct/Products:
+    get:
+      operationId: listProducts
+      summary: SAP Commerce Cloud List products
+      description: Retrieve products through the inbound product integration object. Supports OData query options for filtering, sorting, and pagination.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      - $ref: '#/components/parameters/top'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/orderby'
+      responses:
+        '200':
+          description: Product list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ODataProductCollection'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createProduct
+      summary: SAP Commerce Cloud Create or update a product
+      description: Create or update product data through the inbound integration layer.
+      tags:
+      - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationProduct'
+      responses:
+        '201':
+          description: Product created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationProduct'
+        '400':
+          description: Invalid product data
+  /InboundProduct/Products('{integrationKey}'):
+    get:
+      operationId: getProduct
+      summary: SAP Commerce Cloud Get product by integration key
+      description: Retrieve a specific product by its integration key.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/integrationKey'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/expand'
+      responses:
+        '200':
+          description: Product data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationProduct'
+        '404':
+          description: Product not found
+    patch:
+      operationId: updateProduct
+      summary: SAP Commerce Cloud Update a product
+      description: Partially update product data through the integration layer.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/integrationKey'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IntegrationProduct'
+      responses:
+        '200':
+          description: Product updated
+        '404':
+          description: Product not found
+    delete:
+      operationId: deleteProduct
+      summary: SAP Commerce Cloud Delete a product
+      description: Delete a product through the integration layer.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/integrationKey'
+      responses:
+        '204':
+          description: Product deleted
+        '404':
+          description: Product not found
+  /products/{productCode}/references:
+    get:
+      operationId: getProductReferences
+      summary: SAP Commerce Cloud Get product references
+      description: Retrieve product references such as similar products, accessories, cross-sells, and up-sells.
+      tags:
+      - Products
+      parameters:
+      - $ref: '#/components/parameters/productCode'
+      - name: referenceType
+        in: query
+        description: Type of reference to filter by
+        schema:
+          type: string
+          enum:
+          - SIMILAR
+          - ACCESSORIES
+          - CROSSELLING
+          - UPSELLING
+          - OTHERS
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Product references
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductReferenceList'
+  /products/suggestions:
+    get:
+      operationId: getProductSuggestions
+      summary: SAP Commerce Cloud Get product search suggestions
+      description: Retrieve autocomplete suggestions based on a partial search term.
+      tags:
+      - Products
+      parameters:
+      - name: term
+        in: query
+        required: true
+        description: Partial search term
+        schema:
+          type: string
+      - name: max
+        in: query
+        description: Maximum number of suggestions
+        schema:
+          type: integer
+          default: 10
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Search suggestions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestionList'
+  /products/expressupdate:
+    get:
+      operationId: getProductExpressUpdate
+      summary: SAP Commerce Cloud Get recently updated products
+      description: Retrieve a list of products that have been modified since a given timestamp, useful for content synchronization.
+      tags:
+      - Products
+      parameters:
+      - name: timestamp
+        in: query
+        required: true
+        description: ISO 8601 timestamp for change detection
+        schema:
+          type: string
+          format: date-time
+      - name: catalog
+        in: query
+        description: Catalog identifier to filter by
+        schema:
+          type: string
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Updated product codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductExpressUpdateList'
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
+        image:
+          $ref: '#/components/schemas/Image'
+        subcategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    FacetValue:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Facet value name
+        count:
+          type: integer
+          description: Number of results
+        selected:
+          type: boolean
+          description: Whether this value is selected
+        query:
+          type: object
+          properties:
+            query:
+              type: object
+              properties:
+                value:
+                  type: string
+            url:
+              type: string
+    PointOfService:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Store name
+        displayName:
+          type: string
+          description: Display name
+        description:
+          type: string
+          description: Store description
+        address:
+          $ref: '#/components/schemas/Address'
+        geoPoint:
+          $ref: '#/components/schemas/GeoPoint'
+        openingHours:
+          $ref: '#/components/schemas/OpeningSchedule'
+        storeImages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        features:
+          type: object
+          additionalProperties:
+            type: string
+          description: Store features
+    SuggestionList:
+      type: object
+      properties:
+        suggestions:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: Suggestion text
+    ProductReferenceList:
+      type: object
+      properties:
+        references:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductReference'
+    Breadcrumb:
+      type: object
+      properties:
+        facetCode:
+          type: string
+        facetName:
+          type: string
+        facetValueCode:
+          type: string
+        facetValueName:
+          type: string
+        removeQuery:
+          type: object
+          properties:
+            query:
+              type: object
+              properties:
+                value:
+                  type: string
+            url:
+              type: string
+    Region:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
+    Review:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Review identifier
+        headline:
+          type: string
+          description: Review headline
+        comment:
+          type: string
+          description: Review text
+        rating:
+          type: number
+          format: double
+          description: Rating value
+        date:
+          type: string
+          format: date-time
+          description: Review date
+        alias:
+          type: string
+          description: Reviewer alias
+        principal:
+          $ref: '#/components/schemas/Principal'
+    Classification:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Classification code
+        name:
+          type: string
+          description: Classification name
+        features:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+              featureValues:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+    Product:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Product code
+        name:
+          type: string
+          description: Product name
+        description:
+          type: string
+          description: Product description
+        summary:
+          type: string
+          description: Short product summary
+        price:
+          $ref: '#/components/schemas/Price'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+          description: Product images
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+          description: Product categories
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
+          description: Customer reviews
+        averageRating:
+          type: number
+          format: double
+          description: Average customer rating
+        stock:
+          $ref: '#/components/schemas/Stock'
+        classifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Classification'
+          description: Product classification attributes
+        purchasable:
+          type: boolean
+          description: Whether the product can be purchased
+        url:
+          type: string
+          description: Product URL
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
+    Sort:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Sort code
+        name:
+          type: string
+          description: Sort display name
+        selected:
+          type: boolean
+          description: Whether this sort is selected
+    Principal:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: User unique identifier
+        name:
+          type: string
+          description: Display name
+    ReviewList:
+      type: object
+      properties:
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
+    Facet:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Facet name
+        priority:
+          type: integer
+          description: Display priority
+        category:
+          type: boolean
+          description: Whether this is a category facet
+        multiSelect:
+          type: boolean
+          description: Whether multiple values can be selected
+        visible:
+          type: boolean
+          description: Whether the facet is visible
+        values:
+          type: array
+          items:
+            $ref: '#/components/schemas/FacetValue'
+    Address:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Address identifier
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        titleCode:
+          type: string
+          description: Title code
+        line1:
+          type: string
+          description: Address line 1
+        line2:
+          type: string
+          description: Address line 2
+        town:
+          type: string
+          description: City or town
+        region:
+          $ref: '#/components/schemas/Region'
+        district:
+          type: string
+          description: District
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
+          $ref: '#/components/schemas/Country'
+        phone:
+          type: string
+          description: Phone number
+        email:
+          type: string
+          description: Email address
+        defaultAddress:
+          type: boolean
+          description: Whether this is the default address
+    Price:
+      type: object
+      properties:
+        currencyIso:
+          type: string
+          description: ISO 4217 currency code
+        value:
+          type: number
+          format: double
+          description: Price value
+        formattedValue:
+          type: string
+          description: Formatted price string
+        priceType:
+          type: string
+          enum:
+          - BUY
+          - FROM
+          description: Price type
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (e.g., thumbnail, product, zoom)
+        imageType:
+          type: string
+          enum:
+          - PRIMARY
+          - GALLERY
+          description: Image type
+    ProductSearchPage:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/Product'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        sorts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sort'
+        freeTextSearch:
+          type: string
+          description: Search query that was executed
+        currentQuery:
+          type: object
+          properties:
+            query:
+              type: object
+              properties:
+                value:
+                  type: string
+            url:
+              type: string
+        facets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Facet'
+          description: Search facets for filtering
+        breadcrumbs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Breadcrumb'
+    ProductExpressUpdateList:
+      type: object
+      properties:
+        productExpressUpdateElements:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Product code
+              catalogId:
+                type: string
+                description: Catalog identifier
+              catalogVersion:
+                type: string
+                description: Catalog version
+    GeoPoint:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude
+        longitude:
+          type: number
+          format: double
+          description: Longitude
+    Stock:
+      type: object
+      properties:
+        stockLevelStatus:
+          type: string
+          enum:
+          - inStock
+          - lowStock
+          - outOfStock
+          description: Stock level status
+        stockLevel:
+          type: integer
+          description: Actual stock level quantity
+    IntegrationProduct:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Product code
+        name:
+          type: string
+          description: Product name
+        description:
+          type: string
+          description: Product description
+        catalogVersion:
+          type: string
+          description: Catalog version reference
+        approvalStatus:
+          type: string
+          enum:
+          - approved
+          - unapproved
+          - check
+          description: Product approval status
+        ean:
+          type: string
+          description: European Article Number
+        unit:
+          type: string
+          description: Unit of measure
+        supercategories:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+          description: Parent category references
+        integrationKey:
+          type: string
+          description: Unique integration key
+    Pagination:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          description: Current page number
+        pageSize:
+          type: integer
+          description: Number of results per page
+        totalPages:
+          type: integer
+          description: Total number of pages
+        totalResults:
+          type: integer
+          description: Total number of results
+    ODataProductCollection:
+      type: object
+      properties:
+        d:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationProduct'
+    StoreFinderStockSearchPage:
+      type: object
+      properties:
+        stores:
+          type: array
+          items:
+            type: object
+            properties:
+              pointOfService:
+                $ref: '#/components/schemas/PointOfService'
+              stockInfo:
+                $ref: '#/components/schemas/Stock'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+    ProductReference:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+          - SIMILAR
+          - ACCESSORIES
+          - CROSSELLING
+          - UPSELLING
+          - OTHERS
+          description: Type of product reference
+        target:
+          type: object
+          properties:
+            code:
+              type: string
+            name:
+              type: string
+            url:
+              type: string
+        description:
+          type: string
+          description: Reference description
+    OpeningSchedule:
+      type: object
+      properties:
+        weekDayOpeningList:
+          type: array
+          items:
+            type: object
+            properties:
+              weekDay:
+                type: string
+              openingTime:
+                type: object
+                properties:
+                  formattedHour:
+                    type: string
+              closingTime:
+                type: object
+                properties:
+                  formattedHour:
+                    type: string
+              closed:
+                type: boolean
+  parameters:
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 20
+    top:
+      name: $top
+      in: query
+      description: Maximum number of results to return
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of results to skip
+      schema:
+        type: integer
+    productCode:
+      name: productCode
+      in: path
+      required: true
+      description: Product code
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      description: Property name and direction for sorting
+      schema:
+        type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand
+      schema:
+        type: string
+    query:
+      name: query
+      in: query
+      description: Free-text search query
+      schema:
+        type: string
+    integrationKey:
+      name: integrationKey
+      in: path
+      required: true
+      description: Integration key (composite key identifying the entity)
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to return
+      schema:
+        type: string
+    currentPage:
+      name: currentPage
+      in: query
+      description: Current page number (zero-based)
+      schema:
+        type: integer
+        default: 0
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    sort:
+      name: sort
+      in: query
+      description: Sort criteria (e.g., relevance, topRated, name-asc, price-asc)
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

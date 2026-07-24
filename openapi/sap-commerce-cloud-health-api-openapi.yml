@@ -1,0 +1,115 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Health API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Health
+  description: System health and readiness checks
+paths:
+  /monitoring/health:
+    get:
+      operationId: getHealthStatus
+      summary: SAP Commerce Cloud Get system health status
+      description: Retrieve the overall health status of the SAP Commerce Cloud instance, including readiness and liveness indicators.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+        '503':
+          description: System is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+      security: []
+  /monitoring/liveness:
+    get:
+      operationId: getLivenessStatus
+      summary: SAP Commerce Cloud Liveness probe
+      description: Kubernetes-compatible liveness probe to determine if the application is running.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Application is alive
+        '503':
+          description: Application is not responding
+      security: []
+  /monitoring/readiness:
+    get:
+      operationId: getReadinessStatus
+      summary: SAP Commerce Cloud Readiness probe
+      description: Kubernetes-compatible readiness probe to determine if the application is ready to accept traffic.
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Application is ready
+        '503':
+          description: Application is not ready
+      security: []
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - UP
+          - DOWN
+          - DEGRADED
+          description: Overall health status
+        checks:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Check name
+              status:
+                type: string
+                enum:
+                - UP
+                - DOWN
+                description: Check status
+              details:
+                type: object
+                additionalProperties:
+                  type: string
+                description: Additional check details
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

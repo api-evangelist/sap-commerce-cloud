@@ -1,0 +1,327 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Checkout API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Checkout
+  description: Checkout and payment operations
+paths:
+  /users/{userId}/carts/{cartId}/deliveryaddress:
+    put:
+      operationId: setCartDeliveryAddress
+      summary: SAP Commerce Cloud Set delivery address
+      description: Set the delivery address for the cart.
+      tags:
+      - Checkout
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/cartId'
+      - name: addressId
+        in: query
+        required: true
+        description: Address identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Delivery address set
+        '400':
+          description: Invalid address
+    delete:
+      operationId: removeCartDeliveryAddress
+      summary: SAP Commerce Cloud Remove delivery address
+      description: Remove the delivery address from the cart.
+      tags:
+      - Checkout
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/cartId'
+      responses:
+        '200':
+          description: Delivery address removed
+  /users/{userId}/carts/{cartId}/deliverymode:
+    get:
+      operationId: getCartDeliveryMode
+      summary: SAP Commerce Cloud Get delivery mode
+      description: Get the current delivery mode for the cart.
+      tags:
+      - Checkout
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/cartId'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Current delivery mode
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryMode'
+    put:
+      operationId: setCartDeliveryMode
+      summary: SAP Commerce Cloud Set delivery mode
+      description: Set the delivery mode for the cart.
+      tags:
+      - Checkout
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/cartId'
+      - name: deliveryModeId
+        in: query
+        required: true
+        description: Delivery mode identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Delivery mode set
+        '400':
+          description: Invalid delivery mode
+    delete:
+      operationId: removeCartDeliveryMode
+      summary: SAP Commerce Cloud Remove delivery mode
+      description: Remove the delivery mode from the cart.
+      tags:
+      - Checkout
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/cartId'
+      responses:
+        '200':
+          description: Delivery mode removed
+  /users/{userId}/carts/{cartId}/deliverymodes:
+    get:
+      operationId: getCartDeliveryModes
+      summary: SAP Commerce Cloud List delivery modes
+      description: Retrieve all available delivery modes for the cart.
+      tags:
+      - Checkout
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/cartId'
+      - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Available delivery modes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeliveryModeList'
+  /users/{userId}/carts/{cartId}/paymentdetails:
+    post:
+      operationId: createCartPaymentDetails
+      summary: SAP Commerce Cloud Create payment details
+      description: Add payment details to the cart for checkout.
+      tags:
+      - Checkout
+      parameters:
+      - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/cartId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentDetails'
+      responses:
+        '201':
+          description: Payment details created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentDetails'
+        '400':
+          description: Invalid payment data
+components:
+  schemas:
+    DeliveryModeList:
+      type: object
+      properties:
+        deliveryModes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryMode'
+    PaymentDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Payment details identifier
+        accountHolderName:
+          type: string
+          description: Card holder name
+        cardNumber:
+          type: string
+          description: Masked card number
+        cardType:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Card type code
+            name:
+              type: string
+              description: Card type name
+        expiryMonth:
+          type: string
+          description: Card expiry month
+        expiryYear:
+          type: string
+          description: Card expiry year
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        defaultPayment:
+          type: boolean
+          description: Whether this is the default payment method
+        saved:
+          type: boolean
+          description: Whether the payment details are saved
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
+    Address:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Address identifier
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        titleCode:
+          type: string
+          description: Title code
+        line1:
+          type: string
+          description: Address line 1
+        line2:
+          type: string
+          description: Address line 2
+        town:
+          type: string
+          description: City or town
+        region:
+          $ref: '#/components/schemas/Region'
+        district:
+          type: string
+          description: District
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
+          $ref: '#/components/schemas/Country'
+        phone:
+          type: string
+          description: Phone number
+        email:
+          type: string
+          description: Email address
+        defaultAddress:
+          type: boolean
+          description: Whether this is the default address
+    Price:
+      type: object
+      properties:
+        currencyIso:
+          type: string
+          description: ISO 4217 currency code
+        value:
+          type: number
+          format: double
+          description: Price value
+        formattedValue:
+          type: string
+          description: Formatted price string
+        priceType:
+          type: string
+          enum:
+          - BUY
+          - FROM
+          description: Price type
+    DeliveryMode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Delivery mode code
+        name:
+          type: string
+          description: Delivery mode name
+        description:
+          type: string
+          description: Delivery mode description
+        deliveryCost:
+          $ref: '#/components/schemas/Price'
+    Region:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
+    cartId:
+      name: cartId
+      in: path
+      required: true
+      description: Cart identifier
+      schema:
+        type: string
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/

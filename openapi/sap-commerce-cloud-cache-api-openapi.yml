@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Admin Addresses Cache API
+  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
+  version: '1.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+servers:
+- url: https://{tenant}.{region}.commercecloud.sap
+  description: SAP Commerce Cloud Production
+  variables:
+    tenant:
+      description: Tenant identifier
+      default: my-tenant
+    region:
+      description: Deployment region
+      default: us
+security:
+- oauth2: []
+tags:
+- name: Cache
+  description: Cache management operations
+paths:
+  /monitoring/cache/regions:
+    get:
+      operationId: getCacheRegions
+      summary: SAP Commerce Cloud List cache regions
+      description: Retrieve all configured cache regions with statistics including hit rates, sizes, and eviction counts.
+      tags:
+      - Cache
+      responses:
+        '200':
+          description: Cache region list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CacheRegionList'
+        '401':
+          description: Unauthorized
+  /monitoring/cache/regions/{regionName}/clear:
+    post:
+      operationId: clearCacheRegion
+      summary: SAP Commerce Cloud Clear a cache region
+      description: Clear all entries from a specific cache region.
+      tags:
+      - Cache
+      parameters:
+      - name: regionName
+        in: path
+        required: true
+        description: Cache region name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cache region cleared
+        '404':
+          description: Cache region not found
+components:
+  schemas:
+    CacheRegionList:
+      type: object
+      properties:
+        regions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CacheRegion'
+    CacheRegion:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Cache region name
+        size:
+          type: integer
+          description: Number of entries in the cache
+        maxSize:
+          type: integer
+          description: Maximum cache size
+        hitCount:
+          type: integer
+          description: Total cache hits
+        missCount:
+          type: integer
+          description: Total cache misses
+        hitRatio:
+          type: number
+          format: double
+          description: Cache hit ratio
+        evictionCount:
+          type: integer
+          description: Number of evictions
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            admin: Administrative access
+externalDocs:
+  description: SAP Commerce Cloud Administration Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
