@@ -1,0 +1,585 @@
+openapi: 3.1.0
+info:
+  title: SAP Commerce Cloud Product Content Management API
+  description: >-
+    API for managing product content in SAP Commerce Cloud including
+    product images, descriptions, attributes, media, and catalog
+    content. Provides operations for product data enrichment,
+    media management, and content publication workflows.
+  version: '2.0'
+  contact:
+    name: SAP Support
+    url: https://support.sap.com/
+  termsOfService: https://www.sap.com/about/legal/terms-of-use.html
+externalDocs:
+  description: Product Content Management Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/
+servers:
+  - url: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
+    description: SAP Commerce Cloud Production
+    variables:
+      tenant:
+        description: Tenant identifier
+        default: my-tenant
+      region:
+        description: Deployment region
+        default: us
+      baseSiteId:
+        description: Base site identifier
+        default: electronics
+tags:
+  - name: Catalogs
+    description: Catalog version and synchronization
+  - name: Categories
+    description: Category content management
+  - name: Classifications
+    description: Product classification and attributes
+  - name: Media
+    description: Media and image management
+  - name: Products
+    description: Product content operations
+security:
+  - oauth2: []
+paths:
+  /products/{productCode}:
+    get:
+      operationId: getProductContent
+      summary: SAP Commerce Cloud Get product content
+      description: >-
+        Retrieve full product content including descriptions, images,
+        classifications, and attributes.
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/components/parameters/productCode'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Product content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductContent'
+        '404':
+          description: Product not found
+  /products/{productCode}/images:
+    get:
+      operationId: getProductImages
+      summary: SAP Commerce Cloud Get product images
+      description: >-
+        Retrieve all images associated with a product, including
+        primary, gallery, and zoom images.
+      tags:
+        - Media
+      parameters:
+        - $ref: '#/components/parameters/productCode'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Product images
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImageList'
+  /products/{productCode}/references:
+    get:
+      operationId: getProductReferences
+      summary: SAP Commerce Cloud Get product references
+      description: >-
+        Retrieve product references such as similar products,
+        accessories, cross-sells, and up-sells.
+      tags:
+        - Products
+      parameters:
+        - $ref: '#/components/parameters/productCode'
+        - name: referenceType
+          in: query
+          description: Type of reference to filter by
+          schema:
+            type: string
+            enum:
+              - SIMILAR
+              - ACCESSORIES
+              - CROSSELLING
+              - UPSELLING
+              - OTHERS
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Product references
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductReferenceList'
+  /catalogs/{catalogId}/{catalogVersionId}:
+    get:
+      operationId: getCatalogVersion
+      summary: SAP Commerce Cloud Get catalog version details
+      description: >-
+        Retrieve details of a specific catalog version including
+        categories and their content.
+      tags:
+        - Catalogs
+      parameters:
+        - name: catalogId
+          in: path
+          required: true
+          description: Catalog identifier
+          schema:
+            type: string
+        - name: catalogVersionId
+          in: path
+          required: true
+          description: Catalog version (e.g., Online, Staged)
+          schema:
+            type: string
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Catalog version details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CatalogVersion'
+        '404':
+          description: Catalog version not found
+  /catalogs/{catalogId}/{catalogVersionId}/categories/{categoryId}:
+    get:
+      operationId: getCategoryContent
+      summary: SAP Commerce Cloud Get category content
+      description: >-
+        Retrieve content for a specific category including images,
+        descriptions, and subcategories.
+      tags:
+        - Categories
+      parameters:
+        - name: catalogId
+          in: path
+          required: true
+          description: Catalog identifier
+          schema:
+            type: string
+        - name: catalogVersionId
+          in: path
+          required: true
+          description: Catalog version identifier
+          schema:
+            type: string
+        - name: categoryId
+          in: path
+          required: true
+          description: Category identifier
+          schema:
+            type: string
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Category content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CategoryContent'
+        '404':
+          description: Category not found
+  /products/{productCode}/classifications:
+    get:
+      operationId: getProductClassifications
+      summary: SAP Commerce Cloud Get product classifications
+      description: >-
+        Retrieve classification attributes and feature values for
+        a product across classification categories.
+      tags:
+        - Classifications
+      parameters:
+        - $ref: '#/components/parameters/productCode'
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Product classifications
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClassificationList'
+  /products/suggestions:
+    get:
+      operationId: getProductSuggestions
+      summary: SAP Commerce Cloud Get product search suggestions
+      description: >-
+        Retrieve autocomplete suggestions based on a partial search term.
+      tags:
+        - Products
+      parameters:
+        - name: term
+          in: query
+          required: true
+          description: Partial search term
+          schema:
+            type: string
+        - name: max
+          in: query
+          description: Maximum number of suggestions
+          schema:
+            type: integer
+            default: 10
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Search suggestions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuggestionList'
+  /products/expressupdate:
+    get:
+      operationId: getProductExpressUpdate
+      summary: SAP Commerce Cloud Get recently updated products
+      description: >-
+        Retrieve a list of products that have been modified since a
+        given timestamp, useful for content synchronization.
+      tags:
+        - Products
+      parameters:
+        - name: timestamp
+          in: query
+          required: true
+          description: ISO 8601 timestamp for change detection
+          schema:
+            type: string
+            format: date-time
+        - name: catalog
+          in: query
+          description: Catalog identifier to filter by
+          schema:
+            type: string
+        - $ref: '#/components/parameters/fields'
+      responses:
+        '200':
+          description: Updated product codes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductExpressUpdateList'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      description: OAuth 2.0 authentication for SAP Commerce Cloud
+      flows:
+        clientCredentials:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            basic: Basic access
+  parameters:
+    productCode:
+      name: productCode
+      in: path
+      required: true
+      description: Product code
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: >-
+        Response field configuration level. Use BASIC, DEFAULT, or FULL
+        to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+          - BASIC
+          - DEFAULT
+          - FULL
+        default: DEFAULT
+  schemas:
+    ProductContent:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Product code
+        name:
+          type: string
+          description: Product name
+        summary:
+          type: string
+          description: Short summary
+        description:
+          type: string
+          description: Full HTML description
+        manufacturer:
+          type: string
+          description: Manufacturer name
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+        classifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Classification'
+        productReferences:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductReference'
+        variantOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariantOption'
+        baseOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/BaseOption'
+        keywords:
+          type: array
+          items:
+            type: string
+          description: Product keywords for search
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (thumbnail, product, zoom, cartIcon)
+        imageType:
+          type: string
+          enum:
+            - PRIMARY
+            - GALLERY
+          description: Image type
+        galleryIndex:
+          type: integer
+          description: Position in gallery
+    ImageList:
+      type: object
+      properties:
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+    CategoryRef:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
+    CategoryContent:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        description:
+          type: string
+          description: Category description
+        image:
+          $ref: '#/components/schemas/Image'
+        subcategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+    CatalogVersion:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Catalog version ID (e.g., Online, Staged)
+        lastModifiedTime:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+        url:
+          type: string
+          description: Catalog version URL
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryRef'
+    Classification:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Classification category code
+        name:
+          type: string
+          description: Classification category name
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+    ClassificationList:
+      type: object
+      properties:
+        classifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Classification'
+    Feature:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Feature code
+        name:
+          type: string
+          description: Feature name
+        comparable:
+          type: boolean
+          description: Whether this feature supports comparison
+        featureUnit:
+          type: object
+          properties:
+            symbol:
+              type: string
+            name:
+              type: string
+        featureValues:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+    ProductReference:
+      type: object
+      properties:
+        referenceType:
+          type: string
+          enum:
+            - SIMILAR
+            - ACCESSORIES
+            - CROSSELLING
+            - UPSELLING
+            - OTHERS
+          description: Type of product reference
+        target:
+          type: object
+          properties:
+            code:
+              type: string
+            name:
+              type: string
+            url:
+              type: string
+        description:
+          type: string
+          description: Reference description
+    ProductReferenceList:
+      type: object
+      properties:
+        references:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductReference'
+    VariantOption:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Variant product code
+        name:
+          type: string
+          description: Variant name
+        url:
+          type: string
+          description: Variant URL
+        stock:
+          type: object
+          properties:
+            stockLevelStatus:
+              type: string
+              enum:
+                - inStock
+                - lowStock
+                - outOfStock
+        priceData:
+          type: object
+          properties:
+            value:
+              type: number
+              format: double
+            currencyIso:
+              type: string
+            formattedValue:
+              type: string
+        variantOptionQualifiers:
+          type: array
+          items:
+            type: object
+            properties:
+              qualifier:
+                type: string
+              name:
+                type: string
+              value:
+                type: string
+              image:
+                $ref: '#/components/schemas/Image'
+    BaseOption:
+      type: object
+      properties:
+        variantType:
+          type: string
+          description: Variant type code
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/VariantOption'
+        selected:
+          $ref: '#/components/schemas/VariantOption'
+    SuggestionList:
+      type: object
+      properties:
+        suggestions:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: Suggestion text
+    ProductExpressUpdateList:
+      type: object
+      properties:
+        productExpressUpdateElements:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Product code
+              catalogId:
+                type: string
+                description: Catalog identifier
+              catalogVersion:
+                type: string
+                description: Catalog version
