@@ -782,15 +782,15 @@ common:
   - type: StatusPage
     url: https://www.sap.com/about/trust-center/cloud-service-status.html
   - type: OpenAPI
-    url: openapi/sap-commerce-cloud-commerce-web-services-openapi.yml
+    url: openapi/_original/sap-commerce-cloud-commerce-web-services-openapi.yml
   - type: OpenAPI
-    url: openapi/sap-commerce-cloud-assisted-service-openapi.yml
+    url: openapi/_original/sap-commerce-cloud-assisted-service-openapi.yml
   - type: OpenAPI
-    url: openapi/sap-commerce-cloud-integration-openapi.yml
+    url: openapi/_original/sap-commerce-cloud-integration-openapi.yml
   - type: OpenAPI
-    url: openapi/sap-commerce-cloud-admin-openapi.yml
+    url: openapi/_original/sap-commerce-cloud-admin-openapi.yml
   - type: OpenAPI
-    url: openapi/sap-commerce-cloud-product-content-management-openapi.yml
+    url: openapi/_original/sap-commerce-cloud-product-content-management-openapi.yml
   - type: JSONLD
     url: json-ld/sap-commerce-cloud-context.jsonld
   - type: JSONSchema
