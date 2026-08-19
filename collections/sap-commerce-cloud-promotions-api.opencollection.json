@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Promotions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Promotions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List applied vouchers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/vouchers",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all vouchers applied to the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Apply voucher to cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/vouchers",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "voucherId",
+                "value": "",
+                "type": "query",
+                "description": "Voucher code"
+              }
+            ]
+          },
+          "docs": "Apply a voucher code to the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Remove voucher from cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/vouchers/:voucherId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "voucherId",
+                "value": "",
+                "type": "path",
+                "description": "Voucher code"
+              }
+            ]
+          },
+          "docs": "Remove a previously applied voucher from the cart."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

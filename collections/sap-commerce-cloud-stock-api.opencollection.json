@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Stock API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stock",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List stock levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/InboundStockLevel/StockLevels",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip"
+              }
+            ]
+          },
+          "docs": "Retrieve stock level data through the inbound stock integration object."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create or update stock level",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/InboundStockLevel/StockLevels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update stock level data through the inbound integration layer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,450 @@
+{
+  "item": [
+    {
+      "id": "0c89c8d3-9062-4537-bb1a-d49c00d6ccb5",
+      "name": "Stores",
+      "description": {
+        "content": "Physical store locator",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c5e48e9d-2b23-4882-a314-144b0ce1d05b",
+          "name": "SAP Commerce Cloud Search stores",
+          "request": {
+            "name": "SAP Commerce Cloud Search stores",
+            "description": {
+              "content": "Search for physical stores by location, coordinates, or query string.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stores"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Free-text search query"
+                },
+                {
+                  "disabled": false,
+                  "key": "latitude",
+                  "value": "<double>",
+                  "description": "Latitude for location-based search"
+                },
+                {
+                  "disabled": false,
+                  "key": "longitude",
+                  "value": "<double>",
+                  "description": "Longitude for location-based search"
+                },
+                {
+                  "disabled": false,
+                  "key": "radius",
+                  "value": "<double>",
+                  "description": "Search radius in meters"
+                },
+                {
+                  "disabled": false,
+                  "key": "currentPage",
+                  "value": "0",
+                  "description": "Current page number (zero-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of results per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort criteria (e.g., relevance, topRated, name-asc, price-asc)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32e09181-e58d-4c46-bc41-b7e9f5e7e441",
+              "name": "Store search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stores"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "latitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "longitude",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "radius",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "currentPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stores\": [\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"address\": {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"titleCode\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"town\": \"string\",\n        \"region\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"district\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"defaultAddress\": true\n      },\n      \"geoPoint\": {\n        \"latitude\": 4657.338073024586,\n        \"longitude\": 3541.5851746506164\n      },\n      \"openingHours\": {\n        \"weekDayOpeningList\": [\n          {\n            \"weekDay\": \"string\",\n            \"openingTime\": {\n              \"formattedHour\": \"string\"\n            },\n            \"closingTime\": {\n              \"formattedHour\": \"string\"\n            },\n            \"closed\": false\n          },\n          {\n            \"weekDay\": \"string\",\n            \"openingTime\": {\n              \"formattedHour\": \"string\"\n            },\n            \"closingTime\": {\n              \"formattedHour\": \"string\"\n            },\n            \"closed\": true\n          }\n        ]\n      },\n      \"storeImages\": [\n        {\n          \"url\": \"string\",\n          \"altText\": \"string\",\n          \"format\": \"string\",\n          \"imageType\": \"PRIMARY\"\n        },\n        {\n          \"url\": \"string\",\n          \"altText\": \"string\",\n          \"format\": \"string\",\n          \"imageType\": \"PRIMARY\"\n        }\n      ],\n      \"features\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\"\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"displayName\": \"string\",\n      \"description\": \"string\",\n      \"address\": {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"titleCode\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"town\": \"string\",\n        \"region\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"district\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"defaultAddress\": true\n      },\n      \"geoPoint\": {\n        \"latitude\": 6738.699020670107,\n        \"longitude\": 4381.158903289388\n      },\n      \"openingHours\": {\n        \"weekDayOpeningList\": [\n          {\n            \"weekDay\": \"string\",\n            \"openingTime\": {\n              \"formattedHour\": \"string\"\n            },\n            \"closingTime\": {\n              \"formattedHour\": \"string\"\n            },\n            \"closed\": true\n          },\n          {\n            \"weekDay\": \"string\",\n            \"openingTime\": {\n              \"formattedHour\": \"string\"\n            },\n            \"closingTime\": {\n              \"formattedHour\": \"string\"\n            },\n            \"closed\": true\n          }\n        ]\n      },\n      \"storeImages\": [\n        {\n          \"url\": \"string\",\n          \"altText\": \"string\",\n          \"format\": \"string\",\n          \"imageType\": \"PRIMARY\"\n        },\n        {\n          \"url\": \"string\",\n          \"altText\": \"string\",\n          \"format\": \"string\",\n          \"imageType\": \"GALLERY\"\n        }\n      ],\n      \"features\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"currentPage\": 7702,\n    \"pageSize\": 2758,\n    \"totalPages\": 9114,\n    \"totalResults\": 6237\n  },\n  \"sorts\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"selected\": false\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"selected\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31f591ca-8f16-45c3-ad37-8c79c5b5d353",
+          "name": "SAP Commerce Cloud Get store details",
+          "request": {
+            "name": "SAP Commerce Cloud Get store details",
+            "description": {
+              "content": "Retrieve details of a specific physical store.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stores",
+                ":storeId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "storeId",
+                  "description": "(Required) Store identifier"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09fa44f6-74bb-4dc4-8dac-6a4aa787c013",
+              "name": "Store details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stores",
+                    ":storeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "storeId",
+                      "description": "(Required) Store identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"displayName\": \"string\",\n  \"description\": \"string\",\n  \"address\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"titleCode\": \"string\",\n    \"line1\": \"string\",\n    \"line2\": \"string\",\n    \"town\": \"string\",\n    \"region\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"district\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"defaultAddress\": false\n  },\n  \"geoPoint\": {\n    \"latitude\": 8339.691702338872,\n    \"longitude\": 1262.372382977237\n  },\n  \"openingHours\": {\n    \"weekDayOpeningList\": [\n      {\n        \"weekDay\": \"string\",\n        \"openingTime\": {\n          \"formattedHour\": \"string\"\n        },\n        \"closingTime\": {\n          \"formattedHour\": \"string\"\n        },\n        \"closed\": false\n      },\n      {\n        \"weekDay\": \"string\",\n        \"openingTime\": {\n          \"formattedHour\": \"string\"\n        },\n        \"closingTime\": {\n          \"formattedHour\": \"string\"\n        },\n        \"closed\": false\n      }\n    ]\n  },\n  \"storeImages\": [\n    {\n      \"url\": \"string\",\n      \"altText\": \"string\",\n      \"format\": \"string\",\n      \"imageType\": \"PRIMARY\"\n    },\n    {\n      \"url\": \"string\",\n      \"altText\": \"string\",\n      \"format\": \"string\",\n      \"imageType\": \"GALLERY\"\n    }\n  ],\n  \"features\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd4ec1d0-44e8-4d8e-ae5a-ad97a1c2eb7a",
+              "name": "Store not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stores",
+                    ":storeId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "storeId",
+                      "description": "(Required) Store identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1d9d5d17-c5f6-49fe-91f9-a9d1a4019d5f",
+    "name": "SAP Commerce Cloud Admin Addresses Stores API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

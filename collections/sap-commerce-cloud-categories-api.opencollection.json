@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Categories API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get category content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/catalogs/:catalogId/:catalogVersionId/categories/:categoryId",
+            "params": [
+              {
+                "name": "catalogId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog identifier"
+              },
+              {
+                "name": "catalogVersionId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog version identifier"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "path",
+                "description": "Category identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve content for a specific category including images, descriptions, and subcategories."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

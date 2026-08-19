@@ -1,0 +1,267 @@
+{
+  "item": [
+    {
+      "id": "17be6e9b-7535-4920-8ea3-52e6843443e0",
+      "name": "Carts",
+      "description": {
+        "content": "Cart emulation and management on behalf of customers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5b5f8be-2a7c-4db9-b45a-4231bb77ae9b",
+          "name": "SAP Commerce Cloud List customer carts",
+          "request": {
+            "name": "SAP Commerce Cloud List customer carts",
+            "description": {
+              "content": "Retrieve all carts belonging to a customer, used by agents to view and assist with shopping.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "carts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "baseSite",
+                  "value": "<string>",
+                  "description": "(Required) Base site identifier"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer unique identifier"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f84eab2e-77f1-4058-b3b5-606bd93b8425",
+              "name": "Customer carts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "carts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "baseSite",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer unique identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"carts\": [\n    {\n      \"code\": \"string\",\n      \"totalItems\": 3714,\n      \"total\": \"string\",\n      \"modified\": \"1964-12-13T21:37:52.294Z\"\n    },\n    {\n      \"code\": \"string\",\n      \"totalItems\": 450,\n      \"total\": \"string\",\n      \"modified\": \"1970-07-22T10:18:46.028Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7aa255d3-789c-40c9-8bfc-85414ea17326",
+              "name": "Customer not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "carts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "baseSite",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer unique identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "77d6fe8a-b0a7-4c3b-af34-f9071d8eaedf",
+    "name": "SAP Commerce Cloud Admin Addresses Carts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

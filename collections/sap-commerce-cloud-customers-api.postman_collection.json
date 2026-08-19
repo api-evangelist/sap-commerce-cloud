@@ -1,0 +1,880 @@
+{
+  "item": [
+    {
+      "id": "4cd6c3c2-5e5d-4632-98cb-45984677ac35",
+      "name": "Customers",
+      "description": {
+        "content": "Customer lookup and 360 view",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "60e8b670-834f-4ea1-9521-0213bc574a1a",
+          "name": "SAP Commerce Cloud Search customers",
+          "request": {
+            "name": "SAP Commerce Cloud Search customers",
+            "description": {
+              "content": "Search for customers by name, email, or customer ID. Used by customer service agents to find customer accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Search query (name, email, or customer ID)"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseSite",
+                  "value": "<string>",
+                  "description": "(Required) Base site identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "currentPage",
+                  "value": "0",
+                  "description": "Current page number (zero-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f46fa32-485d-4ed3-9ca1-618236ac8b33",
+              "name": "Customer search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currentPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entries\": [\n    {\n      \"uid\": \"string\",\n      \"name\": \"string\",\n      \"customerId\": \"string\",\n      \"lastCartId\": \"string\",\n      \"hasOrder\": false\n    },\n    {\n      \"uid\": \"string\",\n      \"name\": \"string\",\n      \"customerId\": \"string\",\n      \"lastCartId\": \"string\",\n      \"hasOrder\": true\n    }\n  ],\n  \"pagination\": {\n    \"currentPage\": 3271,\n    \"pageSize\": 3752,\n    \"totalPages\": 5599,\n    \"totalResults\": 6676\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a61eb728-b4bc-48fa-8eff-73684d1b3e8c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currentPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "50125b3b-9940-4005-9ea0-ac05e896175e",
+              "name": "Agent does not have required permissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseSite",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currentPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58ed4ba8-3cd6-48fb-a95f-2e3dded4a9ef",
+          "name": "SAP Commerce Cloud Get customer 360 view",
+          "request": {
+            "name": "SAP Commerce Cloud Get customer 360 view",
+            "description": {
+              "content": "Retrieve a comprehensive 360-degree view of a customer including profile information, recent orders, active carts, and support tickets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "baseSite",
+                  "value": "<string>",
+                  "description": "(Required) Base site identifier"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer unique identifier"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d16cc59f-a517-4972-8dbd-cbe18f9154fc",
+              "name": "Customer 360 data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "baseSite",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer unique identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"overview\": {\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"signedUpDate\": \"1947-10-09T06:21:17.052Z\",\n    \"address\": {\n      \"town\": \"string\",\n      \"country\": \"string\"\n    }\n  },\n  \"latestActivity\": {\n    \"type\": \"string\",\n    \"description\": \"string\",\n    \"date\": \"2007-01-31T23:21:42.924Z\"\n  },\n  \"recentOrders\": [\n    {\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"total\": \"string\",\n      \"placed\": \"2018-02-15T04:21:27.896Z\"\n    },\n    {\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"total\": \"string\",\n      \"placed\": \"1996-11-11T19:51:57.873Z\"\n    }\n  ],\n  \"activeCarts\": [\n    {\n      \"code\": \"string\",\n      \"totalItems\": 839,\n      \"total\": \"string\",\n      \"modified\": \"2022-12-06T11:45:29.277Z\"\n    },\n    {\n      \"code\": \"string\",\n      \"totalItems\": 461,\n      \"total\": \"string\",\n      \"modified\": \"1961-05-22T02:42:17.587Z\"\n    }\n  ],\n  \"supportTickets\": [\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"status\": \"string\",\n      \"created\": \"2020-06-02T06:41:21.125Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"subject\": \"string\",\n      \"status\": \"string\",\n      \"created\": \"1956-08-09T16:17:51.902Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16fb44b5-a27f-4a32-bd3e-9b4389bcc732",
+              "name": "Customer not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "baseSite",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer unique identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a9dccaf0-a5eb-4fc1-9076-6d577d854905",
+          "name": "SAP Commerce Cloud List customers",
+          "request": {
+            "name": "SAP Commerce Cloud List customers",
+            "description": {
+              "content": "Retrieve customer data through the inbound customer integration object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "InboundCustomer",
+                "Customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3765e667-aea0-421d-98c5-daaf293f039d",
+              "name": "Customer list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundCustomer",
+                    "Customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"uid\": \"string\",\n        \"name\": \"string\",\n        \"customerID\": \"string\",\n        \"addresses\": [\n          {\n            \"streetname\": \"string\",\n            \"streetnumber\": \"string\",\n            \"postalcode\": \"string\",\n            \"town\": \"string\",\n            \"country\": \"string\"\n          },\n          {\n            \"streetname\": \"string\",\n            \"streetnumber\": \"string\",\n            \"postalcode\": \"string\",\n            \"town\": \"string\",\n            \"country\": \"string\"\n          }\n        ],\n        \"integrationKey\": \"string\"\n      },\n      {\n        \"uid\": \"string\",\n        \"name\": \"string\",\n        \"customerID\": \"string\",\n        \"addresses\": [\n          {\n            \"streetname\": \"string\",\n            \"streetnumber\": \"string\",\n            \"postalcode\": \"string\",\n            \"town\": \"string\",\n            \"country\": \"string\"\n          },\n          {\n            \"streetname\": \"string\",\n            \"streetnumber\": \"string\",\n            \"postalcode\": \"string\",\n            \"town\": \"string\",\n            \"country\": \"string\"\n          }\n        ],\n        \"integrationKey\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8493a93-d39e-40f4-b441-880b14b87b25",
+          "name": "SAP Commerce Cloud Create or update a customer",
+          "request": {
+            "name": "SAP Commerce Cloud Create or update a customer",
+            "description": {
+              "content": "Create or update customer data through the inbound integration layer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "InboundCustomer",
+                "Customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"customerID\": \"<string>\",\n  \"addresses\": [\n    {\n      \"streetname\": \"<string>\",\n      \"streetnumber\": \"<string>\",\n      \"postalcode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"streetname\": \"<string>\",\n      \"streetnumber\": \"<string>\",\n      \"postalcode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"integrationKey\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "525c8c0f-28de-4a31-baad-95b15e997486",
+              "name": "Customer created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundCustomer",
+                    "Customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"customerID\": \"<string>\",\n  \"addresses\": [\n    {\n      \"streetname\": \"<string>\",\n      \"streetnumber\": \"<string>\",\n      \"postalcode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"streetname\": \"<string>\",\n      \"streetnumber\": \"<string>\",\n      \"postalcode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"integrationKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ce628996-89f8-4982-9f83-cd80abee16cc",
+              "name": "Invalid customer data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundCustomer",
+                    "Customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"customerID\": \"<string>\",\n  \"addresses\": [\n    {\n      \"streetname\": \"<string>\",\n      \"streetnumber\": \"<string>\",\n      \"postalcode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"country\": \"<string>\"\n    },\n    {\n      \"streetname\": \"<string>\",\n      \"streetnumber\": \"<string>\",\n      \"postalcode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"country\": \"<string>\"\n    }\n  ],\n  \"integrationKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cae7a3e3-0ff4-4a7e-95cb-10c8b836308c",
+    "name": "SAP Commerce Cloud Admin Addresses Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

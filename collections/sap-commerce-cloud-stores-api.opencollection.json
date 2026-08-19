@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Stores API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stores",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Search stores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/stores",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Free-text search query"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "query",
+                "description": "Latitude for location-based search"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "query",
+                "description": "Longitude for location-based search"
+              },
+              {
+                "name": "radius",
+                "value": "",
+                "type": "query",
+                "description": "Search radius in meters"
+              },
+              {
+                "name": "currentPage",
+                "value": "",
+                "type": "query",
+                "description": "Current page number (zero-based)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort criteria (e.g., relevance, topRated, name-asc, price-asc)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Search for physical stores by location, coordinates, or query string."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get store details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/stores/:storeId",
+            "params": [
+              {
+                "name": "storeId",
+                "value": "",
+                "type": "path",
+                "description": "Store identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific physical store."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

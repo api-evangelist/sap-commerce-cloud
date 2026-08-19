@@ -1,0 +1,232 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Checkout API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checkout",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Set delivery address",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/deliveryaddress",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "addressId",
+                "value": "",
+                "type": "query",
+                "description": "Address identifier"
+              }
+            ]
+          },
+          "docs": "Set the delivery address for the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Remove delivery address",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/deliveryaddress",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ]
+          },
+          "docs": "Remove the delivery address from the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get delivery mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/deliverymode",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Get the current delivery mode for the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Set delivery mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/deliverymode",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "deliveryModeId",
+                "value": "",
+                "type": "query",
+                "description": "Delivery mode identifier"
+              }
+            ]
+          },
+          "docs": "Set the delivery mode for the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Remove delivery mode",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/deliverymode",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ]
+          },
+          "docs": "Remove the delivery mode from the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List delivery modes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/deliverymodes",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all available delivery modes for the cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create payment details",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/paymentdetails",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add payment details to the cart for checkout."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Classifications API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Classifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get product classifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/products/:productCode/classifications",
+            "params": [
+              {
+                "name": "productCode",
+                "value": "",
+                "type": "path",
+                "description": "Product code"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve classification attributes and feature values for a product across classification categories."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

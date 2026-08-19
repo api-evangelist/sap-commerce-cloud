@@ -1,0 +1,415 @@
+{
+  "item": [
+    {
+      "id": "d8fc93b5-d04d-4bd8-becd-a6cb880f578c",
+      "name": "Consents",
+      "description": {
+        "content": "User consent management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "68b46164-7e65-42e7-bccc-d063bfc6ff59",
+          "name": "SAP Commerce Cloud List consent templates",
+          "request": {
+            "name": "SAP Commerce Cloud List consent templates",
+            "description": {
+              "content": "Retrieve all consent templates available for the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId",
+                "consenttemplates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b00b9fc0-1447-4dd8-a006-ee5b0bf423d0",
+              "name": "Consent templates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "consenttemplates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"consentTemplates\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"version\": 7857,\n      \"currentConsent\": {\n        \"consentGivenDate\": \"1962-07-03T06:28:11.478Z\",\n        \"consentWithdrawnDate\": \"1956-10-23T18:02:04.151Z\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"version\": 6641,\n      \"currentConsent\": {\n        \"consentGivenDate\": \"2006-10-05T05:37:57.511Z\",\n        \"consentWithdrawnDate\": \"1954-11-10T02:57:46.665Z\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36a87d30-ebaf-4b25-952d-0909e457d0c3",
+          "name": "SAP Commerce Cloud Give consent",
+          "request": {
+            "name": "SAP Commerce Cloud Give consent",
+            "description": {
+              "content": "Give consent for a specific consent template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId",
+                "consents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "consentTemplateId",
+                  "value": "<string>",
+                  "description": "(Required) Consent template identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "consentTemplateVersion",
+                  "value": "<integer>",
+                  "description": "(Required) Consent template version"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f7d8001-b337-4560-a605-4385156ca719",
+              "name": "Consent given",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "consents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "consentTemplateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "consentTemplateVersion",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"version\": 8683,\n  \"currentConsent\": {\n    \"consentGivenDate\": \"1989-07-25T09:15:41.821Z\",\n    \"consentWithdrawnDate\": \"1996-03-28T04:06:39.364Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa34d4ac-0e02-406a-acbd-e2ce66b818bd",
+              "name": "Invalid consent request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "consents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "consentTemplateId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "consentTemplateVersion",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "26cd1a63-da03-43eb-99e3-3ba6020d2fc9",
+    "name": "SAP Commerce Cloud Admin Addresses Consents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

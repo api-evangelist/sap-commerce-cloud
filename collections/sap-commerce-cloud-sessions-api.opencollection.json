@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Sessions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Start assisted service session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start a new assisted service session, binding the agent to a customer for cart emulation and support activities."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get session details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "Assisted service session identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of an active assisted service session."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud End assisted service session",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/sessions/:sessionId",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "Assisted service session identifier"
+              }
+            ]
+          },
+          "docs": "End an active assisted service session."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,954 @@
+{
+  "item": [
+    {
+      "id": "d40e7bbc-4226-4987-9203-8469bb3e6b98",
+      "name": "Users",
+      "description": {
+        "content": "User account management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "178c8d97-83e5-4d72-8cda-1129b04d498d",
+          "name": "SAP Commerce Cloud Get user profile",
+          "request": {
+            "name": "SAP Commerce Cloud Get user profile",
+            "description": {
+              "content": "Retrieve the profile of a specific user. Use 'current' as userId for the currently authenticated user, or 'anonymous' for guest users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61fc9bc1-02c3-451a-93aa-0eec0c6d7241",
+              "name": "User profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uid\": \"string\",\n  \"name\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"titleCode\": \"string\",\n  \"currency\": {\n    \"isocode\": \"string\",\n    \"name\": \"string\",\n    \"symbol\": \"string\"\n  },\n  \"language\": {\n    \"isocode\": \"string\",\n    \"name\": \"string\"\n  },\n  \"defaultAddress\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"titleCode\": \"string\",\n    \"line1\": \"string\",\n    \"line2\": \"string\",\n    \"town\": \"string\",\n    \"region\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"district\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"defaultAddress\": false\n  },\n  \"displayUid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0260bf9d-f68e-43a0-a9e1-cb47872da941",
+              "name": "User not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1de8df26-ee4d-4ec7-8a8f-b153eae249ed",
+          "name": "SAP Commerce Cloud Update user profile",
+          "request": {
+            "name": "SAP Commerce Cloud Update user profile",
+            "description": {
+              "content": "Update the profile of a specific user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"titleCode\": \"<string>\",\n  \"currency\": {\n    \"isocode\": \"<string>\",\n    \"name\": \"<string>\",\n    \"symbol\": \"<string>\"\n  },\n  \"language\": {\n    \"isocode\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"defaultAddress\": {\n    \"id\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"titleCode\": \"<string>\",\n    \"line1\": \"<string>\",\n    \"line2\": \"<string>\",\n    \"town\": \"<string>\",\n    \"region\": {\n      \"isocode\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"district\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": {\n      \"isocode\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    \"phone\": \"<string>\",\n    \"email\": \"<string>\",\n    \"defaultAddress\": \"<boolean>\"\n  },\n  \"displayUid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2aff798-1a36-4fa8-95e8-57aba3e59df7",
+              "name": "User updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"titleCode\": \"<string>\",\n  \"currency\": {\n    \"isocode\": \"string\",\n    \"name\": \"string\",\n    \"symbol\": \"string\"\n  },\n  \"language\": {\n    \"isocode\": \"string\",\n    \"name\": \"string\"\n  },\n  \"defaultAddress\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"titleCode\": \"string\",\n    \"line1\": \"string\",\n    \"line2\": \"string\",\n    \"town\": \"string\",\n    \"region\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"district\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"defaultAddress\": true\n  },\n  \"displayUid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "00f31174-20e1-48b2-8f30-06b6a83b74b0",
+              "name": "Invalid user data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"titleCode\": \"<string>\",\n  \"currency\": {\n    \"isocode\": \"string\",\n    \"name\": \"string\",\n    \"symbol\": \"string\"\n  },\n  \"language\": {\n    \"isocode\": \"string\",\n    \"name\": \"string\"\n  },\n  \"defaultAddress\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"titleCode\": \"string\",\n    \"line1\": \"string\",\n    \"line2\": \"string\",\n    \"town\": \"string\",\n    \"region\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"district\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"defaultAddress\": true\n  },\n  \"displayUid\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f2f864cf-0f6b-41e4-ac3c-74b7d371fe4e",
+          "name": "SAP Commerce Cloud Delete user account",
+          "request": {
+            "name": "SAP Commerce Cloud Delete user account",
+            "description": {
+              "content": "Delete or deactivate a user account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9d4f484-7539-4144-af7d-cb7043a00acb",
+              "name": "User deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d03fac98-f279-4de3-bbf7-201ede90da1a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be825500-9b52-4b8e-a187-2c2bdff2d515",
+          "name": "SAP Commerce Cloud Register a new user",
+          "request": {
+            "name": "SAP Commerce Cloud Register a new user",
+            "description": {
+              "content": "Register a new customer account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uid\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"password\": \"<password>\",\n  \"titleCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41895e27-64cc-407d-a97f-bf58dbeca93e",
+              "name": "User registered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uid\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"password\": \"<password>\",\n  \"titleCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uid\": \"string\",\n  \"name\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"titleCode\": \"string\",\n  \"currency\": {\n    \"isocode\": \"string\",\n    \"name\": \"string\",\n    \"symbol\": \"string\"\n  },\n  \"language\": {\n    \"isocode\": \"string\",\n    \"name\": \"string\"\n  },\n  \"defaultAddress\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"titleCode\": \"string\",\n    \"line1\": \"string\",\n    \"line2\": \"string\",\n    \"town\": \"string\",\n    \"region\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"district\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"defaultAddress\": false\n  },\n  \"displayUid\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2dc38500-ea5b-4c17-82f1-26adbfe24ec0",
+              "name": "Invalid registration data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uid\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"password\": \"<password>\",\n  \"titleCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55eaf3a6-8cb5-4996-a584-b48d2ca9dd62",
+          "name": "SAP Commerce Cloud List user payment details",
+          "request": {
+            "name": "SAP Commerce Cloud List user payment details",
+            "description": {
+              "content": "Retrieve all saved payment details for a user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId",
+                "paymentdetails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13ec4ec3-3c3d-4abd-bf68-dcc82e322228",
+              "name": "Payment details list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "paymentdetails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payments\": [\n    {\n      \"id\": \"string\",\n      \"accountHolderName\": \"string\",\n      \"cardNumber\": \"string\",\n      \"cardType\": {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      },\n      \"expiryMonth\": \"string\",\n      \"expiryYear\": \"string\",\n      \"billingAddress\": {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"titleCode\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"town\": \"string\",\n        \"region\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"district\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"defaultAddress\": true\n      },\n      \"defaultPayment\": false,\n      \"saved\": true\n    },\n    {\n      \"id\": \"string\",\n      \"accountHolderName\": \"string\",\n      \"cardNumber\": \"string\",\n      \"cardType\": {\n        \"code\": \"string\",\n        \"name\": \"string\"\n      },\n      \"expiryMonth\": \"string\",\n      \"expiryYear\": \"string\",\n      \"billingAddress\": {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"titleCode\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"town\": \"string\",\n        \"region\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"district\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"defaultAddress\": true\n      },\n      \"defaultPayment\": true,\n      \"saved\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3171930a-68d2-4a73-8ae7-d213b47d834f",
+    "name": "SAP Commerce Cloud Admin Addresses Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

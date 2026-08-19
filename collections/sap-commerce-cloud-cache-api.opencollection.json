@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Cache API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cache",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List cache regions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/monitoring/cache/regions"
+          },
+          "docs": "Retrieve all configured cache regions with statistics including hit rates, sizes, and eviction counts."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Clear a cache region",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/monitoring/cache/regions/:regionName/clear",
+            "params": [
+              {
+                "name": "regionName",
+                "value": "",
+                "type": "path",
+                "description": "Cache region name"
+              }
+            ]
+          },
+          "docs": "Clear all entries from a specific cache region."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,173 @@
+{
+  "item": [
+    {
+      "id": "f6184228-7f63-44f9-9089-1a102057abfe",
+      "name": "Monitoring",
+      "description": {
+        "content": "System monitoring and metrics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8eddf9c-2fcd-4743-bdbe-f3a00301bd70",
+          "name": "SAP Commerce Cloud Get system metrics",
+          "request": {
+            "name": "SAP Commerce Cloud Get system metrics",
+            "description": {
+              "content": "Retrieve system performance metrics including JVM stats, database connection pool, and request statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "monitoring",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58987382-d4e9-4690-a655-2d45856796c5",
+              "name": "System metrics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "monitoring",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jvm\": {\n    \"heapUsed\": 8311,\n    \"heapMax\": 6732,\n    \"threads\": 2765,\n    \"uptime\": 2521\n  },\n  \"database\": {\n    \"activeConnections\": 8656,\n    \"maxConnections\": 8196,\n    \"idleConnections\": 9675\n  },\n  \"requests\": {\n    \"totalCount\": 2442,\n    \"averageResponseTime\": 4214.086552710609,\n    \"errorRate\": 7049.752774606018\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d50cee5e-1816-4129-9566-fdf5e5b0698e",
+    "name": "SAP Commerce Cloud Admin Addresses Monitoring API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

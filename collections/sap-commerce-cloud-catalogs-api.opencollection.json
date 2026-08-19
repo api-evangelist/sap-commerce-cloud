@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Catalogs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalogs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List catalogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/catalogs",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all product catalogs available for the base site."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get catalog details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/catalogs/:catalogId",
+            "params": [
+              {
+                "name": "catalogId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific catalog."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get category details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/catalogs/:catalogId/:catalogVersionId/categories/:categoryId",
+            "params": [
+              {
+                "name": "catalogId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog identifier"
+              },
+              {
+                "name": "catalogVersionId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog version identifier"
+              },
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "path",
+                "description": "Category identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific category within a catalog version."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List classification systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/InboundClassification/ClassificationSystems",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip"
+              }
+            ]
+          },
+          "docs": "Retrieve classification system data for product categorization."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get catalog version details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/catalogs/:catalogId/:catalogVersionId",
+            "params": [
+              {
+                "name": "catalogId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog identifier"
+              },
+              {
+                "name": "catalogVersionId",
+                "value": "",
+                "type": "path",
+                "description": "Catalog version (e.g., Online, Staged)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific catalog version including categories and their content."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

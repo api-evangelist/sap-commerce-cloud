@@ -1,0 +1,201 @@
+{
+  "item": [
+    {
+      "id": "b97dea4b-a0e5-400c-861a-1c3c415ea013",
+      "name": "Classifications",
+      "description": {
+        "content": "Product classification and attributes",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4737a5be-11b0-423f-8286-1782daf9632c",
+          "name": "SAP Commerce Cloud Get product classifications",
+          "request": {
+            "name": "SAP Commerce Cloud Get product classifications",
+            "description": {
+              "content": "Retrieve classification attributes and feature values for a product across classification categories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "products",
+                ":productCode",
+                "classifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productCode",
+                  "description": "(Required) Product code"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6167ead-d6a6-4b5c-bf55-963e226d34ea",
+              "name": "Product classifications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "products",
+                    ":productCode",
+                    "classifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productCode",
+                      "description": "(Required) Product code"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"classifications\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"features\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": true,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": true,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"features\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": false,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"comparable\": false,\n          \"featureUnit\": {\n            \"symbol\": \"string\",\n            \"name\": \"string\"\n          },\n          \"featureValues\": [\n            {\n              \"value\": \"string\"\n            },\n            {\n              \"value\": \"string\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f9a887f3-c46d-44a2-b1f0-d2a4e77b00c9",
+    "name": "SAP Commerce Cloud Admin Addresses Classifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

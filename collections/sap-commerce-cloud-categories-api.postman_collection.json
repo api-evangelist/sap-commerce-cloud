@@ -1,0 +1,315 @@
+{
+  "item": [
+    {
+      "id": "c26ad0e1-7a2c-49c8-9cc4-a79e818f4eb7",
+      "name": "Categories",
+      "description": {
+        "content": "Category content management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "29066187-3336-4844-841b-d28446d5c7b2",
+          "name": "SAP Commerce Cloud Get category content",
+          "request": {
+            "name": "SAP Commerce Cloud Get category content",
+            "description": {
+              "content": "Retrieve content for a specific category including images, descriptions, and subcategories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalogs",
+                ":catalogId",
+                ":catalogVersionId",
+                "categories",
+                ":categoryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogId",
+                  "description": "(Required) Catalog identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogVersionId",
+                  "description": "(Required) Catalog version identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "categoryId",
+                  "description": "(Required) Category identifier"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dc9640d8-dc6e-4e99-9cf4-1b4420ab6359",
+              "name": "Category content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId",
+                    "categories",
+                    ":categoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "categoryId",
+                      "description": "(Required) Category identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"image\": {\n    \"url\": \"string\",\n    \"altText\": \"string\",\n    \"format\": \"string\",\n    \"imageType\": \"GALLERY\",\n    \"galleryIndex\": 7845\n  },\n  \"subcategories\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"products\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75f02644-da2a-4659-9fb6-fcd4cc681677",
+              "name": "Category not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId",
+                    "categories",
+                    ":categoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "categoryId",
+                      "description": "(Required) Category identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a0ab3bc1-b9d9-4bae-9198-36ca507316bf",
+    "name": "SAP Commerce Cloud Admin Addresses Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

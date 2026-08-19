@@ -1,0 +1,385 @@
+{
+  "item": [
+    {
+      "id": "793cfe56-6ba5-4583-abeb-6b25ff9eed70",
+      "name": "Stock",
+      "description": {
+        "content": "Stock and inventory integration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4f7567b0-98bc-426f-a3d9-f6c9032282d3",
+          "name": "SAP Commerce Cloud List stock levels",
+          "request": {
+            "name": "SAP Commerce Cloud List stock levels",
+            "description": {
+              "content": "Retrieve stock level data through the inbound stock integration object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "InboundStockLevel",
+                "StockLevels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1532f905-d824-4c65-b26a-26767c99cff7",
+              "name": "Stock level list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundStockLevel",
+                    "StockLevels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"productCode\": \"string\",\n        \"available\": 8159,\n        \"warehouse\": \"string\",\n        \"reserved\": 3172,\n        \"preOrder\": 3933,\n        \"releaseDate\": \"1962-01-11T11:00:22.081Z\",\n        \"integrationKey\": \"string\"\n      },\n      {\n        \"productCode\": \"string\",\n        \"available\": 7467,\n        \"warehouse\": \"string\",\n        \"reserved\": 2825,\n        \"preOrder\": 9105,\n        \"releaseDate\": \"1999-05-07T14:15:36.533Z\",\n        \"integrationKey\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edc101ec-8a33-4fce-b2a4-5ba1a4babf28",
+          "name": "SAP Commerce Cloud Create or update stock level",
+          "request": {
+            "name": "SAP Commerce Cloud Create or update stock level",
+            "description": {
+              "content": "Create or update stock level data through the inbound integration layer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "InboundStockLevel",
+                "StockLevels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productCode\": \"<string>\",\n  \"available\": \"<integer>\",\n  \"warehouse\": \"<string>\",\n  \"reserved\": \"<integer>\",\n  \"preOrder\": \"<integer>\",\n  \"releaseDate\": \"<dateTime>\",\n  \"integrationKey\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "feab5909-4527-4cb1-91b7-342f36e0ae66",
+              "name": "Stock level created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundStockLevel",
+                    "StockLevels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productCode\": \"<string>\",\n  \"available\": \"<integer>\",\n  \"warehouse\": \"<string>\",\n  \"reserved\": \"<integer>\",\n  \"preOrder\": \"<integer>\",\n  \"releaseDate\": \"<dateTime>\",\n  \"integrationKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2ef397f-b902-4b41-824e-b7cf4154ff63",
+              "name": "Invalid stock data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundStockLevel",
+                    "StockLevels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productCode\": \"<string>\",\n  \"available\": \"<integer>\",\n  \"warehouse\": \"<string>\",\n  \"reserved\": \"<integer>\",\n  \"preOrder\": \"<integer>\",\n  \"releaseDate\": \"<dateTime>\",\n  \"integrationKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1b08c454-7a43-4de0-9472-07552d14b52c",
+    "name": "SAP Commerce Cloud Admin Addresses Stock API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

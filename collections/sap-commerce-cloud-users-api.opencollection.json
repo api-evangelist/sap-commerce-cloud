@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Users API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve the profile of a specific user. Use 'current' as userId for the currently authenticated user, or 'anonymous' for guest users."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Update user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the profile of a specific user."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Delete user account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              }
+            ]
+          },
+          "docs": "Delete or deactivate a user account."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Register a new user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a new customer account."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List user payment details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/paymentdetails",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all saved payment details for a user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

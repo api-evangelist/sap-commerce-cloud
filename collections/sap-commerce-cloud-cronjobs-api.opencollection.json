@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses CronJobs API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CronJobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List CronJobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/monitoring/cronjobs",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by CronJob status"
+              }
+            ]
+          },
+          "docs": "Retrieve all configured CronJobs with their current status and schedule information."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get CronJob details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/monitoring/cronjobs/:cronJobCode",
+            "params": [
+              {
+                "name": "cronJobCode",
+                "value": "",
+                "type": "path",
+                "description": "CronJob code"
+              }
+            ]
+          },
+          "docs": "Retrieve details and execution history of a specific CronJob."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Execute a CronJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/monitoring/cronjobs/:cronJobCode/execute",
+            "params": [
+              {
+                "name": "cronJobCode",
+                "value": "",
+                "type": "path",
+                "description": "CronJob code"
+              }
+            ]
+          },
+          "docs": "Trigger the immediate execution of a CronJob."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1165 @@
+{
+  "item": [
+    {
+      "id": "f4b0459c-e4f2-4f34-8401-9d6a09718035",
+      "name": "Orders",
+      "description": {
+        "content": "Order management and history",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "924b96ac-2331-4ece-8232-9624f2c7e30e",
+          "name": "SAP Commerce Cloud List user orders",
+          "request": {
+            "name": "SAP Commerce Cloud List user orders",
+            "description": {
+              "content": "Retrieve order history for a specific user with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "currentPage",
+                  "value": "0",
+                  "description": "Current page number (zero-based)"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "20",
+                  "description": "Number of results per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort criteria (e.g., relevance, topRated, name-asc, price-asc)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bacbe4fd-3262-4903-8385-e4e18e012868",
+              "name": "Order history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currentPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orders\": [\n    {\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"statusDisplay\": \"string\",\n      \"created\": \"1989-11-14T02:03:58.205Z\",\n      \"totalPrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 5445.204972666168,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"FROM\"\n      },\n      \"totalPriceWithTax\": {\n        \"currencyIso\": \"string\",\n        \"value\": 5021.066818230992,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"FROM\"\n      },\n      \"subTotal\": {\n        \"currencyIso\": \"string\",\n        \"value\": 5344.368790430015,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"BUY\"\n      },\n      \"deliveryCost\": {\n        \"currencyIso\": \"string\",\n        \"value\": 8064.946520068178,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"BUY\"\n      },\n      \"totalTax\": {\n        \"currencyIso\": \"string\",\n        \"value\": 9330.508354480253,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"FROM\"\n      },\n      \"totalItems\": 3098,\n      \"entries\": [\n        {\n          \"entryNumber\": 5630,\n          \"product\": {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"summary\": \"string\",\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"images\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"categories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"reviews\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"averageRating\": 3057.559290434766,\n            \"stock\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classifications\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"purchasable\": false,\n            \"url\": \"string\"\n          },\n          \"quantity\": 5582,\n          \"basePrice\": {\n            \"currencyIso\": \"string\",\n            \"value\": 4417.824832742954,\n            \"formattedValue\": \"string\",\n            \"priceType\": \"BUY\"\n          },\n          \"totalPrice\": {\n            \"currencyIso\": \"string\",\n            \"value\": 5614.509666793609,\n            \"formattedValue\": \"string\",\n            \"priceType\": \"BUY\"\n          },\n          \"updateable\": false\n        },\n        {\n          \"entryNumber\": 7261,\n          \"product\": {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"summary\": \"string\",\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"images\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"categories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"reviews\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"averageRating\": 1119.4906782669168,\n            \"stock\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classifications\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"purchasable\": true,\n            \"url\": \"string\"\n          },\n          \"quantity\": 1442,\n          \"basePrice\": {\n            \"currencyIso\": \"string\",\n            \"value\": 1838.2712686049163,\n            \"formattedValue\": \"string\",\n            \"priceType\": \"BUY\"\n          },\n          \"totalPrice\": {\n            \"currencyIso\": \"string\",\n            \"value\": 4912.90132651754,\n            \"formattedValue\": \"string\",\n            \"priceType\": \"BUY\"\n          },\n          \"updateable\": true\n        }\n      ],\n      \"deliveryAddress\": {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"titleCode\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"town\": \"string\",\n        \"region\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"district\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"defaultAddress\": true\n      },\n      \"deliveryMode\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"deliveryCost\": {\n          \"currencyIso\": \"string\",\n          \"value\": 8820.22116574654,\n          \"formattedValue\": \"string\",\n          \"priceType\": \"BUY\"\n        }\n      },\n      \"paymentInfo\": {\n        \"id\": \"string\",\n        \"accountHolderName\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardType\": {\n          \"code\": \"string\",\n          \"name\": \"string\"\n        },\n        \"expiryMonth\": \"string\",\n        \"expiryYear\": \"string\",\n        \"billingAddress\": {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"titleCode\": \"string\",\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"town\": \"string\",\n          \"region\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"district\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"defaultAddress\": false\n        },\n        \"defaultPayment\": true,\n        \"saved\": false\n      },\n      \"consignments\": [\n        {\n          \"code\": \"string\",\n          \"status\": \"string\",\n          \"statusDisplay\": \"string\",\n          \"trackingID\": \"string\",\n          \"entries\": [\n            {\n              \"orderEntry\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shippedQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"orderEntry\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shippedQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"deliveryPointOfService\": {\n            \"name\": \"string\",\n            \"displayName\": \"string\",\n            \"description\": \"string\",\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geoPoint\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"openingHours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"storeImages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"features\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_2\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        {\n          \"code\": \"string\",\n          \"status\": \"string\",\n          \"statusDisplay\": \"string\",\n          \"trackingID\": \"string\",\n          \"entries\": [\n            {\n              \"orderEntry\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shippedQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"orderEntry\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shippedQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"deliveryPointOfService\": {\n            \"name\": \"string\",\n            \"displayName\": \"string\",\n            \"description\": \"string\",\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geoPoint\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"openingHours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"storeImages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"features\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      ],\n      \"user\": {\n        \"uid\": \"string\",\n        \"name\": \"string\"\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"statusDisplay\": \"string\",\n      \"created\": \"1952-05-01T16:44:50.326Z\",\n      \"totalPrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 728.8324884772668,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"FROM\"\n      },\n      \"totalPriceWithTax\": {\n        \"currencyIso\": \"string\",\n        \"value\": 9490.836594599006,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"FROM\"\n      },\n      \"subTotal\": {\n        \"currencyIso\": \"string\",\n        \"value\": 7202.192993762135,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"FROM\"\n      },\n      \"deliveryCost\": {\n        \"currencyIso\": \"string\",\n        \"value\": 1697.1881960373114,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"BUY\"\n      },\n      \"totalTax\": {\n        \"currencyIso\": \"string\",\n        \"value\": 4563.022528333299,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"FROM\"\n      },\n      \"totalItems\": 2305,\n      \"entries\": [\n        {\n          \"entryNumber\": 6666,\n          \"product\": {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"summary\": \"string\",\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"images\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"categories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"reviews\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"averageRating\": 3507.972713188604,\n            \"stock\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classifications\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"purchasable\": true,\n            \"url\": \"string\"\n          },\n          \"quantity\": 2664,\n          \"basePrice\": {\n            \"currencyIso\": \"string\",\n            \"value\": 5557.200879455708,\n            \"formattedValue\": \"string\",\n            \"priceType\": \"BUY\"\n          },\n          \"totalPrice\": {\n            \"currencyIso\": \"string\",\n            \"value\": 2254.035500582754,\n            \"formattedValue\": \"string\",\n            \"priceType\": \"FROM\"\n          },\n          \"updateable\": true\n        },\n        {\n          \"entryNumber\": 5333,\n          \"product\": {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"description\": \"string\",\n            \"summary\": \"string\",\n            \"price\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"images\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"categories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"reviews\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"averageRating\": 8457.434036946603,\n            \"stock\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"classifications\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"purchasable\": true,\n            \"url\": \"string\"\n          },\n          \"quantity\": 3763,\n          \"basePrice\": {\n            \"currencyIso\": \"string\",\n            \"value\": 7645.936226037005,\n            \"formattedValue\": \"string\",\n            \"priceType\": \"BUY\"\n          },\n          \"totalPrice\": {\n            \"currencyIso\": \"string\",\n            \"value\": 7954.368723740518,\n            \"formattedValue\": \"string\",\n            \"priceType\": \"BUY\"\n          },\n          \"updateable\": false\n        }\n      ],\n      \"deliveryAddress\": {\n        \"id\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"titleCode\": \"string\",\n        \"line1\": \"string\",\n        \"line2\": \"string\",\n        \"town\": \"string\",\n        \"region\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"district\": \"string\",\n        \"postalCode\": \"string\",\n        \"country\": {\n          \"isocode\": \"string\",\n          \"name\": \"string\"\n        },\n        \"phone\": \"string\",\n        \"email\": \"string\",\n        \"defaultAddress\": false\n      },\n      \"deliveryMode\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"deliveryCost\": {\n          \"currencyIso\": \"string\",\n          \"value\": 4928.2222028240685,\n          \"formattedValue\": \"string\",\n          \"priceType\": \"BUY\"\n        }\n      },\n      \"paymentInfo\": {\n        \"id\": \"string\",\n        \"accountHolderName\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardType\": {\n          \"code\": \"string\",\n          \"name\": \"string\"\n        },\n        \"expiryMonth\": \"string\",\n        \"expiryYear\": \"string\",\n        \"billingAddress\": {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"titleCode\": \"string\",\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"town\": \"string\",\n          \"region\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"district\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"defaultAddress\": true\n        },\n        \"defaultPayment\": false,\n        \"saved\": false\n      },\n      \"consignments\": [\n        {\n          \"code\": \"string\",\n          \"status\": \"string\",\n          \"statusDisplay\": \"string\",\n          \"trackingID\": \"string\",\n          \"entries\": [\n            {\n              \"orderEntry\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shippedQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"orderEntry\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shippedQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"deliveryPointOfService\": {\n            \"name\": \"string\",\n            \"displayName\": \"string\",\n            \"description\": \"string\",\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geoPoint\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"openingHours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"storeImages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"features\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        {\n          \"code\": \"string\",\n          \"status\": \"string\",\n          \"statusDisplay\": \"string\",\n          \"trackingID\": \"string\",\n          \"entries\": [\n            {\n              \"orderEntry\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shippedQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"orderEntry\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"quantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"shippedQuantity\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"deliveryPointOfService\": {\n            \"name\": \"string\",\n            \"displayName\": \"string\",\n            \"description\": \"string\",\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"geoPoint\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"openingHours\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"storeImages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"features\": {\n              \"key_0\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"key_1\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      ],\n      \"user\": {\n        \"uid\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"currentPage\": 5963,\n    \"pageSize\": 8999,\n    \"totalPages\": 703,\n    \"totalResults\": 1442\n  },\n  \"sorts\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"selected\": false\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"selected\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26902fe0-55ea-40ce-b237-0c6a2a752c77",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "currentPage",
+                      "value": "0"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd0591e7-b943-4659-aeef-d7a1894b9a44",
+          "name": "SAP Commerce Cloud Place an order",
+          "request": {
+            "name": "SAP Commerce Cloud Place an order",
+            "description": {
+              "content": "Authorize the cart and place the order. The cart must have a delivery address, delivery mode, and payment details set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cartId",
+                  "value": "<string>",
+                  "description": "(Required) Cart identifier to convert to order"
+                },
+                {
+                  "disabled": false,
+                  "key": "termsChecked",
+                  "value": "<boolean>",
+                  "description": "(Required) Whether terms and conditions have been accepted"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6819dd6e-57bb-4ef2-996a-88b1ce587e22",
+              "name": "Order placed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termsChecked",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"status\": \"string\",\n  \"statusDisplay\": \"string\",\n  \"created\": \"1975-07-02T18:28:25.933Z\",\n  \"totalPrice\": {\n    \"currencyIso\": \"string\",\n    \"value\": 3394.699418180087,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"FROM\"\n  },\n  \"totalPriceWithTax\": {\n    \"currencyIso\": \"string\",\n    \"value\": 6461.366651251582,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"FROM\"\n  },\n  \"subTotal\": {\n    \"currencyIso\": \"string\",\n    \"value\": 7660.177754614743,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"BUY\"\n  },\n  \"deliveryCost\": {\n    \"currencyIso\": \"string\",\n    \"value\": 7962.789283788064,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"FROM\"\n  },\n  \"totalTax\": {\n    \"currencyIso\": \"string\",\n    \"value\": 5038.668268403944,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"BUY\"\n  },\n  \"totalItems\": 5031,\n  \"entries\": [\n    {\n      \"entryNumber\": 1516,\n      \"product\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"summary\": \"string\",\n        \"price\": {\n          \"currencyIso\": \"string\",\n          \"value\": 5583.402006845953,\n          \"formattedValue\": \"string\",\n          \"priceType\": \"BUY\"\n        },\n        \"images\": [\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          },\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"GALLERY\"\n          }\n        ],\n        \"categories\": [\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"url\": \"string\",\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subcategories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"url\": \"string\",\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subcategories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"reviews\": [\n          {\n            \"id\": \"string\",\n            \"headline\": \"string\",\n            \"comment\": \"string\",\n            \"rating\": 1144.7519957756024,\n            \"date\": \"1976-03-15T15:20:14.858Z\",\n            \"alias\": \"string\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"headline\": \"string\",\n            \"comment\": \"string\",\n            \"rating\": 8437.377777758038,\n            \"date\": \"2000-03-24T05:49:36.514Z\",\n            \"alias\": \"string\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"averageRating\": 6765.735440771916,\n        \"stock\": {\n          \"stockLevelStatus\": \"outOfStock\",\n          \"stockLevel\": 7131\n        },\n        \"classifications\": [\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"features\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"features\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"purchasable\": false,\n        \"url\": \"string\"\n      },\n      \"quantity\": 2202,\n      \"basePrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 1334.772534327522,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"BUY\"\n      },\n      \"totalPrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 7627.0981169505485,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"BUY\"\n      },\n      \"updateable\": false\n    },\n    {\n      \"entryNumber\": 3215,\n      \"product\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"summary\": \"string\",\n        \"price\": {\n          \"currencyIso\": \"string\",\n          \"value\": 9812.279096809523,\n          \"formattedValue\": \"string\",\n          \"priceType\": \"FROM\"\n        },\n        \"images\": [\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          },\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          }\n        ],\n        \"categories\": [\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"url\": \"string\",\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subcategories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"url\": \"string\",\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subcategories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"reviews\": [\n          {\n            \"id\": \"string\",\n            \"headline\": \"string\",\n            \"comment\": \"string\",\n            \"rating\": 7981.067175233135,\n            \"date\": \"1971-03-27T15:36:25.598Z\",\n            \"alias\": \"string\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"headline\": \"string\",\n            \"comment\": \"string\",\n            \"rating\": 3300.1812893620054,\n            \"date\": \"2003-03-06T11:35:56.538Z\",\n            \"alias\": \"string\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"averageRating\": 425.74174399212626,\n        \"stock\": {\n          \"stockLevelStatus\": \"lowStock\",\n          \"stockLevel\": 5942\n        },\n        \"classifications\": [\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"features\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"features\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"purchasable\": false,\n        \"url\": \"string\"\n      },\n      \"quantity\": 6930,\n      \"basePrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 7598.062951050887,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"BUY\"\n      },\n      \"totalPrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 5504.360815068898,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"FROM\"\n      },\n      \"updateable\": true\n    }\n  ],\n  \"deliveryAddress\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"titleCode\": \"string\",\n    \"line1\": \"string\",\n    \"line2\": \"string\",\n    \"town\": \"string\",\n    \"region\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"district\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"defaultAddress\": true\n  },\n  \"deliveryMode\": {\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"deliveryCost\": {\n      \"currencyIso\": \"string\",\n      \"value\": 2941.9818381704854,\n      \"formattedValue\": \"string\",\n      \"priceType\": \"BUY\"\n    }\n  },\n  \"paymentInfo\": {\n    \"id\": \"string\",\n    \"accountHolderName\": \"string\",\n    \"cardNumber\": \"string\",\n    \"cardType\": {\n      \"code\": \"string\",\n      \"name\": \"string\"\n    },\n    \"expiryMonth\": \"string\",\n    \"expiryYear\": \"string\",\n    \"billingAddress\": {\n      \"id\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"titleCode\": \"string\",\n      \"line1\": \"string\",\n      \"line2\": \"string\",\n      \"town\": \"string\",\n      \"region\": {\n        \"isocode\": \"string\",\n        \"name\": \"string\"\n      },\n      \"district\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": {\n        \"isocode\": \"string\",\n        \"name\": \"string\"\n      },\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"defaultAddress\": false\n    },\n    \"defaultPayment\": false,\n    \"saved\": true\n  },\n  \"consignments\": [\n    {\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"statusDisplay\": \"string\",\n      \"trackingID\": \"string\",\n      \"entries\": [\n        {\n          \"orderEntry\": {\n            \"entryNumber\": 8593,\n            \"product\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"quantity\": 4267,\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalPrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateable\": false\n          },\n          \"quantity\": 6417,\n          \"shippedQuantity\": 6045\n        },\n        {\n          \"orderEntry\": {\n            \"entryNumber\": 396,\n            \"product\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"quantity\": 9202,\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalPrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateable\": true\n          },\n          \"quantity\": 2577,\n          \"shippedQuantity\": 9103\n        }\n      ],\n      \"deliveryPointOfService\": {\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"description\": \"string\",\n        \"address\": {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"titleCode\": \"string\",\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"town\": \"string\",\n          \"region\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"district\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"defaultAddress\": false\n        },\n        \"geoPoint\": {\n          \"latitude\": 3986.0788918159496,\n          \"longitude\": 6660.708613675601\n        },\n        \"openingHours\": {\n          \"weekDayOpeningList\": [\n            {\n              \"weekDay\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"openingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"weekDay\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"openingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"storeImages\": [\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          },\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          }\n        ],\n        \"features\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"statusDisplay\": \"string\",\n      \"trackingID\": \"string\",\n      \"entries\": [\n        {\n          \"orderEntry\": {\n            \"entryNumber\": 3168,\n            \"product\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"quantity\": 9372,\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalPrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateable\": false\n          },\n          \"quantity\": 2951,\n          \"shippedQuantity\": 7589\n        },\n        {\n          \"orderEntry\": {\n            \"entryNumber\": 9314,\n            \"product\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"quantity\": 85,\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalPrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateable\": false\n          },\n          \"quantity\": 5357,\n          \"shippedQuantity\": 7160\n        }\n      ],\n      \"deliveryPointOfService\": {\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"description\": \"string\",\n        \"address\": {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"titleCode\": \"string\",\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"town\": \"string\",\n          \"region\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"district\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"defaultAddress\": false\n        },\n        \"geoPoint\": {\n          \"latitude\": 8076.761005003893,\n          \"longitude\": 5309.291143543344\n        },\n        \"openingHours\": {\n          \"weekDayOpeningList\": [\n            {\n              \"weekDay\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"openingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"weekDay\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"openingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"storeImages\": [\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"GALLERY\"\n          },\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          }\n        ],\n        \"features\": {\n          \"key_0\": \"string\"\n        }\n      }\n    }\n  ],\n  \"user\": {\n    \"uid\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f63e7dd0-7789-4964-8d80-65cafacd5324",
+              "name": "Cart not ready for checkout",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termsChecked",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "667f1e96-c239-4410-85b7-e58b7a931520",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cartId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "termsChecked",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6853a535-80aa-4491-9ee9-232586210ccd",
+          "name": "SAP Commerce Cloud Get order details",
+          "request": {
+            "name": "SAP Commerce Cloud Get order details",
+            "description": {
+              "content": "Retrieve details of a specific order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":userId",
+                "orders",
+                ":orderCode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "orderCode",
+                  "description": "(Required) Order code"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "392abcf9-7004-49c3-95c2-ceedb00ad2c3",
+              "name": "Order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "orders",
+                    ":orderCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderCode",
+                      "description": "(Required) Order code"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"status\": \"string\",\n  \"statusDisplay\": \"string\",\n  \"created\": \"1975-07-02T18:28:25.933Z\",\n  \"totalPrice\": {\n    \"currencyIso\": \"string\",\n    \"value\": 3394.699418180087,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"FROM\"\n  },\n  \"totalPriceWithTax\": {\n    \"currencyIso\": \"string\",\n    \"value\": 6461.366651251582,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"FROM\"\n  },\n  \"subTotal\": {\n    \"currencyIso\": \"string\",\n    \"value\": 7660.177754614743,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"BUY\"\n  },\n  \"deliveryCost\": {\n    \"currencyIso\": \"string\",\n    \"value\": 7962.789283788064,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"FROM\"\n  },\n  \"totalTax\": {\n    \"currencyIso\": \"string\",\n    \"value\": 5038.668268403944,\n    \"formattedValue\": \"string\",\n    \"priceType\": \"BUY\"\n  },\n  \"totalItems\": 5031,\n  \"entries\": [\n    {\n      \"entryNumber\": 1516,\n      \"product\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"summary\": \"string\",\n        \"price\": {\n          \"currencyIso\": \"string\",\n          \"value\": 5583.402006845953,\n          \"formattedValue\": \"string\",\n          \"priceType\": \"BUY\"\n        },\n        \"images\": [\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          },\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"GALLERY\"\n          }\n        ],\n        \"categories\": [\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"url\": \"string\",\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subcategories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"url\": \"string\",\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subcategories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"reviews\": [\n          {\n            \"id\": \"string\",\n            \"headline\": \"string\",\n            \"comment\": \"string\",\n            \"rating\": 1144.7519957756024,\n            \"date\": \"1976-03-15T15:20:14.858Z\",\n            \"alias\": \"string\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"headline\": \"string\",\n            \"comment\": \"string\",\n            \"rating\": 8437.377777758038,\n            \"date\": \"2000-03-24T05:49:36.514Z\",\n            \"alias\": \"string\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"averageRating\": 6765.735440771916,\n        \"stock\": {\n          \"stockLevelStatus\": \"outOfStock\",\n          \"stockLevel\": 7131\n        },\n        \"classifications\": [\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"features\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"features\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"purchasable\": false,\n        \"url\": \"string\"\n      },\n      \"quantity\": 2202,\n      \"basePrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 1334.772534327522,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"BUY\"\n      },\n      \"totalPrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 7627.0981169505485,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"BUY\"\n      },\n      \"updateable\": false\n    },\n    {\n      \"entryNumber\": 3215,\n      \"product\": {\n        \"code\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"summary\": \"string\",\n        \"price\": {\n          \"currencyIso\": \"string\",\n          \"value\": 9812.279096809523,\n          \"formattedValue\": \"string\",\n          \"priceType\": \"FROM\"\n        },\n        \"images\": [\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          },\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          }\n        ],\n        \"categories\": [\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"url\": \"string\",\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subcategories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"url\": \"string\",\n            \"image\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subcategories\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"reviews\": [\n          {\n            \"id\": \"string\",\n            \"headline\": \"string\",\n            \"comment\": \"string\",\n            \"rating\": 7981.067175233135,\n            \"date\": \"1971-03-27T15:36:25.598Z\",\n            \"alias\": \"string\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": \"string\",\n            \"headline\": \"string\",\n            \"comment\": \"string\",\n            \"rating\": 3300.1812893620054,\n            \"date\": \"2003-03-06T11:35:56.538Z\",\n            \"alias\": \"string\",\n            \"principal\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"averageRating\": 425.74174399212626,\n        \"stock\": {\n          \"stockLevelStatus\": \"lowStock\",\n          \"stockLevel\": 5942\n        },\n        \"classifications\": [\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"features\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"features\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"purchasable\": false,\n        \"url\": \"string\"\n      },\n      \"quantity\": 6930,\n      \"basePrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 7598.062951050887,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"BUY\"\n      },\n      \"totalPrice\": {\n        \"currencyIso\": \"string\",\n        \"value\": 5504.360815068898,\n        \"formattedValue\": \"string\",\n        \"priceType\": \"FROM\"\n      },\n      \"updateable\": true\n    }\n  ],\n  \"deliveryAddress\": {\n    \"id\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"titleCode\": \"string\",\n    \"line1\": \"string\",\n    \"line2\": \"string\",\n    \"town\": \"string\",\n    \"region\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"district\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": {\n      \"isocode\": \"string\",\n      \"name\": \"string\"\n    },\n    \"phone\": \"string\",\n    \"email\": \"string\",\n    \"defaultAddress\": true\n  },\n  \"deliveryMode\": {\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"deliveryCost\": {\n      \"currencyIso\": \"string\",\n      \"value\": 2941.9818381704854,\n      \"formattedValue\": \"string\",\n      \"priceType\": \"BUY\"\n    }\n  },\n  \"paymentInfo\": {\n    \"id\": \"string\",\n    \"accountHolderName\": \"string\",\n    \"cardNumber\": \"string\",\n    \"cardType\": {\n      \"code\": \"string\",\n      \"name\": \"string\"\n    },\n    \"expiryMonth\": \"string\",\n    \"expiryYear\": \"string\",\n    \"billingAddress\": {\n      \"id\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"titleCode\": \"string\",\n      \"line1\": \"string\",\n      \"line2\": \"string\",\n      \"town\": \"string\",\n      \"region\": {\n        \"isocode\": \"string\",\n        \"name\": \"string\"\n      },\n      \"district\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": {\n        \"isocode\": \"string\",\n        \"name\": \"string\"\n      },\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"defaultAddress\": false\n    },\n    \"defaultPayment\": false,\n    \"saved\": true\n  },\n  \"consignments\": [\n    {\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"statusDisplay\": \"string\",\n      \"trackingID\": \"string\",\n      \"entries\": [\n        {\n          \"orderEntry\": {\n            \"entryNumber\": 8593,\n            \"product\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"quantity\": 4267,\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalPrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateable\": false\n          },\n          \"quantity\": 6417,\n          \"shippedQuantity\": 6045\n        },\n        {\n          \"orderEntry\": {\n            \"entryNumber\": 396,\n            \"product\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"quantity\": 9202,\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalPrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateable\": true\n          },\n          \"quantity\": 2577,\n          \"shippedQuantity\": 9103\n        }\n      ],\n      \"deliveryPointOfService\": {\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"description\": \"string\",\n        \"address\": {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"titleCode\": \"string\",\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"town\": \"string\",\n          \"region\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"district\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"defaultAddress\": false\n        },\n        \"geoPoint\": {\n          \"latitude\": 3986.0788918159496,\n          \"longitude\": 6660.708613675601\n        },\n        \"openingHours\": {\n          \"weekDayOpeningList\": [\n            {\n              \"weekDay\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"openingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"weekDay\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"openingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"storeImages\": [\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          },\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          }\n        ],\n        \"features\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      }\n    },\n    {\n      \"code\": \"string\",\n      \"status\": \"string\",\n      \"statusDisplay\": \"string\",\n      \"trackingID\": \"string\",\n      \"entries\": [\n        {\n          \"orderEntry\": {\n            \"entryNumber\": 3168,\n            \"product\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"quantity\": 9372,\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalPrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateable\": false\n          },\n          \"quantity\": 2951,\n          \"shippedQuantity\": 7589\n        },\n        {\n          \"orderEntry\": {\n            \"entryNumber\": 9314,\n            \"product\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"quantity\": 85,\n            \"basePrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"totalPrice\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"updateable\": false\n          },\n          \"quantity\": 5357,\n          \"shippedQuantity\": 7160\n        }\n      ],\n      \"deliveryPointOfService\": {\n        \"name\": \"string\",\n        \"displayName\": \"string\",\n        \"description\": \"string\",\n        \"address\": {\n          \"id\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"titleCode\": \"string\",\n          \"line1\": \"string\",\n          \"line2\": \"string\",\n          \"town\": \"string\",\n          \"region\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"district\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": {\n            \"isocode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"phone\": \"string\",\n          \"email\": \"string\",\n          \"defaultAddress\": false\n        },\n        \"geoPoint\": {\n          \"latitude\": 8076.761005003893,\n          \"longitude\": 5309.291143543344\n        },\n        \"openingHours\": {\n          \"weekDayOpeningList\": [\n            {\n              \"weekDay\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"openingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"weekDay\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"openingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closingTime\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"closed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        \"storeImages\": [\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"GALLERY\"\n          },\n          {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          }\n        ],\n        \"features\": {\n          \"key_0\": \"string\"\n        }\n      }\n    }\n  ],\n  \"user\": {\n    \"uid\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4e53e17-7f18-4e3c-967c-19e5c2e3713e",
+              "name": "Order not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":userId",
+                    "orders",
+                    ":orderCode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "orderCode",
+                      "description": "(Required) Order code"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c451704b-a39c-4678-bc5f-5c465644562d",
+          "name": "SAP Commerce Cloud List orders",
+          "request": {
+            "name": "SAP Commerce Cloud List orders",
+            "description": {
+              "content": "Retrieve order data through the inbound order integration object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "InboundOrder",
+                "Orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$expand",
+                  "value": "<string>",
+                  "description": "Comma-separated list of navigation properties to expand"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property name and direction for sorting"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b7ef5d0-7b3b-4ec2-bd92-53b283494d92",
+              "name": "Order list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundOrder",
+                    "Orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$expand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"code\": \"string\",\n        \"date\": \"2006-09-02T18:39:45.373Z\",\n        \"status\": \"string\",\n        \"currency\": \"string\",\n        \"totalPrice\": 1691.5807656321524,\n        \"user\": {\n          \"uid\": \"string\"\n        },\n        \"entries\": [\n          {\n            \"entryNumber\": 364,\n            \"productCode\": \"string\",\n            \"quantity\": 2872,\n            \"totalPrice\": 5161.244982104712\n          },\n          {\n            \"entryNumber\": 3863,\n            \"productCode\": \"string\",\n            \"quantity\": 7637,\n            \"totalPrice\": 7196.15139143526\n          }\n        ],\n        \"integrationKey\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"date\": \"1991-09-03T14:32:48.559Z\",\n        \"status\": \"string\",\n        \"currency\": \"string\",\n        \"totalPrice\": 2516.9561394113025,\n        \"user\": {\n          \"uid\": \"string\"\n        },\n        \"entries\": [\n          {\n            \"entryNumber\": 1168,\n            \"productCode\": \"string\",\n            \"quantity\": 6108,\n            \"totalPrice\": 5034.6955416749115\n          },\n          {\n            \"entryNumber\": 6142,\n            \"productCode\": \"string\",\n            \"quantity\": 923,\n            \"totalPrice\": 7486.350714766447\n          }\n        ],\n        \"integrationKey\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1df5dcb-e4a3-4c8c-8d99-4252dddd112d",
+          "name": "SAP Commerce Cloud Create or update an order",
+          "request": {
+            "name": "SAP Commerce Cloud Create or update an order",
+            "description": {
+              "content": "Create or update order data through the inbound integration layer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "InboundOrder",
+                "Orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalPrice\": \"<double>\",\n  \"user\": {\n    \"uid\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"entryNumber\": \"<integer>\",\n      \"productCode\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\"\n    },\n    {\n      \"entryNumber\": \"<integer>\",\n      \"productCode\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\"\n    }\n  ],\n  \"integrationKey\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "728004ed-7847-4008-be5b-daa83b7adee3",
+              "name": "Order created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundOrder",
+                    "Orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalPrice\": \"<double>\",\n  \"user\": {\n    \"uid\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"entryNumber\": \"<integer>\",\n      \"productCode\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\"\n    },\n    {\n      \"entryNumber\": \"<integer>\",\n      \"productCode\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\"\n    }\n  ],\n  \"integrationKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48aad834-55cb-4961-9c79-0fe60f84624d",
+              "name": "Invalid order data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundOrder",
+                    "Orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"status\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"totalPrice\": \"<double>\",\n  \"user\": {\n    \"uid\": \"<string>\"\n  },\n  \"entries\": [\n    {\n      \"entryNumber\": \"<integer>\",\n      \"productCode\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\"\n    },\n    {\n      \"entryNumber\": \"<integer>\",\n      \"productCode\": \"<string>\",\n      \"quantity\": \"<integer>\",\n      \"totalPrice\": \"<double>\"\n    }\n  ],\n  \"integrationKey\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "497276ce-5ede-4ca8-ae43-2bca06ffbc42",
+    "name": "SAP Commerce Cloud Admin Addresses Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Carts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Carts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List customer carts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/customers/:customerId/carts",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer unique identifier"
+              },
+              {
+                "name": "baseSite",
+                "value": "",
+                "type": "query",
+                "description": "Base site identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve all carts belonging to a customer, used by agents to view and assist with shopping."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

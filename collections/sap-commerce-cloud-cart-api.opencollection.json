@@ -1,0 +1,261 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Cart API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cart",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List user carts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all shopping carts for a specific user."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create a new cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "oldCartId",
+                "value": "",
+                "type": "query",
+                "description": "Anonymous cart ID to merge"
+              }
+            ]
+          },
+          "docs": "Create a new shopping cart for the user. Can optionally merge an anonymous cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get cart details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific shopping cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Delete a cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ]
+          },
+          "docs": "Delete a specific shopping cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List cart entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/entries",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve all entries (line items) in a shopping cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Add entry to cart",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/entries",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a product to the shopping cart."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Update cart entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/entries/:entryNumber",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "entryNumber",
+                "value": "",
+                "type": "path",
+                "description": "Cart entry number (zero-based index)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the quantity of an existing cart entry."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Remove cart entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/carts/:cartId/entries/:entryNumber",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "path",
+                "description": "Cart identifier"
+              },
+              {
+                "name": "entryNumber",
+                "value": "",
+                "type": "path",
+                "description": "Cart entry number (zero-based index)"
+              }
+            ]
+          },
+          "docs": "Remove a specific entry from the shopping cart."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

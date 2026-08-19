@@ -1,0 +1,198 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SAP Commerce Cloud Admin Addresses Orders API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "client_credentials",
+      "accessTokenUrl": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List user orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/orders",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "currentPage",
+                "value": "",
+                "type": "query",
+                "description": "Current page number (zero-based)"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort criteria (e.g., relevance, topRated, name-asc, price-asc)"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve order history for a specific user with pagination."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Place an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/orders",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "cartId",
+                "value": "",
+                "type": "query",
+                "description": "Cart identifier to convert to order"
+              },
+              {
+                "name": "termsChecked",
+                "value": "",
+                "type": "query",
+                "description": "Whether terms and conditions have been accepted"
+              }
+            ]
+          },
+          "docs": "Authorize the cart and place the order. The cart must have a delivery address, delivery mode, and payment details set."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Get order details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/users/:userId/orders/:orderCode",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users."
+              },
+              {
+                "name": "orderCode",
+                "value": "",
+                "type": "path",
+                "description": "Order code"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific order."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud List orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{tenant}.{region}.commercecloud.sap/InboundOrder/Orders",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "",
+                "type": "query",
+                "description": "OData filter expression"
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of properties to return"
+              },
+              {
+                "name": "$expand",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of navigation properties to expand"
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return"
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip"
+              },
+              {
+                "name": "$orderby",
+                "value": "",
+                "type": "query",
+                "description": "Property name and direction for sorting"
+              }
+            ]
+          },
+          "docs": "Retrieve order data through the inbound order integration object."
+        },
+        {
+          "info": {
+            "name": "SAP Commerce Cloud Create or update an order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{tenant}.{region}.commercecloud.sap/InboundOrder/Orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update order data through the inbound integration layer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

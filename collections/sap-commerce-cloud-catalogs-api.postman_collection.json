@@ -1,0 +1,987 @@
+{
+  "item": [
+    {
+      "id": "724eb3d8-0ad5-4fb9-8b9b-87dbf315ccf0",
+      "name": "Catalogs",
+      "description": {
+        "content": "Catalog and category browsing",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "02b92b43-150b-4694-adfa-ff4fc15fcf08",
+          "name": "SAP Commerce Cloud List catalogs",
+          "request": {
+            "name": "SAP Commerce Cloud List catalogs",
+            "description": {
+              "content": "Retrieve all product catalogs available for the base site.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalogs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49f3f464-a82f-414f-8395-35334dff4b6e",
+              "name": "List of catalogs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"catalogs\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"catalogVersions\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"categories\": [\n            {\n              \"code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subcategories\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subcategories\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"categories\": [\n            {\n              \"code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subcategories\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subcategories\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"catalogVersions\": [\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"categories\": [\n            {\n              \"code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subcategories\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subcategories\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"url\": \"string\",\n          \"categories\": [\n            {\n              \"code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subcategories\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"image\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subcategories\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bad629a-30d4-4ddf-bd53-cfb0a4155a4c",
+          "name": "SAP Commerce Cloud Get catalog details",
+          "request": {
+            "name": "SAP Commerce Cloud Get catalog details",
+            "description": {
+              "content": "Retrieve details of a specific catalog.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalogs",
+                ":catalogId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogId",
+                  "description": "(Required) Catalog identifier"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa29b42e-8011-4fbb-95d6-cc7a78935616",
+              "name": "Catalog details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"catalogVersions\": [\n    {\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"categories\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"image\": {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          },\n          \"subcategories\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"image\": {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"PRIMARY\"\n          },\n          \"subcategories\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"url\": \"string\",\n      \"categories\": [\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"image\": {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"GALLERY\"\n          },\n          \"subcategories\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n            }\n          ]\n        },\n        {\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"url\": \"string\",\n          \"image\": {\n            \"url\": \"string\",\n            \"altText\": \"string\",\n            \"format\": \"string\",\n            \"imageType\": \"GALLERY\"\n          },\n          \"subcategories\": [\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n            },\n            {\n              \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5ccc42c-061b-49c6-b05b-9090c56b42ed",
+              "name": "Catalog not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b633dd93-74df-4eb0-9475-5e2c78ea9600",
+          "name": "SAP Commerce Cloud Get category details",
+          "request": {
+            "name": "SAP Commerce Cloud Get category details",
+            "description": {
+              "content": "Retrieve details of a specific category within a catalog version.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalogs",
+                ":catalogId",
+                ":catalogVersionId",
+                "categories",
+                ":categoryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogId",
+                  "description": "(Required) Catalog identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogVersionId",
+                  "description": "(Required) Catalog version identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "categoryId",
+                  "description": "(Required) Category identifier"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4b5715f-3ebf-4004-81ae-dc22c00fd7b9",
+              "name": "Category details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId",
+                    "categories",
+                    ":categoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "categoryId",
+                      "description": "(Required) Category identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"url\": \"string\",\n  \"image\": {\n    \"url\": \"string\",\n    \"altText\": \"string\",\n    \"format\": \"string\",\n    \"imageType\": \"PRIMARY\"\n  },\n  \"subcategories\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"image\": {\n        \"url\": \"string\",\n        \"altText\": \"string\",\n        \"format\": \"string\",\n        \"imageType\": \"GALLERY\"\n      },\n      \"subcategories\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n        }\n      ]\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\",\n      \"image\": {\n        \"url\": \"string\",\n        \"altText\": \"string\",\n        \"format\": \"string\",\n        \"imageType\": \"GALLERY\"\n      },\n      \"subcategories\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Category detected>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8145f4e4-cace-432b-84e2-3357fb9e14bc",
+              "name": "Category not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId",
+                    "categories",
+                    ":categoryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "categoryId",
+                      "description": "(Required) Category identifier"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fdbb41f-f751-468d-a271-737c36553480",
+          "name": "SAP Commerce Cloud List classification systems",
+          "request": {
+            "name": "SAP Commerce Cloud List classification systems",
+            "description": {
+              "content": "Retrieve classification system data for product categorization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "InboundClassification",
+                "ClassificationSystems"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "OData filter expression"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "330da3d4-43af-4e34-b261-5227bb50b749",
+              "name": "Classification systems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "InboundClassification",
+                    "ClassificationSystems"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"d\": {\n    \"results\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ceeabef7-4ed8-49bf-b769-2d169f04833d",
+          "name": "SAP Commerce Cloud Get catalog version details",
+          "request": {
+            "name": "SAP Commerce Cloud Get catalog version details",
+            "description": {
+              "content": "Retrieve details of a specific catalog version including categories and their content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalogs",
+                ":catalogId",
+                ":catalogVersionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "DEFAULT",
+                  "description": "Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogId",
+                  "description": "(Required) Catalog identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "catalogVersionId",
+                  "description": "(Required) Catalog version (e.g., Online, Staged)"
+                },
+                {
+                  "description": "Tenant identifier",
+                  "type": "any",
+                  "value": "{{tenant}}",
+                  "key": "tenant"
+                },
+                {
+                  "description": "Deployment region",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "93aa3cbd-3a9e-4b70-ab95-689bdce071d7",
+              "name": "Catalog version details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version (e.g., Online, Staged)"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"lastModifiedTime\": \"2022-02-26T15:45:16.243Z\",\n  \"url\": \"string\",\n  \"categories\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "630ddc11-083c-4b52-8907-d6f5bca04689",
+              "name": "Catalog version not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs",
+                    ":catalogId",
+                    ":catalogVersionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "DEFAULT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogId",
+                      "description": "(Required) Catalog identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "catalogVersionId",
+                      "description": "(Required) Catalog version (e.g., Online, Staged)"
+                    },
+                    {
+                      "description": "Tenant identifier",
+                      "type": "any",
+                      "value": "{{tenant}}",
+                      "key": "tenant"
+                    },
+                    {
+                      "description": "Deployment region",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Tenant identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "my-tenant",
+      "key": "tenant"
+    },
+    {
+      "description": {
+        "content": "Deployment region",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{tenant}}.{{region}}.commercecloud.sap",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "admin"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token"
+      },
+      {
+        "key": "grant_type",
+        "value": "client_credentials"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b89ff49-60a2-4b16-93f9-5d4183a1a861",
+    "name": "SAP Commerce Cloud Admin Addresses Catalogs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.\n\nContact Support:\n Name: SAP Support",
+      "type": "text/plain"
+    }
+  }
+}
