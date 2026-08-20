@@ -26,6 +26,14 @@ tags:
   - B2C
   - Commerce
   - Customer Experience
+  - E-Commerce
+  - Omnichannel
+  - Retail
+tags_raw:
+  - B2B
+  - B2C
+  - Commerce
+  - Customer Experience
   - Ecommerce
   - Omnichannel
   - Retail
@@ -157,6 +165,8 @@ apis:
     https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
+  - Cart
+  tags_raw:
   - Carts
   properties:
   - type: OpenAPI
@@ -367,6 +377,8 @@ apis:
     https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
+  - Cron Jobs
+  tags_raw:
   - CronJobs
   properties:
   - type: OpenAPI
@@ -547,6 +559,8 @@ apis:
     https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
@@ -577,6 +591,8 @@ apis:
     https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -727,6 +743,8 @@ apis:
     https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
