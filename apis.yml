@@ -781,6 +781,9 @@ apis:
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/
 common:
+  - type: CapabilityMap
+    url: capabilities/sap-commerce-cloud-capability-edges.yml
+    name: SAP Commerce Cloud Business Capability Map
   - type: AgenticAccess
     url: agentic-access/sap-commerce-cloud-agentic-access.yml
   - type: VulnerabilityDisclosure
