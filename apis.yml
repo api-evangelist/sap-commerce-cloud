@@ -3,6 +3,18 @@ description: >-
   SAP Commerce Cloud (formerly Hybris) provides enterprise e-commerce and omnichannel customer experience management
   capabilities including product content management, order management, personalization, and assisted service for B2B and
   B2C commerce scenarios.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
