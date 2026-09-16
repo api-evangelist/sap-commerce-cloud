@@ -1,8 +1,7 @@
 name: SAP Commerce Cloud
-description: >-
-  SAP Commerce Cloud (formerly Hybris) provides enterprise e-commerce and omnichannel customer experience management
-  capabilities including product content management, order management, personalization, and assisted service for B2B and
-  B2C commerce scenarios.
+description: SAP Commerce Cloud (formerly Hybris) provides enterprise e-commerce and omnichannel customer
+  experience management capabilities including product content management, order management, personalization,
+  and assisted service for B2B and B2C commerce scenarios.
 deliveryModel:
   model: saas
   open_source: false
@@ -31,30 +30,29 @@ accessModel:
 image: ''
 url: https://www.sap.com/products/crm/commerce-cloud.html
 created: '2024-01-01'
-modified: '2026-05-19'
+modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
-  - B2B
-  - B2C
-  - Commerce
-  - Customer Experience
-  - E-Commerce
-  - Omnichannel
-  - Retail
+- B2B
+- B2C
+- Commerce
+- Customer Experience
+- E-Commerce
+- Omnichannel
+- Retail
 tags_raw:
-  - B2B
-  - B2C
-  - Commerce
-  - Customer Experience
-  - Ecommerce
-  - Omnichannel
-  - Retail
+- B2B
+- B2C
+- Commerce
+- Customer Experience
+- Ecommerce
+- Omnichannel
+- Retail
 apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-addresses-api
   name: SAP Commerce Cloud Addresses API
   description: User address management
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Addresses
@@ -62,20 +60,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-addresses-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -83,8 +76,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-agents-api
   name: SAP Commerce Cloud Agents API
   description: Customer service agent operations
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Agents
@@ -92,20 +84,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-agents-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -113,8 +100,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-cache-api
   name: SAP Commerce Cloud Cache API
   description: Cache management operations
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Cache
@@ -122,20 +108,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-cache-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -143,8 +124,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-cart-api
   name: SAP Commerce Cloud Cart API
   description: Shopping cart management
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Cart
@@ -152,20 +132,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-cart-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -173,8 +148,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-carts-api
   name: SAP Commerce Cloud Carts API
   description: Cart emulation and management on behalf of customers
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Cart
@@ -184,20 +158,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-carts-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -205,8 +174,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-catalogs-api
   name: SAP Commerce Cloud Catalogs API
   description: Catalog and category browsing
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Catalogs
@@ -214,20 +182,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-catalogs-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -235,8 +198,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-categories-api
   name: SAP Commerce Cloud Categories API
   description: Category content management
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Categories
@@ -244,20 +206,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-categories-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -265,8 +222,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-checkout-api
   name: SAP Commerce Cloud Checkout API
   description: Checkout and payment operations
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Checkout
@@ -274,20 +230,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-checkout-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -295,8 +246,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-classifications-api
   name: SAP Commerce Cloud Classifications API
   description: Product classification and attributes
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Classifications
@@ -304,20 +254,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-classifications-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -325,8 +270,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-configuration-api
   name: SAP Commerce Cloud Configuration API
   description: System configuration management
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Configuration
@@ -334,20 +278,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-configuration-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -355,8 +294,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-consents-api
   name: SAP Commerce Cloud Consents API
   description: User consent management
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Consents
@@ -364,20 +302,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-consents-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -385,8 +318,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-cronjobs-api
   name: SAP Commerce Cloud CronJobs API
   description: CronJob management and execution
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Cron Jobs
@@ -396,20 +328,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-cronjobs-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -417,8 +344,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-customers-api
   name: SAP Commerce Cloud Customers API
   description: Customer lookup and 360 view
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Customers
@@ -426,20 +352,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-customers-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -447,8 +368,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-health-api
   name: SAP Commerce Cloud Health API
   description: System health and readiness checks
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Health
@@ -456,20 +376,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-health-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -477,8 +392,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-media-api
   name: SAP Commerce Cloud Media API
   description: Media and image management
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Media
@@ -486,20 +400,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-media-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -507,8 +416,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-metadata-api
   name: SAP Commerce Cloud Metadata API
   description: OData service metadata
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Metadata
@@ -516,20 +424,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-metadata-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -537,8 +440,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-monitoring-api
   name: SAP Commerce Cloud Monitoring API
   description: System monitoring and metrics
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Monitoring
@@ -546,20 +448,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-monitoring-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -567,8 +464,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-orders-api
   name: SAP Commerce Cloud Orders API
   description: Order management and history
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Order
@@ -578,20 +474,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-orders-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -599,8 +490,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-products-api
   name: SAP Commerce Cloud Products API
   description: Product catalog browsing and search
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Product
@@ -610,20 +500,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-products-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -631,8 +516,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-promotions-api
   name: SAP Commerce Cloud Promotions API
   description: Promotions and vouchers
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Promotions
@@ -640,20 +524,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-promotions-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -661,8 +540,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-sessions-api
   name: SAP Commerce Cloud Sessions API
   description: Assisted service session management
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Sessions
@@ -670,20 +548,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-sessions-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -691,8 +564,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-stock-api
   name: SAP Commerce Cloud Stock API
   description: Stock and inventory integration
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Stock
@@ -700,20 +572,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-stock-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -721,8 +588,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-stores-api
   name: SAP Commerce Cloud Stores API
   description: Physical store locator
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - Stores
@@ -730,20 +596,15 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-stores-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
@@ -751,8 +612,7 @@ apis:
 - aid: sap-commerce-cloud:sap-commerce-cloud-users-api
   name: SAP Commerce Cloud Users API
   description: User account management
-  humanURL: >-
-    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
+  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
   - User
@@ -762,86 +622,83 @@ apis:
   - type: OpenAPI
     url: openapi/sap-commerce-cloud-users-api-openapi.yml
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html
   - type: Authentication
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
+    url: https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html
   - type: Documentation
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html
   - type: APIReference
-    url: >-
-      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
+    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/
 common:
-  - type: CapabilityMap
-    url: capabilities/sap-commerce-cloud-capability-edges.yml
-    name: SAP Commerce Cloud Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/sap-commerce-cloud-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/sap-commerce-cloud-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/sap-commerce-cloud-domain-security.yml
-  - type: Authentication
-    url: authentication/sap-commerce-cloud-authentication.yml
-  - type: OAuthScopes
-    url: scopes/sap-commerce-cloud-scopes.yml
-  - type: GitHubOrganization
-    url: https://github.com/SAP
-  - type: LinkedIn
-    url: https://www.linkedin.com/showcase/sap-cx-commerce-cloud
-  - type: Portal
-    url: https://api.sap.com/
-  - type: GettingStarted
-    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/0996ba68e5794b8ab51db8d25d4c9f8c/
-  - type: Authentication
-    url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
-  - type: Support
-    url: https://support.sap.com/
-  - type: Community
-    url: https://community.sap.com/topics/commerce-cloud
-  - type: TermsOfService
-    url: https://www.sap.com/about/legal/terms-of-use.html
-  - type: PrivacyPolicy
-    url: https://www.sap.com/about/legal/privacy.html
-  - type: StatusPage
-    url: https://www.sap.com/about/trust-center/cloud-service-status.html
-  - type: OpenAPI
-    url: openapi/_original/sap-commerce-cloud-commerce-web-services-openapi.yml
-  - type: OpenAPI
-    url: openapi/_original/sap-commerce-cloud-assisted-service-openapi.yml
-  - type: OpenAPI
-    url: openapi/_original/sap-commerce-cloud-integration-openapi.yml
-  - type: OpenAPI
-    url: openapi/_original/sap-commerce-cloud-admin-openapi.yml
-  - type: OpenAPI
-    url: openapi/_original/sap-commerce-cloud-product-content-management-openapi.yml
-  - type: JSONLD
-    url: json-ld/sap-commerce-cloud-context.jsonld
-  - type: JSONSchema
-    url: json-schema/sap-commerce-cloud-product-schema.json
-  - type: JSONSchema
-    url: json-schema/sap-commerce-cloud-order-schema.json
-  - type: JSONSchema
-    url: json-schema/sap-commerce-cloud-cart-schema.json
-  - type: JSONSchema
-    url: json-schema/sap-commerce-cloud-customer-schema.json
-  - type: JSONStructure
-    url: json-structure/sap-commerce-cloud-product-structure.json
-  - type: JSONStructure
-    url: json-structure/sap-commerce-cloud-order-structure.json
-  - type: SpectralRules
-    url: rules/sap-commerce-cloud-rules.yml
-  - type: Vocabulary
-    url: vocabulary/sap-commerce-cloud-vocabulary.yml
+- type: Website
+  url: https://sap.com
+- type: CapabilityMap
+  url: capabilities/sap-commerce-cloud-capability-edges.yml
+  name: SAP Commerce Cloud Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/sap-commerce-cloud-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/sap-commerce-cloud-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/sap-commerce-cloud-domain-security.yml
+- type: Authentication
+  url: authentication/sap-commerce-cloud-authentication.yml
+- type: OAuthScopes
+  url: scopes/sap-commerce-cloud-scopes.yml
+- type: GitHubOrganization
+  url: https://github.com/SAP
+- type: LinkedIn
+  url: https://www.linkedin.com/showcase/sap-cx-commerce-cloud
+- type: Portal
+  url: https://api.sap.com/
+- type: GettingStarted
+  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/0996ba68e5794b8ab51db8d25d4c9f8c/
+- type: Authentication
+  url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html
+- type: Support
+  url: https://support.sap.com/
+- type: Community
+  url: https://community.sap.com/topics/commerce-cloud
+- type: TermsOfService
+  url: https://www.sap.com/about/legal/terms-of-use.html
+- type: PrivacyPolicy
+  url: https://www.sap.com/about/legal/privacy.html
+- type: StatusPage
+  url: https://www.sap.com/about/trust-center/cloud-service-status.html
+- type: OpenAPI
+  url: openapi/_original/sap-commerce-cloud-commerce-web-services-openapi.yml
+- type: OpenAPI
+  url: openapi/_original/sap-commerce-cloud-assisted-service-openapi.yml
+- type: OpenAPI
+  url: openapi/_original/sap-commerce-cloud-integration-openapi.yml
+- type: OpenAPI
+  url: openapi/_original/sap-commerce-cloud-admin-openapi.yml
+- type: OpenAPI
+  url: openapi/_original/sap-commerce-cloud-product-content-management-openapi.yml
+- type: JSONLD
+  url: json-ld/sap-commerce-cloud-context.jsonld
+- type: JSONSchema
+  url: json-schema/sap-commerce-cloud-product-schema.json
+- type: JSONSchema
+  url: json-schema/sap-commerce-cloud-order-schema.json
+- type: JSONSchema
+  url: json-schema/sap-commerce-cloud-cart-schema.json
+- type: JSONSchema
+  url: json-schema/sap-commerce-cloud-customer-schema.json
+- type: JSONStructure
+  url: json-structure/sap-commerce-cloud-product-structure.json
+- type: JSONStructure
+  url: json-structure/sap-commerce-cloud-order-structure.json
+- type: SpectralRules
+  url: rules/sap-commerce-cloud-rules.yml
+- type: Vocabulary
+  url: vocabulary/sap-commerce-cloud-vocabulary.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
