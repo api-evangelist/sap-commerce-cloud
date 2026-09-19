@@ -208,6 +208,8 @@ apis:
     https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
+  - Catalog
+  tags_raw:
   - Catalogs
   properties:
   - type: OpenAPI
@@ -662,6 +664,8 @@ apis:
     https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/
   baseURL: https://{tenant}.{region}.commercecloud.sap/occ/v2
   tags:
+  - Stocks
+  tags_raw:
   - Stock
   properties:
   - type: OpenAPI
