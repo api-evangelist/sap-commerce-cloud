@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Commerce Cloud Admin Addresses Monitoring API
+  title: SAP Commerce Cloud Admin Monitoring API
   description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
   version: '1.0'
   contact:

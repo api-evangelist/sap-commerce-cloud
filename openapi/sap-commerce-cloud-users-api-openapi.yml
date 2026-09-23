@@ -1,14 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Commerce Cloud Admin Addresses Users API
-  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
-  version: '1.0'
+  title: SAP Commerce Cloud Commerce Web Services Users API
+  description: RESTful OCC (Omni Commerce Connect) v2 API for SAP Commerce Cloud, providing commerce operations including product catalog browsing, cart management, checkout, order management, user account management, and store locator functionality. This API supports both B2B and B2C commerce scenarios.
+  version: '2.0'
   contact:
     name: SAP Support
     url: https://support.sap.com/
   termsOfService: https://www.sap.com/about/legal/terms-of-use.html
 servers:
-- url: https://{tenant}.{region}.commercecloud.sap
+- url: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
   description: SAP Commerce Cloud Production
   variables:
     tenant:
@@ -17,6 +17,9 @@ servers:
     region:
       description: Deployment region
       default: us
+    baseSiteId:
+      description: Base site identifier
+      default: electronics
 security:
 - oauth2: []
 tags:
@@ -115,6 +118,36 @@ paths:
                 $ref: '#/components/schemas/PaymentDetailsList'
 components:
   schemas:
+    Currency:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 4217 currency code
+        name:
+          type: string
+          description: Currency name
+        symbol:
+          type: string
+          description: Currency symbol
+    Region:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
     User:
       type: object
       properties:
@@ -142,50 +175,30 @@ components:
         displayUid:
           type: string
           description: Display UID
-    PaymentDetails:
+    UserRegistration:
       type: object
+      required:
+      - uid
+      - firstName
+      - lastName
+      - password
       properties:
-        id:
+        uid:
           type: string
-          description: Payment details identifier
-        accountHolderName:
+          description: Email address as user ID
+        firstName:
           type: string
-          description: Card holder name
-        cardNumber:
+          description: First name
+        lastName:
           type: string
-          description: Masked card number
-        cardType:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Card type code
-            name:
-              type: string
-              description: Card type name
-        expiryMonth:
+          description: Last name
+        password:
           type: string
-          description: Card expiry month
-        expiryYear:
+          format: password
+          description: Account password
+        titleCode:
           type: string
-          description: Card expiry year
-        billingAddress:
-          $ref: '#/components/schemas/Address'
-        defaultPayment:
-          type: boolean
-          description: Whether this is the default payment method
-        saved:
-          type: boolean
-          description: Whether the payment details are saved
-    Country:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-        name:
-          type: string
-          description: Country name
+          description: Title code
     Address:
       type: object
       properties:
@@ -229,30 +242,41 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
-    UserRegistration:
+    PaymentDetails:
       type: object
-      required:
-      - uid
-      - firstName
-      - lastName
-      - password
       properties:
-        uid:
+        id:
           type: string
-          description: Email address as user ID
-        firstName:
+          description: Payment details identifier
+        accountHolderName:
           type: string
-          description: First name
-        lastName:
+          description: Card holder name
+        cardNumber:
           type: string
-          description: Last name
-        password:
+          description: Masked card number
+        cardType:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Card type code
+            name:
+              type: string
+              description: Card type name
+        expiryMonth:
           type: string
-          format: password
-          description: Account password
-        titleCode:
+          description: Card expiry month
+        expiryYear:
           type: string
-          description: Title code
+          description: Card expiry year
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        defaultPayment:
+          type: boolean
+          description: Whether this is the default payment method
+        saved:
+          type: boolean
+          description: Whether the payment details are saved
     Language:
       type: object
       properties:
@@ -262,27 +286,6 @@ components:
         name:
           type: string
           description: Language name
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
-    Currency:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: ISO 4217 currency code
-        name:
-          type: string
-          description: Currency name
-        symbol:
-          type: string
-          description: Currency symbol
     PaymentDetailsList:
       type: object
       properties:
@@ -291,6 +294,13 @@ components:
           items:
             $ref: '#/components/schemas/PaymentDetails'
   parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
     fields:
       name: fields
       in: query
@@ -302,22 +312,19 @@ components:
         - DEFAULT
         - FULL
         default: DEFAULT
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2
-      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      description: OAuth 2.0 authentication for SAP Commerce Cloud
       flows:
         clientCredentials:
           tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
           scopes:
-            admin: Administrative access
+            basic: Basic access
+        password:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            basic: Basic access
 externalDocs:
-  description: SAP Commerce Cloud Administration Documentation
-  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
+  description: SAP Commerce Cloud OCC API Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html

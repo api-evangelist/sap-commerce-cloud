@@ -1,14 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Commerce Cloud Admin Addresses Checkout API
-  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
-  version: '1.0'
+  title: SAP Commerce Cloud Commerce Web Services Checkout API
+  description: RESTful OCC (Omni Commerce Connect) v2 API for SAP Commerce Cloud, providing commerce operations including product catalog browsing, cart management, checkout, order management, user account management, and store locator functionality. This API supports both B2B and B2C commerce scenarios.
+  version: '2.0'
   contact:
     name: SAP Support
     url: https://support.sap.com/
   termsOfService: https://www.sap.com/about/legal/terms-of-use.html
 servers:
-- url: https://{tenant}.{region}.commercecloud.sap
+- url: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
   description: SAP Commerce Cloud Production
   variables:
     tenant:
@@ -17,6 +17,9 @@ servers:
     region:
       description: Deployment region
       default: us
+    baseSiteId:
+      description: Base site identifier
+      default: electronics
 security:
 - oauth2: []
 tags:
@@ -150,7 +153,47 @@ paths:
         '400':
           description: Invalid payment data
 components:
+  parameters:
+    cartId:
+      name: cartId
+      in: path
+      required: true
+      description: Cart identifier
+      schema:
+        type: string
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
   schemas:
+    DeliveryMode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Delivery mode code
+        name:
+          type: string
+          description: Delivery mode name
+        description:
+          type: string
+          description: Delivery mode description
+        deliveryCost:
+          $ref: '#/components/schemas/Price'
     DeliveryModeList:
       type: object
       properties:
@@ -158,41 +201,34 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DeliveryMode'
-    PaymentDetails:
+    Price:
       type: object
       properties:
-        id:
+        currencyIso:
           type: string
-          description: Payment details identifier
-        accountHolderName:
+          description: ISO 4217 currency code
+        value:
+          type: number
+          format: double
+          description: Price value
+        formattedValue:
           type: string
-          description: Card holder name
-        cardNumber:
+          description: Formatted price string
+        priceType:
           type: string
-          description: Masked card number
-        cardType:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Card type code
-            name:
-              type: string
-              description: Card type name
-        expiryMonth:
+          enum:
+          - BUY
+          - FROM
+          description: Price type
+    Region:
+      type: object
+      properties:
+        isocode:
           type: string
-          description: Card expiry month
-        expiryYear:
+          description: Region ISO code
+        name:
           type: string
-          description: Card expiry year
-        billingAddress:
-          $ref: '#/components/schemas/Address'
-        defaultPayment:
-          type: boolean
-          description: Whether this is the default payment method
-        saved:
-          type: boolean
-          description: Whether the payment details are saved
+          description: Region name
     Country:
       type: object
       properties:
@@ -245,83 +281,54 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
-    Price:
+    PaymentDetails:
       type: object
       properties:
-        currencyIso:
+        id:
           type: string
-          description: ISO 4217 currency code
-        value:
-          type: number
-          format: double
-          description: Price value
-        formattedValue:
+          description: Payment details identifier
+        accountHolderName:
           type: string
-          description: Formatted price string
-        priceType:
+          description: Card holder name
+        cardNumber:
           type: string
-          enum:
-          - BUY
-          - FROM
-          description: Price type
-    DeliveryMode:
-      type: object
-      properties:
-        code:
+          description: Masked card number
+        cardType:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Card type code
+            name:
+              type: string
+              description: Card type name
+        expiryMonth:
           type: string
-          description: Delivery mode code
-        name:
+          description: Card expiry month
+        expiryYear:
           type: string
-          description: Delivery mode name
-        description:
-          type: string
-          description: Delivery mode description
-        deliveryCost:
-          $ref: '#/components/schemas/Price'
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
-      schema:
-        type: string
-        enum:
-        - BASIC
-        - DEFAULT
-        - FULL
-        default: DEFAULT
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
-    cartId:
-      name: cartId
-      in: path
-      required: true
-      description: Cart identifier
-      schema:
-        type: string
+          description: Card expiry year
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        defaultPayment:
+          type: boolean
+          description: Whether this is the default payment method
+        saved:
+          type: boolean
+          description: Whether the payment details are saved
   securitySchemes:
     oauth2:
       type: oauth2
-      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      description: OAuth 2.0 authentication for SAP Commerce Cloud
       flows:
         clientCredentials:
           tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
           scopes:
-            admin: Administrative access
+            basic: Basic access
+        password:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            basic: Basic access
 externalDocs:
-  description: SAP Commerce Cloud Administration Documentation
-  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
+  description: SAP Commerce Cloud OCC API Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html

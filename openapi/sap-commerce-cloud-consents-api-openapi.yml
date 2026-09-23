@@ -1,14 +1,14 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Commerce Cloud Admin Addresses Consents API
-  description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
-  version: '1.0'
+  title: SAP Commerce Cloud Commerce Web Services Consents API
+  description: RESTful OCC (Omni Commerce Connect) v2 API for SAP Commerce Cloud, providing commerce operations including product catalog browsing, cart management, checkout, order management, user account management, and store locator functionality. This API supports both B2B and B2C commerce scenarios.
+  version: '2.0'
   contact:
     name: SAP Support
     url: https://support.sap.com/
   termsOfService: https://www.sap.com/about/legal/terms-of-use.html
 servers:
-- url: https://{tenant}.{region}.commercecloud.sap
+- url: https://{tenant}.{region}.commercecloud.sap/occ/v2/{baseSiteId}
   description: SAP Commerce Cloud Production
   variables:
     tenant:
@@ -17,6 +17,9 @@ servers:
     region:
       description: Deployment region
       default: us
+    baseSiteId:
+      description: Base site identifier
+      default: electronics
 security:
 - oauth2: []
 tags:
@@ -71,26 +74,14 @@ paths:
         '400':
           description: Invalid consent request
 components:
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
-      schema:
-        type: string
-        enum:
-        - BASIC
-        - DEFAULT
-        - FULL
-        default: DEFAULT
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
   schemas:
+    ConsentTemplateList:
+      type: object
+      properties:
+        consentTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConsentTemplate'
     ConsentTemplate:
       type: object
       properties:
@@ -115,22 +106,38 @@ components:
             consentWithdrawnDate:
               type: string
               format: date-time
-    ConsentTemplateList:
-      type: object
-      properties:
-        consentTemplates:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConsentTemplate'
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
   securitySchemes:
     oauth2:
       type: oauth2
-      description: OAuth 2.0 authentication for SAP Commerce Cloud Admin API
+      description: OAuth 2.0 authentication for SAP Commerce Cloud
       flows:
         clientCredentials:
           tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
           scopes:
-            admin: Administrative access
+            basic: Basic access
+        password:
+          tokenUrl: https://{tenant}.{region}.commercecloud.sap/authorizationserver/oauth/token
+          scopes:
+            basic: Basic access
 externalDocs:
-  description: SAP Commerce Cloud Administration Documentation
-  url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
+  description: SAP Commerce Cloud OCC API Documentation
+  url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html

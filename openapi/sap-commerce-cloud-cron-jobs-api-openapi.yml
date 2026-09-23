@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SAP Commerce Cloud Admin Addresses CronJobs API
+  title: SAP Commerce Cloud Admin Cron Jobs API
   description: Administrative API for SAP Commerce Cloud providing system configuration, maintenance, monitoring, and health check capabilities. Enables programmatic access to system administration functions including cache management, CronJob execution, and system health monitoring.
   version: '1.0'
   contact:
@@ -20,7 +20,7 @@ servers:
 security:
 - oauth2: []
 tags:
-- name: CronJobs
+- name: Cron Jobs
   description: CronJob management and execution
 paths:
   /monitoring/cronjobs:
@@ -29,7 +29,7 @@ paths:
       summary: SAP Commerce Cloud List CronJobs
       description: Retrieve all configured CronJobs with their current status and schedule information.
       tags:
-      - CronJobs
+      - Cron Jobs
       parameters:
       - name: status
         in: query
@@ -55,7 +55,7 @@ paths:
       summary: SAP Commerce Cloud Get CronJob details
       description: Retrieve details and execution history of a specific CronJob.
       tags:
-      - CronJobs
+      - Cron Jobs
       parameters:
       - name: cronJobCode
         in: path
@@ -78,7 +78,7 @@ paths:
       summary: SAP Commerce Cloud Execute a CronJob
       description: Trigger the immediate execution of a CronJob.
       tags:
-      - CronJobs
+      - Cron Jobs
       parameters:
       - name: cronJobCode
         in: path
@@ -95,13 +95,6 @@ paths:
           description: CronJob is already running
 components:
   schemas:
-    CronJobList:
-      type: object
-      properties:
-        cronJobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/CronJob'
     CronJob:
       type: object
       properties:
@@ -141,6 +134,13 @@ components:
         triggerExpression:
           type: string
           description: Cron trigger expression
+    CronJobList:
+      type: object
+      properties:
+        cronJobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/CronJob'
   securitySchemes:
     oauth2:
       type: oauth2
