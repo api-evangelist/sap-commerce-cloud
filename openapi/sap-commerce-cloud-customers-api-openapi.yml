@@ -157,22 +157,39 @@ paths:
           default: us
 components:
   schemas:
-    TicketSummary:
+    CustomerSearchEntry:
       type: object
       properties:
-        id:
+        uid:
           type: string
-          description: Ticket identifier
-        subject:
+          description: Customer email or UID
+        name:
           type: string
-          description: Ticket subject
-        status:
+          description: Customer full name
+        customerId:
           type: string
-          description: Ticket status
-        created:
+          description: Customer ID
+        lastCartId:
           type: string
-          format: date-time
-          description: Ticket creation date
+          description: ID of the customer's most recent cart
+        hasOrder:
+          type: boolean
+          description: Whether the customer has placed orders
+    Pagination:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          description: Current page number
+        pageSize:
+          type: integer
+          description: Number of results per page
+        totalPages:
+          type: integer
+          description: Total number of pages
+        totalResults:
+          type: integer
+          description: Total number of results
     Customer360Data:
       type: object
       properties:
@@ -220,22 +237,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/TicketSummary'
-    CartSummary:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Cart code
-        totalItems:
-          type: integer
-          description: Number of items
-        total:
-          type: string
-          description: Formatted cart total
-        modified:
-          type: string
-          format: date-time
-          description: Last modification time
     OrderSummary:
       type: object
       properties:
@@ -252,6 +253,38 @@ components:
           type: string
           format: date-time
           description: Order placement date
+    TicketSummary:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Ticket identifier
+        subject:
+          type: string
+          description: Ticket subject
+        status:
+          type: string
+          description: Ticket status
+        created:
+          type: string
+          format: date-time
+          description: Ticket creation date
+    CartSummary:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Cart code
+        totalItems:
+          type: integer
+          description: Number of items
+        total:
+          type: string
+          description: Formatted cart total
+        modified:
+          type: string
+          format: date-time
+          description: Last modification time
     CustomerSearchPage:
       type: object
       properties:
@@ -261,39 +294,6 @@ components:
             $ref: '#/components/schemas/CustomerSearchEntry'
         pagination:
           $ref: '#/components/schemas/Pagination'
-    CustomerSearchEntry:
-      type: object
-      properties:
-        uid:
-          type: string
-          description: Customer email or UID
-        name:
-          type: string
-          description: Customer full name
-        customerId:
-          type: string
-          description: Customer ID
-        lastCartId:
-          type: string
-          description: ID of the customer's most recent cart
-        hasOrder:
-          type: boolean
-          description: Whether the customer has placed orders
-    Pagination:
-      type: object
-      properties:
-        currentPage:
-          type: integer
-          description: Current page number
-        pageSize:
-          type: integer
-          description: Number of results per page
-        totalPages:
-          type: integer
-          description: Total number of pages
-        totalResults:
-          type: integer
-          description: Total number of results
     ODataCustomerCollection:
       type: object
       properties:
@@ -357,16 +357,16 @@ components:
       description: Customer unique identifier
       schema:
         type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to return
-      schema:
-        type: string
     top:
       name: $top
       in: query
       description: Maximum number of results to return
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of results to skip
       schema:
         type: integer
     filter:
@@ -375,12 +375,12 @@ components:
       description: OData filter expression
       schema:
         type: string
-    skip:
-      name: $skip
+    select:
+      name: $select
       in: query
-      description: Number of results to skip
+      description: Comma-separated list of properties to return
       schema:
-        type: integer
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

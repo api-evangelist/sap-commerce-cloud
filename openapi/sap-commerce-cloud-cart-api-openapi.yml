@@ -186,119 +186,62 @@ paths:
           description: Entry not found
 components:
   schemas:
-    Classification:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Classification code
-        name:
-          type: string
-          description: Classification name
-        features:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: string
-              name:
-                type: string
-              featureValues:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    value:
-                      type: string
-    DeliveryMode:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Delivery mode code
-        name:
-          type: string
-          description: Delivery mode name
-        description:
-          type: string
-          description: Delivery mode description
-        deliveryCost:
-          $ref: '#/components/schemas/Price'
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
-    Voucher:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Voucher code
-        name:
-          type: string
-          description: Voucher name
-        description:
-          type: string
-          description: Voucher description
-        value:
-          type: number
-          format: double
-          description: Voucher value
-        valueFormatted:
-          type: string
-          description: Formatted voucher value
-        voucherCode:
-          type: string
-          description: Applied voucher code
-        freeShipping:
-          type: boolean
-          description: Whether voucher provides free shipping
-    Promotion:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Promotion code
-        title:
-          type: string
-          description: Promotion title
-        description:
-          type: string
-          description: Promotion description
-        promotionType:
-          type: string
-          description: Promotion type
-    Review:
+    Address:
       type: object
       properties:
         id:
           type: string
-          description: Review identifier
-        headline:
+          description: Address identifier
+        firstName:
           type: string
-          description: Review headline
-        comment:
+          description: First name
+        lastName:
           type: string
-          description: Review text
-        rating:
-          type: number
-          format: double
-          description: Rating value
-        date:
+          description: Last name
+        titleCode:
           type: string
-          format: date-time
-          description: Review date
-        alias:
+          description: Title code
+        line1:
           type: string
-          description: Reviewer alias
-        principal:
-          $ref: '#/components/schemas/Principal'
+          description: Address line 1
+        line2:
+          type: string
+          description: Address line 2
+        town:
+          type: string
+          description: City or town
+        region:
+          $ref: '#/components/schemas/Region'
+        district:
+          type: string
+          description: District
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
+          $ref: '#/components/schemas/Country'
+        phone:
+          type: string
+          description: Phone number
+        email:
+          type: string
+          description: Email address
+        defaultAddress:
+          type: boolean
+          description: Whether this is the default address
+    Stock:
+      type: object
+      properties:
+        stockLevelStatus:
+          type: string
+          enum:
+          - inStock
+          - lowStock
+          - outOfStock
+          description: Stock level status
+        stockLevel:
+          type: integer
+          description: Actual stock level quantity
     CartList:
       type: object
       properties:
@@ -306,6 +249,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Cart'
+    OrderEntry:
+      type: object
+      properties:
+        entryNumber:
+          type: integer
+          description: Entry number (zero-based)
+        product:
+          $ref: '#/components/schemas/Product'
+        quantity:
+          type: integer
+          description: Quantity
+        basePrice:
+          $ref: '#/components/schemas/Price'
+        totalPrice:
+          $ref: '#/components/schemas/Price'
+        updateable:
+          type: boolean
+          description: Whether the entry can be updated
     Cart:
       type: object
       properties:
@@ -355,15 +316,31 @@ components:
             $ref: '#/components/schemas/Promotion'
         user:
           $ref: '#/components/schemas/Principal'
-    Country:
+    Review:
       type: object
       properties:
-        isocode:
+        id:
           type: string
-          description: ISO 3166-1 alpha-2 country code
-        name:
+          description: Review identifier
+        headline:
           type: string
-          description: Country name
+          description: Review headline
+        comment:
+          type: string
+          description: Review text
+        rating:
+          type: number
+          format: double
+          description: Rating value
+        date:
+          type: string
+          format: date-time
+          description: Review date
+        alias:
+          type: string
+          description: Reviewer alias
+        principal:
+          $ref: '#/components/schemas/Principal'
     Principal:
       type: object
       properties:
@@ -373,155 +350,30 @@ components:
         name:
           type: string
           description: Display name
-    CartModification:
-      type: object
-      properties:
-        statusCode:
-          type: string
-          description: Status of the modification
-        quantity:
-          type: integer
-          description: Quantity added
-        quantityAdded:
-          type: integer
-          description: Actual quantity added
-        entry:
-          $ref: '#/components/schemas/OrderEntry'
-        statusMessage:
-          type: string
-          description: Status message
-    OrderEntry:
-      type: object
-      properties:
-        entryNumber:
-          type: integer
-          description: Entry number (zero-based)
-        product:
-          $ref: '#/components/schemas/Product'
-        quantity:
-          type: integer
-          description: Quantity
-        basePrice:
-          $ref: '#/components/schemas/Price'
-        totalPrice:
-          $ref: '#/components/schemas/Price'
-        updateable:
-          type: boolean
-          description: Whether the entry can be updated
-    Category:
+    Promotion:
       type: object
       properties:
         code:
           type: string
-          description: Category code
+          description: Promotion code
+        title:
+          type: string
+          description: Promotion title
+        description:
+          type: string
+          description: Promotion description
+        promotionType:
+          type: string
+          description: Promotion type
+    Region:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: Region ISO code
         name:
           type: string
-          description: Category name
-        url:
-          type: string
-          description: Category URL
-        image:
-          $ref: '#/components/schemas/Image'
-        subcategories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-          description: Image URL
-        altText:
-          type: string
-          description: Alternative text
-        format:
-          type: string
-          description: Image format (e.g., thumbnail, product, zoom)
-        imageType:
-          type: string
-          enum:
-          - PRIMARY
-          - GALLERY
-          description: Image type
-    PaymentDetails:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Payment details identifier
-        accountHolderName:
-          type: string
-          description: Card holder name
-        cardNumber:
-          type: string
-          description: Masked card number
-        cardType:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Card type code
-            name:
-              type: string
-              description: Card type name
-        expiryMonth:
-          type: string
-          description: Card expiry month
-        expiryYear:
-          type: string
-          description: Card expiry year
-        billingAddress:
-          $ref: '#/components/schemas/Address'
-        defaultPayment:
-          type: boolean
-          description: Whether this is the default payment method
-        saved:
-          type: boolean
-          description: Whether the payment details are saved
-    Address:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Address identifier
-        firstName:
-          type: string
-          description: First name
-        lastName:
-          type: string
-          description: Last name
-        titleCode:
-          type: string
-          description: Title code
-        line1:
-          type: string
-          description: Address line 1
-        line2:
-          type: string
-          description: Address line 2
-        town:
-          type: string
-          description: City or town
-        region:
-          $ref: '#/components/schemas/Region'
-        district:
-          type: string
-          description: District
-        postalCode:
-          type: string
-          description: Postal or ZIP code
-        country:
-          $ref: '#/components/schemas/Country'
-        phone:
-          type: string
-          description: Phone number
-        email:
-          type: string
-          description: Email address
-        defaultAddress:
-          type: boolean
-          description: Whether this is the default address
+          description: Region name
     Price:
       type: object
       properties:
@@ -541,6 +393,65 @@ components:
           - BUY
           - FROM
           description: Price type
+    Voucher:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Voucher code
+        name:
+          type: string
+          description: Voucher name
+        description:
+          type: string
+          description: Voucher description
+        value:
+          type: number
+          format: double
+          description: Voucher value
+        valueFormatted:
+          type: string
+          description: Formatted voucher value
+        voucherCode:
+          type: string
+          description: Applied voucher code
+        freeShipping:
+          type: boolean
+          description: Whether voucher provides free shipping
+    OrderEntryList:
+      type: object
+      properties:
+        orderEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderEntry'
+    Category:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
+        image:
+          $ref: '#/components/schemas/Image'
+        subcategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
     Product:
       type: object
       properties:
@@ -590,39 +501,121 @@ components:
         url:
           type: string
           description: Product URL
-    Stock:
+    PaymentDetails:
       type: object
       properties:
-        stockLevelStatus:
+        id:
           type: string
-          enum:
-          - inStock
-          - lowStock
-          - outOfStock
-          description: Stock level status
-        stockLevel:
-          type: integer
-          description: Actual stock level quantity
-    OrderEntryList:
+          description: Payment details identifier
+        accountHolderName:
+          type: string
+          description: Card holder name
+        cardNumber:
+          type: string
+          description: Masked card number
+        cardType:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Card type code
+            name:
+              type: string
+              description: Card type name
+        expiryMonth:
+          type: string
+          description: Card expiry month
+        expiryYear:
+          type: string
+          description: Card expiry year
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        defaultPayment:
+          type: boolean
+          description: Whether this is the default payment method
+        saved:
+          type: boolean
+          description: Whether the payment details are saved
+    CartModification:
       type: object
       properties:
-        orderEntries:
+        statusCode:
+          type: string
+          description: Status of the modification
+        quantity:
+          type: integer
+          description: Quantity added
+        quantityAdded:
+          type: integer
+          description: Actual quantity added
+        entry:
+          $ref: '#/components/schemas/OrderEntry'
+        statusMessage:
+          type: string
+          description: Status message
+    Classification:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Classification code
+        name:
+          type: string
+          description: Classification name
+        features:
           type: array
           items:
-            $ref: '#/components/schemas/OrderEntry'
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+              featureValues:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+    DeliveryMode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Delivery mode code
+        name:
+          type: string
+          description: Delivery mode name
+        description:
+          type: string
+          description: Delivery mode description
+        deliveryCost:
+          $ref: '#/components/schemas/Price'
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (e.g., thumbnail, product, zoom)
+        imageType:
+          type: string
+          enum:
+          - PRIMARY
+          - GALLERY
+          description: Image type
   parameters:
     cartId:
       name: cartId
       in: path
       required: true
       description: Cart identifier
-      schema:
-        type: string
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
       schema:
         type: string
     fields:
@@ -636,6 +629,13 @@ components:
         - DEFAULT
         - FULL
         default: DEFAULT
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
     entryNumber:
       name: entryNumber
       in: path

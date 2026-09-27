@@ -118,87 +118,6 @@ paths:
                 $ref: '#/components/schemas/PaymentDetailsList'
 components:
   schemas:
-    Currency:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: ISO 4217 currency code
-        name:
-          type: string
-          description: Currency name
-        symbol:
-          type: string
-          description: Currency symbol
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
-    Country:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-        name:
-          type: string
-          description: Country name
-    User:
-      type: object
-      properties:
-        uid:
-          type: string
-          description: User unique identifier (email)
-        name:
-          type: string
-          description: Full name
-        firstName:
-          type: string
-          description: First name
-        lastName:
-          type: string
-          description: Last name
-        titleCode:
-          type: string
-          description: Title code (mr, mrs, ms, etc.)
-        currency:
-          $ref: '#/components/schemas/Currency'
-        language:
-          $ref: '#/components/schemas/Language'
-        defaultAddress:
-          $ref: '#/components/schemas/Address'
-        displayUid:
-          type: string
-          description: Display UID
-    UserRegistration:
-      type: object
-      required:
-      - uid
-      - firstName
-      - lastName
-      - password
-      properties:
-        uid:
-          type: string
-          description: Email address as user ID
-        firstName:
-          type: string
-          description: First name
-        lastName:
-          type: string
-          description: Last name
-        password:
-          type: string
-          format: password
-          description: Account password
-        titleCode:
-          type: string
-          description: Title code
     Address:
       type: object
       properties:
@@ -242,6 +161,66 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
+    Region:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
+    UserRegistration:
+      type: object
+      required:
+      - uid
+      - firstName
+      - lastName
+      - password
+      properties:
+        uid:
+          type: string
+          description: Email address as user ID
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        password:
+          type: string
+          format: password
+          description: Account password
+        titleCode:
+          type: string
+          description: Title code
+    User:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: User unique identifier (email)
+        name:
+          type: string
+          description: Full name
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        titleCode:
+          type: string
+          description: Title code (mr, mrs, ms, etc.)
+        currency:
+          $ref: '#/components/schemas/Currency'
+        language:
+          $ref: '#/components/schemas/Language'
+        defaultAddress:
+          $ref: '#/components/schemas/Address'
+        displayUid:
+          type: string
+          description: Display UID
     PaymentDetails:
       type: object
       properties:
@@ -286,6 +265,18 @@ components:
         name:
           type: string
           description: Language name
+    Currency:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 4217 currency code
+        name:
+          type: string
+          description: Currency name
+        symbol:
+          type: string
+          description: Currency symbol
     PaymentDetailsList:
       type: object
       properties:
@@ -293,6 +284,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PaymentDetails'
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
   parameters:
     userId:
       name: userId

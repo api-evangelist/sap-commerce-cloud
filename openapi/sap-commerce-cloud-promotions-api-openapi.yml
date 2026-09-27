@@ -86,33 +86,14 @@ paths:
         '404':
           description: Voucher not found on cart
 components:
-  parameters:
-    cartId:
-      name: cartId
-      in: path
-      required: true
-      description: Cart identifier
-      schema:
-        type: string
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
-      schema:
-        type: string
-        enum:
-        - BASIC
-        - DEFAULT
-        - FULL
-        default: DEFAULT
   schemas:
+    VoucherList:
+      type: object
+      properties:
+        vouchers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Voucher'
     Voucher:
       type: object
       properties:
@@ -138,13 +119,32 @@ components:
         freeShipping:
           type: boolean
           description: Whether voucher provides free shipping
-    VoucherList:
-      type: object
-      properties:
-        vouchers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Voucher'
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
+    cartId:
+      name: cartId
+      in: path
+      required: true
+      description: Cart identifier
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

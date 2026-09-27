@@ -34,7 +34,7 @@ modified: '2026-09-16'
 specificationVersion: '0.23'
 tags:
 - B2B
-- B2C
+- Consumer
 - Commerce
 - Customer Experience
 - E-Commerce
@@ -751,6 +751,36 @@ apis:
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/
+- aid: sap-commerce-cloud:sap-commerce-cloud-portal-api
+  name: SAP Commerce Cloud Portal API
+  description: >-
+    The SAP Commerce Cloud Portal API provides programmatic access to manage cloud environments, deployments,
+    builds, and configurations within the SAP Commerce Cloud control plane.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: >-
+    https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/452dcbb0e00f47e88a69cdaeb87a925d/66abfe678b55457fab235ce8039dda71.html
+  baseURL: https://api.cloud.cx.sap.com
+  tags:
+  - Cloud
+  - Deployment
+  - Management
+  - DevOps
+  - Builds
+  - Environment
+  tags_raw:
+  - Cloud
+  - Deployment
+  - Management
+  - DevOps
+  - Builds
+  - Environments
+  properties:
+  - type: Documentation
+    url: >-
+      https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/452dcbb0e00f47e88a69cdaeb87a925d/66abfe678b55457fab235ce8039dda71.html
+  contact:
+  - FN: SAP Commerce Support
+    url: https://support.sap.com/en/index.html
 - aid: sap-commerce-cloud:sap-commerce-cloud-cron-jobs-api
   name: SAP Commerce Cloud Cron Jobs API
   description: CronJob management and execution
@@ -781,67 +811,9 @@ apis:
     url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/
   - type: Documentation
     url: https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/
-- aid: sap-commerce-cloud:sap-commerce-occ-api
-  name: SAP Commerce Cloud OCC API
-  description: The Omni Commerce Connect (OCC) REST API exposes a broad set of commerce and data services,
-    enabling integration of SAP Commerce functionality anywhere in the application landscape. OCC v2 is
-    the default stateless REST API covering products, catalogs, carts, orders, users, and more.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://help.sap.com/docs/SAP_COMMERCE/e5d7cec9064f453b84235dc582b886da/8c19ab00866910148f87bf32d4a60d38.html
-  baseURL: https://{host}/occ/v2/{baseSiteId}
-  tags:
-  - OCC
-  - REST
-  - E-Commerce
-  - Product
-  - Cart
-  - Order
-  - Customers
-  - Catalog
-  tags_raw:
-  - OCC
-  - REST
-  - E-Commerce
-  - Products
-  - Carts
-  - Orders
-  - Customers
-  - Catalogs
-  properties:
   - type: Documentation
-    url: https://help.sap.com/docs/SAP_COMMERCE/e5d7cec9064f453b84235dc582b886da/8c19ab00866910148f87bf32d4a60d38.html
-  - type: OpenAPI
-    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/452dcbb0e00f47e88a69cdaeb87a925d/66abfe678b55457fab235ce8039dda71.html
-  contact:
-  - FN: SAP Commerce Support
-    url: https://support.sap.com/en/index.html
-- aid: sap-commerce-cloud:sap-commerce-cloud-portal-api
-  name: SAP Commerce Cloud Portal API
-  description: The SAP Commerce Cloud Portal API provides programmatic access to manage cloud environments,
-    deployments, builds, and configurations within the SAP Commerce Cloud control plane.
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/452dcbb0e00f47e88a69cdaeb87a925d/66abfe678b55457fab235ce8039dda71.html
-  baseURL: https://api.cloud.cx.sap.com
-  tags:
-  - Cloud
-  - Deployment
-  - Management
-  - DevOps
-  - Builds
-  - Environment
-  tags_raw:
-  - Cloud
-  - Deployment
-  - Management
-  - DevOps
-  - Builds
-  - Environments
-  properties:
-  - type: Documentation
-    url: https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/452dcbb0e00f47e88a69cdaeb87a925d/66abfe678b55457fab235ce8039dda71.html
-  contact:
-  - FN: SAP Commerce Support
-    url: https://support.sap.com/en/index.html
+    url: >-
+      https://help.sap.com/docs/SAP_COMMERCE/e5d7cec9064f453b84235dc582b886da/8c19ab00866910148f87bf32d4a60d38.html
 common:
 - type: Website
   url: https://sap.com
@@ -909,3 +881,4 @@ common:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-parent: sap

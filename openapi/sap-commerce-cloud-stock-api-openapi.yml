@@ -102,18 +102,18 @@ components:
       description: Maximum number of results to return
       schema:
         type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
     skip:
       name: $skip
       in: query
       description: Number of results to skip
       schema:
         type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

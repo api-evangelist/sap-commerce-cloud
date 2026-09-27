@@ -153,91 +153,7 @@ paths:
         '400':
           description: Invalid payment data
 components:
-  parameters:
-    cartId:
-      name: cartId
-      in: path
-      required: true
-      description: Cart identifier
-      schema:
-        type: string
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
-      schema:
-        type: string
-        enum:
-        - BASIC
-        - DEFAULT
-        - FULL
-        default: DEFAULT
   schemas:
-    DeliveryMode:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Delivery mode code
-        name:
-          type: string
-          description: Delivery mode name
-        description:
-          type: string
-          description: Delivery mode description
-        deliveryCost:
-          $ref: '#/components/schemas/Price'
-    DeliveryModeList:
-      type: object
-      properties:
-        deliveryModes:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryMode'
-    Price:
-      type: object
-      properties:
-        currencyIso:
-          type: string
-          description: ISO 4217 currency code
-        value:
-          type: number
-          format: double
-          description: Price value
-        formattedValue:
-          type: string
-          description: Formatted price string
-        priceType:
-          type: string
-          enum:
-          - BUY
-          - FROM
-          description: Price type
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
-    Country:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-        name:
-          type: string
-          description: Country name
     Address:
       type: object
       properties:
@@ -281,6 +197,41 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
+    Region:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
+    Price:
+      type: object
+      properties:
+        currencyIso:
+          type: string
+          description: ISO 4217 currency code
+        value:
+          type: number
+          format: double
+          description: Price value
+        formattedValue:
+          type: string
+          description: Formatted price string
+        priceType:
+          type: string
+          enum:
+          - BUY
+          - FROM
+          description: Price type
+    DeliveryModeList:
+      type: object
+      properties:
+        deliveryModes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryMode'
     PaymentDetails:
       type: object
       properties:
@@ -316,6 +267,55 @@ components:
         saved:
           type: boolean
           description: Whether the payment details are saved
+    DeliveryMode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Delivery mode code
+        name:
+          type: string
+          description: Delivery mode name
+        description:
+          type: string
+          description: Delivery mode description
+        deliveryCost:
+          $ref: '#/components/schemas/Price'
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
+    cartId:
+      name: cartId
+      in: path
+      required: true
+      description: Cart identifier
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

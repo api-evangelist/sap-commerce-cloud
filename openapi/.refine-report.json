@@ -50,7 +50,7 @@
     "tag 'Orders' spans 2 source specs (sap-commerce-cloud-commerce-web-services-openapi.yml, sap-commerce-cloud-integration-openapi.yml): per-path servers applied",
     "tag 'Products' spans 3 source specs (sap-commerce-cloud-commerce-web-services-openapi.yml, sap-commerce-cloud-integration-openapi.yml, sap-commerce-cloud-product-content-management-openapi.yml): per-path servers applied",
     "superseded outputs removed: sap-commerce-cloud-cron-jobs-api-openapi.yml",
-    "apis.yml register: written (+1 apis, 24 total)"
+    "apis.yml register: written (+1 apis, 25 total)"
   ],
   "skipped": [
     "sap-commerce-cloud-addresses-api-openapi.yml: previously refined output, superseded by openapi/_original/",

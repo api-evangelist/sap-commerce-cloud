@@ -64,6 +64,27 @@ paths:
           description: Category not found
 components:
   schemas:
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (thumbnail, product, zoom, cartIcon)
+        imageType:
+          type: string
+          enum:
+          - PRIMARY
+          - GALLERY
+          description: Image type
+        galleryIndex:
+          type: integer
+          description: Position in gallery
     CategoryContent:
       type: object
       properties:
@@ -91,27 +112,6 @@ components:
                 type: string
               name:
                 type: string
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-          description: Image URL
-        altText:
-          type: string
-          description: Alternative text
-        format:
-          type: string
-          description: Image format (thumbnail, product, zoom, cartIcon)
-        imageType:
-          type: string
-          enum:
-          - PRIMARY
-          - GALLERY
-          description: Image type
-        galleryIndex:
-          type: integer
-          description: Position in gallery
     CategoryRef:
       type: object
       properties:

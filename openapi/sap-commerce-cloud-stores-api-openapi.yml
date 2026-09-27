@@ -94,114 +94,6 @@ paths:
           description: Store not found
 components:
   schemas:
-    OpeningSchedule:
-      type: object
-      properties:
-        weekDayOpeningList:
-          type: array
-          items:
-            type: object
-            properties:
-              weekDay:
-                type: string
-              openingTime:
-                type: object
-                properties:
-                  formattedHour:
-                    type: string
-              closingTime:
-                type: object
-                properties:
-                  formattedHour:
-                    type: string
-              closed:
-                type: boolean
-    GeoPoint:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-          description: Latitude
-        longitude:
-          type: number
-          format: double
-          description: Longitude
-    Country:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-        name:
-          type: string
-          description: Country name
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-          description: Image URL
-        altText:
-          type: string
-          description: Alternative text
-        format:
-          type: string
-          description: Image format (e.g., thumbnail, product, zoom)
-        imageType:
-          type: string
-          enum:
-          - PRIMARY
-          - GALLERY
-          description: Image type
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
-    Sort:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Sort code
-        name:
-          type: string
-          description: Sort display name
-        selected:
-          type: boolean
-          description: Whether this sort is selected
-    PointOfService:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Store name
-        displayName:
-          type: string
-          description: Display name
-        description:
-          type: string
-          description: Store description
-        address:
-          $ref: '#/components/schemas/Address'
-        geoPoint:
-          $ref: '#/components/schemas/GeoPoint'
-        openingHours:
-          $ref: '#/components/schemas/OpeningSchedule'
-        storeImages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Image'
-        features:
-          type: object
-          additionalProperties:
-            type: string
-          description: Store features
     Address:
       type: object
       properties:
@@ -245,19 +137,15 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
-    StoreFinderSearchPage:
+    Region:
       type: object
       properties:
-        stores:
-          type: array
-          items:
-            $ref: '#/components/schemas/PointOfService'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        sorts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Sort'
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
     Pagination:
       type: object
       properties:
@@ -273,6 +161,118 @@ components:
         totalResults:
           type: integer
           description: Total number of results
+    Sort:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Sort code
+        name:
+          type: string
+          description: Sort display name
+        selected:
+          type: boolean
+          description: Whether this sort is selected
+    StoreFinderSearchPage:
+      type: object
+      properties:
+        stores:
+          type: array
+          items:
+            $ref: '#/components/schemas/PointOfService'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        sorts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sort'
+    GeoPoint:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude
+        longitude:
+          type: number
+          format: double
+          description: Longitude
+    PointOfService:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Store name
+        displayName:
+          type: string
+          description: Display name
+        description:
+          type: string
+          description: Store description
+        address:
+          $ref: '#/components/schemas/Address'
+        geoPoint:
+          $ref: '#/components/schemas/GeoPoint'
+        openingHours:
+          $ref: '#/components/schemas/OpeningSchedule'
+        storeImages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        features:
+          type: object
+          additionalProperties:
+            type: string
+          description: Store features
+    OpeningSchedule:
+      type: object
+      properties:
+        weekDayOpeningList:
+          type: array
+          items:
+            type: object
+            properties:
+              weekDay:
+                type: string
+              openingTime:
+                type: object
+                properties:
+                  formattedHour:
+                    type: string
+              closingTime:
+                type: object
+                properties:
+                  formattedHour:
+                    type: string
+              closed:
+                type: boolean
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (e.g., thumbnail, product, zoom)
+        imageType:
+          type: string
+          enum:
+          - PRIMARY
+          - GALLERY
+          description: Image type
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
   parameters:
     sort:
       name: sort
@@ -280,6 +280,17 @@ components:
       description: Sort criteria (e.g., relevance, topRated, name-asc, price-asc)
       schema:
         type: string
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
     pageSize:
       name: pageSize
       in: query
@@ -294,17 +305,6 @@ components:
       schema:
         type: integer
         default: 0
-    fields:
-      name: fields
-      in: query
-      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
-      schema:
-        type: string
-        enum:
-        - BASIC
-        - DEFAULT
-        - FULL
-        default: DEFAULT
   securitySchemes:
     oauth2:
       type: oauth2

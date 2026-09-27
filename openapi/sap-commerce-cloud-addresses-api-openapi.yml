@@ -122,31 +122,6 @@ paths:
           description: Address not found
 components:
   schemas:
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
-    Country:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-        name:
-          type: string
-          description: Country name
-    AddressList:
-      type: object
-      properties:
-        addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
     Address:
       type: object
       properties:
@@ -190,19 +165,44 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
+    Region:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
+    AddressList:
+      type: object
+      properties:
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
   parameters:
-    addressId:
-      name: addressId
-      in: path
-      required: true
-      description: Address identifier
-      schema:
-        type: string
     userId:
       name: userId
       in: path
       required: true
       description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
+    addressId:
+      name: addressId
+      in: path
+      required: true
+      description: Address identifier
       schema:
         type: string
     fields:
