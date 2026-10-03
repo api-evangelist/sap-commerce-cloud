@@ -236,6 +236,26 @@ paths:
           default: electronics
 components:
   schemas:
+    Catalog:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Catalog identifier
+        name:
+          type: string
+          description: Catalog name
+        catalogVersions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogVersion'
+    CatalogList:
+      type: object
+      properties:
+        catalogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Catalog'
     Image:
       type: object
       properties:
@@ -285,26 +305,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Category'
-    Catalog:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Catalog identifier
-        name:
-          type: string
-          description: Catalog name
-        catalogVersions:
-          type: array
-          items:
-            $ref: '#/components/schemas/CatalogVersion'
-    CatalogList:
-      type: object
-      properties:
-        catalogs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Catalog'
     CatalogVersion_2:
       type: object
       properties:

@@ -118,6 +118,50 @@ paths:
                 $ref: '#/components/schemas/PaymentDetailsList'
 components:
   schemas:
+    PaymentDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Payment details identifier
+        accountHolderName:
+          type: string
+          description: Card holder name
+        cardNumber:
+          type: string
+          description: Masked card number
+        cardType:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Card type code
+            name:
+              type: string
+              description: Card type name
+        expiryMonth:
+          type: string
+          description: Card expiry month
+        expiryYear:
+          type: string
+          description: Card expiry year
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        defaultPayment:
+          type: boolean
+          description: Whether this is the default payment method
+        saved:
+          type: boolean
+          description: Whether the payment details are saved
+    Language:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 639-1 language code
+        name:
+          type: string
+          description: Language name
     Address:
       type: object
       properties:
@@ -161,15 +205,6 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
     UserRegistration:
       type: object
       required:
@@ -221,50 +256,6 @@ components:
         displayUid:
           type: string
           description: Display UID
-    PaymentDetails:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Payment details identifier
-        accountHolderName:
-          type: string
-          description: Card holder name
-        cardNumber:
-          type: string
-          description: Masked card number
-        cardType:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Card type code
-            name:
-              type: string
-              description: Card type name
-        expiryMonth:
-          type: string
-          description: Card expiry month
-        expiryYear:
-          type: string
-          description: Card expiry year
-        billingAddress:
-          $ref: '#/components/schemas/Address'
-        defaultPayment:
-          type: boolean
-          description: Whether this is the default payment method
-        saved:
-          type: boolean
-          description: Whether the payment details are saved
-    Language:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: ISO 639-1 language code
-        name:
-          type: string
-          description: Language name
     Currency:
       type: object
       properties:
@@ -284,6 +275,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PaymentDetails'
+    Region:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
     Country:
       type: object
       properties:
@@ -294,13 +294,6 @@ components:
           type: string
           description: Country name
   parameters:
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
     fields:
       name: fields
       in: query
@@ -312,6 +305,13 @@ components:
         - DEFAULT
         - FULL
         default: DEFAULT
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
   securitySchemes:
     oauth2:
       type: oauth2

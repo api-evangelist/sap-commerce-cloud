@@ -156,6 +156,52 @@ paths:
           description: Deployment region
           default: us
 components:
+  parameters:
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 20
+    customerId:
+      name: customerId
+      in: path
+      required: true
+      description: Customer unique identifier
+      schema:
+        type: string
+    currentPage:
+      name: currentPage
+      in: query
+      description: Current page number (zero-based)
+      schema:
+        type: integer
+        default: 0
+    skip:
+      name: $skip
+      in: query
+      description: Number of results to skip
+      schema:
+        type: integer
+    top:
+      name: $top
+      in: query
+      description: Maximum number of results to return
+      schema:
+        type: integer
+    select:
+      name: $select
+      in: query
+      description: Comma-separated list of properties to return
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
   schemas:
     CustomerSearchEntry:
       type: object
@@ -175,21 +221,6 @@ components:
         hasOrder:
           type: boolean
           description: Whether the customer has placed orders
-    Pagination:
-      type: object
-      properties:
-        currentPage:
-          type: integer
-          description: Current page number
-        pageSize:
-          type: integer
-          description: Number of results per page
-        totalPages:
-          type: integer
-          description: Total number of pages
-        totalResults:
-          type: integer
-          description: Total number of results
     Customer360Data:
       type: object
       properties:
@@ -253,6 +284,21 @@ components:
           type: string
           format: date-time
           description: Order placement date
+    Pagination:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          description: Current page number
+        pageSize:
+          type: integer
+          description: Number of results per page
+        totalPages:
+          type: integer
+          description: Total number of pages
+        totalResults:
+          type: integer
+          description: Total number of results
     TicketSummary:
       type: object
       properties:
@@ -269,6 +315,15 @@ components:
           type: string
           format: date-time
           description: Ticket creation date
+    CustomerSearchPage:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerSearchEntry'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
     CartSummary:
       type: object
       properties:
@@ -285,25 +340,6 @@ components:
           type: string
           format: date-time
           description: Last modification time
-    CustomerSearchPage:
-      type: object
-      properties:
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomerSearchEntry'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-    ODataCustomerCollection:
-      type: object
-      properties:
-        d:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/IntegrationCustomer'
     IntegrationCustomer:
       type: object
       properties:
@@ -335,52 +371,16 @@ components:
         integrationKey:
           type: string
           description: Unique integration key
-  parameters:
-    pageSize:
-      name: pageSize
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 20
-    currentPage:
-      name: currentPage
-      in: query
-      description: Current page number (zero-based)
-      schema:
-        type: integer
-        default: 0
-    customerId:
-      name: customerId
-      in: path
-      required: true
-      description: Customer unique identifier
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Maximum number of results to return
-      schema:
-        type: integer
-    skip:
-      name: $skip
-      in: query
-      description: Number of results to skip
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      description: Comma-separated list of properties to return
-      schema:
-        type: string
+    ODataCustomerCollection:
+      type: object
+      properties:
+        d:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationCustomer'
   securitySchemes:
     oauth2:
       type: oauth2

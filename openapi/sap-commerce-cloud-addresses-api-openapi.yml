@@ -121,6 +121,32 @@ paths:
         '404':
           description: Address not found
 components:
+  parameters:
+    addressId:
+      name: addressId
+      in: path
+      required: true
+      description: Address identifier
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
+      schema:
+        type: string
   schemas:
     Address:
       type: object
@@ -165,6 +191,13 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
+    AddressList:
+      type: object
+      properties:
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
     Region:
       type: object
       properties:
@@ -174,13 +207,6 @@ components:
         name:
           type: string
           description: Region name
-    AddressList:
-      type: object
-      properties:
-        addresses:
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
     Country:
       type: object
       properties:
@@ -190,32 +216,6 @@ components:
         name:
           type: string
           description: Country name
-  parameters:
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
-    addressId:
-      name: addressId
-      in: path
-      required: true
-      description: Address identifier
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
-      schema:
-        type: string
-        enum:
-        - BASIC
-        - DEFAULT
-        - FULL
-        default: DEFAULT
   securitySchemes:
     oauth2:
       type: oauth2
