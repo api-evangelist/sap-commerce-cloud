@@ -74,6 +74,13 @@ components:
           type: integer
           description: Position in gallery
   parameters:
+    productCode:
+      name: productCode
+      in: path
+      required: true
+      description: Product code
+      schema:
+        type: string
     fields:
       name: fields
       in: query
@@ -85,13 +92,6 @@ components:
         - DEFAULT
         - FULL
         default: DEFAULT
-    productCode:
-      name: productCode
-      in: path
-      required: true
-      description: Product code
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

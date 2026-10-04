@@ -148,6 +148,15 @@ components:
       schema:
         type: string
   schemas:
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
     Address:
       type: object
       properties:
@@ -207,15 +216,6 @@ components:
         name:
           type: string
           description: Region name
-    Country:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-        name:
-          type: string
-          description: Country name
   securitySchemes:
     oauth2:
       type: oauth2

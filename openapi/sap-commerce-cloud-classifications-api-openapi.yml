@@ -44,7 +44,46 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClassificationList'
 components:
+  parameters:
+    productCode:
+      name: productCode
+      in: path
+      required: true
+      description: Product code
+      schema:
+        type: string
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
   schemas:
+    Classification:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Classification category code
+        name:
+          type: string
+          description: Classification category name
+        features:
+          type: array
+          items:
+            $ref: '#/components/schemas/Feature'
+    ClassificationList:
+      type: object
+      properties:
+        classifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Classification'
     Feature:
       type: object
       properties:
@@ -71,45 +110,6 @@ components:
             properties:
               value:
                 type: string
-    ClassificationList:
-      type: object
-      properties:
-        classifications:
-          type: array
-          items:
-            $ref: '#/components/schemas/Classification'
-    Classification:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Classification category code
-        name:
-          type: string
-          description: Classification category name
-        features:
-          type: array
-          items:
-            $ref: '#/components/schemas/Feature'
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
-      schema:
-        type: string
-        enum:
-        - BASIC
-        - DEFAULT
-        - FULL
-        default: DEFAULT
-    productCode:
-      name: productCode
-      in: path
-      required: true
-      description: Product code
-      schema:
-        type: string
   securitySchemes:
     oauth2:
       type: oauth2

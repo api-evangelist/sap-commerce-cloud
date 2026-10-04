@@ -64,6 +64,18 @@ paths:
           description: Category not found
 components:
   schemas:
+    CategoryRef:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
     CategoryContent:
       type: object
       properties:
@@ -91,18 +103,6 @@ components:
                 type: string
               name:
                 type: string
-    CategoryRef:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Category code
-        name:
-          type: string
-          description: Category name
-        url:
-          type: string
-          description: Category URL
     Image:
       type: object
       properties:

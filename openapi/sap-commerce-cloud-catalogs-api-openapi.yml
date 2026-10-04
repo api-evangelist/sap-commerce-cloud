@@ -235,105 +235,6 @@ paths:
           description: Base site identifier
           default: electronics
 components:
-  schemas:
-    Catalog:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Catalog identifier
-        name:
-          type: string
-          description: Catalog name
-        catalogVersions:
-          type: array
-          items:
-            $ref: '#/components/schemas/CatalogVersion'
-    CatalogList:
-      type: object
-      properties:
-        catalogs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Catalog'
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-          description: Image URL
-        altText:
-          type: string
-          description: Alternative text
-        format:
-          type: string
-          description: Image format (e.g., thumbnail, product, zoom)
-        imageType:
-          type: string
-          enum:
-          - PRIMARY
-          - GALLERY
-          description: Image type
-    CatalogVersion:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Catalog version identifier
-        url:
-          type: string
-          description: Catalog version URL
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-    Category:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Category code
-        name:
-          type: string
-          description: Category name
-        url:
-          type: string
-          description: Category URL
-        image:
-          $ref: '#/components/schemas/Image'
-        subcategories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-    CatalogVersion_2:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Catalog version ID (e.g., Online, Staged)
-        lastModifiedTime:
-          type: string
-          format: date-time
-          description: Last modification timestamp
-        url:
-          type: string
-          description: Catalog version URL
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/CategoryRef'
-    CategoryRef:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Category code
-        name:
-          type: string
-          description: Category name
-        url:
-          type: string
-          description: Category URL
   parameters:
     fields:
       name: fields
@@ -352,18 +253,117 @@ components:
       description: Number of results to skip
       schema:
         type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
     top:
       name: $top
       in: query
       description: Maximum number of results to return
       schema:
         type: integer
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+  schemas:
+    CatalogVersion:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Catalog version identifier
+        url:
+          type: string
+          description: Catalog version URL
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    CatalogList:
+      type: object
+      properties:
+        catalogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Catalog'
+    Catalog:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Catalog identifier
+        name:
+          type: string
+          description: Catalog name
+        catalogVersions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogVersion'
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (e.g., thumbnail, product, zoom)
+        imageType:
+          type: string
+          enum:
+          - PRIMARY
+          - GALLERY
+          description: Image type
+    Category:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
+        image:
+          $ref: '#/components/schemas/Image'
+        subcategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    CategoryRef:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
+    CatalogVersion_2:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Catalog version ID (e.g., Online, Staged)
+        lastModifiedTime:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+        url:
+          type: string
+          description: Catalog version URL
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/CategoryRef'
   securitySchemes:
     oauth2:
       type: oauth2

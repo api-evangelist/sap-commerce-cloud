@@ -45,6 +45,13 @@ paths:
                 $ref: '#/components/schemas/ConfigurationPropertyList'
 components:
   schemas:
+    ConfigurationPropertyList:
+      type: object
+      properties:
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConfigurationProperty'
     ConfigurationProperty:
       type: object
       properties:
@@ -57,13 +64,6 @@ components:
         description:
           type: string
           description: Property description
-    ConfigurationPropertyList:
-      type: object
-      properties:
-        properties:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConfigurationProperty'
   securitySchemes:
     oauth2:
       type: oauth2

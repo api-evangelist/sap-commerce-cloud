@@ -90,21 +90,6 @@ paths:
           description: Session not found
 components:
   schemas:
-    AssistedSessionRequest:
-      type: object
-      required:
-      - customerId
-      - baseSite
-      properties:
-        customerId:
-          type: string
-          description: Customer ID to assist
-        baseSite:
-          type: string
-          description: Base site identifier
-        cartId:
-          type: string
-          description: Optional specific cart to work with
     AssistedSession:
       type: object
       properties:
@@ -133,6 +118,21 @@ components:
           - ACTIVE
           - ENDED
           description: Session status
+    AssistedSessionRequest:
+      type: object
+      required:
+      - customerId
+      - baseSite
+      properties:
+        customerId:
+          type: string
+          description: Customer ID to assist
+        baseSite:
+          type: string
+          description: Base site identifier
+        cartId:
+          type: string
+          description: Optional specific cart to work with
   securitySchemes:
     oauth2:
       type: oauth2

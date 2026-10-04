@@ -98,13 +98,6 @@ components:
         - DEFAULT
         - FULL
         default: DEFAULT
-    cartId:
-      name: cartId
-      in: path
-      required: true
-      description: Cart identifier
-      schema:
-        type: string
     userId:
       name: userId
       in: path
@@ -112,7 +105,21 @@ components:
       description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
       schema:
         type: string
+    cartId:
+      name: cartId
+      in: path
+      required: true
+      description: Cart identifier
+      schema:
+        type: string
   schemas:
+    VoucherList:
+      type: object
+      properties:
+        vouchers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Voucher'
     Voucher:
       type: object
       properties:
@@ -138,13 +145,6 @@ components:
         freeShipping:
           type: boolean
           description: Whether voucher provides free shipping
-    VoucherList:
-      type: object
-      properties:
-        vouchers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Voucher'
   securitySchemes:
     oauth2:
       type: oauth2
