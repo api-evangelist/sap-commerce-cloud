@@ -815,6 +815,12 @@ apis:
     url: >-
       https://help.sap.com/docs/SAP_COMMERCE/e5d7cec9064f453b84235dc582b886da/8c19ab00866910148f87bf32d4a60d38.html
 common:
+- type: Plans
+  url: plans/sap-commerce-cloud-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/sap-commerce-cloud-rate-limits.yml
+- type: FinOps
+  url: finops/sap-commerce-cloud-finops.yml
 - type: Website
   url: https://sap.com
 - type: CapabilityMap
