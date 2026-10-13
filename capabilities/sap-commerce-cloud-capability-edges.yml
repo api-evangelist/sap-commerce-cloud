@@ -4,6 +4,7 @@ generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
 - Retail & Consumer Goods
+- Software & Technology
 min_confidence: 0.7
 capability_model:
   source: https://github.com/vincentmakes/turbo-ea-capabilities
@@ -11,7 +12,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 8
+edge_count: 9
 edges:
 - tag: Customers
   spec_file: sap-commerce-cloud-customers-api-openapi.yml
@@ -64,6 +65,18 @@ edges:
     GET /InboundClassification/ClassificationSystems
   reason: Product catalogue, catalogue version and classification-system structure is the canonical product
     record hierarchy and taxonomy — item master data management.
+- tag: Orders
+  spec_file: sap-commerce-cloud-orders-api-openapi.yml
+  capability_id: BC-520.40
+  capability_id_l1: BC-520
+  capability_name: Order Fulfilment Management
+  confidence: 0.75
+  evidence: 'POST /users/{userId}/orders  placeOrder  SAP Commerce Cloud Place an order; schemas: Consignment,
+    ConsignmentEntry, DeliveryMode, OrderHistoryList'
+  reason: Operations capture and retrieve customer sales orders in an e-commerce context, with consignment
+    and delivery-mode schemas indicating downstream fulfilment. Order Fulfilment Management is the closest
+    fit; confidence tempered because order capture also touches sales/AR and the sub-capability boundary
+    is arguable.
 - tag: Consents
   spec_file: sap-commerce-cloud-consents-api-openapi.yml
   capability_id: BC-130.50
