@@ -49,6 +49,13 @@ paths:
           description: Customer not found
 components:
   schemas:
+    CartList:
+      type: object
+      properties:
+        carts:
+          type: array
+          items:
+            $ref: '#/components/schemas/CartSummary'
     CartSummary:
       type: object
       properties:
@@ -65,13 +72,6 @@ components:
           type: string
           format: date-time
           description: Last modification time
-    CartList:
-      type: object
-      properties:
-        carts:
-          type: array
-          items:
-            $ref: '#/components/schemas/CartSummary'
   parameters:
     customerId:
       name: customerId

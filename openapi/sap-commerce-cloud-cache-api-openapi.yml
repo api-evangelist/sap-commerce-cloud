@@ -60,13 +60,6 @@ paths:
           description: Cache region not found
 components:
   schemas:
-    CacheRegionList:
-      type: object
-      properties:
-        regions:
-          type: array
-          items:
-            $ref: '#/components/schemas/CacheRegion'
     CacheRegion:
       type: object
       properties:
@@ -92,6 +85,13 @@ components:
         evictionCount:
           type: integer
           description: Number of evictions
+    CacheRegionList:
+      type: object
+      properties:
+        regions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CacheRegion'
   securitySchemes:
     oauth2:
       type: oauth2

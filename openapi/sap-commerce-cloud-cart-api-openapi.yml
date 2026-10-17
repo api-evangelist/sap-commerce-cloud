@@ -186,13 +186,108 @@ paths:
           description: Entry not found
 components:
   schemas:
-    CartList:
+    Region:
       type: object
       properties:
-        carts:
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
+    Category:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
+        image:
+          $ref: '#/components/schemas/Image'
+        subcategories:
           type: array
           items:
-            $ref: '#/components/schemas/Cart'
+            $ref: '#/components/schemas/Category'
+    Address:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Address identifier
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        titleCode:
+          type: string
+          description: Title code
+        line1:
+          type: string
+          description: Address line 1
+        line2:
+          type: string
+          description: Address line 2
+        town:
+          type: string
+          description: City or town
+        region:
+          $ref: '#/components/schemas/Region'
+        district:
+          type: string
+          description: District
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
+          $ref: '#/components/schemas/Country'
+        phone:
+          type: string
+          description: Phone number
+        email:
+          type: string
+          description: Email address
+        defaultAddress:
+          type: boolean
+          description: Whether this is the default address
+    Classification:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Classification code
+        name:
+          type: string
+          description: Classification name
+        features:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+              featureValues:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+    OrderEntryList:
+      type: object
+      properties:
+        orderEntries:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderEntry'
     Country:
       type: object
       properties:
@@ -202,6 +297,68 @@ components:
         name:
           type: string
           description: Country name
+    Price:
+      type: object
+      properties:
+        currencyIso:
+          type: string
+          description: ISO 4217 currency code
+        value:
+          type: number
+          format: double
+          description: Price value
+        formattedValue:
+          type: string
+          description: Formatted price string
+        priceType:
+          type: string
+          enum:
+          - BUY
+          - FROM
+          description: Price type
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (e.g., thumbnail, product, zoom)
+        imageType:
+          type: string
+          enum:
+          - PRIMARY
+          - GALLERY
+          description: Image type
+    Review:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Review identifier
+        headline:
+          type: string
+          description: Review headline
+        comment:
+          type: string
+          description: Review text
+        rating:
+          type: number
+          format: double
+          description: Rating value
+        date:
+          type: string
+          format: date-time
+          description: Review date
+        alias:
+          type: string
+          description: Reviewer alias
+        principal:
+          $ref: '#/components/schemas/Principal'
     OrderEntry:
       type: object
       properties:
@@ -220,6 +377,152 @@ components:
         updateable:
           type: boolean
           description: Whether the entry can be updated
+    Principal:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: User unique identifier
+        name:
+          type: string
+          description: Display name
+    CartModification:
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Status of the modification
+        quantity:
+          type: integer
+          description: Quantity added
+        quantityAdded:
+          type: integer
+          description: Actual quantity added
+        entry:
+          $ref: '#/components/schemas/OrderEntry'
+        statusMessage:
+          type: string
+          description: Status message
+    CartList:
+      type: object
+      properties:
+        carts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Cart'
+    Product:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Product code
+        name:
+          type: string
+          description: Product name
+        description:
+          type: string
+          description: Product description
+        summary:
+          type: string
+          description: Short product summary
+        price:
+          $ref: '#/components/schemas/Price'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+          description: Product images
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+          description: Product categories
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
+          description: Customer reviews
+        averageRating:
+          type: number
+          format: double
+          description: Average customer rating
+        stock:
+          $ref: '#/components/schemas/Stock'
+        classifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Classification'
+          description: Product classification attributes
+        purchasable:
+          type: boolean
+          description: Whether the product can be purchased
+        url:
+          type: string
+          description: Product URL
+    PaymentDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Payment details identifier
+        accountHolderName:
+          type: string
+          description: Card holder name
+        cardNumber:
+          type: string
+          description: Masked card number
+        cardType:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Card type code
+            name:
+              type: string
+              description: Card type name
+        expiryMonth:
+          type: string
+          description: Card expiry month
+        expiryYear:
+          type: string
+          description: Card expiry year
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        defaultPayment:
+          type: boolean
+          description: Whether this is the default payment method
+        saved:
+          type: boolean
+          description: Whether the payment details are saved
+    DeliveryMode:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Delivery mode code
+        name:
+          type: string
+          description: Delivery mode name
+        description:
+          type: string
+          description: Delivery mode description
+        deliveryCost:
+          $ref: '#/components/schemas/Price'
+    Promotion:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Promotion code
+        title:
+          type: string
+          description: Promotion title
+        description:
+          type: string
+          description: Promotion description
+        promotionType:
+          type: string
+          description: Promotion type
     Cart:
       type: object
       properties:
@@ -307,310 +610,14 @@ components:
         freeShipping:
           type: boolean
           description: Whether voucher provides free shipping
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
-    CartModification:
-      type: object
-      properties:
-        statusCode:
-          type: string
-          description: Status of the modification
-        quantity:
-          type: integer
-          description: Quantity added
-        quantityAdded:
-          type: integer
-          description: Actual quantity added
-        entry:
-          $ref: '#/components/schemas/OrderEntry'
-        statusMessage:
-          type: string
-          description: Status message
-    Review:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Review identifier
-        headline:
-          type: string
-          description: Review headline
-        comment:
-          type: string
-          description: Review text
-        rating:
-          type: number
-          format: double
-          description: Rating value
-        date:
-          type: string
-          format: date-time
-          description: Review date
-        alias:
-          type: string
-          description: Reviewer alias
-        principal:
-          $ref: '#/components/schemas/Principal'
-    DeliveryMode:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Delivery mode code
-        name:
-          type: string
-          description: Delivery mode name
-        description:
-          type: string
-          description: Delivery mode description
-        deliveryCost:
-          $ref: '#/components/schemas/Price'
-    Classification:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Classification code
-        name:
-          type: string
-          description: Classification name
-        features:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: string
-              name:
-                type: string
-              featureValues:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    value:
-                      type: string
-    Principal:
-      type: object
-      properties:
-        uid:
-          type: string
-          description: User unique identifier
-        name:
-          type: string
-          description: Display name
-    OrderEntryList:
-      type: object
-      properties:
-        orderEntries:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrderEntry'
-    PaymentDetails:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Payment details identifier
-        accountHolderName:
-          type: string
-          description: Card holder name
-        cardNumber:
-          type: string
-          description: Masked card number
-        cardType:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Card type code
-            name:
-              type: string
-              description: Card type name
-        expiryMonth:
-          type: string
-          description: Card expiry month
-        expiryYear:
-          type: string
-          description: Card expiry year
-        billingAddress:
-          $ref: '#/components/schemas/Address'
-        defaultPayment:
-          type: boolean
-          description: Whether this is the default payment method
-        saved:
-          type: boolean
-          description: Whether the payment details are saved
-    Category:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Category code
-        name:
-          type: string
-          description: Category name
-        url:
-          type: string
-          description: Category URL
-        image:
-          $ref: '#/components/schemas/Image'
-        subcategories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-    Price:
-      type: object
-      properties:
-        currencyIso:
-          type: string
-          description: ISO 4217 currency code
-        value:
-          type: number
-          format: double
-          description: Price value
-        formattedValue:
-          type: string
-          description: Formatted price string
-        priceType:
-          type: string
-          enum:
-          - BUY
-          - FROM
-          description: Price type
-    Product:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Product code
-        name:
-          type: string
-          description: Product name
-        description:
-          type: string
-          description: Product description
-        summary:
-          type: string
-          description: Short product summary
-        price:
-          $ref: '#/components/schemas/Price'
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/Image'
-          description: Product images
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-          description: Product categories
-        reviews:
-          type: array
-          items:
-            $ref: '#/components/schemas/Review'
-          description: Customer reviews
-        averageRating:
-          type: number
-          format: double
-          description: Average customer rating
-        stock:
-          $ref: '#/components/schemas/Stock'
-        classifications:
-          type: array
-          items:
-            $ref: '#/components/schemas/Classification'
-          description: Product classification attributes
-        purchasable:
-          type: boolean
-          description: Whether the product can be purchased
-        url:
-          type: string
-          description: Product URL
-    Promotion:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Promotion code
-        title:
-          type: string
-          description: Promotion title
-        description:
-          type: string
-          description: Promotion description
-        promotionType:
-          type: string
-          description: Promotion type
-    Address:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Address identifier
-        firstName:
-          type: string
-          description: First name
-        lastName:
-          type: string
-          description: Last name
-        titleCode:
-          type: string
-          description: Title code
-        line1:
-          type: string
-          description: Address line 1
-        line2:
-          type: string
-          description: Address line 2
-        town:
-          type: string
-          description: City or town
-        region:
-          $ref: '#/components/schemas/Region'
-        district:
-          type: string
-          description: District
-        postalCode:
-          type: string
-          description: Postal or ZIP code
-        country:
-          $ref: '#/components/schemas/Country'
-        phone:
-          type: string
-          description: Phone number
-        email:
-          type: string
-          description: Email address
-        defaultAddress:
-          type: boolean
-          description: Whether this is the default address
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-          description: Image URL
-        altText:
-          type: string
-          description: Alternative text
-        format:
-          type: string
-          description: Image format (e.g., thumbnail, product, zoom)
-        imageType:
-          type: string
-          enum:
-          - PRIMARY
-          - GALLERY
-          description: Image type
   parameters:
+    cartId:
+      name: cartId
+      in: path
+      required: true
+      description: Cart identifier
+      schema:
+        type: string
     fields:
       name: fields
       in: query
@@ -634,13 +641,6 @@ components:
       in: path
       required: true
       description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
-    cartId:
-      name: cartId
-      in: path
-      required: true
-      description: Cart identifier
       schema:
         type: string
   securitySchemes:

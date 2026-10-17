@@ -189,6 +189,383 @@ paths:
           default: us
 components:
   schemas:
+    Region:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: Region ISO code
+        name:
+          type: string
+          description: Region name
+    Category:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
+        image:
+          $ref: '#/components/schemas/Image'
+        subcategories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    OpeningSchedule:
+      type: object
+      properties:
+        weekDayOpeningList:
+          type: array
+          items:
+            type: object
+            properties:
+              weekDay:
+                type: string
+              openingTime:
+                type: object
+                properties:
+                  formattedHour:
+                    type: string
+              closingTime:
+                type: object
+                properties:
+                  formattedHour:
+                    type: string
+              closed:
+                type: boolean
+    Address:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Address identifier
+        firstName:
+          type: string
+          description: First name
+        lastName:
+          type: string
+          description: Last name
+        titleCode:
+          type: string
+          description: Title code
+        line1:
+          type: string
+          description: Address line 1
+        line2:
+          type: string
+          description: Address line 2
+        town:
+          type: string
+          description: City or town
+        region:
+          $ref: '#/components/schemas/Region'
+        district:
+          type: string
+          description: District
+        postalCode:
+          type: string
+          description: Postal or ZIP code
+        country:
+          $ref: '#/components/schemas/Country'
+        phone:
+          type: string
+          description: Phone number
+        email:
+          type: string
+          description: Email address
+        defaultAddress:
+          type: boolean
+          description: Whether this is the default address
+    PointOfService:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Store name
+        displayName:
+          type: string
+          description: Display name
+        description:
+          type: string
+          description: Store description
+        address:
+          $ref: '#/components/schemas/Address'
+        geoPoint:
+          $ref: '#/components/schemas/GeoPoint'
+        openingHours:
+          $ref: '#/components/schemas/OpeningSchedule'
+        storeImages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        features:
+          type: object
+          additionalProperties:
+            type: string
+          description: Store features
+    Classification:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Classification code
+        name:
+          type: string
+          description: Classification name
+        features:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+              featureValues:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    value:
+                      type: string
+    OrderHistoryList:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            $ref: '#/components/schemas/Order'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+        sorts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sort'
+    Sort:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Sort code
+        name:
+          type: string
+          description: Sort display name
+        selected:
+          type: boolean
+          description: Whether this sort is selected
+    Country:
+      type: object
+      properties:
+        isocode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        name:
+          type: string
+          description: Country name
+    Price:
+      type: object
+      properties:
+        currencyIso:
+          type: string
+          description: ISO 4217 currency code
+        value:
+          type: number
+          format: double
+          description: Price value
+        formattedValue:
+          type: string
+          description: Formatted price string
+        priceType:
+          type: string
+          enum:
+          - BUY
+          - FROM
+          description: Price type
+    Pagination:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          description: Current page number
+        pageSize:
+          type: integer
+          description: Number of results per page
+        totalPages:
+          type: integer
+          description: Total number of pages
+        totalResults:
+          type: integer
+          description: Total number of results
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (e.g., thumbnail, product, zoom)
+        imageType:
+          type: string
+          enum:
+          - PRIMARY
+          - GALLERY
+          description: Image type
+    Review:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Review identifier
+        headline:
+          type: string
+          description: Review headline
+        comment:
+          type: string
+          description: Review text
+        rating:
+          type: number
+          format: double
+          description: Rating value
+        date:
+          type: string
+          format: date-time
+          description: Review date
+        alias:
+          type: string
+          description: Reviewer alias
+        principal:
+          $ref: '#/components/schemas/Principal'
+    OrderEntry:
+      type: object
+      properties:
+        entryNumber:
+          type: integer
+          description: Entry number (zero-based)
+        product:
+          $ref: '#/components/schemas/Product'
+        quantity:
+          type: integer
+          description: Quantity
+        basePrice:
+          $ref: '#/components/schemas/Price'
+        totalPrice:
+          $ref: '#/components/schemas/Price'
+        updateable:
+          type: boolean
+          description: Whether the entry can be updated
+    Principal:
+      type: object
+      properties:
+        uid:
+          type: string
+          description: User unique identifier
+        name:
+          type: string
+          description: Display name
+    ConsignmentEntry:
+      type: object
+      properties:
+        orderEntry:
+          $ref: '#/components/schemas/OrderEntry'
+        quantity:
+          type: integer
+          description: Shipped quantity
+        shippedQuantity:
+          type: integer
+          description: Actual shipped quantity
+    Product:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Product code
+        name:
+          type: string
+          description: Product name
+        description:
+          type: string
+          description: Product description
+        summary:
+          type: string
+          description: Short product summary
+        price:
+          $ref: '#/components/schemas/Price'
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+          description: Product images
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+          description: Product categories
+        reviews:
+          type: array
+          items:
+            $ref: '#/components/schemas/Review'
+          description: Customer reviews
+        averageRating:
+          type: number
+          format: double
+          description: Average customer rating
+        stock:
+          $ref: '#/components/schemas/Stock'
+        classifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Classification'
+          description: Product classification attributes
+        purchasable:
+          type: boolean
+          description: Whether the product can be purchased
+        url:
+          type: string
+          description: Product URL
+    PaymentDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Payment details identifier
+        accountHolderName:
+          type: string
+          description: Card holder name
+        cardNumber:
+          type: string
+          description: Masked card number
+        cardType:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Card type code
+            name:
+              type: string
+              description: Card type name
+        expiryMonth:
+          type: string
+          description: Card expiry month
+        expiryYear:
+          type: string
+          description: Card expiry year
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+        defaultPayment:
+          type: boolean
+          description: Whether this is the default payment method
+        saved:
+          type: boolean
+          description: Whether the payment details are saved
     Consignment:
       type: object
       properties:
@@ -210,66 +587,20 @@ components:
             $ref: '#/components/schemas/ConsignmentEntry'
         deliveryPointOfService:
           $ref: '#/components/schemas/PointOfService'
-    Country:
+    DeliveryMode:
       type: object
       properties:
-        isocode:
+        code:
           type: string
-          description: ISO 3166-1 alpha-2 country code
+          description: Delivery mode code
         name:
           type: string
-          description: Country name
-    ConsignmentEntry:
-      type: object
-      properties:
-        orderEntry:
-          $ref: '#/components/schemas/OrderEntry'
-        quantity:
-          type: integer
-          description: Shipped quantity
-        shippedQuantity:
-          type: integer
-          description: Actual shipped quantity
-    OrderEntry:
-      type: object
-      properties:
-        entryNumber:
-          type: integer
-          description: Entry number (zero-based)
-        product:
-          $ref: '#/components/schemas/Product'
-        quantity:
-          type: integer
-          description: Quantity
-        basePrice:
+          description: Delivery mode name
+        description:
+          type: string
+          description: Delivery mode description
+        deliveryCost:
           $ref: '#/components/schemas/Price'
-        totalPrice:
-          $ref: '#/components/schemas/Price'
-        updateable:
-          type: boolean
-          description: Whether the entry can be updated
-    Stock:
-      type: object
-      properties:
-        stockLevelStatus:
-          type: string
-          enum:
-          - inStock
-          - lowStock
-          - outOfStock
-          description: Stock level status
-        stockLevel:
-          type: integer
-          description: Actual stock level quantity
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
     Order:
       type: object
       properties:
@@ -326,350 +657,19 @@ components:
           type: number
           format: double
           description: Longitude
-    OrderHistoryList:
+    Stock:
       type: object
       properties:
-        orders:
-          type: array
-          items:
-            $ref: '#/components/schemas/Order'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-        sorts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Sort'
-    Review:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Review identifier
-        headline:
-          type: string
-          description: Review headline
-        comment:
-          type: string
-          description: Review text
-        rating:
-          type: number
-          format: double
-          description: Rating value
-        date:
-          type: string
-          format: date-time
-          description: Review date
-        alias:
-          type: string
-          description: Reviewer alias
-        principal:
-          $ref: '#/components/schemas/Principal'
-    DeliveryMode:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Delivery mode code
-        name:
-          type: string
-          description: Delivery mode name
-        description:
-          type: string
-          description: Delivery mode description
-        deliveryCost:
-          $ref: '#/components/schemas/Price'
-    PointOfService:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Store name
-        displayName:
-          type: string
-          description: Display name
-        description:
-          type: string
-          description: Store description
-        address:
-          $ref: '#/components/schemas/Address'
-        geoPoint:
-          $ref: '#/components/schemas/GeoPoint'
-        openingHours:
-          $ref: '#/components/schemas/OpeningSchedule'
-        storeImages:
-          type: array
-          items:
-            $ref: '#/components/schemas/Image'
-        features:
-          type: object
-          additionalProperties:
-            type: string
-          description: Store features
-    Classification:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Classification code
-        name:
-          type: string
-          description: Classification name
-        features:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: string
-              name:
-                type: string
-              featureValues:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    value:
-                      type: string
-    Principal:
-      type: object
-      properties:
-        uid:
-          type: string
-          description: User unique identifier
-        name:
-          type: string
-          description: Display name
-    PaymentDetails:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Payment details identifier
-        accountHolderName:
-          type: string
-          description: Card holder name
-        cardNumber:
-          type: string
-          description: Masked card number
-        cardType:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Card type code
-            name:
-              type: string
-              description: Card type name
-        expiryMonth:
-          type: string
-          description: Card expiry month
-        expiryYear:
-          type: string
-          description: Card expiry year
-        billingAddress:
-          $ref: '#/components/schemas/Address'
-        defaultPayment:
-          type: boolean
-          description: Whether this is the default payment method
-        saved:
-          type: boolean
-          description: Whether the payment details are saved
-    Category:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Category code
-        name:
-          type: string
-          description: Category name
-        url:
-          type: string
-          description: Category URL
-        image:
-          $ref: '#/components/schemas/Image'
-        subcategories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-    Price:
-      type: object
-      properties:
-        currencyIso:
-          type: string
-          description: ISO 4217 currency code
-        value:
-          type: number
-          format: double
-          description: Price value
-        formattedValue:
-          type: string
-          description: Formatted price string
-        priceType:
+        stockLevelStatus:
           type: string
           enum:
-          - BUY
-          - FROM
-          description: Price type
-    Product:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Product code
-        name:
-          type: string
-          description: Product name
-        description:
-          type: string
-          description: Product description
-        summary:
-          type: string
-          description: Short product summary
-        price:
-          $ref: '#/components/schemas/Price'
-        images:
-          type: array
-          items:
-            $ref: '#/components/schemas/Image'
-          description: Product images
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-          description: Product categories
-        reviews:
-          type: array
-          items:
-            $ref: '#/components/schemas/Review'
-          description: Customer reviews
-        averageRating:
-          type: number
-          format: double
-          description: Average customer rating
-        stock:
-          $ref: '#/components/schemas/Stock'
-        classifications:
-          type: array
-          items:
-            $ref: '#/components/schemas/Classification'
-          description: Product classification attributes
-        purchasable:
-          type: boolean
-          description: Whether the product can be purchased
-        url:
-          type: string
-          description: Product URL
-    Sort:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Sort code
-        name:
-          type: string
-          description: Sort display name
-        selected:
-          type: boolean
-          description: Whether this sort is selected
-    Pagination:
-      type: object
-      properties:
-        currentPage:
+          - inStock
+          - lowStock
+          - outOfStock
+          description: Stock level status
+        stockLevel:
           type: integer
-          description: Current page number
-        pageSize:
-          type: integer
-          description: Number of results per page
-        totalPages:
-          type: integer
-          description: Total number of pages
-        totalResults:
-          type: integer
-          description: Total number of results
-    Address:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Address identifier
-        firstName:
-          type: string
-          description: First name
-        lastName:
-          type: string
-          description: Last name
-        titleCode:
-          type: string
-          description: Title code
-        line1:
-          type: string
-          description: Address line 1
-        line2:
-          type: string
-          description: Address line 2
-        town:
-          type: string
-          description: City or town
-        region:
-          $ref: '#/components/schemas/Region'
-        district:
-          type: string
-          description: District
-        postalCode:
-          type: string
-          description: Postal or ZIP code
-        country:
-          $ref: '#/components/schemas/Country'
-        phone:
-          type: string
-          description: Phone number
-        email:
-          type: string
-          description: Email address
-        defaultAddress:
-          type: boolean
-          description: Whether this is the default address
-    OpeningSchedule:
-      type: object
-      properties:
-        weekDayOpeningList:
-          type: array
-          items:
-            type: object
-            properties:
-              weekDay:
-                type: string
-              openingTime:
-                type: object
-                properties:
-                  formattedHour:
-                    type: string
-              closingTime:
-                type: object
-                properties:
-                  formattedHour:
-                    type: string
-              closed:
-                type: boolean
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-          description: Image URL
-        altText:
-          type: string
-          description: Alternative text
-        format:
-          type: string
-          description: Image format (e.g., thumbnail, product, zoom)
-        imageType:
-          type: string
-          enum:
-          - PRIMARY
-          - GALLERY
-          description: Image type
+          description: Actual stock level quantity
     ODataOrderCollection:
       type: object
       properties:
@@ -732,19 +732,6 @@ components:
       schema:
         type: integer
         default: 0
-    sort:
-      name: sort
-      in: query
-      description: Sort criteria (e.g., relevance, topRated, name-asc, price-asc)
-      schema:
-        type: string
-    pageSize:
-      name: pageSize
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 20
     fields:
       name: fields
       in: query
@@ -756,23 +743,24 @@ components:
         - DEFAULT
         - FULL
         default: DEFAULT
+    pageSize:
+      name: pageSize
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 20
+    sort:
+      name: sort
+      in: query
+      description: Sort criteria (e.g., relevance, topRated, name-asc, price-asc)
+      schema:
+        type: string
     userId:
       name: userId
       in: path
       required: true
       description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
-    skip:
-      name: $skip
-      in: query
-      description: Number of results to skip
-      schema:
-        type: integer
-    expand:
-      name: $expand
-      in: query
-      description: Comma-separated list of navigation properties to expand
       schema:
         type: string
     filter:
@@ -787,18 +775,30 @@ components:
       description: Property name and direction for sorting
       schema:
         type: string
-    top:
-      name: $top
-      in: query
-      description: Maximum number of results to return
-      schema:
-        type: integer
     select:
       name: $select
       in: query
       description: Comma-separated list of properties to return
       schema:
         type: string
+    expand:
+      name: $expand
+      in: query
+      description: Comma-separated list of navigation properties to expand
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of results to return
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of results to skip
+      schema:
+        type: integer
   securitySchemes:
     oauth2:
       type: oauth2

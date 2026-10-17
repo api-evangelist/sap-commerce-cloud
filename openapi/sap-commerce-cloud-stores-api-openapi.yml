@@ -94,33 +94,37 @@ paths:
           description: Store not found
 components:
   schemas:
-    PointOfService:
+    Region:
       type: object
       properties:
+        isocode:
+          type: string
+          description: Region ISO code
         name:
           type: string
-          description: Store name
-        displayName:
-          type: string
-          description: Display name
-        description:
-          type: string
-          description: Store description
-        address:
-          $ref: '#/components/schemas/Address'
-        geoPoint:
-          $ref: '#/components/schemas/GeoPoint'
-        openingHours:
-          $ref: '#/components/schemas/OpeningSchedule'
-        storeImages:
+          description: Region name
+    OpeningSchedule:
+      type: object
+      properties:
+        weekDayOpeningList:
           type: array
           items:
-            $ref: '#/components/schemas/Image'
-        features:
-          type: object
-          additionalProperties:
-            type: string
-          description: Store features
+            type: object
+            properties:
+              weekDay:
+                type: string
+              openingTime:
+                type: object
+                properties:
+                  formattedHour:
+                    type: string
+              closingTime:
+                type: object
+                properties:
+                  formattedHour:
+                    type: string
+              closed:
+                type: boolean
     Country:
       type: object
       properties:
@@ -130,33 +134,6 @@ components:
         name:
           type: string
           description: Country name
-    Pagination:
-      type: object
-      properties:
-        currentPage:
-          type: integer
-          description: Current page number
-        pageSize:
-          type: integer
-          description: Number of results per page
-        totalPages:
-          type: integer
-          description: Total number of pages
-        totalResults:
-          type: integer
-          description: Total number of results
-    Sort:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Sort code
-        name:
-          type: string
-          description: Sort display name
-        selected:
-          type: boolean
-          description: Whether this sort is selected
     Address:
       type: object
       properties:
@@ -200,6 +177,59 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
+    Pagination:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          description: Current page number
+        pageSize:
+          type: integer
+          description: Number of results per page
+        totalPages:
+          type: integer
+          description: Total number of pages
+        totalResults:
+          type: integer
+          description: Total number of results
+    GeoPoint:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude
+        longitude:
+          type: number
+          format: double
+          description: Longitude
+    PointOfService:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Store name
+        displayName:
+          type: string
+          description: Display name
+        description:
+          type: string
+          description: Store description
+        address:
+          $ref: '#/components/schemas/Address'
+        geoPoint:
+          $ref: '#/components/schemas/GeoPoint'
+        openingHours:
+          $ref: '#/components/schemas/OpeningSchedule'
+        storeImages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Image'
+        features:
+          type: object
+          additionalProperties:
+            type: string
+          description: Store features
     StoreFinderSearchPage:
       type: object
       properties:
@@ -213,39 +243,18 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Sort'
-    OpeningSchedule:
+    Sort:
       type: object
       properties:
-        weekDayOpeningList:
-          type: array
-          items:
-            type: object
-            properties:
-              weekDay:
-                type: string
-              openingTime:
-                type: object
-                properties:
-                  formattedHour:
-                    type: string
-              closingTime:
-                type: object
-                properties:
-                  formattedHour:
-                    type: string
-              closed:
-                type: boolean
-    GeoPoint:
-      type: object
-      properties:
-        latitude:
-          type: number
-          format: double
-          description: Latitude
-        longitude:
-          type: number
-          format: double
-          description: Longitude
+        code:
+          type: string
+          description: Sort code
+        name:
+          type: string
+          description: Sort display name
+        selected:
+          type: boolean
+          description: Whether this sort is selected
     Image:
       type: object
       properties:
@@ -264,15 +273,6 @@ components:
           - PRIMARY
           - GALLERY
           description: Image type
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
-        name:
-          type: string
-          description: Region name
   parameters:
     pageSize:
       name: pageSize
@@ -281,6 +281,13 @@ components:
       schema:
         type: integer
         default: 20
+    currentPage:
+      name: currentPage
+      in: query
+      description: Current page number (zero-based)
+      schema:
+        type: integer
+        default: 0
     fields:
       name: fields
       in: query
@@ -292,13 +299,6 @@ components:
         - DEFAULT
         - FULL
         default: DEFAULT
-    currentPage:
-      name: currentPage
-      in: query
-      description: Current page number (zero-based)
-      schema:
-        type: integer
-        default: 0
     sort:
       name: sort
       in: query

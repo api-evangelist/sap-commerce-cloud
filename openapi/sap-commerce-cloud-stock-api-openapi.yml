@@ -59,17 +59,26 @@ paths:
         '400':
           description: Invalid stock data
 components:
+  parameters:
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of results to return
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of results to skip
+      schema:
+        type: integer
   schemas:
-    ODataStockCollection:
-      type: object
-      properties:
-        d:
-          type: object
-          properties:
-            results:
-              type: array
-              items:
-                $ref: '#/components/schemas/IntegrationStockLevel'
     IntegrationStockLevel:
       type: object
       properties:
@@ -95,25 +104,16 @@ components:
         integrationKey:
           type: string
           description: Unique integration key
-  parameters:
-    skip:
-      name: $skip
-      in: query
-      description: Number of results to skip
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      description: Maximum number of results to return
-      schema:
-        type: integer
+    ODataStockCollection:
+      type: object
+      properties:
+        d:
+          type: object
+          properties:
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/IntegrationStockLevel'
   securitySchemes:
     oauth2:
       type: oauth2

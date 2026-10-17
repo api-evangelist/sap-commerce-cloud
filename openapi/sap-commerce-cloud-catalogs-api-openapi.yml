@@ -235,88 +235,7 @@ paths:
           description: Base site identifier
           default: electronics
 components:
-  parameters:
-    fields:
-      name: fields
-      in: query
-      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
-      schema:
-        type: string
-        enum:
-        - BASIC
-        - DEFAULT
-        - FULL
-        default: DEFAULT
-    skip:
-      name: $skip
-      in: query
-      description: Number of results to skip
-      schema:
-        type: integer
-    top:
-      name: $top
-      in: query
-      description: Maximum number of results to return
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      description: OData filter expression
-      schema:
-        type: string
   schemas:
-    CatalogVersion:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Catalog version identifier
-        url:
-          type: string
-          description: Catalog version URL
-        categories:
-          type: array
-          items:
-            $ref: '#/components/schemas/Category'
-    CatalogList:
-      type: object
-      properties:
-        catalogs:
-          type: array
-          items:
-            $ref: '#/components/schemas/Catalog'
-    Catalog:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Catalog identifier
-        name:
-          type: string
-          description: Catalog name
-        catalogVersions:
-          type: array
-          items:
-            $ref: '#/components/schemas/CatalogVersion'
-    Image:
-      type: object
-      properties:
-        url:
-          type: string
-          description: Image URL
-        altText:
-          type: string
-          description: Alternative text
-        format:
-          type: string
-          description: Image format (e.g., thumbnail, product, zoom)
-        imageType:
-          type: string
-          enum:
-          - PRIMARY
-          - GALLERY
-          description: Image type
     Category:
       type: object
       properties:
@@ -335,18 +254,57 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Category'
-    CategoryRef:
+    CatalogVersion:
       type: object
       properties:
-        code:
+        id:
           type: string
-          description: Category code
-        name:
-          type: string
-          description: Category name
+          description: Catalog version identifier
         url:
           type: string
-          description: Category URL
+          description: Catalog version URL
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+    Catalog:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Catalog identifier
+        name:
+          type: string
+          description: Catalog name
+        catalogVersions:
+          type: array
+          items:
+            $ref: '#/components/schemas/CatalogVersion'
+    CatalogList:
+      type: object
+      properties:
+        catalogs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Catalog'
+    Image:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Image URL
+        altText:
+          type: string
+          description: Alternative text
+        format:
+          type: string
+          description: Image format (e.g., thumbnail, product, zoom)
+        imageType:
+          type: string
+          enum:
+          - PRIMARY
+          - GALLERY
+          description: Image type
     CatalogVersion_2:
       type: object
       properties:
@@ -364,6 +322,48 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CategoryRef'
+    CategoryRef:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Category code
+        name:
+          type: string
+          description: Category name
+        url:
+          type: string
+          description: Category URL
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
+    filter:
+      name: $filter
+      in: query
+      description: OData filter expression
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      description: Maximum number of results to return
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      description: Number of results to skip
+      schema:
+        type: integer
   securitySchemes:
     oauth2:
       type: oauth2

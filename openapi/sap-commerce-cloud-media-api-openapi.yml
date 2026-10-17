@@ -44,6 +44,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/ImageList'
 components:
+  parameters:
+    fields:
+      name: fields
+      in: query
+      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
+      schema:
+        type: string
+        enum:
+        - BASIC
+        - DEFAULT
+        - FULL
+        default: DEFAULT
+    productCode:
+      name: productCode
+      in: path
+      required: true
+      description: Product code
+      schema:
+        type: string
   schemas:
     ImageList:
       type: object
@@ -73,25 +92,6 @@ components:
         galleryIndex:
           type: integer
           description: Position in gallery
-  parameters:
-    productCode:
-      name: productCode
-      in: path
-      required: true
-      description: Product code
-      schema:
-        type: string
-    fields:
-      name: fields
-      in: query
-      description: Response field configuration level. Use BASIC, DEFAULT, or FULL to control the amount of data returned.
-      schema:
-        type: string
-        enum:
-        - BASIC
-        - DEFAULT
-        - FULL
-        default: DEFAULT
   securitySchemes:
     oauth2:
       type: oauth2

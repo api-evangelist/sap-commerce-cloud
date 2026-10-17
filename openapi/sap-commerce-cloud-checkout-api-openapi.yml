@@ -154,27 +154,15 @@ paths:
           description: Invalid payment data
 components:
   schemas:
-    DeliveryMode:
+    Region:
       type: object
       properties:
-        code:
+        isocode:
           type: string
-          description: Delivery mode code
+          description: Region ISO code
         name:
           type: string
-          description: Delivery mode name
-        description:
-          type: string
-          description: Delivery mode description
-        deliveryCost:
-          $ref: '#/components/schemas/Price'
-    DeliveryModeList:
-      type: object
-      properties:
-        deliveryModes:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeliveryMode'
+          description: Region name
     Country:
       type: object
       properties:
@@ -227,6 +215,32 @@ components:
         defaultAddress:
           type: boolean
           description: Whether this is the default address
+    Price:
+      type: object
+      properties:
+        currencyIso:
+          type: string
+          description: ISO 4217 currency code
+        value:
+          type: number
+          format: double
+          description: Price value
+        formattedValue:
+          type: string
+          description: Formatted price string
+        priceType:
+          type: string
+          enum:
+          - BUY
+          - FROM
+          description: Price type
+    DeliveryModeList:
+      type: object
+      properties:
+        deliveryModes:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryMode'
     PaymentDetails:
       type: object
       properties:
@@ -262,35 +276,28 @@ components:
         saved:
           type: boolean
           description: Whether the payment details are saved
-    Price:
+    DeliveryMode:
       type: object
       properties:
-        currencyIso:
+        code:
           type: string
-          description: ISO 4217 currency code
-        value:
-          type: number
-          format: double
-          description: Price value
-        formattedValue:
-          type: string
-          description: Formatted price string
-        priceType:
-          type: string
-          enum:
-          - BUY
-          - FROM
-          description: Price type
-    Region:
-      type: object
-      properties:
-        isocode:
-          type: string
-          description: Region ISO code
+          description: Delivery mode code
         name:
           type: string
-          description: Region name
+          description: Delivery mode name
+        description:
+          type: string
+          description: Delivery mode description
+        deliveryCost:
+          $ref: '#/components/schemas/Price'
   parameters:
+    cartId:
+      name: cartId
+      in: path
+      required: true
+      description: Cart identifier
+      schema:
+        type: string
     fields:
       name: fields
       in: query
@@ -307,13 +314,6 @@ components:
       in: path
       required: true
       description: User identifier. Use 'current' for the authenticated user or 'anonymous' for guest users.
-      schema:
-        type: string
-    cartId:
-      name: cartId
-      in: path
-      required: true
-      description: Cart identifier
       schema:
         type: string
   securitySchemes:

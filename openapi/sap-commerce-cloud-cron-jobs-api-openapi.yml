@@ -95,13 +95,6 @@ paths:
           description: CronJob is already running
 components:
   schemas:
-    CronJobList:
-      type: object
-      properties:
-        cronJobs:
-          type: array
-          items:
-            $ref: '#/components/schemas/CronJob'
     CronJob:
       type: object
       properties:
@@ -141,6 +134,13 @@ components:
         triggerExpression:
           type: string
           description: Cron trigger expression
+    CronJobList:
+      type: object
+      properties:
+        cronJobs:
+          type: array
+          items:
+            $ref: '#/components/schemas/CronJob'
   securitySchemes:
     oauth2:
       type: oauth2
