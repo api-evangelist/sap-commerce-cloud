@@ -1,4 +1,4 @@
-# SAP Commerce Cloud (sap-commerce-cloud)
+# SAP Commerce Cloud
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,159 +66,241 @@
 
 SAP Commerce Cloud (formerly Hybris) provides enterprise e-commerce and omnichannel customer experience management capabilities including product content management, order management, personalization, and assisted service for B2B and B2C commerce scenarios.
 
-**APIs.json:** [https://www.sap.com/products/crm/commerce-cloud.html](https://www.sap.com/products/crm/commerce-cloud.html)
+**Areas:** B2B · Consumer · Commerce · Customer Experience · E-Commerce · Omnichannel · Retail
 
-## Tags
+## SAP Commerce Cloud on APIs.io
 
-- B2B
-- B2C
-- Commerce
-- Customer Experience
-- Ecommerce
-- Omnichannel
-- Retail
+Everything profiled for SAP Commerce Cloud is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sap-commerce-cloud/](https://apis.io/providers/sap-commerce-cloud/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (25)
 
-- **Created:** 2024-01-01
-- **Modified:** 2026-05-19
+- [SAP Commerce Cloud Addresses API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-addresses-api/) — User address management
+- [SAP Commerce Cloud Agents API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-agents-api/) — Customer service agent operations
+- [SAP Commerce Cloud Cache API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-cache-api/) — Cache management operations
+- [SAP Commerce Cloud Cart API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-cart-api/) — Shopping cart management
+- [SAP Commerce Cloud Carts API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-carts-api/) — Cart emulation and management on behalf of customers
+- [SAP Commerce Cloud Catalogs API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-catalogs-api/) — Catalog and category browsing
+- [SAP Commerce Cloud Categories API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-categories-api/) — Category content management
+- [SAP Commerce Cloud Checkout API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-checkout-api/) — Checkout and payment operations
+- [SAP Commerce Cloud Classifications API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-classifications-api/) — Product classification and attributes
+- [SAP Commerce Cloud Configuration API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-configuration-api/) — System configuration management
+- [SAP Commerce Cloud Consents API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-consents-api/) — User consent management
+- [SAP Commerce Cloud Customers API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-customers-api/) — Customer lookup and 360 view
+- [SAP Commerce Cloud Health API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-health-api/) — System health and readiness checks
+- [SAP Commerce Cloud Media API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-media-api/) — Media and image management
+- [SAP Commerce Cloud Metadata API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-metadata-api/) — OData service metadata
+- [SAP Commerce Cloud Monitoring API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-monitoring-api/) — System monitoring and metrics
+- [SAP Commerce Cloud Orders API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-orders-api/) — Order management and history
+- [SAP Commerce Cloud Products API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-products-api/) — Product catalog browsing and search
+- [SAP Commerce Cloud Promotions API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-promotions-api/) — Promotions and vouchers
+- [SAP Commerce Cloud Sessions API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-sessions-api/) — Assisted service session management
+- [SAP Commerce Cloud Stock API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-stock-api/) — Stock and inventory integration
+- [SAP Commerce Cloud Stores API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-stores-api/) — Physical store locator
+- [SAP Commerce Cloud Users API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-users-api/) — User account management
+- [SAP Commerce Cloud Portal API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-portal-api/) — The SAP Commerce Cloud Portal API provides programmatic access to manage cloud environments, deployments, builds, and configurations within the SAP Commerce…
+- [SAP Commerce Cloud Cron Jobs API](https://apis.io/apis/sap-commerce-cloud/sap-commerce-cloud-cron-jobs-api/) — CronJob management and execution
 
-## APIs
+### Published properties
 
-### Commerce Web Services API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-RESTful API for commerce operations including product catalog, cart, checkout, and order management.
+#### Agentic access (1)
 
-- **Human URL:** [https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/](https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/9d346683b0084da2938be8a285c0c27a/)
-- **Base URL:** `https://{tenant}.{region}.commercecloud.sap/occ/v2`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Sap Commerce Cloud Agentic Access](https://apis.io/agentic-access/sap-commerce-cloud/sap-commerce-cloud-agentic-access/)
 
-- Cart
-- Checkout
-- Orders
-- Products
-- REST
+#### JSON Schema (87)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/8c19398686691014a8c0fd6c3e5d44a0.html)
-- [OpenAPI](https://api.sap.com/api/commerce_web_services/overview) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Authentication](https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html)
-- [OpenAPI](openapi/sap-commerce-cloud-commerce-web-services-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sap-commerce-cloud-commerce-web-services.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sap-commerce-cloud-commerce-web-services.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Address](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-address/)
+- [AddressList](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-addresslist/)
+- [Agent](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-agent/)
+- [AssistedSession](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-assistedsession/)
+- [AssistedSessionRequest](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-assistedsessionrequest/)
+- [BaseOption](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-baseoption/)
+- [Breadcrumb](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-breadcrumb/)
+- [CacheRegion](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-cacheregion/)
+- [CacheRegionList](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-cacheregionlist/)
+- [SAP Commerce Cloud Cart](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-cart/)
+- [CartList](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-cartlist/)
+- [CartModification](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-cartmodification/)
+- [CartSummary](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-cartsummary/)
+- [Catalog](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-catalog/)
+- [CatalogList](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-cataloglist/)
+- [CatalogVersion](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-catalogversion/)
+- [Category](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-category/)
+- [CategoryContent](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-categorycontent/)
+- [CategoryRef](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-categoryref/)
+- [Classification](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-classification/)
+- [ClassificationList](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-classificationlist/)
+- [ConfigurationProperty](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-configurationproperty/)
+- [ConfigurationPropertyList](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-configurationpropertylist/)
+- [ConsentTemplate](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-consenttemplate/)
+- [ConsentTemplateList](https://apis.io/schemas/sap-commerce-cloud/sap-commerce-cloud-consenttemplatelist/)
+- …and 62 more published on APIs.io
 
-### Assisted Service Module API
+#### JSON Structure (3)
 
-API for assisted service capabilities enabling customer service representatives to help customers with their shopping experience.
+Data models expressed in JSON Structure.
 
-- **Human URL:** [https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html](https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html)
-- **Base URL:** `https://{tenant}.{region}.commercecloud.sap/assistedservicewebservices`
+- [Sap Commerce Cloud Order Structure](https://apis.io/json-structure/sap-commerce-cloud/sap-commerce-cloud-order-structure/)
+- [Sap Commerce Cloud Product Structure](https://apis.io/json-structure/sap-commerce-cloud/sap-commerce-cloud-product-structure/)
+- [Sap Commerce Cloud Structure](https://apis.io/json-structure/sap-commerce-cloud/sap-commerce-cloud-structure/)
 
-#### Tags
+#### JSON-LD (1)
 
-- Assisted Service
-- Customer Service
-- REST
+Linked-data contexts for the provider's vocabulary.
 
-#### Properties
+- [Sap Commerce Cloud Context](https://apis.io/jsonld/sap-commerce-cloud/sap-commerce-cloud-context/)
 
-- [Documentation](https://help.sap.com/docs/SAP_COMMERCE/9d346683b0084da2938be8a285c0c27a/8b571515866910148fc18b9e59d3e084.html)
-- [OpenAPI](openapi/sap-commerce-cloud-assisted-service-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sap-commerce-cloud-assisted-service.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sap-commerce-cloud-assisted-service.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Vocabulary (1)
 
-### Integration API
+The provider's domain terms, defined.
 
-OData-based integration API for data integration and synchronization with external systems.
+- [SAP Commerce Cloud Vocabulary](https://apis.io/vocabularies/sap-commerce-cloud/sap-commerce-cloud-vocabulary/)
 
-- **Human URL:** [https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/](https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/)
-- **Base URL:** `https://{tenant}.{region}.commercecloud.sap/odata2webservices`
+#### Examples (2)
 
-#### Tags
+Example requests and responses.
 
-- Data Sync
-- Integration
-- OData
+- [Sap Commerce Cloud Get Order Example](https://apis.io/examples/sap-commerce-cloud/sap-commerce-cloud-get-order-example/)
+- [Sap Commerce Cloud Search Products Example](https://apis.io/examples/sap-commerce-cloud/sap-commerce-cloud-search-products-example/)
 
-#### Properties
+#### Collections (29)
 
-- [Documentation](https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/50c996852b32456c96d3161a95544cdb/8696c1e06fce461a862d7f0eb60cca7b.html)
-- [API Reference](https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/b490bb4e85bc42a7aa09d513d0bcb18e/)
-- [OpenAPI](openapi/sap-commerce-cloud-integration-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sap-commerce-cloud-integration.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sap-commerce-cloud-integration.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Postman and Open Collection request collections.
 
-### Admin API
+- [SAP Commerce Cloud Admin Addresses API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-addresses-api/)
+- [SAP Commerce Cloud Admin API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-admin/)
+- [SAP Commerce Cloud Admin Addresses Agents API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-agents-api/)
+- [SAP Commerce Cloud Assisted Service Module API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-assisted-service/)
+- [SAP Commerce Cloud Admin Addresses Cache API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-cache-api/)
+- [SAP Commerce Cloud Admin Addresses Cart API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-cart-api/)
+- [SAP Commerce Cloud Admin Addresses Carts API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-carts-api/)
+- [SAP Commerce Cloud Admin Addresses Catalogs API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-catalogs-api/)
+- [SAP Commerce Cloud Admin Addresses Categories API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-categories-api/)
+- [SAP Commerce Cloud Admin Addresses Checkout API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-checkout-api/)
+- [SAP Commerce Cloud Admin Addresses Classifications API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-classifications-api/)
+- [SAP Commerce Cloud Commerce Web Services API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-commerce-web-services/)
+- [SAP Commerce Cloud Admin Addresses Configuration API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-configuration-api/)
+- [SAP Commerce Cloud Admin Addresses Consents API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-consents-api/)
+- [SAP Commerce Cloud Admin Addresses CronJobs API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-cronjobs-api/)
+- [SAP Commerce Cloud Admin Addresses Customers API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-customers-api/)
+- [SAP Commerce Cloud Admin Addresses Health API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-health-api/)
+- [SAP Commerce Cloud Integration API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-integration/)
+- [SAP Commerce Cloud Admin Addresses Media API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-media-api/)
+- [SAP Commerce Cloud Admin Addresses Metadata API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-metadata-api/)
+- [SAP Commerce Cloud Admin Addresses Monitoring API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-monitoring-api/)
+- [SAP Commerce Cloud Admin Addresses Orders API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-orders-api/)
+- [SAP Commerce Cloud Product Content Management API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-product-content-management/)
+- [SAP Commerce Cloud Admin Addresses Products API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-products-api/)
+- [SAP Commerce Cloud Admin Addresses Promotions API](https://apis.io/collections/sap-commerce-cloud/open-sap-commerce-cloud-promotions-api/)
+- …and 4 more published on APIs.io
 
-Administrative API for system configuration, maintenance, and monitoring.
+#### Governance rules (2)
 
-- **Human URL:** [https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/](https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/)
-- **Base URL:** `https://{tenant}.{region}.commercecloud.sap/`
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [SAP Commerce Cloud — jsonschema rules](https://apis.io/rules/sap-commerce-cloud/sap-commerce-cloud-jsonschema-spectral-rules/)
+- [SAP Commerce Cloud API Rules](https://apis.io/rules/sap-commerce-cloud/sap-commerce-cloud-rules/)
 
-- Admin
-- Configuration
-- Monitoring
+#### Security (3)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/)
-- [OpenAPI](openapi/sap-commerce-cloud-admin-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sap-commerce-cloud-admin.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sap-commerce-cloud-admin.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Sap Commerce Cloud Authentication](https://apis.io/security/sap-commerce-cloud/sap-commerce-cloud-authentication/)
+- [Sap Commerce Cloud Domain Security](https://apis.io/security/sap-commerce-cloud/sap-commerce-cloud-domain-security/)
+- [Sap Commerce Cloud Vulnerability Disclosure](https://apis.io/security/sap-commerce-cloud/sap-commerce-cloud-vulnerability-disclosure/)
 
-### Product Content Management API
+#### OAuth scopes (1)
 
-API for managing product content including images, descriptions, and attributes.
+The permissions the API asks for.
 
-- **Human URL:** [https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/](https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/)
-- **Base URL:** `https://{tenant}.{region}.commercecloud.sap/occ/v2`
+- [Sap Commerce Cloud Scopes](https://apis.io/scopes/sap-commerce-cloud/sap-commerce-cloud-scopes/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Catalog
-- Content
-- Products
-- REST
+Published plans, tiers and prices.
 
-#### Properties
+- [Sap Commerce Cloud Plans Pricing](https://apis.io/plans/sap-commerce-cloud/sap-commerce-cloud-plans-pricing/)
 
-- [Documentation](https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/)
-- [OpenAPI](openapi/sap-commerce-cloud-product-content-management-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sap-commerce-cloud-product-content-management.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sap-commerce-cloud-product-content-management.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-## Common Properties
+Published request limits.
 
-- [GitHub Organization](https://github.com/SAP)
-- [LinkedIn](https://www.linkedin.com/showcase/sap-cx-commerce-cloud)
-- [Portal](https://api.sap.com/)
-- [Getting Started](https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/0996ba68e5794b8ab51db8d25d4c9f8c/)
-- [Authentication](https://help.sap.com/docs/SAP_COMMERCE/d0224eca81e249cb821f2cdf45a82ace/627c92dbdb7648449c840c07dd9cac7b.html)
+- [Sap Commerce Cloud Rate Limits](https://apis.io/rate-limits/sap-commerce-cloud/sap-commerce-cloud-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Sap Commerce Cloud Finops](https://apis.io/finops/sap-commerce-cloud/sap-commerce-cloud-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://sap.com)
+- [Getting started](https://help.sap.com/docs/SAP_COMMERCE_CLOUD_PUBLIC_CLOUD/0996ba68e5794b8ab51db8d25d4c9f8c/)
 - [Support](https://support.sap.com/)
-- [Community](https://community.sap.com/topics/commerce-cloud)
-- [Terms of Service](https://www.sap.com/about/legal/terms-of-use.html)
-- [Privacy Policy](https://www.sap.com/about/legal/privacy.html)
-- [Status Page](https://www.sap.com/about/trust-center/cloud-service-status.html)
-- [OpenAPI](openapi/sap-commerce-cloud-commerce-web-services-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/sap-commerce-cloud-assisted-service-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/sap-commerce-cloud-integration-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/sap-commerce-cloud-admin-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [OpenAPI](openapi/sap-commerce-cloud-product-content-management-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [JSON-LD](json-ld/sap-commerce-cloud-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/sap-commerce-cloud-product-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/sap-commerce-cloud-order-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/sap-commerce-cloud-cart-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/sap-commerce-cloud-customer-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/sap-commerce-cloud-product-structure.json)
-- [JSON Structure](json-structure/sap-commerce-cloud-order-structure.json)
-- [Spectral Rules](rules/sap-commerce-cloud-rules.yml)
-- [Vocabulary](vocabulary/sap-commerce-cloud-vocabulary.yml)
+- [Terms of service](https://www.sap.com/about/legal/terms-of-use.html)
+- [Privacy policy](https://www.sap.com/about/legal/privacy.html)
+- [GitHub](https://github.com/SAP)
+- [Status](https://www.sap.com/about/trust-center/cloud-service-status.html)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 44.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 57.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 22.6 |
+| Access clarity | 26.3 |
+
+**Agent readiness 23.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 40.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sap-commerce-cloud/](https://apis.io/providers/sap-commerce-cloud/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for SAP Commerce Cloud: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sap-commerce-cloud/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
